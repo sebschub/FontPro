@@ -1,0 +1,15 @@
+\relax
+\metrics
+
+\setglyph{hookrightchar}
+      \glyphrule{500}{500}
+      \glyphwarning{missing glyph `hookrightchar'}
+\endsetglyph
+
+\setglyph{hookleftchar}
+      \glyphrule{500}{500}
+      \glyphwarning{missing glyph `hookleftchar'}
+\endsetglyph
+
+\endmetrics
+% vim:set ft=tex:

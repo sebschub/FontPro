@@ -1,0 +1,49 @@
+#!/bin/bash
+
+case "$*" in
+  *--verbose*) verbose=true;;
+  *)           verbose=false;;
+esac
+
+mkdir -p pfb tfm vf dvips
+
+echo "Creating PostScript fonts ..."
+
+for font in otf/*.otf
+do
+  base=$(basename "$font" .otf)
+  cfftot1    "$font"     "$base.pfb"
+  t1dotlessj "$base.pfb" "${base}LCDFJ.pfb"
+done
+
+echo "Creating TeX metrics ..."
+
+maketfm() {
+  local family="$1"
+  shift
+
+  # We pass the error code of maketfm via a stamp file.
+  touch maketfm.error
+
+  ( scripts/maketfm "$family" "$@" >"dvips/$family.map.tmp" && rm maketfm.error ) 2>&1 |
+  ( ( ! $verbose && perl scripts/filtererr ) || cat )
+
+  sed -e "s/\.otf$/.pfb/" <"dvips/$family.map.tmp" | sort -u >"dvips/$family.map"
+  rm "dvips/$family.map.tmp"
+}
+
+maketfm MinionPro "$@"
+
+mv *.pfb pfb
+
+if [ -e maketfm.error ]
+then
+  rm maketfm.error
+  echo "maketfm failed, exiting ..."
+  exit 1
+fi
+
+(cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
+
+(cd tex; latex MinionPro.ins; latex otfontdef.ins; latex fontaxes.ins; latex tabfigures.ins)
+

@@ -1,0 +1,23 @@
+\relax
+\encoding
+
+\def\setoperatorpair#1{%
+  \setslot{t#1}\nextlarger{d#1}\endsetslot
+  \setslot{d#1}\endsetslot
+}
+
+\nextslot{112}
+\setoperatorpair{pidotsint}
+\setoperatorpair{plandupint}
+\setoperatorpair{planddownint}
+\setoperatorpair{pstrokedint}
+\setoperatorpair{point}
+\setoperatorpair{poiint}
+\setoperatorpair{prcirclerightint}
+\setoperatorpair{plcirclerightint}
+\setoperatorpair{prcircleleftint}
+\setoperatorpair{plcircleleftint}
+\setoperatorpair{psumint}
+
+\endencoding
+% vim:set ft=tex:

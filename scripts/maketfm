@@ -1,0 +1,757 @@
+#!/bin/bash
+
+# Check utilities.
+
+otftotfm_version() {
+  otftotfm --version | head -n 1 #| sed -e 's/^otftotfm .* \([0-9.]\+\)$/\1/'
+}
+
+requires_otftotfm_version() {
+
+  local min_version="$1"
+  local version="$(otftotfm_version)"
+
+  version=${version#otftotfm (LCDF typetools) }
+
+  : ${version:=0.0}
+
+  local ver_major=${version%%.*}
+  local ver_minor=${version#*.}
+  local min_major=${min_version%%.*}
+  local min_minor=${min_version#*.}
+
+  if (( $ver_major < $min_major || ($ver_major == $min_major && $ver_minor < $min_minor) ))
+  then
+    echo "You need otftotfm version $min_version or greater to run this script." >&2
+    exit 1
+  fi
+}
+
+requires_otftotfm_version 2.62
+
+# Parse options.
+
+font="$1"
+
+shift
+
+usage() {
+  exec >&2
+  echo "USAGE: maketfm <font> [options]"
+  echo -e "\nSupported options are:"
+  echo "--verbose      | --quiet"
+  echo "--smallcaps    | --nosmallcaps"
+  echo "--swash        | --noswash"
+  echo "--greek        | --nogreek"
+  echo "--cyrillic     | --nocyrillic"
+  echo "--vietnamese   | --novietnamese"
+  echo "--kern         | --nokern"
+  echo "--dotlessj     | --nodotlessj"
+  echo "--wide-spacing | --narrow-spacing"
+  echo "--expanded     | --noexpanded"
+  echo "--pack=<glyph list>"
+  exit 1
+}
+
+if [[ "$font" == "" || "$font" == -* ]]
+then
+  echo -e "No font specified!\n" >&2
+  usage
+fi
+
+verbose=false
+create_greek=true
+create_cyrillic=true
+create_vietnamese=true
+create_expanded=false
+create_kerned=true
+create_smallcaps=true
+create_sc_grekcyrl=false
+create_swash=true
+create_dotlessj=true
+wide_spacing=false
+glyph_list=""
+base_font_list=""
+
+if ! otfinfo -f otf/$font-Regular.otf | grep -q smcp
+then 
+  create_smallcaps=false
+fi
+
+if ! otfinfo -f otf/$font-It.otf | grep -q Swash
+then 
+  create_swash=false
+fi
+
+for opt in "$@"
+do
+  case "$opt" in
+    --verbose)        verbose=true;;
+    --quiet)          verbose=false;;
+    --greek)          create_greek=true;;
+    --nogreek)        create_greek=false;;
+    --smallcaps)      create_smallcaps=true;;
+    --nosmallcaps)    create_smallcaps=false;;
+    --swash)          create_swash=true;;
+    --noswash)        create_swash=false;;
+    --cyrillic)       create_cyrillic=true;;
+    --nocyrillic)     create_cyrillic=false;;
+    --vietnamese)     create_vietnamese=true;;
+    --novietnamese)   create_vietnamese=false;;
+    --expanded)       create_expanded=true;;
+    --noexpanded)     create_expanded=false;;
+    --kern)           create_kerned=true;;
+    --nokern)         create_kerned=false;;
+    --dotlessj)       create_dotlessj=true;;
+    --nodotlessj)     create_dotlessj=false;;
+    --wide-spacing)   wide_spacing=true;;
+    --narrow-spacing) wide_spacing=false;;
+    --pack=*)         glyph_list="${opt#--pack=}";;
+    --pack)           echo -e "Option --pack is missing an argument\n" >&2
+                      usage;;
+    *)                echo -e "Unknown option $opt\n" >&2
+                      usage;;
+  esac
+done
+
+# Expanded metrics for pdftex's font expansion.
+
+if $create_expanded
+then
+  expansions="-20 -16 -12 -8 -4 0 4 8 12 16 20"
+else
+  expansions=0
+fi
+
+noliga="--unicoding='ff =: emptyslot'"
+noliga="$noliga --unicoding='fi =: emptyslot'"
+noliga="$noliga --unicoding='fl =: emptyslot'"
+noliga="$noliga --unicoding='ffi =: emptyslot'"
+noliga="$noliga --unicoding='ffl =: emptyslot'"
+
+extra_flags=""
+oml_flags=""
+greek_flags=""
+quote_flags=""
+ts_it_compat_flags=""
+ts_rm_compat_flags=""
+
+make_lgr_flags() {
+  for g in Iota iota upsilon lambda beta zeta eta Eta Gamma omicron alpha alphasub omegasub etasub epsilon psi gamma Mu Psi
+  do
+    echo -n " --unicoding 'space_dotbelowcomb_$g =: $1'"
+  done
+}
+
+lgr_it_flags=$(make_lgr_flags uniE261)
+lgr_rm_flags=$(make_lgr_flags uniE188)
+
+if [ -e "scripts/maketfm-$font.cfg" ]
+then
+  . "scripts/maketfm-$font.cfg"
+fi
+
+# Output progress message later while the scripts run.
+
+progress() {
+  echo "echo $(printf "%q " "$@") >&2" >>maketfm.tmp
+}
+
+make_base_encodings() {
+
+  if [[ $glyph_list != "" ]]
+  then
+    local i k n enc
+
+    split -l 256 "$glyph_list" glyph-list.tmp-
+
+    base_font_list=$(echo glyph-list.tmp-[a-z][a-z] | sed -e "s/glyph-list.tmp-//g")
+
+    for i in $base_font_list
+    do
+      enc="dvips/base-$font-$i.enc"
+
+      echo "% CODINGSCHEME FONTSPECIFIC" >"$enc"
+      echo "/$font-Base-Encoding-$i [" >>"$enc"
+
+      cat glyph-list.tmp-$i >>"$enc"
+
+      n=$(wc -l <glyph-list.tmp-$i)
+
+      for ((k = ${n// /}; k < 256; k++))
+      do
+        echo "/.notdef" >>"$enc"
+      done
+
+      echo "] def" >>"$enc"
+
+      scripts/beautify-enc.sh "$enc"
+
+      rm glyph-list.tmp-$i
+    done
+  fi
+}
+
+make_enckern() {
+
+  if [ -e "$font-$1.pfb" ]
+  then
+    local e
+
+    for e in enc/mn-*.enc
+    do
+      local enc=$(basename $e .enc)
+      enc=${enc#mn-}
+
+      for l in "" "-l1" "-l2"
+      do
+        if $create_kerned
+        then
+          if [ -e "kerning/$1$l-$enc.kern" ]
+          then
+            cat $e "kerning/$1$l-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+          elif [ -e "kerning/$1$l.kern" ]
+          then
+            cat $e "kerning/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+          elif [ -e "kerning/$1-$enc.kern" ]
+          then
+            cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+          elif [ -e "kerning/$1.kern" ]
+          then
+            cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+          else
+            cp $e enc/mn-$1$l-$enc.enckern
+          fi
+        else
+          cp $e enc/mn-$1$l-$enc.enckern
+        fi
+      done
+    done
+  fi
+}
+
+get_exp_info() {
+  local exp="$1"
+
+  if (( exp == 0 ))
+  then
+    exp_suffix=""
+    exp_factor=""
+    exp_flags=""
+  else
+    exp_suffix=$(printf "%+d" "$exp")
+    exp_factor=$(bc <<< "scale=3; 1+$exp/1000")
+    exp_flags="-E $exp_factor"
+  fi
+}
+
+make_base_fonts() {
+
+  if [[ $glyph_list != "" ]]
+  then
+    local name="$1"
+    local enc font_list i exp exp_flags exp_suffix exp_factor
+    local common_flags="--tfm-directory=tfm --vf-directory=vf --encoding-directory=dvips --no-type1 --no-updmap"
+
+    for exp in $expansions
+    do
+      get_exp_info "$exp"
+
+      font_list="base-fonts-$font-$name$exp_suffix"
+
+      echo -n "" >"$font_list"
+
+      for i in $base_font_list
+      do
+        enc="dvips/base-$font-$i.enc"
+
+        echo "$font-$name-Base-$i$exp_suffix $enc" >>"$font_list"
+
+        otftotfm $common_flags $exp_flags --no-dotlessj --literal-encoding="$enc" "otf/$font-$name.otf" "$font-$name-Base-$i$exp_suffix"
+      done
+
+      # We also need to create a base font for the /dotlessj glyph.
+
+      if $create_dotlessj
+      then
+        echo "$font-$name--lcdfj$exp_suffix - dotlessj" >>"$font_list"
+
+        echo "$font-$name--lcdfj$exp_suffix $font-${name}LCDFJ \"${exp_factor:+$exp_factor ExtendFont}\" <$font-${name}LCDFJ.pfb"
+
+        otftotfm $common_flags $exp_flags --no-map --encoding=enc/dotlessj.enc "otf/$font-$name.otf" "$font-$name$exp_suffix"
+
+        rm "tfm/$font-$name$exp_suffix.tfm"
+        rm "vf/$font-$name$exp_suffix.vf"
+      fi
+    done
+  fi
+}
+
+get_base_encoding_flags () {
+  if [[ "$base_font_list" != "" && "$2" != integral ]]
+  then
+    base_encoding_flags="--base-encodings='base-fonts-$font-$1$3'"
+  else
+    base_encoding_flags=""
+  fi
+}
+
+get_enc_flags() {
+  if [ "$2" != integral ]
+  then
+    case $3 in
+      *-l2-*) enc_flags="-e 'enc/mn-$1-l2-$2.enckern'";;
+      *-l1-*) enc_flags="-e 'enc/mn-$1-l1-$2.enckern'";;
+      *)      enc_flags="-e 'enc/mn-$1-$2.enckern'";;
+    esac
+  else
+    enc_flags="--literal-encoding enc/mn-integral.enc"
+  fi
+}
+
+make_tfm() {
+
+  local name="$1"
+  local enc="$2"
+  local spec="$3"
+  shift 3
+
+  local exp enc_flags base_encoding_flags exp_suffix exp_flags exp_factor
+
+  get_enc_flags "$name" "$enc" "$spec"
+
+  local common_flags="--tfm-directory=tfm --vf-directory=vf --encoding-directory=dvips"
+  common_flags="$common_flags --no-type1 --no-updmap --no-dotlessj --warn-missing -fkern"
+  if ! $verbose
+  then
+    common_flags="-q $common_flags"
+  fi
+
+  for exp in $expansions
+  do
+    get_exp_info "$exp"
+
+    get_base_encoding_flags "$name" "$enc" "$exp_suffix"
+
+    local tex_name="$font-$name-$spec$exp_suffix"
+
+    if $verbose
+    then
+      progress -n " $tex_name,"
+    else
+      progress -n " $spec$exp_suffix,"
+    fi
+
+    echo "otftotfm $common_flags $base_encoding_flags $exp_flags $* $enc_flags 'otf/$font-$name.otf' '$tex_name'" >>maketfm.tmp
+  done
+}
+
+make_ligkern_options() {
+  if [ -e "kerning/$1.kern" ]
+  then
+    echo $(
+      sed -n -e "s/#$2#//gp" "kerning/$1.kern" |
+      awk '{print "--ligkern '\''"$3" "$4" "$5"'\''"}'
+    )
+  fi
+}
+
+get_flags() {
+  case $2 in
+      lf) flags="-flnum -fpnum";;
+     osf) flags="-fonum -fpnum";;
+     tlf) flags="-flnum -ftnum";;
+    tosf) flags="-fonum -ftnum";;
+  esac
+  flags="$flags $quote_flags $(make_ligkern_options "$1" "$2")"
+}
+get_ts_flags() {
+  case $1 in
+    *It*) ts_flags="$ts_it_compat_flags";;
+       *) ts_flags="$ts_rm_compat_flags";;
+  esac
+  case $2 in
+      lf) ts_flags="$ts_flags -fpnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
+     osf) ts_flags="$ts_flags -fpnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
+     tlf) ts_flags="$ts_flags -ftnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
+    tosf) ts_flags="$ts_flags -ftnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
+  esac
+}
+get_sc_flags() {
+  case $1 in
+      lf) sc_flags="$noliga -flnum -fpnum --subs-filter='<Letter>' -fsmcp";;
+     osf) sc_flags="$noliga -fonum -fpnum -fsmcp";;
+     tlf) sc_flags="$noliga -flnum -ftnum --subs-filter='<Letter>' -fsmcp";;
+    tosf) sc_flags="$noliga -fonum -ftnum -fsmcp";;
+  esac
+}
+get_sc_ts_flags() {
+  case $1 in
+    *It*) sc_ts_flags="$ts_it_compat_flags";;
+       *) sc_ts_flags="$ts_rm_compat_flags";;
+  esac
+  case $2 in
+      lf) sc_ts_flags="$sc_ts_flags -fpnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
+     osf) sc_ts_flags="$sc_ts_flags -fpnum -fsmcp"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter=!'<Number>' -fonum";;
+     tlf) sc_ts_flags="$sc_ts_flags -ftnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
+    tosf) sc_ts_flags="$sc_ts_flags -ftnum -fsmcp"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -fonum";;
+  esac
+}
+get_it_ot1_flags() {
+  case "$1" in
+    *It*) it_ot1_flags="--unicoding 'dollar =: sterling'";;
+    *)    it_ot1_flags="";;
+  esac
+}
+get_lgr_flags() {
+  case "$1" in
+    *It*) lgr_flags="--unicoding 'kappa =: kappasymbolgreek kappa' --unicoding 'theta =: theta1 theta' $lgr_it_flags $greek_flags";;
+    *)    lgr_flags="$lgr_rm_flags $greek_flags";;
+  esac
+}
+
+make_normal_metrics() {
+
+  get_flags        "$1" "$2"
+  get_ts_flags     "$1" "$2"
+  get_sc_flags     "$2"
+  get_sc_ts_flags  "$1" "$2"
+  get_it_ot1_flags "$1"
+  get_lgr_flags    "$1"
+
+  make_tfm   "$1" t1  $2-t1  "-fliga $flags"
+  make_tfm   "$1" ot1 $2-ot1 "-fliga $it_ot1_flags $flags"
+  make_tfm   "$1" ly1 $2-ly1 "-fliga $flags"
+  make_tfm   "$1" ts1 $2-ts1 "       $ts_flags"
+
+  if $create_greek
+  then
+    make_tfm "$1" lgr $2-lgr "-sgrek $lgr_flags $flags"
+    make_tfm "$1" lgi $2-lgi "-sgrek $lgr_flags $flags"
+  fi
+  if $create_cyrillic
+  then
+    make_tfm "$1" t2a $2-t2a "-scyrl $flags"
+    make_tfm "$1" t2b $2-t2b "-scyrl $flags"
+    make_tfm "$1" t2c $2-t2c "-scyrl $flags"
+    make_tfm "$1" x2  $2-x2  "-scyrl $flags"
+    make_tfm "$1" ot2 $2-ot2 "-scyrl $flags"
+  fi
+  if $create_vietnamese
+  then
+    make_tfm "$1" t5   $2-t5 "       $flags"
+  fi
+
+  if $create_smallcaps
+  then
+    make_tfm     "$1" t1   $2-sc-t1     "       $sc_flags               --unicoding='germandbls =: SSsmall'"
+    make_tfm     "$1" ot1  $2-sc-ot1    "       $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+    make_tfm     "$1" ly1  $2-sc-ly1    "       $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+    make_tfm     "$1" ts1  $2-sc-ts1    "       $sc_ts_flags"
+
+    make_tfm     "$1" t1   $2-sc-l2-t1  "-L 80  $sc_flags               --space-factor=1.15 --unicoding='germandbls =: SSsmall'"
+    make_tfm     "$1" ot1  $2-sc-l2-ot1 "-L 80  $sc_flags $it_ot1_flags --space-factor=1.15 --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+    make_tfm     "$1" ly1  $2-sc-l2-ly1 "-L 80  $sc_flags               --space-factor=1.15 --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+    make_tfm     "$1" ts1  $2-sc-l2-ts1 "-L 80  $sc_ts_flags            --space-factor=1.15"
+
+    if $create_sc_grekcyrl
+    then
+      if $create_greek
+      then
+        make_tfm "$1" lgr  $2-sc-lgr    "       $sc_flags               -sgrek $lgr_flags"
+        make_tfm "$1" lgi  $2-sc-lgi    "       $sc_flags               -sgrek $lgr_flags"
+        make_tfm "$1" lgr  $2-sc-l2-lgr "-L 80  $sc_flags               -sgrek $lgr_flags --space-factor=1.15 "
+        make_tfm "$1" lgi  $2-sc-l2-lgi "-L 80  $sc_flags               -sgrek $lgr_flags --space-factor=1.15"
+      fi
+      if $create_cyrillic
+      then
+        make_tfm "$1" t2a  $2-sc-t2a    "       $sc_flags               -scyrl"
+        make_tfm "$1" t2b  $2-sc-t2b    "       $sc_flags               -scyrl"
+        make_tfm "$1" t2c  $2-sc-t2c    "       $sc_flags               -scyrl"
+        make_tfm "$1" x2   $2-sc-x2     "       $sc_flags               -scyrl"
+        make_tfm "$1" ot2  $2-sc-ot2    "       $sc_flags               -scyrl"
+        make_tfm "$1" t2a  $2-sc-l2-t2a "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+        make_tfm "$1" t2b  $2-sc-l2-t2b "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+        make_tfm "$1" t2c  $2-sc-l2-t2c "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+        make_tfm "$1" x2   $2-sc-l2-x2  "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+        make_tfm "$1" ot2  $2-sc-l2-ot2 "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+      fi
+    fi
+
+    if $create_vietnamese
+    then
+      make_tfm   "$1" t5   $2-sc-t5     "       $sc_flags"
+      make_tfm   "$1" t5   $2-sc-l2-t5  "-L 80  $sc_flags               --space-factor=1.15"
+    fi
+  fi
+}
+
+make_spread_metrics() {
+
+  get_flags        "$1" "$2"
+  get_ts_flags     "$1" "$2"
+  get_sc_flags     "$2"
+  get_sc_ts_flags  "$1" "$2"
+  get_it_ot1_flags "$1"
+  get_lgr_flags    "$1"
+
+  make_tfm "$1" t1     $2-l1-t1     "-L 40        $flags"
+  make_tfm "$1" ot1    $2-l1-ot1    "-L 40        $it_ot1_flags $flags"
+  make_tfm "$1" ly1    $2-l1-ly1    "-L 40        $flags"
+  make_tfm "$1" ts1    $2-l1-ts1    "-L 40        $ts_flags"
+
+  if $create_greek
+  then
+    make_tfm "$1" lgr  $2-l1-lgr    "-L 40 -sgrek $lgr_flags $flags"
+    make_tfm "$1" lgi  $2-l1-lgi    "-L 40 -sgrek $lgr_flags $flags"
+  fi
+  if $create_cyrillic
+  then
+    make_tfm "$1" t2a  $2-l1-t2a    "-L 40 -scyrl $flags"
+    make_tfm "$1" t2b  $2-l1-t2b    "-L 40 -scyrl $flags"
+    make_tfm "$1" t2c  $2-l1-t2c    "-L 40 -scyrl $flags"
+    make_tfm "$1" x2   $2-l1-x2     "-L 40 -scyrl $flags"
+    make_tfm "$1" ot2  $2-l1-ot2    "-L 40 -scyrl $flags"
+  fi
+  if $create_vietnamese
+  then
+    make_tfm "$1" t5   $2-l1-t5     "-L 40        $flags"
+  fi
+
+  if $create_smallcaps
+  then
+    make_tfm     "$1" t1  $2-sc-l1-t1  "-L 40 $sc_flags               --unicoding='germandbls =: SSsmall'"
+    make_tfm     "$1" ot1 $2-sc-l1-ot1 "-L 40 $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+    make_tfm     "$1" ly1 $2-sc-l1-ly1 "-L 40 $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+    make_tfm     "$1" ts1 $2-sc-l1-ts1 "-L 40 $sc_ts_flags"
+
+    if $create_sc_grekcyrl
+    then
+      if $create_greek
+      then
+        make_tfm "$1" lgr  $2-sc-l1-lgr "-L 40 $sc_flags -sgrek $lgr_flags"
+        make_tfm "$1" lgi  $2-sc-l1-lgi "-L 40 $sc_flags -sgrek $lgr_flags"
+      fi
+      if $create_cyrillic
+      then
+        make_tfm "$1" t2a  $2-sc-l1-t2a "-L 40 $sc_flags -scyrl"
+        make_tfm "$1" t2b  $2-sc-l1-t2b "-L 40 $sc_flags -scyrl"
+        make_tfm "$1" t2c  $2-sc-l1-t2c "-L 40 $sc_flags -scyrl"
+        make_tfm "$1" x2   $2-sc-l1-x2  "-L 40 $sc_flags -scyrl"
+        make_tfm "$1" ot2  $2-sc-l1-ot2 "-L 40 $sc_flags -scyrl"
+      fi
+    fi
+
+    if $create_vietnamese
+    then
+      make_tfm   "$1" t5   $2-sc-l1-t5  "-L 40 $sc_flags"
+    fi
+  fi
+}
+
+make_integrals() {
+
+  if [ -e "$font-$1.pfb" ]
+  then
+    progress -n "Processing font $font-$1 ..."
+
+    cp enc/mn-integral.enc dvips
+
+    make_tfm "$1" integral integral
+    make_tfm "$1" integral integral-cn1 "-E 0.85"
+    make_tfm "$1" integral integral-cn2 "-E 0.75 -S 0.04"
+
+    progress " done."
+  fi
+}
+
+make_metrics() {
+
+  if [ -e "$font-$1.pfb" ]
+  then
+    progress -n "Processing font $font-$1 ..."
+
+    make_base_fonts "$1"
+
+    make_normal_metrics "$1" lf
+    make_normal_metrics "$1" tlf
+    make_normal_metrics "$1" osf
+    make_normal_metrics "$1" tosf
+
+    make_tfm "$1" oml     tosf-oml "-L 40 --math-spacing=255 --subs-filter='!uniF638' -fonum -ftnum $oml_flags"
+    make_tfm "$1" extra-u extra-u  "$extra_flags"
+
+    progress " done."
+  fi
+}
+
+make_spaced_metrics() {
+
+  if [ -e "$font-$1.pfb" ]
+  then
+    progress -n "Processing font $font-$1 ..."
+
+    make_spread_metrics "$1" lf
+    make_spread_metrics "$1" tlf
+    make_spread_metrics "$1" osf
+    make_spread_metrics "$1" tosf
+
+    make_tfm "$1" oml tosf-l1-oml "-L 80 --math-spacing=255 --subs-filter='!uniF638' -fonum -ftnum $oml_flags"
+
+    progress " done."
+  fi
+}
+
+make_swash_metrics() {
+
+  if [ -e "$font-$1.pfb" ]
+  then
+    progress -n "Processing font $font-$1 ..."
+
+    get_it_ot1_flags "$1"
+
+    local swash="--include-alternates '*.swash' -faalt"
+
+    make_tfm   "$1" t1  lf-swash-t1    "-fliga -flnum -fpnum $swash"
+    make_tfm   "$1" t1  osf-swash-t1   "-fliga -fonum -fpnum $swash"
+    make_tfm   "$1" t1  tlf-swash-t1   "-fliga -flnum -ftnum $swash"
+    make_tfm   "$1" t1  tosf-swash-t1  "-fliga -fonum -ftnum $swash"
+    make_tfm   "$1" ot1 lf-swash-ot1   "-fliga -flnum -fpnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1 osf-swash-ot1  "-fliga -fonum -fpnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1 tlf-swash-ot1  "-fliga -flnum -ftnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1 tosf-swash-ot1 "-fliga -fonum -ftnum $it_ot1_flags $swash"
+    make_tfm   "$1" ly1 lf-swash-ly1   "-fliga -flnum -fpnum $swash"
+    make_tfm   "$1" ly1 osf-swash-ly1  "-fliga -fonum -fpnum $swash"
+    make_tfm   "$1" ly1 tlf-swash-ly1  "-fliga -flnum -ftnum $swash"
+    make_tfm   "$1" ly1 tosf-swash-ly1 "-fliga -fonum -ftnum $swash"
+
+    if $create_vietnamese
+    then
+      make_tfm "$1" t5  lf-swash-t5    "-flnum -fpnum $swash"
+      make_tfm "$1" t5  osf-swash-t5   "-fonum -fpnum $swash"
+      make_tfm "$1" t5  tlf-swash-t5   "-flnum -ftnum $swash"
+      make_tfm "$1" t5  tosf-swash-t5  "-fonum -ftnum $swash"
+    fi
+
+    progress " done."
+  fi
+}
+
+make_spaced_swash_metrics() {
+
+  if [ -e "$font-$1.pfb" ]
+  then
+    progress -n "Processing font $font-$1 ..."
+
+    get_it_ot1_flags "$1"
+
+    local swash="--include-alternates '*.swash' -faalt"
+
+    make_tfm   "$1" t1  lf-swash-l1-t1    "-L 40 -flnum -fpnum $swash"
+    make_tfm   "$1" t1  osf-swash-l1-t1   "-L 40 -fonum -fpnum $swash"
+    make_tfm   "$1" t1  tlf-swash-l1-t1   "-L 40 -flnum -ftnum $swash"
+    make_tfm   "$1" t1  tosf-swash-l1-t1  "-L 40 -fonum -ftnum $swash"
+    make_tfm   "$1" ot1 lf-swash-l1-ot1   "-L 40 -flnum -fpnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1 osf-swash-l1-ot1  "-L 40 -fonum -fpnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1 tlf-swash-l1-ot1  "-L 40 -flnum -ftnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1 tosf-swash-l1-ot1 "-L 40 -fonum -ftnum $it_ot1_flags $swash"
+    make_tfm   "$1" ly1 lf-swash-l1-ly1   "-L 40 -flnum -fpnum $swash"
+    make_tfm   "$1" ly1 osf-swash-l1-ly1  "-L 40 -fonum -fpnum $swash"
+    make_tfm   "$1" ly1 tlf-swash-l1-ly1  "-L 40 -flnum -ftnum $swash"
+    make_tfm   "$1" ly1 tosf-swash-l1-ly1 "-L 40 -fonum -ftnum $swash"
+
+    if $create_vietnamese
+    then
+      make_tfm "$1" t5  lf-swash-l1-t5    "-L 40 -flnum -fpnum $swash"
+      make_tfm "$1" t5  osf-swash-l1-t5   "-L 40 -fonum -fpnum $swash"
+      make_tfm "$1" t5  tlf-swash-l1-t5   "-L 40 -flnum -ftnum $swash"
+      make_tfm "$1" t5  tosf-swash-l1-t5  "-L 40 -fonum -ftnum $swash"
+    fi
+
+    progress " done."
+  fi
+}
+
+make_series() {
+
+  local sub
+
+  for sub in "" Capt Disp Subh
+  do
+    if [[ "$1$sub" = "" ]]
+    then
+      make_enckern Regular
+      make_metrics Regular
+    else
+      make_enckern "$1$sub"
+      make_metrics "$1$sub"
+    fi
+  done
+
+  make_spaced_metrics "$1Capt"
+
+  if [[ "$1" = "" ]]
+  then
+    make_spaced_metrics Regular
+  else
+    make_spaced_metrics "$1"
+  fi
+}
+
+make_additional_italic() {
+
+  local sub
+
+  for sub in "" Capt Disp Subh
+  do
+    if $create_swash
+    then
+      make_swash_metrics "$1$sub"
+    fi
+    make_integrals       "$1$sub"
+  done
+
+  if $create_swash
+  then
+    make_spaced_swash_metrics "$1"
+    make_spaced_swash_metrics "$1Capt"
+  fi
+}
+
+# Ok, let's start.
+
+make_base_encodings
+
+# We first create a shell script with the actual otftotfm calls.
+
+echo "#!/bin/bash" >maketfm.tmp
+
+for weight in Light "" Medium Semibold Bold Black
+do
+  for width in Cond SemiCn "" SemiExt
+  do
+    make_series             "$weight$width"
+    make_series             "$weight${width}It"
+
+    make_additional_italic  "$weight${width}It"
+  done
+done
+
+# Then we execute and delete it.
+
+tr "\177" " " <maketfm.tmp >maketfm.tmp2  # This is just a workaround for a bug on some systems.
+
+. maketfm.tmp2
+
+rm -f maketfm.tmp maketfm.tmp2 base-fonts-"$font"-*
+

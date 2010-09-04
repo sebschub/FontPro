@@ -1,0 +1,24 @@
+\input fontinst-macros.tex
+
+\def\installopt#1#2#3{%
+  \installfont{MinionPro-Medium#2-#3oml}{%
+     MnSymbolA#1                       encoding mn-symbol-a,%
+     MnSymbolC#1                       encoding mn-symbol-c,%
+     MnSymbolD#1                       encoding mn-symbol-d,%
+     MnSymbolE#1                       encoding mn-symbol-e,%
+     MinionPro-Medium-tosf-#3oml       encoding mn-oml-up,%
+     MinionPro-MediumIt-tosf-#3oml     encoding mn-oml-it,%
+     adjust-oml,%
+     arrowhooks,%
+     tie%
+  }{mn-oml-#2}{}{}{}{}{}%
+}
+
+\installfonts
+  \installopt{10}{Mixed}{}
+  \installopt{7}{Mixed}{l1-}
+  \installopt{10}{French}{}
+  \installopt{7}{French}{l1-}
+\endinstallfonts
+
+\bye

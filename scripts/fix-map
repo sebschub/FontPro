@@ -1,0 +1,10 @@
+#!/bin/bash
+# Fix map lines referring to .otf fonts (resulting from otftotfm not finding
+# the .pfb because they have not yet been installed: Happens either before the
+# first installation if otftotfm is compiled with kpathsea support or in any
+# case if it's compiled without.)
+fix_map() {
+    sed -e 's/\.otf$/.pfb/'
+}
+
+fix_map

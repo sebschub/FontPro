@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+# Fill the gaps in a given TFM with artifical characters.
+
+use strict;
+use warnings;
+
+use File::Temp;
+
+if (@ARGV != 2) {
+    print STDERR "Usage: filltfm INPUT.tfm OUTPUT.tfm\n";
+    exit(1);
+}
+my ($input, $output) = @ARGV;
+
+open(PL, '-|', 'tftopl', '-charcode-format=octal', $input) or die $!;
+my $tmp = new File::Temp(SUFFIX => '.pl');
+
+my @char = ();
+while (defined ($_ = <PL>)) {
+    print $tmp $_;
+    $char[oct($1)] = 1 if /CHARACTER O (\d+)/;
+}
+close(PL) or die $!;
+
+for (grep !$char[$_], 0..255) {
+    printf $tmp "(CHARACTER O %o)\n", $_;
+}
+
+close($tmp);
+system('pltotf', $tmp, $output) and die $!;

@@ -1,0 +1,18 @@
+#!/bin/bash
+# Remove generated files from the source tree
+
+# quick sanity check: Are we in the top-level directory?
+for dir in dvips enc fontinst kerning scripts tex; do
+    if [[ ! -d $dir ]]; then
+	echo "Wrong directory? $PWD" >&2
+	exit 1
+    fi
+done
+
+rm -rf pfb/ tfm/ vf/
+rm -f dvips/*.{enc,map}
+rm -f enc/*.enckern
+rm -f fontinst/*.{tfm,vpl,vf,log} fontinst/*-integral*.pl
+rm -f tex/*.{fd,drv,sty,log,cfg,aux,idx,ind,glo,pdf,toc,out} tex/test-fontaxes.tex
+rm -f maketfm{,-expanded}.{tmp,tmp2} maketfm.error glyph-list-?? base-fonts-*
+rm -f *.pfb

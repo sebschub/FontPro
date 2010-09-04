@@ -1,0 +1,46 @@
+\input fontinst.sty
+
+\fontinstcc
+\def\metrics_given_encoding#1#2{
+   \x_cs\edef{s-afm-name}{#1-#2}
+   \if_file_exists{#1.pl}\then
+      \generalpltomtx{#1}{#1-#2}{pl}{#2}
+   \else
+      \if_file_exists{#1.vpl}\then
+         \generalpltomtx{#1}{#1-#2}{vpl}{#2}
+      \else
+         \unsetstr{afm-name}
+   \fi\fi
+}
+\normalcc
+
+% based on mathpazo's haxzplmr.mtx
+
+% \shiftglyph takes five parameters:
+%   #1 the name of the glyph
+%   #2 the amount of extra space at the left
+%   #3 the amount of extra space at the right
+%   #4 the amount of extra space for subscripts
+%   #5 the amount of extra height
+\setcommand\shiftglyph#1#2#3#4#5{
+   \resetglyph{#1}
+      \movert{#2}
+      \glyph{#1}{1000}
+      \movert{#4}
+      \resetitalic{\add{\italic{#1}}{\sub{#3}{#4}}}
+      \resetheight{\add{\height{#1}}{#5}}
+   \endresetglyph
+}
+
+% \adjustmetrics takes five parameters:
+%   #1 the name of the glyph
+%   #2 the amount of extra space at the left
+%   #3 the amount of extra space at the right
+%   #4 the amount of extra space for subscripts
+%   #5 the amount by which to shift accents rightwards
+%   #6 the amount of extra height
+%
+\setcommand\adjustmetrics#1#2#3#4#5#6{
+   \shiftglyph{#1}{#2}{#3}{#4}{#6}
+   \resetkern{#1}{skew}{#5}
+}

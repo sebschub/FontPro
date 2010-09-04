@@ -1,0 +1,186 @@
+% CODINGSCHEME TEX CYRILLIC FONT ENCODING - OT2
+
+% LIGKERN hyphen hyphen =: endash ; endash hyphen =: emdash ;
+% LIGKERN quoteleft quoteleft =: quotedblleft ;
+% LIGKERN quoteright quoteright =: quotedblright ;
+% LIGKERN bracketleft bracketleft =: guillemotleft ;
+% LIGKERN bracketright bracketright =: guillemotright ;
+
+% CYRC
+% LIGKERN six afii10087 =: afii10043 ;
+% LIGKERN six afii10039 =: afii10043 ;
+% LIGKERN seven afii10087 =: afii10043 ;
+% LIGKERN afii10040 one =: afii10060 ;
+% LIGKERN afii10040 afii10039 =: afii10041 ;
+% LIGKERN afii10040 afii10087 =: afii10041 ;
+
+% CYRD
+% LIGKERN afii10021 one =: afii10051 ;
+% LIGKERN afii10021 two =: afii10145 ;
+% LIGKERN afii10021 three =: afii10054 ;
+% LIGKERN afii10021 afii10057 =: afii10051 ;
+% LIGKERN afii10021 afii10105 =: afii10051 ;
+
+% CYRE
+% LIGKERN afii10022 zero =: afii10023 ;
+% LIGKERN afii10022 one =: afii10047 ;
+% LIGKERN afii10022 two =: afii10053 ;
+
+% CYRI
+% LIGKERN afii10026 zero =: afii10027 ;
+% LIGKERN afii10026 one =: afii10055 ;
+
+% CYRJE
+% LIGKERN afii10057 one =: afii10049 ;
+% LIGKERN afii10057 two =: afii10048 ;
+
+% CYRK
+% LIGKERN afii10028 afii10039 =: afii10039 ;
+% LIGKERN afii10028 afii10087 =: afii10039 ;
+
+% CYRL
+% LIGKERN afii10029 one =: afii10058 ;
+% LIGKERN afii10029 afii10057 =: afii10058 ;
+% LIGKERN afii10029 afii10105 =: afii10058 ;
+
+% CYRN
+% LIGKERN afii10031 zero =: afii61352 ;
+% LIGKERN afii10031 one =: afii10059 ;
+% LIGKERN afii10031 afii10057 =: afii10059 ;
+% LIGKERN afii10031 afii10105 =: afii10059 ;
+
+% CYRP
+% LIGKERN afii10033 one =: afii10046 ;
+% LIGKERN afii10033 two =: afii10044 ;
+
+% CYRS
+% LIGKERN afii10035 afii10039 =: afii10042 ;
+% LIGKERN afii10035 afii10087 =: afii10042 ;
+
+% CYRT
+% LIGKERN afii10036 afii10035 =: afii10040 ;
+% LIGKERN afii10036 afii10083 =: afii10040 ;
+
+% CYRSH
+% LIGKERN afii10042 afii10041 =: afii10043 ;
+% LIGKERN afii10042 afii10089 =: afii10043 ;
+% LIGKERN afii10042 afii10040 =: six ;
+% LIGKERN afii10042 afii10088 =: six ;
+
+% CYRERY
+% LIGKERN afii10045 afii10017 =: afii10049 ;
+% LIGKERN afii10045 afii10065 =: afii10049 ;
+% LIGKERN afii10045 afii10037 =: afii10048 ;
+% LIGKERN afii10045 afii10085 =: afii10048 ;
+
+% CYRZ
+% LIGKERN afii10025 one =: afii10024 ;
+% LIGKERN afii10025 afii10039 =: afii10024 ;
+% LIGKERN afii10025 afii10087 =: afii10024 ;
+
+% cyrc
+% LIGKERN afii10088 one =: afii10108 ;
+% LIGKERN afii10088 afii10087 =: afii10089 ;
+
+% cyrd
+% LIGKERN afii10069 one =: afii10099 ;
+% LIGKERN afii10069 two =: afii10193 ;
+% LIGKERN afii10069 three =: afii10102 ;
+% LIGKERN afii10069 afii10105 =: afii10099 ;
+
+% cyre
+% LIGKERN afii10070 zero =: afii10071 ;
+% LIGKERN afii10070 one =: afii10095 ;
+% LIGKERN afii10070 two =: afii10101 ;
+
+% cyri
+% LIGKERN afii10074 zero =: afii10075 ;
+% LIGKERN afii10074 one =: afii10103 ;
+
+% cyrje
+% LIGKERN afii10105 one =: afii10097 ;
+% LIGKERN afii10105 two =: afii10096 ;
+
+% cyrk
+% LIGKERN afii10076 afii10087 =: afii10087 ;
+
+% cyrl
+% LIGKERN afii10077 one =: afii10106 ;
+% LIGKERN afii10077 afii10105 =: afii10106 ;
+
+% cyrn
+% LIGKERN afii10079 one =: afii10107 ;
+% LIGKERN afii10079 afii10105 =: afii10107 ;
+
+% cyrp
+% LIGKERN afii10081 one =: afii10094 ;
+% LIGKERN afii10081 two =: afii10092 ;
+
+% cyrs
+% LIGKERN afii10083 afii10087 =: afii10090 ;
+
+% cyrt
+% LIGKERN afii10084 afii10083 =: afii10088 ;
+
+% cyrsh
+% LIGKERN afii10090 afii10089 =: afii10091;
+% LIGKERN afii10090 afii10088 =: seven ;
+
+% cyrery
+% LIGKERN afii10093 afii10065 =: afii10097 ;
+% LIGKERN afii10093 afii10085 =: afii10096 ;
+
+% cyrz
+% LIGKERN afii10073 one =: afii10072 ;
+% LIGKERN afii10073 afii10087 =: afii10072 ;
+
+/OT2AdobeEncoding [
+% 0x00
+/afii10059 /afii10058 /afii10145 /afii10047 /afii10055 /afii10053 /afii10051 /afii10060
+/afii10107 /afii10106 /afii10193 /afii10095 /afii10103 /afii10101 /afii10099 /afii10108
+% 0x10
+/afii10048 /afii10024 /afii10027 /afii10023 /afii10148 /afii10147 /afii10054 /afii10049
+/afii10096 /afii10072 /afii10075 /afii10071 /afii10196 /afii10195 /afii10102 /afii10097
+% 0x20
+/dieresis /exclam /quotedblright /afii10146 /cyrbreve /percent /acute /quoteright
+/parenleft /parenright /asterisk /afii10194 /comma /hyphen /period /slash
+% 0x30
+/zero /one /two /three /four /five /six /seven
+/eight /nine /colon /semicolon /guillemotleft /dotlessi /guillemotright /question
+% 0x40
+/breve /afii10017 /afii10018 /afii10040 /afii10021 /afii10022 /afii10038 /afii10020
+/afii10039 /afii10026 /afii10057 /afii10028 /afii10029 /afii10030 /afii10031 /afii10032
+% 0x50
+/afii10033 /afii10041 /afii10034 /afii10035 /afii10036 /afii10037 /afii10019 /afii10043
+/afii10042 /afii10045 /afii10025 /bracketleft /quotedblleft /bracketright /afii10046 /afii10044
+% 0x60
+/quoteleft /afii10065 /afii10066 /afii10088 /afii10069 /afii10070 /afii10086 /afii10068
+/afii10087 /afii10074 /afii10105 /afii10076 /afii10077 /afii10078 /afii10079 /afii10080
+% 0x70
+/afii10081 /afii10089 /afii10082 /afii10083 /afii10084 /afii10085 /afii10067 /afii10091
+/afii10090 /afii10093 /afii10073 /endash /emdash /afii61352 /afii10094 /afii10092
+% 0x80
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0x90
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xA0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xB0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xC0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xD0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xE0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xF0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+] def

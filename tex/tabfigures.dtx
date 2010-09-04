@@ -1,0 +1,348 @@
+%\iffalse
+%<*driver>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesFile{tabfigures.dtx}
+%</driver>
+%<package>\ProvidesPackage{tabfigures}
+%<*driver|package>
+[2007/05/07 v0.1d Tabular figures (patches)]
+%</driver|package>
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{MinionPro}
+\usepackage{microtype}
+\usepackage[toc,eqno,enum,bib,lineno]{tabfigures}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{array,booktabs}
+\usepackage{ifpdf}
+\ifpdf\ifnum\pdftexversion<140 \else
+\InputIfFileExists{glyphtounicode.tex}{\pdfgentounicode=1}{}
+\fi\fi
+% markup
+\newcommand*\pkg[1]{\textsf{#1}}
+\newcommand*\cls{} \let\cls\pkg
+\newcommand*\bst{} \let\bst\pkg
+% show this package at work
+\colorlet{tabular}{green!50!black}
+\makeatletter
+\def\Tf@font{\figureversion{tab}\color{tabular}}
+\newcommand\Tf{\Tf@font}
+\makeatother
+\newenvironment{sample}{%
+  \par
+  \addvspace{\smallskipamount}%
+  \minipage{\linewidth}%
+}{%
+  \endminipage
+  \vspace{\smallskipamount}%
+  \ignorespacesafterend
+}
+% metadata
+\title{Tabular figures}
+\author{Andreas B\"uhmann}
+\date{\fileversion\ -- \filedate}
+% hyperref
+\usepackage[colorlinks=false,pdfborder={0 0 0},pdfusetitle]{hyperref}
+\begin{document}
+\DocInput{tabfigures.dtx}
+\end{document}
+%</driver>
+%<*doc>
+%\fi
+%
+% \GetFileInfo{tabfigures.dtx}
+% \maketitle
+%
+% \section{Purpose}
+% 
+% Traditionally, there has not been any concept of proportional
+% figures (\proportionalfigures{0123456789}) versus tabular figures%
+% \marginpar{%
+%   \raggedleft\LARGE
+%   \begin{tabular}[t]{r>{\Tf}r}
+%     51 & 51 \\
+%     60 & 60 \\
+%   \end{tabular}
+% } ({\Tf 0123456789}) in \LaTeX. Effectively, the commonly used fonts
+% only included figures that are equally wide. That is why, with fonts
+% like \pkg{MinionPro} that use proportional figures by default, you
+% have to specifically adapt your document class or even the \LaTeX\
+% kernel to this new task of using tabular figures in the right places
+% such as the table of contents, enumerations or other material where
+% numbers should line up vertically. This package tries to assist you
+% in the most common situations.
+%
+% \section{Effects}
+%
+% This package is a collection of patches that inject
+% |\figureversion{tabular}| into the involved formatting commands in
+% the right places. You have to explicitly enable those patches by
+% using one or more of the following package options, like this:
+% \begin{verbatim}
+% \usepackage[toc,eqno]{tabfigures}
+% \end{verbatim}
+% This way, you can always turn the patches off and see for yourself
+% if things break.  (While this package tries to be as robust as
+% possible, it has to touch the internals of other classes and
+% packages.)
+%
+% Throughout this document, tabular figures are colored
+% \textcolor{tabular}{green}.
+%
+% \begin{description}
+% \item[\hyperdef{sample}{toc}{toc}] Use tabular figures for the
+%   numbering and for the page numbers in the table of contents, list
+%   of tables/figures, and similar lists.
+%   \begin{sample}
+%     \contentsline{section}{%
+%       \numberline{4}Moving Information Around}{65}{sample.toc} %
+%     \contentsline{subsection}{%
+%       \numberline{4.1}The Table of Contents}{66}{sample.toc} %
+%     \contentsline{subsection}{%
+%       \numberline{4.2}Cross-References}{67}{sample.toc} %
+%   \end{sample}
+%
+% \item[eqno] Use tabular figures in equation numbers.
+%   \begin{sample}
+%     \setlength{\abovedisplayskip}{0pt}%
+%     \setlength{\belowdisplayskip}{0pt}%
+%     \setcounter{equation}{18}%
+%     \begin{align}
+%       x&=y       & X&=Y       & a&=b+c\\
+%       x'&=y'     & X'&=Y'     & a'&=b\\
+%       x+x'&=y+y' & X+X'&=Y+Y' & a'b&=c'b
+%     \end{align}
+%   \end{sample}
+% 
+% \item[enum] Use tabular figures in enumerations.
+%   \begin{sample}
+%     \begin{enumerate} \setcounter{enumi}{38}
+%     \item The world's fastest supercomputer will have its speed
+%       measured in ``petaflops'', which represent 1,000 trillion
+%       calculations per second.
+%     \item The medical name for the part of the brain associated with
+%       teenage sulking is ``superior temporal sulcus''.
+%     \item Some Royal Mail stamps, which of course carry the Queen's
+%       image, are printed in Holland.
+%     \end{enumerate}
+%   \end{sample}
+% 
+% \item[bib] Use tabular figures for the labels in the bibliography.
+%   (The previous examples have been taken from the following sources.)
+%   \begin{sample}
+%     \renewcommand\section[2]{}%
+%     \begin{thebibliography}{99}
+%     \bibitem[19]{b19} Leslie Lamport. \LaTeX: A Document Preparation
+%       System. Addison-Wesley, Reading, MA, 2nd Edition, 1994.
+%     \bibitem[20]{b20} American Mathematical Society. User's Guide
+%       for the \pkg{amsmath} Package (Version 2.0). Revised, 2002.
+%     \bibitem[21]{b21} BBC News.
+%       \href{http://www.bbc.co.uk/blogs/magazinemonitor/2006/12/100_things_we_didnt_know_last_2.shtml}%
+%       {100 Things We Didn't Know Last Year.} 28 December 2006.
+%     \end{thebibliography}
+%   \end{sample}
+%
+% \item[lineno] Use tabular figures for line numbers. Only the
+%   \pkg{doc} package is supported for now; other line-numbering
+%   packages might be added later.
+%   \begin{sample}
+%     \setcounter{CodelineNo}{48}%
+%    \begin{macrocode}
+\DeclareOption{eqno}{%
+  \AtBeginDocument{%
+    \@ifpackageloaded{amsmath}{%
+%    \end{macrocode}
+% \end{sample}
+% \end{description}
+%
+% \section{Compatibility}
+%
+% This package has been designed to work with the default settings of
+% the standard document classes \cls{article}, \cls{report}, and
+% \cls{book}; their \pkg{KOMA-Script} counterparts; the \cls{memoir}
+% class; the \pkg{amsmath} package; and the standard bibliographic
+% styles \bst{numeric} and \bst{alphabetic} of \pkg{biblatex} v0.6a.
+%
+% \StopEventually
+%
+% \iffalse
+%</doc>
+%<*package>
+% \fi
+%
+% \section{Implementation}
+%
+% \global\setcounter{CodelineNo}{0}
+% Ease patching of commands. We store the original meaning of |\cmd|
+% in a safe place and access it later (in the redefinition) with
+% |\Tf@\cmd|.
+%    \begin{macrocode}
+\newcommand*\Tf@@[1]{Tf@@\expandafter\@cdr\string #1\@nil}
+\newcommand*\Tf@[1]{\csname \Tf@@{#1}\endcsname}
+\newcommand*\Tf@name{}
+\newcommand*\Tf@save[1]{%
+  \edef\Tf@name{\expandafter\expandafter\expandafter
+    \noexpand\Tf@{#1}}%
+  \expandafter\newcommand\Tf@name{}%
+  \expandafter\let\Tf@name #1%
+}
+%    \end{macrocode}
+% Just a shorthand.
+%    \begin{macrocode}
+\newcommand*\Tf@def[1]{%
+  \Tf@save{#1}%
+  \def#1%
+}
+%    \end{macrocode}
+% Patch |\l@|\meta{level} commands. These commands always take two
+% arguments, the second of which is the page number.
+%    \begin{macrocode}
+\newcommand*\Tf@pname{}
+\newcommand*\Tf@patch@l[1]{%
+  \@ifundefined{l@#1}{}{%
+    \edef\Tf@pname{\expandafter\noexpand\csname l@#1\endcsname}%
+    \expandafter\Tf@save\Tf@pname
+    \expandafter\edef\Tf@pname##1##2{%
+      \noexpand\Tf@
+      \expandafter\noexpand\Tf@pname
+      {##1}{\noexpand\Tf@font ##2}%
+    }%
+  }%
+}
+%    \end{macrocode}
+% Debugging.
+%    \begin{macrocode}
+\newif\ifTf@debug \Tf@debugfalse
+\DeclareOption{debug}{\Tf@debugtrue}
+%    \end{macrocode}
+%
+% \subsection{Equation numbers}
+% We distinguish between the two most frequent cases: \pkg{amsmath}
+% and standard \LaTeX. All of the following patches work by injecting
+% |\Tf@font| in the right place. They try to do this as robustly as
+% possible by reusing the original definition.
+%    \begin{macrocode}
+\DeclareOption{eqno}{%
+  \AtBeginDocument{%
+    \@ifpackageloaded{amsmath}{%
+      \Tf@def\maketag@@@#1{\Tf@\maketag@@@{\Tf@font #1}}%
+    }{%
+      \CheckCommand*\@eqnnum{{\normalfont \normalcolor (\theequation)}}%
+      \def\@eqnnum{{\normalfont \Tf@font \normalcolor (\theequation)}}%
+    }%
+  }%
+}
+%    \end{macrocode}
+% 
+% \subsection{Table of contents}
+% And similar lists such as list of figures and list of tables.
+%    \begin{macrocode}
+\DeclareOption{toc}{%
+  \AtBeginDocument{%
+%    \end{macrocode}
+% Generic. First two command that are using in formatting the lists by
+% default.
+%    \begin{macrocode}
+    \Tf@def\@dottedtocline#1#2#3#4#5{%
+      \Tf@\@dottedtocline{#1}{#2}{#3}{#4}{\Tf@font #5}%
+    }%
+    \Tf@def\numberline#1{%
+      \Tf@\numberline{\Tf@font #1}%
+    }%
+%    \end{macrocode}
+% Then a bunch of |\l@|\meta{level} commands for usually available
+% entry types, which might not use the commands from above.
+%    \begin{macrocode}
+    \Tf@patch@l{part}%
+    \Tf@patch@l{chapter}%
+    \Tf@patch@l{section}%
+    \Tf@patch@l{subsection}%
+    \Tf@patch@l{subsubsection}%
+    \Tf@patch@l{paragraph}%
+    \Tf@patch@l{subparagraph}%
+    \Tf@patch@l{figure}%
+    \Tf@patch@l{table}%
+%    \end{macrocode}
+% Special support for parts and chapters in \pkg{memoir}.
+%    \begin{macrocode}
+    \@ifclassloaded{memoir}{%
+      \Tf@def\cftchapterpresnum{\Tf@font \Tf@\cftchapterpresnum}%
+      \Tf@def\cftpartpresnum{\Tf@font \Tf@\cftpartpresnum}%
+    }{}%
+  }%
+}
+%    \end{macrocode}
+% 
+% \subsection{Enumerations}
+% Labels in enumerations.
+%    \begin{macrocode}
+\DeclareOption{enum}{%
+  \AtBeginDocument{%
+    \Tf@def\labelenumi{\Tf@font \Tf@\labelenumi}%
+    \Tf@def\labelenumii{\Tf@font \Tf@\labelenumii}%
+    \Tf@def\labelenumiii{\Tf@font \Tf@\labelenumiii}%
+    \Tf@def\labelenumiv{\Tf@font \Tf@\labelenumiv}%
+  }%
+}
+%    \end{macrocode}
+% 
+% \subsection{Bibliography}
+% Labels in the bibliography.
+%    \begin{macrocode}
+\DeclareOption{bib}{%
+  \AtBeginDocument{%
+    \Tf@def\@biblabel{\Tf@font \Tf@\@biblabel}%
+    \@ifpackageloaded{biblatex}{%
+      \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{\Tf@font #1}}%
+      \DeclareFieldFormat{labelalphawidth}{\mkbibbrackets{\Tf@font #1}}%
+    }{}%
+  }%
+}
+%    \end{macrocode}
+%
+% \subsection{Line numbers}
+%    \begin{macrocode}
+\DeclareOption{lineno}{%
+  \AtBeginDocument{%
+    \@ifpackageloaded{doc}{%
+      \CheckCommand*\theCodelineNo{%
+        \reset@font\scriptsize\arabic{CodelineNo}}%
+      \def\theCodelineNo{%
+        \reset@font\Tf@font\scriptsize\arabic{CodelineNo}}%
+    }{}%
+  }%
+}
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+% \subsection{Auxiliary macros}
+% This command is used for switching to tabular figures. This can be
+% redefined to allow debugging, disabling, etc.
+%    \begin{macrocode}
+\newcommand*\Tf@font{\figureversion{tabular}}
+%    \end{macrocode}
+% Visual debugging: Set tabular figures (produced by this package) in
+% green.
+%    \begin{macrocode}
+\ifTf@debug
+  \RequirePackage{xcolor}%
+  \colorlet{Tf@debug}{green!50!black}%
+  \renewcommand\Tf@font{\figureversion{tabular}\color{Tf@debug}}%
+\fi
+%    \end{macrocode}
+% Check if figure versions are supported at all. If not, we cannot do
+% anything useful.
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \@ifundefined{figureversion}{%
+    \PackageWarning{tabfigures}{There is no
+      \string\figureversion\space to support tabular figures}%
+    \let\Tf@font\@empty
+  }{}%
+}
+%    \end{macrocode}
+% That's it for now.
+% \endinput
+%</package>
+\endinput

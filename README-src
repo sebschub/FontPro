@@ -1,0 +1,72 @@
+=== MinionPro Source Distribution ===
+
+    http://developer.berlios.de/projects/minionpro
+
+    Achim Blumensath
+    Andreas B\"uhmann
+    Michael Zedler
+
+These files are public domain.
+
+Requirements
+============
+
+o LCDF Typetools, version 2.62 or better (http://www.lcdf.org/type/)
+o fontinst v1.925 or better
+
+Building
+========
+
+1) Unpack the archive:
+
+  $ tar -xzvf MinionPro-source.tgz
+
+2) Copy your OpenType font files into the otf directory.
+
+  $ cp /some/path/*.otf otf
+
+3) Run ./scripts/makeall
+
+  $ ./scripts/makeall
+
+makeall has some options to specify which metrics to create:
+
+  --verbose            show warning messages from otftotfm
+  --quiet              omit these messages (default)
+  --smallcaps          create small caps metrics (default)
+  --nosmallcaps        turn --smallcaps off
+  --swash              create swash metrics (default)
+  --noswash            turn --swash off
+  --greek              create greek metrics (default)
+  --nogreek            turn --greek off
+  --cyrillic           create cyrillic metrics (default)
+  --nocyrillic         turn --cyrillic off
+  --vietnamese         create vietnamese metrics (default)
+  --novietnamese       turn --vietnamese off
+  --expanded           create expanded metrics for pdftex
+  --noexpanded         turn --expanded off (default)
+  --kern               add some missing kerning pairs (default)
+  --nokern             use the original Adobe kerning
+  --dotlessj           create a fake dotless j glyph (default)
+  --nodotlessj         do not create a fake dotless j glyph
+  --wide-spacing       increase the sidebearings of quote glyphs
+  --narrow-spacing     turn --wide-spacing off (default)
+  --pack=<glyph-list>  create base fonts to reduce the size of the map file
+
+Installing
+==========
+
+1) Run ./scripts/install. You can specify the directory where the files
+should be put. The default is $TEXMFLOCAL.
+
+  $ ./scripts/install /usr/local/teTeX/share/texmf-local
+
+2) Add MinionPro.map to your updmap.cfg and run updmap.
+
+3) If you get errors about insufficient memory you might need to
+increase the values of font_mem_size and font_max in your TeX
+configuration. For most distributions, these can be changed in the file
+texmf/web2c/texmf.cnf. For MiKTeX the file is called miktex.ini.
+
+4) Happy TeXing!
+

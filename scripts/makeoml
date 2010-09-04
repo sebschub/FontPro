@@ -1,0 +1,89 @@
+#!/bin/sh
+
+font="$1"
+
+if [ "x$font" = "x" ]
+then
+  echo "No font specified!"
+  echo "USAGE: makeoml <font>"
+  exit 1
+fi
+
+for r in A C D E
+do
+  for s in 7 10 12
+  do
+    if [ ! -e MnSymbol$r$s.pl ]
+    then
+      mktextfm MnSymbol$r$s
+      tftopl MnSymbol$r$s.tfm MnSymbol$r$s.pl
+    fi
+    if [ ! -e MnSymbol$r-Bold$s.pl ]
+    then
+      mktextfm MnSymbol$r-Bold$s
+      tftopl MnSymbol$r-Bold$s.tfm MnSymbol$r-Bold$s.pl
+    fi
+  done
+done
+
+export TEXFONTS=../tfm:../vf:
+
+make_vpl() {
+#  cp "../vf/$font-$1-tosf$2-oml.vf" "../tfm/$font-$1-tosf$2-oml"*.tfm .
+  vftovp "../vf/$font-$1-tosf$2-oml.vf" "../tfm/$font-$1-tosf$2-oml.tfm" "$font-$1-tosf$2-oml.vpl"
+#  rm "$font-$1-tosf$2-oml.vf" "$font-$1-tosf$2-oml.tfm"
+}
+
+run_fontinst() {
+  local tex_file
+  tex_file="make-oml-$1.tex"
+
+  shift
+
+  for s in $*
+  do
+    make_vpl "$s" ""
+
+    case $s in
+      *Disp) ;;
+      *Subh) ;;
+      *)     make_vpl "$s" "-l1"
+    esac
+  done
+
+  tex "$tex_file"
+  rm "$font"*.mtx MnSymbol*mtx
+}
+
+run_fontinst smallfamily Regular It Bold BoldIt
+
+if [ -e "../tfm/$font-Semibold-tosf-oml.tfm" ]
+then
+  run_fontinst medfamily Semibold SemiboldIt
+fi
+
+if [ -e "../tfm/$font-Medium-tosf-oml.tfm" ]
+then
+  run_fontinst fullfamily Medium MediumIt
+fi
+
+if [ -e "../tfm/$font-Capt-tosf-oml.tfm" ]
+then
+  run_fontinst medfamily-opticals Capt Subh Disp ItCapt ItSubh ItDisp SemiboldCapt SemiboldSubh SemiboldDisp SemiboldItCapt SemiboldItSubh SemiboldItDisp BoldCapt BoldSubh BoldDisp BoldItCapt BoldItSubh BoldItDisp
+fi
+
+if [ -e "../tfm/$font-MediumCapt-tosf-oml.tfm" ]
+then
+  run_fontinst fullfamily-opticals MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
+fi
+
+for v in *.vpl
+do
+  vptovf "$v"
+done
+
+cp *Mixed*.vf   ../vf
+cp *French*.vf  ../vf
+cp *Mixed*.tfm  ../tfm
+cp *French*.tfm ../tfm
+

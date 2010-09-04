@@ -1,0 +1,57 @@
+#!/bin/bash
+
+vendor=adobe
+font=MinionPro
+
+dir="$1"
+
+if [ "x$dir" = x ]
+then
+  dir="$(kpsewhich -expand-var='$TEXMFLOCAL')"
+fi
+
+if [ -d "$dir/fonts/enc" ]
+then
+  # new directory layout
+  enc_dir="$dir/fonts/enc/dvips/$font"
+  map_dir="$dir/fonts/map/dvips/$font"
+  pfb_dir="$dir/fonts/type1/$vendor/$font"
+  tfm_dir="$dir/fonts/tfm/$vendor/$font"
+  vf_dir="$dir/fonts/vf/$vendor/$font"
+  tex_dir="$dir/tex/latex/$font"
+  doc_dir="$dir/doc/latex/$font"
+else
+  # old directory layout
+  enc_dir="$dir/dvips/$font"
+  map_dir="$dir/dvips/$font"
+  pfb_dir="$dir/fonts/type1/$vendor/$font"
+  tfm_dir="$dir/fonts/tfm/$vendor/$font"
+  vf_dir="$dir/fonts/vf/$vendor/$font"
+  tex_dir="$dir/tex/latex/$font"
+  doc_dir="$dir/doc/latex/$font"
+fi
+
+mkdir -p "$enc_dir" "$map_dir" "$pfb_dir" "$tfm_dir" "$vf_dir" "$tex_dir" "$doc_dir"
+
+cp pfb/*.pfb          "$pfb_dir"
+cp dvips/*.enc        "$enc_dir"
+cp "dvips/$font.map"  "$map_dir"
+cp tex/*.{sty,cfg,fd} "$tex_dir"
+
+if [ -e "doc/$font.pdf" ]
+then
+  cp "doc/$font.pdf" "$doc_dir"
+fi
+if [ -e "doc/$font.ps" ]
+then
+  cp "doc/$font.ps" "$doc_dir"
+fi
+
+# We use tar to copy the TFM and VF files in order to avoid shell errors
+# about too long command lines.
+
+(cd tfm; tar -cf - .) | (cd "$tfm_dir"; tar -xf -)
+(cd vf;  tar -cf - .) | (cd "$vf_dir";  tar -xf -)
+
+mktexlsr "$dir"
+

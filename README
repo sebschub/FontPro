@@ -1,0 +1,164 @@
+=== MinionPro Binary Distribution ===
+
+    http://developer.berlios.de/projects/minionpro
+
+    Achim Blumensath
+    Andreas B\"uhmann
+    Michael Zedler
+
+These files are public domain.
+
+Requirements
+============
+
+You need the MnSymbol fonts version 1.4 or better installed. They can be
+obtained from CTAN (ftp://ftp.ctan.org).
+
+You also need some program to convert the OpenType fonts into Type1
+format. If you have the LCDF Typetools (http://www.lcdf.org/type/)
+installed you can use one of the provided scripts:
+
+o convert.sh  is a Unix script
+o convert.bat is a DOS script
+
+Files
+=====
+
+The MinionPro distribution is split into several archives. Which of them
+you need depends on the version of the fonts you have installed. We
+support three different versions of MinionPro:
+
+o 001.000: This is the first version which can be found on, e.g., 
+           the 'Adobe Type Classics for Learning' CD.
+o 001.001: This is the version included with, e.g., the 
+           'Adobe Font Folio Opentype Edition' CD.
+o 002.000: This version is included in recent Acrobat Reader
+           installations and is currently for sale.
+
+If you have LCDF Typetools installed you can determine the version with
+the otfinfo command. For example, for version 002.000 you get:
+
+  $ otfinfo -v MinionPro-Regular.otf
+  Version 2.012;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565
+
+In all cases you need the archive:
+
+o scripts.zip
+
+Depending on the font version you need *one* of the encoding file archives 
+
+o enc-v1.000.zip
+o enc-v1.001.zip
+o env-v2.000.zip
+
+Do not install several encoding file archives, they are mutually exclusive.
+
+Depending on the amount of font shapes that you own you need to install
+
+o metrics-base.zip: contains the metrics for Regular, Italic, Bold,
+  and BoldItalic.
+o metrics-full.zip: contains additional metrics for Medium,
+  MediumItalic, Semibold, and SemiboldItalic.
+o metrics-opticals.zip: contains additional metrics for the Capt, Subh, and
+  Disp optical shapes.
+
+For example, if you have only the fonts coming with Adobe Reader 7,
+you have the base weights in font version 002.000. Then you need
+
+  scripts.zip
+  metrics-base.zip
+  enc-v2.000.zip
+
+If you have all weights, but not the optical families, in version
+001.001 then you need
+
+  scripts.zip
+  metrics-base.zip
+  metrics-full.zip
+  enc-v1.001.zip
+
+If you have all fonts in version 001.001 then you need
+
+  scripts.zip
+  metrics-base.zip
+  metrics-full.zip
+  metrics-opticals.zip
+  enc-v1.001.zip
+
+Installing
+==========
+
+0) Select the directory you want to install the files into. Usually,
+this will be the local TeX tree. You can determine its path via the
+command
+
+  $ kpsexpand '$TEXMFLOCAL'
+
+In the following instructions we will assume that the path is
+
+  /usr/local/teTeX/share/texmf-local
+
+1) Unpack the scripts archive into some working directory:
+
+  $ mkdir /tmp/MinionPro
+  $ cd /tmp/MinionPro
+  $ unzip scripts.zip
+
+2) Copy your OpenType font files into the otf directory.
+
+  $ cp /some/path/*.otf otf
+
+3) Convert the OpenType fonts into Type1 format:
+
+  $ ./convert.sh
+
+For MiKTeX execute
+
+  convert.bat
+
+4) Copy the generated Type1 fonts into your local TeX tree:
+
+  $ mkdir -p /usr/local/teTeX/share/texmf-local/fonts/type1/adobe/MinionPro
+  $ cp pfb/*.pfb /usr/local/teTeX/share/texmf-local/fonts/type1/adobe/MinionPro
+
+5) Unpack the other archives directly into the TeX tree, for example:
+
+  $ cd /usr/local/teTeX/share/texmf-local
+  $ unzip metrics-base.zip
+  $ unzip metrics-full.zip
+  $ unzip enc-v1.001.zip
+
+(You do not have to unpack the scripts archive which was only needed for
+step 3.)
+
+6) If you have an old TeX distribution you might need to move the
+encoding files and the map file into another directory:
+
+  $ cd /usr/local/teTeX/share/texmf-local
+  $ mkdir -p dvips/MinionPro
+  $ mv fonts/enc/dvips/MinionPro/* dvips/MinionPro
+  $ mv fonts/map/dvips/MinionPro/* dvips/MinionPro
+
+7) Add the line
+
+  Map MinionPro.map
+
+to your updmap.cfg. Refresh the file database and run updmap:
+
+  $ mktexlsr
+  $ updmap
+
+(On recent teTeX distributions you might have to call updmap-sys instead
+of updmap depending on in which tree you installed the files.)
+
+8) If you get errors about insufficient memory you might need to
+increase the values of font_mem_size and font_max in your TeX
+configuration. For most distributions, these can be changed in the file
+texmf/web2c/texmf.cnf. For MiKTeX the file is called miktex.ini.
+
+9) You can find the documentation in
+
+  /usr/share/teTeX/texmf-local/doc/latex/MinionPro/MinionPro.pdf
+
+10) Happy TeXing!
+

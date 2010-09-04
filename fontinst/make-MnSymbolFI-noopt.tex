@@ -1,0 +1,45 @@
+\input fontinst-macros.tex
+
+\def\installnonopt#1#2{%
+  \installfont{#1}{%
+     MnSymbolF10                   encoding mn-symbol-f-partialints,%
+     #2                            encoding mn-symbol-f,%
+     MinionPro-It-integral         encoding mn-tint scaled 1100,%
+     MinionPro-It-integral-cn2     encoding mn-dint scaled 1100,%
+     mn-intop-text,%
+     mn-intop-disp-noopt%
+  }{mn-symbol-fi}{}{}{}{}{}%
+}
+
+\def\installboldnonopt#1#2{%
+  \installfont{#1}{%
+     MnSymbolF-Bold10                  encoding mn-symbol-f-partialints,%
+     #2                                encoding mn-symbol-f,%
+     MinionPro-BoldIt-integral         encoding mn-tint scaled 1140,%
+     MinionPro-BoldIt-integral-cn2     encoding mn-dint scaled 1140,%
+     mn-intop-bold-text,%
+     mn-intop-bold-disp-noopt%
+  }{mn-symbol-fi}{}{}{}{}{}%
+}
+
+
+\installfonts
+
+  \installnonopt{MnSymbolFI-NoOpticals5}{MnSymbolF5}%
+  \installnonopt{MnSymbolFI-NoOpticals6}{MnSymbolF6}%
+  \installnonopt{MnSymbolFI-NoOpticals7}{MnSymbolF7}%
+  \installnonopt{MnSymbolFI-NoOpticals8}{MnSymbolF8}%
+  \installnonopt{MnSymbolFI-NoOpticals9}{MnSymbolF9}%
+  \installnonopt{MnSymbolFI-NoOpticals10}{MnSymbolF10}%
+  \installnonopt{MnSymbolFI-NoOpticals12}{MnSymbolF12}%
+  \installboldnonopt{MnSymbolFI-Bold-NoOpticals5}{MnSymbolF-Bold5}%
+  \installboldnonopt{MnSymbolFI-Bold-NoOpticals6}{MnSymbolF-Bold6}%
+  \installboldnonopt{MnSymbolFI-Bold-NoOpticals7}{MnSymbolF-Bold7}%
+  \installboldnonopt{MnSymbolFI-Bold-NoOpticals8}{MnSymbolF-Bold8}%
+  \installboldnonopt{MnSymbolFI-Bold-NoOpticals9}{MnSymbolF-Bold9}%
+  \installboldnonopt{MnSymbolFI-Bold-NoOpticals10}{MnSymbolF-Bold10}%
+  \installboldnonopt{MnSymbolFI-Bold-NoOpticals12}{MnSymbolF-Bold12}%
+
+\endinstallfonts
+
+\bye

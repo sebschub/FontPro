@@ -1,0 +1,90 @@
+% LIGKERN uni1FBD {-175} Epsilon
+% LIGKERN uni1FBD {-168} Eta
+% LIGKERN uni1FBD {-174} Iota
+% LIGKERN uni1FBD {-246} Omicron
+% LIGKERN uni1FBD {-243} Omega
+% LIGKERN uni1FBD {-172} Rho
+% LIGKERN uni1FFE {-180} Epsilon
+% LIGKERN uni1FFE {-173} Eta
+% LIGKERN uni1FFE {-172} Iota
+% LIGKERN uni1FFE {-246} Omicron
+% LIGKERN uni1FFE {-146} Upsilon
+% LIGKERN uni1FFE {-245} Omega
+% LIGKERN uni1FFE {-172} Rho
+% LIGKERN uni1FCD {-114} Epsilon
+% LIGKERN uni1FCD {-110} Eta
+% LIGKERN uni1FCD {-110} Iota
+% LIGKERN uni1FCD {-170} Omicron
+% LIGKERN uni1FCD {-165} Omega
+% LIGKERN uni1FDD {-110} Epsilon
+% LIGKERN uni1FDD {-99} Eta
+% LIGKERN uni1FDD {-101} Iota
+% LIGKERN uni1FDD {-166} Omicron
+% LIGKERN uni1FDD {-66} Upsilon
+% LIGKERN uni1FDD {-163} Omega
+% LIGKERN uni1FCE {-109} Epsilon
+% LIGKERN uni1FCE {-109} Eta
+% LIGKERN uni1FCE {-109} Iota
+% LIGKERN uni1FCE {-217} Omicron
+% LIGKERN uni1FCE {-207} Omega
+% LIGKERN uni1FDE {-106} Epsilon
+% LIGKERN uni1FDE {-105} Eta
+% LIGKERN uni1FDE {-109} Iota
+% LIGKERN uni1FDE {-216} Omicron
+% LIGKERN uni1FDE {-80} Upsilon
+% LIGKERN uni1FDE {-206} Omega
+% LIGKERN uni1FCF {-155} Eta
+% LIGKERN uni1FCF {-142} Iota
+% LIGKERN uni1FCF {-224} Omega
+% LIGKERN uni1FDF {-154} Eta
+% LIGKERN uni1FDF {-138} Iota
+% LIGKERN uni1FDF {-122} Upsilon
+% LIGKERN uni1FDF {-230} Omega
+% LIGKERN grave {-212} Epsilon
+% LIGKERN grave {-206} Eta
+% LIGKERN grave {-210} Iota
+% LIGKERN grave {-239} Omicron
+% LIGKERN grave {-172} Upsilon
+% LIGKERN grave {-245} Omega
+% LIGKERN uni1FBD {-386} Alpha
+% LIGKERN uni1FFE {-373} Alpha
+% LIGKERN uni1FCD {-321} Alpha
+% LIGKERN uni1FDD {-309} Alpha
+% LIGKERN uni1FCE {-340} Alpha
+% LIGKERN uni1FDE {-335} Alpha
+% LIGKERN uni1FCF {-370} Alpha
+% LIGKERN uni1FDF {-367} Alpha
+% LIGKERN grave {-395} Alpha
+% LIGKERN acute {-357} Alpha
+% LIGKERN acute {-139} Epsilon
+% LIGKERN acute {-133} Eta
+% LIGKERN acute {-127} Iota
+% LIGKERN acute {-107} Upsilon
+% LIGKERN acute {-248} Omicron
+% LIGKERN acute {-246} Omega
+% LIGKERN tonos {-382} Alpha
+% LIGKERN tonos {-172} Epsilon
+% LIGKERN tonos {-167} Eta
+% LIGKERN tonos {-169} Iota
+% LIGKERN tonos {-241} Omicron
+% LIGKERN tonos {-141} Upsilon
+% LIGKERN tonos {-248} Omega
+% POSITION space_dotbelowcomb_Iota -365 -55 -440 ;
+% POSITION space_dotbelowcomb_iota -305 -55 -440 ;
+% POSITION space_dotbelowcomb_upsilon -420 -55 -440 ;
+% POSITION space_dotbelowcomb_lambda -460 -55 -440 ;
+% POSITION space_dotbelowcomb_beta -390 -55 -440 ;
+% POSITION space_dotbelowcomb_zeta -380 -150 -440 ;
+% POSITION space_dotbelowcomb_eta -490 -55 -440 ;
+% POSITION space_dotbelowcomb_etasub -490 -220 -440 ;
+% POSITION space_dotbelowcomb_Gamma -537 -55 -440 ;
+% POSITION space_dotbelowcomb_omicron -450 -55 -440 ;
+% POSITION space_dotbelowcomb_omegasub -500 -220 -440 ;
+% POSITION space_dotbelowcomb_alpha -500 -55 -440 ;
+% POSITION space_dotbelowcomb_alphasub -440 -220 -440 ;
+% POSITION space_dotbelowcomb_epsilon -380 -55 -440 ;
+% POSITION space_dotbelowcomb_Eta -575 -55 -440 ;
+% POSITION space_dotbelowcomb_psi -475 -300 -440 ;
+% POSITION space_dotbelowcomb_gamma -445 -300 -440 ;
+% POSITION space_dotbelowcomb_Psi -555 -55 -440 ;
+% POSITION space_dotbelowcomb_Mu -665 -55 -440 ;

@@ -1,0 +1,58 @@
+#!/bin/sh
+
+font=$1
+
+if [ "x$font" = "x" ]
+then
+  echo "No font specified!"
+  echo "USAGE: makeint <font>"
+  exit 1
+fi
+
+for s in 5 6 7 8 9 10 12
+do
+  if [ ! -e MnSymbolF$s.pl ]
+  then
+    mktextfm MnSymbolF$s
+    tftopl MnSymbolF$s.tfm MnSymbolF$s.pl
+  fi
+  if [ ! -e MnSymbolF-Bold$s.pl ]
+  then
+    mktextfm MnSymbolF-Bold$s
+    tftopl MnSymbolF-Bold$s.tfm MnSymbolF-Bold$s.pl
+  fi
+done
+
+tftopl "../tfm/$font-It-integral.tfm"         "$font-It-integral.pl"
+tftopl "../tfm/$font-It-integral-cn2.tfm"     "$font-It-integral-cn2.pl"
+tftopl "../tfm/$font-BoldIt-integral.tfm"     "$font-BoldIt-integral.pl"
+tftopl "../tfm/$font-BoldIt-integral-cn2.tfm" "$font-BoldIt-integral-cn2.pl"
+
+tex make-MnSymbolFI-noopt.tex
+
+if [ -e "../tfm/$font-SemiboldIt-integral.tfm" ]
+then
+  tftopl "../tfm/$font-SemiboldIt-integral.tfm"     "$font-SemiboldIt-integral.pl"
+  tftopl "../tfm/$font-SemiboldIt-integral-cn2.tfm" "$font-SemiboldIt-integral-cn2.pl"
+
+  tex make-MnSymbolFI-noopt-sb.tex
+fi
+
+
+if [ -e "../tfm/$font-ItDisp-integral-cn1.tfm" ]
+then
+  tftopl "../tfm/$font-ItDisp-integral-cn1.tfm"         "$font-ItDisp-integral-cn1.pl"
+  tftopl "../tfm/$font-SemiboldItDisp-integral-cn1.tfm" "$font-SemiboldItDisp-integral-cn1.pl"
+#  tftopl "../tfm/$font-BoldItDisp-integral-cn1.tfm"     "$font-BoldItDisp-integral-cn1.pl"
+
+  tex make-MnSymbolFI.tex
+fi
+
+for v in *.vpl
+do
+  vptovf "$v"
+done
+
+cp MnSymbolFI*.vf  ../vf
+cp MnSymbolFI*.tfm ../tfm
+

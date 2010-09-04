@@ -1,0 +1,26 @@
+\input fontinst-macros.tex
+
+\def\installsemiboldnonopt#1#2{%
+  \installfont{#1}{%
+     MnSymbolF-Bold10                  encoding mn-symbol-f-partialints,%
+     #2                                encoding mn-symbol-f,%
+     MinionPro-SemiboldIt-integral     encoding mn-tint scaled 1140,%
+     MinionPro-SemiboldIt-integral-cn2 encoding mn-dint scaled 1140,%
+     mn-intop-semibold-text,%
+     mn-intop-semibold-disp-noopt%
+  }{mn-symbol-fi}{}{}{}{}{}%
+}
+
+\installfonts
+
+  \installsemiboldnonopt{MnSymbolFI-Semibold-NoOpticals5}{MnSymbolF-Bold5}%
+  \installsemiboldnonopt{MnSymbolFI-Semibold-NoOpticals6}{MnSymbolF-Bold6}%
+  \installsemiboldnonopt{MnSymbolFI-Semibold-NoOpticals7}{MnSymbolF-Bold7}%
+  \installsemiboldnonopt{MnSymbolFI-Semibold-NoOpticals8}{MnSymbolF-Bold8}%
+  \installsemiboldnonopt{MnSymbolFI-Semibold-NoOpticals9}{MnSymbolF-Bold9}%
+  \installsemiboldnonopt{MnSymbolFI-Semibold-NoOpticals10}{MnSymbolF-Bold10}%
+  \installsemiboldnonopt{MnSymbolFI-Semibold-NoOpticals12}{MnSymbolF-Bold12}%
+
+\endinstallfonts
+
+\bye

@@ -1,0 +1,14 @@
+\relax
+\encoding
+
+\nextslot{24}
+\setslot{slurbelow}
+   \comment{The slur symbol `$\smile$'.}
+\endsetslot
+
+\setslot{slurabove}
+   \comment{The slur symbol `$\frown$'.}
+\endsetslot
+
+\endencoding
+% vim:set ft=tex:

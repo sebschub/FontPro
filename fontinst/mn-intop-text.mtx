@@ -1,0 +1,212 @@
+\relax
+\metrics
+
+\setglyph{tintegral}
+  \moveup{100}
+  \glyph{inttint}{1000}
+  \moveup{-100}
+  \resetitalic{300}
+  \resetwidth{\add{\width{tintegral}}{-100}}
+\endsetglyph
+
+\setglyph{tmnint}
+  %\glyph{tint}{1000}\movert{400}
+  \movert{60}
+  \glyph{tintegral}{1000}
+  \movert{30}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-30}}
+\endsetglyph
+
+\setglyph{tmniint}
+  %\glyph{tiint}{1000}\movert{400}
+  \movert{60}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}
+  \movert{30}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-30}}
+\endsetglyph
+
+\setglyph{tmniiint}
+  %\glyph{tiiint}{1000}\movert{400}
+  \movert{60}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}
+  \movert{30}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-30}}
+\endsetglyph
+
+\setglyph{tmniiiint}
+  %\glyph{tiiiint}{1000}\movert{400}
+  \movert{60}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}
+  \movert{30}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-30}}
+\endsetglyph
+
+\setglyph{tmnidotsint}
+  %\glyph{tidotsint}{1000}\movert{400}
+  \movert{60}
+  \glyph{tintegral}{1000}
+  \movert{480}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-1010}
+  \movert{-28}
+  \glyph{tpidotsint}{1000}
+  \pop
+  \movert{30}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-30}}
+\endsetglyph
+
+\setglyph{tmnlandupint}
+  %\glyph{tlandupint}{1000}\movert{400}
+  \movert{80}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-470}
+  \movert{-28}
+  \glyph{tplandupint}{1000}
+  \pop
+  \movert{50}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-50}}
+\endsetglyph
+
+\setglyph{tmnlanddownint}
+  %\glyph{tlanddownint}{1000}\movert{400}
+  \movert{80}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-470}
+  \movert{-28}
+  \glyph{tplanddownint}{1000}
+  \pop
+  \movert{40}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-40}}
+\endsetglyph
+
+\setglyph{tmnstrokedint}
+  %\glyph{tstrokedint}{1000}\movert{400}
+  \movert{60}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-480}
+  \movert{-28}
+  \glyph{tpstrokedint}{1000}
+  \pop
+  \movert{50}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-50}}
+\endsetglyph
+
+\setglyph{tmnoint}
+  %\glyph{toint}{1000}\movert{400}
+  \movert{80}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-480}
+  \movert{-28}
+  \glyph{tpoint}{1000}
+  \pop
+  \movert{190}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-110}}
+\endsetglyph
+
+\setglyph{tmnoiint}
+  %\glyph{toiint}{1000}\movert{400}
+  \movert{90}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-745}
+  \movert{-28}
+  \glyph{tpoiint}{1000}
+  \pop
+  \movert{180}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-140}}
+\endsetglyph
+
+\setglyph{tmnrcirclerightint}
+  %\glyph{tcircleleftint}{1000}\movert{400}
+  \movert{80}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-475}
+  \movert{-28}
+  \glyph{tprcirclerightint}{1000}
+  \pop
+  \movert{250}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-150}}
+\endsetglyph
+
+\setglyph{tmnlcirclerightint}
+  %\glyph{tcirclerightint}{1000}\movert{400}
+  \movert{80}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-475}
+  \movert{-28}
+  \glyph{tplcirclerightint}{1000}
+  \pop
+  \movert{220}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-120}}
+\endsetglyph
+
+\setglyph{tmnrcircleleftint}
+  %\glyph{tcircleleftint}{1000}\movert{400}
+  \movert{110}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-485}
+  \movert{-28}
+  \glyph{tprcircleleftint}{1000}
+  \pop
+  \movert{190}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-120}}
+\endsetglyph
+
+\setglyph{tmnlcircleleftint}
+  %\glyph{tcirclerightint}{1000}\movert{400}
+  \movert{110}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-485}
+  \movert{-28}
+  \glyph{tplcircleleftint}{1000}
+  \pop
+  \movert{190}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-120}}
+\endsetglyph
+
+\setglyph{tmnsumint}
+  %\glyph{tcirclerightint}{1000}\movert{400}
+  \movert{80}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-500}
+  \movert{-28}
+  \glyph{tpsumint}{1000}
+  \pop
+  \movert{140}
+  \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-120}}
+\endsetglyph
+
+\endmetrics
+% vim:set ft=tex:

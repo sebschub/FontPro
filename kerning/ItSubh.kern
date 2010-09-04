@@ -1,0 +1,119 @@
+% LIGKERN A.swash {180} Germandbls
+% LIGKERN B.swash {100} Germandbls
+% LIGKERN C.swash {100} Germandbls
+% LIGKERN D.swash {80} Germandbls
+% LIGKERN E.swash {100} Germandbls
+% LIGKERN F.swash {100} Germandbls
+% LIGKERN G.swash {120} Germandbls
+% LIGKERN H.swash {140} Germandbls
+% LIGKERN I.swash {160} Germandbls
+% LIGKERN J.swash {140} Germandbls
+% LIGKERN K.swash {140} Germandbls
+% LIGKERN L.swash {100} Germandbls
+% LIGKERN M.swash {150} Germandbls
+% LIGKERN N.swash {100} Germandbls
+% LIGKERN O.swash {90} Germandbls
+% LIGKERN P.swash {120} Germandbls
+% LIGKERN Q.swash {-20} Germandbls
+% LIGKERN R.swash {100} Germandbls
+% LIGKERN S.swash {130} Germandbls
+% LIGKERN T.swash {100} Germandbls
+% LIGKERN U.swash {160} Germandbls
+% LIGKERN V.swash {170} Germandbls
+% LIGKERN W.swash {200} Germandbls
+% LIGKERN X.swash {140} Germandbls
+% LIGKERN Y.swash {100} Germandbls
+% LIGKERN Z.swash {70} Germandbls
+
+% LIGKERN uni1FBD {-145} Epsilon
+% LIGKERN uni1FBD {-145} Eta
+% LIGKERN uni1FBD {-147} Iota
+% LIGKERN uni1FBD {-200} Omicron
+% LIGKERN uni1FBD {-186} Omega
+% LIGKERN uni1FBD {-144} Rho
+% LIGKERN uni1FFE {-147} Epsilon
+% LIGKERN uni1FFE {-149} Eta
+% LIGKERN uni1FFE {-153} Iota
+% LIGKERN uni1FFE {-191} Omicron
+% LIGKERN uni1FFE {-121} Upsilon
+% LIGKERN uni1FFE {-186} Omega
+% LIGKERN uni1FFE {-146} Rho
+% LIGKERN uni1FCD {-102} Epsilon
+% LIGKERN uni1FCD {-111} Eta
+% LIGKERN uni1FCD {-105} Iota
+% LIGKERN uni1FCD {-130} Omicron
+% LIGKERN uni1FCD {-136} Omega
+% LIGKERN uni1FDD {-106} Epsilon
+% LIGKERN uni1FDD {-109} Eta
+% LIGKERN uni1FDD {-107} Iota
+% LIGKERN uni1FDD {-124} Omicron
+% LIGKERN uni1FDD {-66} Upsilon
+% LIGKERN uni1FDD {-126} Omega
+% LIGKERN uni1FCE {-80} Epsilon
+% LIGKERN uni1FCE {-84} Eta
+% LIGKERN uni1FCE {-84} Iota
+% LIGKERN uni1FCE {-155} Omicron
+% LIGKERN uni1FCE {-154} Omega
+% LIGKERN uni1FDE {-88} Epsilon
+% LIGKERN uni1FDE {-87} Eta
+% LIGKERN uni1FDE {-85} Iota
+% LIGKERN uni1FDE {-150} Omicron
+% LIGKERN uni1FDE {-53} Upsilon
+% LIGKERN uni1FDE {-151} Omega
+% LIGKERN uni1FCF {-130} Eta
+% LIGKERN uni1FCF {-118} Iota
+% LIGKERN uni1FCF {-176} Omega
+% LIGKERN uni1FDF {-127} Eta
+% LIGKERN uni1FDF {-108} Iota
+% LIGKERN uni1FDF {-97} Upsilon
+% LIGKERN uni1FDF {-160} Omega
+% LIGKERN grave   {-162} Epsilon
+% LIGKERN grave   {-159} Eta
+% LIGKERN grave   {-162} Iota
+% LIGKERN grave   {-168} Omicron
+% LIGKERN grave   {-123} Upsilon
+% LIGKERN grave   {-163} Omega
+% LIGKERN uni1FBD {-332} Alpha
+% LIGKERN uni1FFE {-326} Alpha
+% LIGKERN uni1FCD {-291} Alpha
+% LIGKERN uni1FDD {-291} Alpha
+% LIGKERN uni1FCE {-286} Alpha
+% LIGKERN uni1FDE {-287} Alpha
+% LIGKERN uni1FCF {-314} Alpha
+% LIGKERN uni1FDF {-319} Alpha
+% LIGKERN grave {-316} Alpha
+% LIGKERN acute {-335} Alpha
+% LIGKERN acute {-135} Epsilon
+% LIGKERN acute {-130} Eta
+% LIGKERN acute {-124} Iota
+% LIGKERN acute {-94} Upsilon
+% LIGKERN acute {-197} Omicron
+% LIGKERN acute {-198} Omega
+% LIGKERN tonos {-351} Alpha
+% LIGKERN tonos {-163} Epsilon
+% LIGKERN tonos {-165} Eta
+% LIGKERN tonos {-165} Iota
+% LIGKERN tonos {-215} Omicron
+% LIGKERN tonos {-132} Upsilon
+% LIGKERN tonos {-215} Omega
+
+% POSITION space_dotbelowcomb_Iota -400 -55 -400 ;
+% POSITION space_dotbelowcomb_iota -375 -55 -400 ;
+% POSITION space_dotbelowcomb_upsilon -490 -55 -400 ;
+% POSITION space_dotbelowcomb_lambda -475 -55 -400 ;
+% POSITION space_dotbelowcomb_beta -430 -55 -400 ;
+% POSITION space_dotbelowcomb_zeta -430 -150 -400 ;
+% POSITION space_dotbelowcomb_eta -520 -55 -400 ;
+% POSITION space_dotbelowcomb_etasub -565 -220 -400 ;
+% POSITION space_dotbelowcomb_Gamma -552 -55 -400 ;
+% POSITION space_dotbelowcomb_omicron -475 -55 -400 ;
+% POSITION space_dotbelowcomb_omegasub -535 -220 -400 ;
+% POSITION space_dotbelowcomb_alpha -530 -55 -400 ;
+% POSITION space_dotbelowcomb_alphasub -475 -220 -400 ;
+% POSITION space_dotbelowcomb_epsilon -395 -55 -400 ;
+% POSITION space_dotbelowcomb_Eta -590 -55 -400 ;
+% POSITION space_dotbelowcomb_psi -575 -300 -400 ;
+% POSITION space_dotbelowcomb_gamma -540 -300 -400 ;
+% POSITION space_dotbelowcomb_Psi -580 -55 -400 ;
+% POSITION space_dotbelowcomb_Mu -680 -55 -400 ; 
+

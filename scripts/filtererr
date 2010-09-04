@@ -1,0 +1,96 @@
+#!/usr/bin/perl
+# Summarize maketfm's errors/warnings
+#
+# [r] I had to round some heights/depths (pltotf, vptovf); maxima at end
+# [b] warning: no boundary character (otftotfm)
+# [e] has no encoding, ignoring sth; summary of characters at end
+use strict;
+use warnings;
+use List::Util qw(max);
+
+my $show_round_flags = 0; # [r] appears almost everywhere
+my $show_ignore_summary = 0; # whether to show what was ignored
+
+my %errors = ();
+
+sub flush_errors {
+    print "]" if keys %errors;
+    %errors = ();
+}
+sub print_literal {
+    my $literal = shift;
+    flush_errors() if length $literal;
+    print $literal;
+}
+sub print_error {
+    my $e = shift;
+    print "[" unless keys %errors;
+    if (!exists $errors{$e}) {
+        print $e;
+        $errors{$e}++;
+    }
+}
+
+$| = 1;
+
+my %rounded = (
+    heights => 0,
+    depths => 0,
+    "italic corrections" => 0,
+);
+my %no_encoding = ();
+
+while (<STDIN>) {
+    s{(.*?)I had to round some (\w+(?:\s+\w+){0,2}) by ([\d.]+) units\.\n}[
+        $rounded{$2} = max $rounded{$2}, $3;
+        print_literal($1);
+        print_error("r") if $show_round_flags;
+        "";
+    ]e;
+    s{(.*?)otftotfm: warning: no boundary character.*?\n}[
+        print_literal($1);
+        print_error("b");
+        "";
+    ]e;
+    s{(.*?)otftotfm: \(You may want to try.*?\)\n}[
+        print_literal($1);
+        print_error("b");
+        "";
+    ]e;
+    s{(.*?)otftotfm:
+        \ (
+            \./enc/[\w-]+\.enckern # in a file
+            |--ligkern\ command    # on the command line
+        )
+        (?::\d+)? # ignore line number
+        :\ warning:\ '([\w.]+)'\ has\ no\ encoding,\ ignoring\ (.*)\n
+    }[
+        my ($where, $glyph, $ignoring) = ($2, $3, $4);
+        print_literal($1);
+        $no_encoding{$where}{$glyph}{$ignoring}++;
+        print_error("e");
+        "";
+    ]xe;
+    print_literal($_);
+}
+flush_errors();
+
+foreach (sort keys %rounded) {
+    if ($rounded{$_} > 0) {
+	printf "I had to round some $_ by %.7f units.\n", $rounded{$_};
+    }
+}
+foreach my $where (sort keys %no_encoding) {
+    print "$where: warning: The following glyphs had no encoding: ";
+    my @items;
+    foreach my $glyph (sort keys %{$no_encoding{$where}}) {
+        my $ignores = $no_encoding{$where}{$glyph};
+        my $i = "$glyph";
+        if ($show_ignore_summary) {
+            $i .= " (ignoring " . (join ", ", sort keys %$ignores) . ")";
+        }
+        push @items, $i;
+    }
+    print join ", ", @items;
+    print ".\n";
+}

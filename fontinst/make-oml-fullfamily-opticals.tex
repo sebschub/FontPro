@@ -1,0 +1,28 @@
+\input fontinst-macros.tex
+
+\def\installopt#1#2#3#4{%
+  \installfont{MinionPro-Medium#3#1-#4oml}{%
+     MnSymbolA#2                       encoding mn-symbol-a,%
+     MnSymbolC#2                       encoding mn-symbol-c,%
+     MnSymbolD#2                       encoding mn-symbol-d,%
+     MnSymbolE#2                       encoding mn-symbol-e,%
+     MinionPro-Medium#1-tosf-#4oml     encoding mn-oml-up,%
+     MinionPro-MediumIt#1-tosf-#4oml   encoding mn-oml-it,%
+     adjust-oml,%
+     arrowhooks,%
+     tie%
+  }{mn-oml-#3}{}{}{}{}{}%
+}
+
+\installfonts
+  \installopt{Capt}{7}{Mixed}{l1-}
+  \installopt{Capt}{7}{Mixed}{}
+  \installopt{Subh}{12}{Mixed}{}
+  \installopt{Disp}{12}{Mixed}{}
+  \installopt{Capt}{7}{French}{l1-}
+  \installopt{Capt}{7}{French}{}
+  \installopt{Subh}{12}{French}{}
+  \installopt{Disp}{12}{French}{}
+\endinstallfonts
+
+\bye
