@@ -225,6 +225,11 @@ make_enckern() {
         else
           cp $e enc/mn-$1$l-$enc.enckern
         fi
+	# need to remove uppercase letter kerning and .swash in metric files
+	if $create_swash
+	then
+	    sed -e "s/.*LIGKERN [A-Z] {.*//g" -e "s/\.swash//g" enc/mn-$1$l-$enc.enckern > enc/mn-$1$l-$enc-swash.enckern
+	fi
       done
     done
   fi
@@ -622,18 +627,18 @@ make_swash_metrics() {
 
     local swash="--include-alternates '*.swash' -faalt"
 
-    make_tfm   "$1" t1  lf-swash-t1    "-fliga -flnum -fpnum $swash"
-    make_tfm   "$1" t1  osf-swash-t1   "-fliga -fonum -fpnum $swash"
-    make_tfm   "$1" t1  tlf-swash-t1   "-fliga -flnum -ftnum $swash"
-    make_tfm   "$1" t1  tosf-swash-t1  "-fliga -fonum -ftnum $swash"
-    make_tfm   "$1" ot1 lf-swash-ot1   "-fliga -flnum -fpnum $it_ot1_flags $swash"
-    make_tfm   "$1" ot1 osf-swash-ot1  "-fliga -fonum -fpnum $it_ot1_flags $swash"
-    make_tfm   "$1" ot1 tlf-swash-ot1  "-fliga -flnum -ftnum $it_ot1_flags $swash"
-    make_tfm   "$1" ot1 tosf-swash-ot1 "-fliga -fonum -ftnum $it_ot1_flags $swash"
-    make_tfm   "$1" ly1 lf-swash-ly1   "-fliga -flnum -fpnum $swash"
-    make_tfm   "$1" ly1 osf-swash-ly1  "-fliga -fonum -fpnum $swash"
-    make_tfm   "$1" ly1 tlf-swash-ly1  "-fliga -flnum -ftnum $swash"
-    make_tfm   "$1" ly1 tosf-swash-ly1 "-fliga -fonum -ftnum $swash"
+    make_tfm   "$1" t1-swash  lf-swash-t1    "-fliga -flnum -fpnum $swash"
+    make_tfm   "$1" t1-swash  osf-swash-t1   "-fliga -fonum -fpnum $swash"
+    make_tfm   "$1" t1-swash  tlf-swash-t1   "-fliga -flnum -ftnum $swash"
+    make_tfm   "$1" t1-swash  tosf-swash-t1  "-fliga -fonum -ftnum $swash"
+    make_tfm   "$1" ot1-swash lf-swash-ot1   "-fliga -flnum -fpnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash osf-swash-ot1  "-fliga -fonum -fpnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash tlf-swash-ot1  "-fliga -flnum -ftnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash tosf-swash-ot1 "-fliga -fonum -ftnum $it_ot1_flags $swash"
+    make_tfm   "$1" ly1-swash lf-swash-ly1   "-fliga -flnum -fpnum $swash"
+    make_tfm   "$1" ly1-swash osf-swash-ly1  "-fliga -fonum -fpnum $swash"
+    make_tfm   "$1" ly1-swash tlf-swash-ly1  "-fliga -flnum -ftnum $swash"
+    make_tfm   "$1" ly1-swash tosf-swash-ly1 "-fliga -fonum -ftnum $swash"
 
     if $create_vietnamese
     then
@@ -657,25 +662,25 @@ make_spaced_swash_metrics() {
 
     local swash="--include-alternates '*.swash' -faalt"
 
-    make_tfm   "$1" t1  lf-swash-l1-t1    "-L 40 -flnum -fpnum $swash"
-    make_tfm   "$1" t1  osf-swash-l1-t1   "-L 40 -fonum -fpnum $swash"
-    make_tfm   "$1" t1  tlf-swash-l1-t1   "-L 40 -flnum -ftnum $swash"
-    make_tfm   "$1" t1  tosf-swash-l1-t1  "-L 40 -fonum -ftnum $swash"
-    make_tfm   "$1" ot1 lf-swash-l1-ot1   "-L 40 -flnum -fpnum $it_ot1_flags $swash"
-    make_tfm   "$1" ot1 osf-swash-l1-ot1  "-L 40 -fonum -fpnum $it_ot1_flags $swash"
-    make_tfm   "$1" ot1 tlf-swash-l1-ot1  "-L 40 -flnum -ftnum $it_ot1_flags $swash"
-    make_tfm   "$1" ot1 tosf-swash-l1-ot1 "-L 40 -fonum -ftnum $it_ot1_flags $swash"
-    make_tfm   "$1" ly1 lf-swash-l1-ly1   "-L 40 -flnum -fpnum $swash"
-    make_tfm   "$1" ly1 osf-swash-l1-ly1  "-L 40 -fonum -fpnum $swash"
-    make_tfm   "$1" ly1 tlf-swash-l1-ly1  "-L 40 -flnum -ftnum $swash"
-    make_tfm   "$1" ly1 tosf-swash-l1-ly1 "-L 40 -fonum -ftnum $swash"
+    make_tfm   "$1" t1-swash  lf-swash-l1-t1    "-L 40 -flnum -fpnum $swash"
+    make_tfm   "$1" t1-swash  osf-swash-l1-t1   "-L 40 -fonum -fpnum $swash"
+    make_tfm   "$1" t1-swash  tlf-swash-l1-t1   "-L 40 -flnum -ftnum $swash"
+    make_tfm   "$1" t1-swash  tosf-swash-l1-t1  "-L 40 -fonum -ftnum $swash"
+    make_tfm   "$1" ot1-swash lf-swash-l1-ot1   "-L 40 -flnum -fpnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash osf-swash-l1-ot1  "-L 40 -fonum -fpnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash tlf-swash-l1-ot1  "-L 40 -flnum -ftnum $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash tosf-swash-l1-ot1 "-L 40 -fonum -ftnum $it_ot1_flags $swash"
+    make_tfm   "$1" ly1-swash lf-swash-l1-ly1   "-L 40 -flnum -fpnum $swash"
+    make_tfm   "$1" ly1-swash osf-swash-l1-ly1  "-L 40 -fonum -fpnum $swash"
+    make_tfm   "$1" ly1-swash tlf-swash-l1-ly1  "-L 40 -flnum -ftnum $swash"
+    make_tfm   "$1" ly1-swash tosf-swash-l1-ly1 "-L 40 -fonum -ftnum $swash"
 
     if $create_vietnamese
     then
-      make_tfm "$1" t5  lf-swash-l1-t5    "-L 40 -flnum -fpnum $swash"
-      make_tfm "$1" t5  osf-swash-l1-t5   "-L 40 -fonum -fpnum $swash"
-      make_tfm "$1" t5  tlf-swash-l1-t5   "-L 40 -flnum -ftnum $swash"
-      make_tfm "$1" t5  tosf-swash-l1-t5  "-L 40 -fonum -ftnum $swash"
+      make_tfm "$1" t5-swash  lf-swash-l1-t5    "-L 40 -flnum -fpnum $swash"
+      make_tfm "$1" t5-swash  osf-swash-l1-t5   "-L 40 -fonum -fpnum $swash"
+      make_tfm "$1" t5-swash  tlf-swash-l1-t5   "-L 40 -flnum -ftnum $swash"
+      make_tfm "$1" t5-swash  tosf-swash-l1-t5  "-L 40 -fonum -ftnum $swash"
     fi
 
     progress " done."
