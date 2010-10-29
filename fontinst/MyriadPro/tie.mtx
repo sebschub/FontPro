@@ -1,0 +1,15 @@
+\relax
+\metrics
+
+\resetglyph{UPtie}
+   \movert{400}
+   \moveup{400}
+   \glyph{slurabove}{700}
+   \moveup{-200}
+%   \movert{#4}
+%   \resetitalic{\add{\italic{#1}}{\sub{#3}{#4}}}
+%   \resetheight{\add{\height{#1}}{#5}}
+\endresetglyph
+
+\endmetrics
+% vim:set ft=tex:

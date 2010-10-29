@@ -1,0 +1,29 @@
+\relax
+\encoding
+
+\nextslot{64}
+\setslot{harpoonrightup}
+   \comment{The harpoon symbol `$\rightharpoonup$',
+       named `arrowrighttophalf' in MathTime and Lucida New Math.}
+\endsetslot
+
+\nextslot{66}
+\setslot{harpoonleftdown}
+   \comment{The harpoon symbol `$\leftharpoondown$',
+       named `arrowleftbothalf' in MathTime and Lucida New Math.}
+\endsetslot
+
+\nextslot{72}
+\setslot{harpoonrightdown}
+   \comment{The harpoon symbol `$\rightharpoondown$',
+       named `arrowrightbothalf' in MathTime and Lucida New Math.}
+\endsetslot
+
+\nextslot{74}
+\setslot{harpoonleftup}
+   \comment{The harpoon symbol `$\leftharpoonup$',
+       named `arrowlefttophalf' in MathTime and Lucida New Math.}
+\endsetslot
+
+\endencoding
+% vim:set ft=tex:

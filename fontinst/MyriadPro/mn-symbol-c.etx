@@ -1,0 +1,38 @@
+\relax
+\encoding
+
+\nextslot{72}
+\setslot{triangleright}
+   \comment{The triangle symbol `$\triangleright$'.}
+\endsetslot
+
+\nextslot{74}
+\setslot{triangleleft}
+   \comment{The triangle symbol `$\triangleleft$'.}
+\endsetslot
+
+\nextslot{134}
+\setslot{star}
+   \comment{The star symbol `$\star$'.}
+\endsetslot
+
+\nextslot{172}
+\setslot{flat}
+   \comment{The flat musical symbol `$\flat$'.}
+\endsetslot
+
+\setslot{natural}
+   \comment{The natural musical symbol `$\natural$'.}
+\endsetslot
+
+\setslot{sharp}
+   \comment{The sharp musical symbol `$\sharp$'.}
+\endsetslot
+
+\nextslot{179}
+\setslot{UPweierstrass}
+   \comment{The Weierstrass P symbol `$\wp$'.}
+\endsetslot
+
+\endencoding
+% vim:set ft=tex:

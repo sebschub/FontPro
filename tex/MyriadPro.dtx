@@ -1,0 +1,2009 @@
+%\iffalse meta-comment
+%<*driver>
+           \ProvidesFile{MyriadPro.dtx}        [2009/09/12 v0.1 MyriadPro support for LaTeX]
+%</driver>
+%<style>   \NeedsTeXFormat{LaTeX2e}
+%<style>   \ProvidesPackage{MyriadPro}         [2009/09/12 v0.1 MyriadPro support for LaTeX]
+%<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2005/02/07 v1.0 microtype config file for MyriadPro]
+%<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2007/02/01 v2.2 font definition macros]
+%<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2005/01/23 v2.0 font definitions for U/MyriadPro-Extra.]
+%<LGR&lf>  \ProvidesFile{LGRMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for LGR/MyriadPro-LF.]
+%<LGR&osf> \ProvidesFile{LGRMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for LGR/MyriadPro-OsF.]
+%<LGR&tlf> \ProvidesFile{LGRMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for LGR/MyriadPro-TLF.]
+%<LGR&tosf>\ProvidesFile{LGRMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for LGR/MyriadPro-TOsF.]
+%<LGI&lf>  \ProvidesFile{LGIMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for LGI/MyriadPro-LF.]
+%<LGI&osf> \ProvidesFile{LGIMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for LGI/MyriadPro-OsF.]
+%<LGI&tlf> \ProvidesFile{LGIMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for LGI/MyriadPro-TLF.]
+%<LGI&tosf>\ProvidesFile{LGIMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for LGI/MyriadPro-TOsF.]
+%<OML&lf>  \ProvidesFile{OMLMyriadPro-LF.fd}   [2007/02/01 v2.1 font definitions for OML/MyriadPro-LF.]
+%<OML&osf> \ProvidesFile{OMLMyriadPro-OsF.fd}  [2007/02/01 v2.1 font definitions for OML/MyriadPro-OsF.]
+%<OML&tlf> \ProvidesFile{OMLMyriadPro-TLF.fd}  [2007/02/01 v2.1 font definitions for OML/MyriadPro-TLF.]
+%<OML&tosf>\ProvidesFile{OMLMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for OML/MyriadPro-TOsF.]
+%<OT1&lf>  \ProvidesFile{OT1MyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for OT1/MyriadPro-LF.]
+%<OT1&osf> \ProvidesFile{OT1MyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for OT1/MyriadPro-OsF.]
+%<OT1&tlf> \ProvidesFile{OT1MyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for OT1/MyriadPro-TLF.]
+%<OT1&tosf>\ProvidesFile{OT1MyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for OT1/MyriadPro-TOsF.]
+%<T1&lf>   \ProvidesFile{T1MyriadPro-LF.fd}    [2005/01/23 v2.0 font definitions for T1/MyriadPro-LF.]
+%<T1&osf>  \ProvidesFile{T1MyriadPro-OsF.fd}   [2005/01/23 v2.0 font definitions for T1/MyriadPro-OsF.]
+%<T1&tlf>  \ProvidesFile{T1MyriadPro-TLF.fd}   [2005/01/23 v2.0 font definitions for T1/MyriadPro-TLF.]
+%<T1&tosf> \ProvidesFile{T1MyriadPro-TOsF.fd}  [2005/01/23 v2.0 font definitions for T1/MyriadPro-TOsF.]
+%<LY1&lf>  \ProvidesFile{LY1MyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for LY1/MyriadPro-LF.]
+%<LY1&osf> \ProvidesFile{LY1MyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for LY1/MyriadPro-OsF.]
+%<LY1&tlf> \ProvidesFile{LY1MyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for LY1/MyriadPro-TLF.]
+%<LY1&tosf>\ProvidesFile{LY1MyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for LY1/MyriadPro-TOsF.]
+%<T5&lf>   \ProvidesFile{T5MyriadPro-LF.fd}    [2005/01/23 v2.0 font definitions for T5/MyriadPro-LF.]
+%<T5&osf>  \ProvidesFile{T5MyriadPro-OsF.fd}   [2005/01/23 v2.0 font definitions for T5/MyriadPro-OsF.]
+%<T5&tlf>  \ProvidesFile{T5MyriadPro-TLF.fd}   [2005/01/23 v2.0 font definitions for T5/MyriadPro-TLF.]
+%<T5&tosf> \ProvidesFile{T5MyriadPro-TOsF.fd}  [2005/01/23 v2.0 font definitions for T5/MyriadPro-TOsF.]
+%<T2A&lf>  \ProvidesFile{T2AMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for T2A/MyriadPro-LF.]
+%<T2A&osf> \ProvidesFile{T2AMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T2A/MyriadPro-OsF.]
+%<T2A&tlf> \ProvidesFile{T2AMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T2A/MyriadPro-TLF.]
+%<T2A&tosf>\ProvidesFile{T2AMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T2A/MyriadPro-TOsF.]
+%<T2B&lf>  \ProvidesFile{T2BMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for T2B/MyriadPro-LF.]
+%<T2B&osf> \ProvidesFile{T2BMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T2B/MyriadPro-OsF.]
+%<T2B&tlf> \ProvidesFile{T2BMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T2B/MyriadPro-TLF.]
+%<T2B&tosf>\ProvidesFile{T2BMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T2B/MyriadPro-TOsF.]
+%<T2C&lf>  \ProvidesFile{T2CMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for T2C/MyriadPro-LF.]
+%<T2C&osf> \ProvidesFile{T2CMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T2C/MyriadPro-OsF.]
+%<T2C&tlf> \ProvidesFile{T2CMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T2C/MyriadPro-TLF.]
+%<T2C&tosf>\ProvidesFile{T2CMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T2C/MyriadPro-TOsF.]
+%<TS1&lf>  \ProvidesFile{TS1MyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for TS1/MyriadPro-LF.]
+%<TS1&osf> \ProvidesFile{TS1MyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for TS1/MyriadPro-OsF.]
+%<TS1&tlf> \ProvidesFile{TS1MyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for TS1/MyriadPro-TLF.]
+%<TS1&tosf>\ProvidesFile{TS1MyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for TS1/MyriadPro-TOsF.]
+%<X2&lf>   \ProvidesFile{X2MyriadPro-LF.fd}    [2005/01/23 v2.0 font definitions for X2/MyriadPro-LF.]
+%<X2&osf>  \ProvidesFile{X2MyriadPro-OsF.fd}   [2005/01/23 v2.0 font definitions for X2/MyriadPro-OsF.]
+%<X2&tlf>  \ProvidesFile{X2MyriadPro-TLF.fd}   [2005/01/23 v2.0 font definitions for X2/MyriadPro-TLF.]
+%<X2&tosf> \ProvidesFile{X2MyriadPro-TOsF.fd}  [2005/01/23 v2.0 font definitions for X2/MyriadPro-TOsF.]
+%<OT2&lf>  \ProvidesFile{OT2MyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for OT2/MyriadPro-LF.]
+%<OT2&osf> \ProvidesFile{OT2MyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for OT2/MyriadPro-OsF.]
+%<OT2&tlf> \ProvidesFile{OT2MyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for OT2/MyriadPro-TLF.]
+%<OT2&tosf>\ProvidesFile{OT2MyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for OT2/MyriadPro-TOsF.]
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[T1]{fontenc}
+\usepackage[expansion=false]{microtype}
+\usepackage[myriadint]{MyriadPro}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[toc,enum,lineno]{tabfigures}
+\usepackage[greek,british]{babel}
+\usepackage{array,booktabs,pifont,paralist,calc}
+\usepackage[unicode,bookmarks]{hyperref}
+\hypersetup{
+  bookmarksnumbered,
+  colorlinks=false,
+  pdfborder={0 0 0},
+  pdftitle={MyriadPro Support for LaTeX},
+  pdfauthor={Achim Blumensath, Andreas B\"uhmann, Michael Zedler},
+  pdfkeywords={LaTeX, MyriadPro, MnSymbol}
+}
+
+\IfFileExists{lmodern.sty}{%
+  \renewcommand{\sfdefault}{lmss}%
+  \renewcommand{\ttdefault}{lmtt}%
+  \DeclareMathAlphabet\mathsf    {T1}{lmss}{m}{n}%
+}{}
+
+\newcommand*\pkg[1]{\mbox{\textsf{#1}}}
+\newcommand*\file[1]{\textsf{#1}}
+\newcommand*\acro[1]{\MakeLowercase{#1}}
+\newcommand\pdfTeX{pdf\TeX}
+\pdfstringdefDisableCommands{%
+  \renewcommand*\acro[1]{#1}%
+}
+
+\newcommand*\?{\kern0.08em}
+
+\useshorthands{:}\defineshorthand{:}{\?\string:}
+\useshorthands{;}\defineshorthand{;}{\?\string;}
+
+\makeatletter
+\newcommand*\option{\@ifstar\option@default\option@}
+\newcommand*\option@default[1]{\option@{#1}*}
+\newcommand*\option@[1]{\textsf{#1}}
+\makeatother
+
+\setlength{\leftmargini}{1em}
+\setlength{\parindent}{1em}
+\newcommand\tabindent{\noindent\hspace{\leftmargini}}
+\newlength\optionswidth
+\providecommand\newblock{}
+\newenvironment{options}[1][{\makebox[\optionswidth]{}}]{%
+  \settowidth{\optionswidth}{#1}%
+  \global\optionswidth=\optionswidth
+  \list{}{%
+    \setlength{\labelwidth}{\optionswidth}%
+    \setlength{\labelsep}{2\tabcolsep}%
+    \setlength{\leftmargin}{\leftmargini+\labelwidth+\labelsep}%
+    \setlength{\rightmargin}{0pt}%
+    \setlength{\topsep}{\medskipamount}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\itemsep}{0pt}%
+    \renewcommand*\makelabel[1]{%
+      \parbox[t]{\labelwidth}{\raggedright\hspace{0pt}##1}}%
+    \renewcommand\newblock{\medskip}%
+    \raggedright
+  }%
+}{%
+  \endlist
+}
+\newenvironment{code}{\begin{quote}\small}{\end{quote}}
+%\renewcommand\theCodelineNo{%
+%  \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
+\settowidth\MacroIndent{\normalfont\scriptsize\figureversion{tabular}0000\ }
+\renewcommand\Module[1]{%
+  \mathcode`\|="2353 \mathcode`\&="2026 $\langle\mathsf{#1}\rangle$}
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+\begin{document}
+\DocInput{MyriadPro.dtx}
+\end{document}
+%</driver>
+%\fi
+%
+% \GetFileInfo{MyriadPro.dtx}
+%
+% \title{MyriadPro Support for \LaTeX}
+% \author{Achim Blumensath \and Andreas B\"uhmann \and Michael Zedler
+% \and ME}
+% \date{\fileversion\ -- \filedate}
+% \maketitle
+% \tableofcontents
+%
+% \section{Overview}
+%
+% The \pkg{MyriadPro} package provides support for the MyriadPro
+% font family from Adobe.
+% You can use these fonts in a \LaTeX\ document by adding the command
+% \begin{quote}
+%   |\usepackage{MyriadPro}|
+% \end{quote}
+% to the preamble.
+% This will change both the text font and the math font to MyriadPro.
+% If you prefer another math font (such as \pkg{eulervm}) use the option
+% \option{onlytext} as explained in Section~\ref{sec:Options}.
+%
+% \section{Interference with other packages}
+% \label{sec:Interferences}
+%
+% The \pkg{MyriadPro} package automatically loads the following packages:
+% \pkg{textcomp}, \pkg{amsmath}, and \pkg{MnSymbol} (version~1.4).
+% If you want to pass options to these packages you can
+% either put the corresponding |\usepackage| command before the
+% |\usepackage{MyriadPro}| or you can include the options in the
+% |\documentclass| command. The \pkg{MyriadPro} package is \emph{not}
+% compatible with \pkg{amssymb} and \pkg{amsfonts}. Please see also the
+% corresponding section in the \pkg{MnSymbol} documentation.
+%
+% The MyriadPro package includes support files for the \pkg{microtype} package
+% (version~1.8 or higher), consult the package's documentation for further details.
+%
+% There is also a slight incompatibility with the \pkg{dcolumn} package
+% which expects all figures to have the same width. If you want to use this
+% package you either have to specify the \option{mathtabular} option (this is
+% the brute force solution, not recommended), or you can use the
+% |\figureversion{tabular}| command to switch to tabular figures in front of
+% every table (much better, but also more work). In addition, \pkg{dcolumn}
+% sets figures in math mode, hence the choice of math figures
+% (see Section~\ref{sec:Options}) determines if text or lining figures are used.
+%
+% \section{Options}\label{sec:Options}
+%
+% \subsubsection*{Font selection}
+%
+% The following options specify which version of the fonts you want to use.
+% The default settings are marked with an asterisk*.
+%
+% \begin{options}[\option{proportional}, \option{prop}]
+% \item[\option*{smallfamily}] use only regular and bold face
+% \item[\option{medfamily}]    use semibold face in addition to \option{smallfamily}
+% \end{options}
+%
+% The package also provides a way to only change the text fonts or only the math fonts.
+% \begin{options}
+% \item[\option{onlytext}] only change the text fonts
+% \item[\option{onlymath}] only change the math fonts
+% \end{options}
+%
+% \subsubsection*{Figure selection}
+%
+% MyriadPro offers four different figure versions. A detailed
+% description is given in Section~\ref{sec:fig}.
+% The default version can be selected by the following options:
+%
+% \begin{options}
+% \item[\option{textosf}]     use text figures in text mode
+% \item[\option{mathosf}]     use text figures in math mode
+% \item[\option*{osf}]        use text figures in text and math mode
+% \newblock
+% \item[\option{textlf}]      use lining figures in text mode
+% \item[\option{mathlf}]      use lining figures in math mode
+% \item[\option{lf}]          use lining figures in text and math mode
+% \newblock
+% \item[\option{mathtabular}] use tabular figures in math mode
+% \end{options}
+%
+% \subsubsection*{Calligraphic fonts}
+%
+% These options specify which font is used by the |\mathcal| command.
+%
+% \begin{options}
+% \item[\option*{mnsy}] use the calligraphic font from MnSymbol: $\mathcal{ABC}$
+% \item[\option{cmsy}]  take the calligraphic symbols from Computer Modern:
+%                       {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC}
+% \item[\option{abx}]   use the calligraphic symbols provided by mathabx:
+%                       \IfFileExists{mathabx.sty}{{\font\testabx=mathc10\testabx ABCabc}}{}\par
+%                       (This font contains also lowercase letters, but it is not quite finished.)
+% \end{options}
+%
+% \subsubsection*{Blackboard bold letters}
+%
+% You can also select different fonts for the |\mathbb| command.
+%
+% \begin{options}
+% \item[\option*{amsbb}]    use the AMS blackboard font: $\mathbb{NZQRC}$
+% \item[\option{fourierbb}] use the Fourier blackboard font:
+%                           \IfFileExists{fourier.sty}{{\font\testfour=fourier-bb at 9.5pt\testfour NZQRC}}{}
+% \item[\option{lucidabb}]  use the (commercial) Lucida Math blackboard font\relax
+%\iffalse%
+%                        : {\font\testluc=hlcra at 9.2pt\testluc NZQRC}%
+%\fi%
+% \end{options}
+%
+% \subsubsection*{Greek letters}
+%
+% The following options specify whether you want to use upright or italic Greek
+% letters in math mode.
+%
+% \begin{options}
+% \item[\option*{mixedgreek}] uppercase Greek is upright, lowercase
+%                             Greek is italic
+% \item[\option{italicgreek}] all Greek letters are italic
+% \item[\option{frenchmath}]  all Greek letters and the uppercase Roman
+%                             letters are upright
+% \end{options}
+%
+% \noindent
+% Upright and italic Greek letters are also directly accessible via the commands
+% |\upgamma|, |\itgamma|, |\upGamma|, |\itGamma|, etc.
+%
+% \subsubsection*{Miscellaneous options}
+%
+% \begin{options}
+% \item[\option{myriadint}]
+%      take the integral symbols from MyriadPro, not from
+%      MnSymbol: $\displaystyle\int$ instead of $\displaystyle\varint$
+% \item[\option{openg}]
+%      use $\openg$ instead of $g$ in math mode.
+% \item[\option{loosequotes}]
+%      The quote signs of MyriadPro are set rather tight. This can
+%      lead to undesirable spacing for apostrophes. The \option{loosequotes}
+%      option slightly increases the side bearings of quotes.
+%
+%      This option requires \pdfTeX~1.40 and \pkg{microtype}~2.0.
+%      Beware that this option prevents hyphenation of words
+%      containing apostrophes. Such words will require explicit
+%      hyphenation commands |\-|.
+% \item[\option{footnotefigures}]
+%      use special figures for footnote marks, i.e.,\newline
+%      example\begingroup\fontfamily{MyriadPro-Extra}\fontencoding{U}\selectfont
+%        6,9\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}.
+%
+%      This option can only be used if the footnote marks consist
+%      \emph{solely} of figures.
+% \end{options}
+%
+% \section{Figure selection}
+% \label{sec:fig}
+%
+% MyriadPro offers four different figure versions. One can choose between
+% \emph{text figures} (lowercase figures) and \emph{lining figures} (uppercase figures)
+% and one can choose between \emph{proportional} figures (figures with different widths)
+% and \emph{tabular} figures (all figures have the same width, useful mainly for tables).
+%
+% \medskip\tabindent
+% \begin{tabular}{@{}lll@{}}
+% \toprule
+%                & text figures & lining figures \\
+% \midrule
+%   proportional & \figureversion{text,proportional}0123456789
+%                & \figureversion{lining,proportional}0123456789 \\
+%   tabular      & \figureversion{text,tabular}0123456789
+%                & \figureversion{lining,tabular}0123456789 \\
+% \bottomrule
+% \end{tabular}
+%
+% \medskip\noindent
+% The |\figureversion| command can be used to switch between
+% different figure versions. Possible parameters are:
+%
+% \begin{options}
+% \item[\option{text}, \option{osf}]          text figures
+% \item[\option{lining}, \option{lf}]         lining figures
+% \item[\option{tabular}, \option{tab}]       tabular figures
+% \item[\option{proportional}, \option{prop}] proportional figures
+% \end{options}
+%
+% Usually it is desirable to set most text with proportional figures and to use
+% tabular figures only in tables and lists. Unfortunately most \LaTeX\ document
+% classes do not support fonts with several figure versions. Therefore we
+% provide a package \pkg{tabfigures} that patches some common document classes
+% and packages (the standard \LaTeX\ clases, KOMA-Script, \pkg{memoir}, and
+% \pkg{amsmath}) to use tabular figures at some places. The \pkg{tabfigures}
+% package supports the following options:
+%
+% \begin{options}
+% \item[\option{toc}]    use tabular figures in the table of contents
+% \item[\option{eqno}]   use tabular figures for equation numbers
+% \item[\option{enum}]   use tabular figures in enumerate environments
+% \item[\option{bib}]    use tabular figures in the bibliography
+% \item[\option{lineno}] use tabular figures for line numbers (this affects only the
+%               \pkg{doc} class)
+% \end{options}
+%
+% \section{Additional font shapes and symbols}
+%
+% The \pkg{MyriadPro} package provides all symbols from the \pkg{MnSymbol} package.
+% Additionally, the following math symbols are available:
+%
+% \medskip\tabindent
+% \begingroup
+% \newcommand*\sym[1]{$#1$ & \ttfamily\string#1}%
+% \begin{tabular}{@{}*2{ll@{\qquad}}ll@{}}
+%   \sym\digamma     & \sym\varkappa       & \sym\varbeta \\
+%   \sym\backepsilon & \sym\varbackepsilon & \sym\hbar \\
+%   \sym\hslash      & \sym\lambdabar      & \sym\lambdaslash \\
+%   \sym\jmath       & \sym\eth            & \sym\Bbbk \\
+%   \sym\slashedzero & \sym\openg \\
+% \end{tabular}
+% \endgroup
+%
+% \medskip\noindent
+% Small and slanted fractions are fractions with a height matching the font's
+% body size. These are useful for typesetting, e.g.,
+% $\cos(\smallfrac{1}{2} x + \smallfrac{3}{2} y)$ or ``\slantfrac{1}{12}~litres of
+% red wine'' and can be accessed via
+%
+% \medskip\tabindent
+% \begin{tabular}{@{}ll@{ }l}
+%   |\smallfrac|\marg{numerator}\marg{denominator}& \smallfrac{1}{3} & \smallfrac{5}{17}\\
+%   |\slantfrac|\marg{numerator}\marg{denominator}& \slantfrac{1}{3} & \slantfrac{5}{17}
+% \end{tabular}
+%
+% \medskip\noindent
+% Note that \emph{only} figures can be used for \meta{numerator} and \meta{denominator}.
+%
+% \medskip\noindent
+% Ornaments can be accessed via the \pkg{pifont} package with the command
+% \begin{quote}
+%   |\Pisymbol{MyriadPro-Extra}|\marg{number}
+% \end{quote}
+% The available glyphs are listed in the table below. Version 1.000 of the
+% MyriadPro font provides only ornaments 100--122.
+%
+% \medskip\noindent
+% \begingroup
+% \figureversion{tabular}\centering
+% \newcommand*\orn[1]{#1 & \Pisymbol{MyriadPro-Extra}{#1}}\relax
+% \begin{tabular}{@{}*{3}{rl@{\qquad}}rl@{}}
+% \toprule
+%  number & glyph & number & glyph & number & glyph & number & glyph\\
+% \midrule
+% \orn{100} & \orn{113} & \orn{126} & \orn{139}\\
+% \orn{101} & \orn{114} & \orn{127} & \orn{140}\\
+% \orn{102} & \orn{115} & \orn{128} & \orn{141}\\
+% \orn{103} & \orn{116} & \orn{129} & \orn{142}\\
+% \orn{104} & \orn{117} & \orn{130} & \orn{143}\\
+% \orn{105} & \orn{118} & \orn{131} & \orn{144}\\
+% \orn{106} & \orn{119} & \orn{132} & \orn{145}\\
+% \orn{107} & \orn{120} & \orn{133} & \orn{146}\\
+% \orn{108} & \orn{121} & \orn{134} & \orn{147}\\
+% \orn{109} & \orn{122} & \orn{135} & \orn{148}\\
+% \orn{110} & \orn{123} & \orn{136} & \orn{149}\\
+% \orn{111} & \orn{124} & \orn{137} & \orn{150}\\
+% \orn{112} & \orn{125} & \orn{138} & \\
+% \bottomrule
+% \end{tabular}\par
+% \endgroup
+%
+% \section{Language support}
+%
+% The following encodings are supported:
+%
+% \medskip\tabindent
+% \begin{tabular}{@{}ll@{}}
+%   Latin    & \acro{OT1,} \acro{T1,} \acro{TS1,} \acro{LY1,} \acro{T5}\\
+%   Cyrillic & \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2}\\
+%   Greek    & \acro{LGR} (to be used with \pkg{babel}, including \option{polutonikogreek}),\\
+%            & \acro{LGI} (\pkg{Ibycus} transliteration scheme)
+% \end{tabular}
+%
+% \medskip\noindent
+% In order to typeset Greek text with the \pkg{Ibycus} transliteration scheme, specify
+% \begin{quote}
+%   |\usepackage[ibycus,|\meta{otherlanguages}|]{babel}|
+% \end{quote}
+% in the preamble and consult the documentation given in |ibycus-babel.pdf|
+% on \acro{CTAN}. |\setgreekfontsize| is not supported.
+%
+% \section{Searching for figures or for words containing ligatures in \acro{PDF} documents}
+%
+% Searching for figures or for words containing ligatures in \acro{PDF} documents may not
+% be possible depending on the way the \acro{PDF} file was created. The following table
+% gives an overview of which glyphs may cause problems.
+%
+% \medskip
+% \begin{tabular}{>{\tbfigures}lll}
+% \toprule
+%   font version & program        & problems \\
+% \midrule
+%   1.000  & Ghostscript,         & LF/TOsF, non-standard ligatures\\
+%          & pre-1.40 \pdfTeX     &\\
+% \midrule
+%   1.001, & Ghostscript,         & LF/OsF/TOsF, ligatures\\
+%   2.000  & pre-1.40 \pdfTeX     & \\
+% \midrule
+%   1.00x  & Distiller, dvipdfmx  & LF/TOsF\\
+% \midrule
+%   1.00x  & \pdfTeX~1.40         & ok\\
+% \midrule
+%   2.000  & Distiller, dvipdfmx, & ok\\
+%          & \pdfTeX~1.40         & \\
+% \bottomrule
+% \end{tabular}
+%
+% \medskip\noindent
+% To make figures and ligatures searchable when using \pdfTeX~1.40,
+% you need to enable glyph-to-unicode translation and load the default
+% mapping table:
+% \begin{verbatim}
+% \input glyphtounicode
+% \pdfgentounicode=1
+% \end{verbatim}
+% See the \pdfTeX\ manual for details.
+%
+% \section{\acro{NFSS} classification}
+%
+% Parenthesised combinations are provided via substitutions.
+%
+% \nobreak\medskip\noindent
+% \begingroup
+% \centering\let\>=\\%
+% \begin{tabular}{@{}p{7.5em}p{7em}lp{9em}@{}}
+%   \toprule
+%   encoding & family & series & shape \\
+%   \midrule
+%   \raggedright \acro{OT1,} \acro{T1,} \acro{TS1,} \acro{LY1,} \acro{T5} &
+%   MyriadPro-OsF, MyriadPro-LF, MyriadPro-TOsF, MyriadPro-TLF &
+%   m, b (sb, bx), eb &
+%   n, it (sl)\\
+%   \addlinespace
+%   \midrule
+%   \addlinespace
+%   \raggedright \acro{LGR,} \acro{LGI,} \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2} &
+%   MyriadPro-OsF, MyriadPro-LF, MyriadPro-TOsF, MyriadPro-TLF &
+%   m, b (sb, bx), eb &
+%   n, it (sl) \\
+%   \addlinespace
+%   \midrule
+%   \addlinespace
+%   \acro{OML} &
+%   MyriadPro-TOsF &
+%   m, b (sb, bx), eb &
+%   n, it \\
+%   \addlinespace
+%   \midrule
+%   \addlinespace
+%   \acro{U} &
+%   MyriadPro-Extra &
+%   m, b (sb, bx), eb &
+%   n, it (sl) \\
+%   \bottomrule
+% \end{tabular}\par
+% \endgroup
+%
+% \section{Version history}
+%
+% Version 2.0: Initial Release on \acro{CTAN}\\
+% Version 2.1:
+% \begin{compactitem}
+%   \item added package options \option{onlytext} and \option{onlymath}
+%   \item added package option \option{loosequotes}
+%   \item added package option \option{openg}
+%   \item added package options \option{normalsize} and \option{nonormalsize}
+%   \item fixed package option \option{frenchmath}
+%   \item fixed package option \option{abx}
+%   \item added support for \pdfTeX~1.4 \acro{cmap} inclusion
+%   \item update to \pkg{microtype} version~1.8
+%   \item added \pkg{tabfigures} to automatically handle tabular figures in toc, equation labels, bibliographies, enumerations
+%   \item fixed \verb|\t| accent
+%   \item fixed \verb|\r| accent in \acro{OT1} encoding
+%   \item fixed slashed zero in font version 2.000
+%   \item fixed arrows in \acro{TS1} and \acro{U} encodings
+%   \item fixed \acro{LGR} and \acro{LGI} encodings to use $\upvarphi$ instead of $\upphi$
+%   \item fixed {\fontencoding{LGR}\selectfont\char60 R} in \acro{LGI} encoding
+%   \item added punctuation support in \acro{LGI} encoding (thanks to Jens Boerstinghaus)
+%   \item added symbols \verb|\hslash|, \verb|\lambdabar|, \verb|\lambdaslash|
+%   \item fixed side bearings of $\sigma$ in math mode
+%   \item added {\small CODINGSCHEME} statements to encoding files
+%   \item fixed usage of MnSymbol's ``\textbar'' in \pkg{doc.sty}'s module prefix
+%   \item reduce number of raw encodings to five per font
+% \end{compactitem}
+%
+% \StopEventually{}
+%
+% \section{The main style file}
+%
+% \subsection{Options}
+%
+%    \begin{macrocode}
+%<*style>
+\newif\if@My@Text@
+\newif\if@My@Math@
+\@My@Text@true
+\@My@Math@true
+\DeclareOption{onlytext}{\@My@Text@true\@My@Math@false}
+\DeclareOption{onlymath}{\@My@Text@false\@My@Math@true}
+%    \end{macrocode}
+%
+% \subsubsection{Font sets}
+%
+% The package \pkg{MyriadPro-FontDef} adapts the font definitions to the
+% requested font set (see section~\ref{sec:fontdef}). So we simply pass on the
+% relevant options; only MyriadPro integrals are handled here in
+% \pkg{MyriadPro}.
+%    \begin{macrocode}
+\newcommand\My@myriadint@opticals{-NoOpticals}
+\newcommand\My@myriadint@bold{-Bold}
+\DeclareOption{noopticals}{%
+  \def\My@myriadint@opticals{-NoOpticals}%
+  \PassOptionsToPackage{noopticals}{MyriadPro-FontDef}}
+\DeclareOption{smallfamily}{%
+  \def\My@myriadint@bold{-Bold}%
+  \PassOptionsToPackage{smallfamily}{MyriadPro-FontDef}}
+\DeclareOption{medfamily}{%
+  \def\My@myriadint@bold{-Semibold}%
+  \PassOptionsToPackage{medfamily}{MyriadPro-FontDef}}
+%\DeclareOption{fullfamily}{%
+%  \def\My@myriadint@bold{-Semibold}%
+%  \PassOptionsToPackage{fullfamily}{MyriadPro-FontDef}}
+\DeclareOption{normalsize}{%
+  \PassOptionsToPackage{normalsize}{MyriadPro-FontDef}}
+%    \end{macrocode}
+%
+% \subsubsection{Figure style}
+%
+%    \begin{macrocode}
+\newcommand\My@Text@Fig{OsF}
+\newcommand\My@Math@Fig{OsF}
+\newcommand\My@Text@Family{MyriadPro-\My@Text@Fig}
+\newcommand\My@Math@Family{MyriadPro-\My@Math@Fig}
+\newcommand\My@Math@TFamily{MyriadPro-T\My@Math@Fig}
+\newcommand\My@Math@LetterShape{it}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\DeclareOption{textosf}{\def\My@Text@Fig{OsF}}
+\DeclareOption{textlf} {\def\My@Text@Fig{LF}}
+\DeclareOption{mathosf}{\def\My@Math@Fig{OsF}}
+\DeclareOption{mathlf} {\def\My@Math@Fig{LF}}
+\DeclareOption{osf}{\ExecuteOptions{textosf,mathosf}}
+\DeclareOption{lf} {\ExecuteOptions{textlf,mathlf}}
+\DeclareOption{mathtabular}{\let\My@Math@Family\My@Math@TFamily}
+%    \end{macrocode}
+%
+% \subsubsection{Calligraphic fonts}
+%
+% These hooks are executed once the math versions have been set up.
+%    \begin{macrocode}
+\newcommand\My@load@cal{}
+\newcommand\My@load@bb{}
+\newcommand\My@load@frak{}
+%    \end{macrocode}
+% Most options are handled by \pkg{MnSymbol}.
+%    \begin{macrocode}
+\DeclareOption{mnsy}{
+  \PassOptionsToPackage{mnsy}{MnSymbol}
+  \def\My@load@cal{
+    \SetMathAlphabet\mathcal{boldtabular}{OMS}{MnSymbolS}{b}{n}
+  }
+}
+\DeclareOption{cmsy}{
+  \PassOptionsToPackage{cmsy}{MnSymbol}
+  \def\My@load@cal{
+    \SetMathAlphabet\mathcal{boldtabular}{OMS}{cmsy}{b}{n}
+  }
+}
+\DeclareOption{abx}{
+  \PassOptionsToPackage{abx}{MnSymbol}
+%  \def\My@load@cal{
+%    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
+%  }
+}
+%    \end{macrocode}
+%
+% \subsubsection{Greek letters}
+%
+% |\My@greek@Upright|, |\My@greek@Mixed|, and |\My@greek@Italic| are defined below in
+% section~\ref{sec:greek} before |\My@load@greek| is executed.
+%    \begin{macrocode}
+\newcommand\My@load@greek{\My@greek@Mixed}
+\DeclareOption{frenchmath}{%
+  \def\My@load@greek{\My@greek@Upright}%
+  \def\My@Math@LetterShape{n}}
+\DeclareOption{mixedgreek}{%
+  \def\My@load@greek{\My@greek@Mixed}}
+\DeclareOption{italicgreek}{%
+  \def\My@load@greek{\My@greek@Italic}}
+%    \end{macrocode}
+%
+% \subsubsection{Blackboard bold and fraktur fonts}
+%
+% We have to undefine |\mathfrak| and |\mathbb| before redefining them, because
+% they might be defined in such a way that |\DeclareMathAlphabet| does not
+% recognize them as math alphabets and refuses to overwrite their definitions
+% (e.g., package \pkg{eufrak} uses |\newcommand{\mathfrak}{\EuFrak}|).
+%    \begin{macrocode}
+\newcommand\My@load@amsbb{
+  \let\mathbb\@undefined
+  \let\Bbbk\@undefined
+  \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}
+  \newcommand\Bbbk{\mathbb{\mathchar"717C}}}
+\newcommand\My@load@lucidabb{
+  \let\mathbb\@undefined
+  \let\Bbbk\@undefined
+  \DeclareFontFamily{U}{hlcm}{}
+  \DeclareFontShape{U}{hlcm}{m}{n}{ <->s*[0.92] hlcra }{}
+  \DeclareMathAlphabet\mathbb{U}{hlcm}{m}{n}
+  \newcommand\Bbbk{\mathbb{k}}}
+\newcommand\My@load@fourierbb{
+  \let\mathbb\@undefined
+  \let\Bbbk\@undefined
+  \DeclareFontFamily{U}{futm}{}
+  \DeclareFontShape{U}{futm}{m}{n}{ <->s*[0.95] fourier-bb }{}
+  \DeclareMathAlphabet\mathbb{U}{futm}{m}{n}
+  \newcommand\Bbbk{\mathbb{k}}}
+\DeclareOption{amsbb}    {\let\My@load@bb\My@load@amsbb}
+\DeclareOption{lucidabb} {\let\My@load@bb\My@load@lucidabb}
+\DeclareOption{fourierbb}{\let\My@load@bb\My@load@fourierbb}
+%    \end{macrocode}
+%
+% \subsubsection{Integrals}
+%
+%    \begin{macrocode}
+\newcommand\My@load@integrals{}
+\DeclareOption{myriadint}{\def\My@load@integrals{\My@Decl@Myriad@Ints}}
+%    \end{macrocode}
+%
+% \subsubsection{Miscellaneous options}
+%
+% Footnote figures, the g glyph in math mode, extra spacing for the apostrophe.
+%    \begin{macrocode}
+\DeclareOption{footnotefigures}{%
+  \def\@makefnmark{%
+    \begingroup
+    \normalfont
+    \fontfamily{MyriadPro-Extra}\fontencoding{U}\selectfont
+    \@thefnmark
+    \endgroup}}
+%
+\newcommand\My@Define@Open@g{}
+\DeclareOption{openg}{%
+  \def\My@Define@Open@g{%
+    \mathcode`g="8000%
+    \DeclareMathSymbol{\My@g}{\mathalpha}{letters}{`g}%
+    \begingroup
+    \lccode`\~=`\g
+    \lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \openg \else \My@g \fi}}%
+    \endgroup
+  }}
+%
+\newcommand\My@Quote@Spacing{}
+\DeclareOption{loosequotes}{%
+  \def\My@Quote@Spacing{\My@Quote@Spacing@Loose}}
+%    \end{macrocode}
+%
+% \subsubsection{Defaults}
+%
+%    \begin{macrocode}
+\ExecuteOptions{amsbb,eufrak}
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+% \subsection{Font declarations}
+%
+%    \begin{macrocode}
+\RequirePackage{MyriadPro-FontDef}
+\@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
+
+\if@My@Math@
+  \RequirePackage{MnSymbol}[2007/01/21 v1.4]
+%    \end{macrocode}
+% If no fraktur font is loaded then take the Euler font.
+%    \begin{macrocode}
+  \@ifundefined{mathfrak}{%
+    \RequirePackage{eufrak}%
+    \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}{}
+\fi
+%    \end{macrocode}
+% By default, we use |b| for the bold series. If |MyriadPro-Semibold| is not
+% available this might internally be mapped to |MyriadPro-Bold| (see
+% \pkg{MyriadPro-FontDef}).
+%    \begin{macrocode}
+\if@My@Text@
+  \edef\sfdefault{\My@Text@Family}
+  \let\ibycusdefault\My@Text@Family
+%    \end{macrocode}
+% If a recent verion of \pkg{microtype} is loaded then we implement an option
+% to increase the side bearings of all quote glyphs.
+%    \begin{macrocode}
+  \def\My@Quote@Spacing@Loose{%
+    \@ifpackageloaded{microtype}{}{\RequirePackage[kerning=true]{microtype}}
+    \@ifundefined{SetExtraKerning}{}{
+      \let\My@Set@Quote@Spacing\SetExtraKerning}
+%      \SetExtraKerning
+%        [ unit = 1em ]
+%        { encoding = {OT1,T1,LGR,U,OT2,T2A,T2B,T2C,T5,X2,LY1},
+%          family   = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF},
+%          shape    = n }
+%        { \textquotedblleft = {30,30},  \textquotedblright = {30,30},
+%          \textquoteleft    = {30,30},  \textquoteright    = {30,30} }}
+  }
+  \newcommand*\My@Set@Quote@Spacing[3][]{}
+  \My@Quote@Spacing
+  \My@Set@Quote@Spacing
+    [ unit = 1em ]
+    { encoding = {OT1,T1,LGR,U,OT2,T2A,T2B,T2C,T5,X2,LY1},
+      family   = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF},
+      shape    = {n,it} }
+    { \textquotedblleft = {30,30},  \textquotedblright = {30,30},
+      \textquoteleft    = {30,30},  \textquoteright    = {30,30} }
+\fi
+%    \end{macrocode}
+%
+% \subsubsection{Math fonts}
+%
+% Redefine the standard math versions |normal| and |bold|.
+%    \begin{macrocode}
+\if@My@Math@
+  \DeclareSymbolFont{operators}  {T1} {\My@Math@Family}{m} {n}
+  \DeclareSymbolFont{letters}    {OML}{MyriadPro-TOsF} {m} {\My@Math@LetterShape}
+  \SetSymbolFont{operators}{bold}{T1} {\My@Math@Family}{eb}{n}
+  \SetSymbolFont{letters}  {bold}{OML}{MyriadPro-TOsF} {eb}{\My@Math@LetterShape}
+  \DeclareMathAlphabet\mathbf    {T1} {\My@Math@Family}{eb}{n}
+  \DeclareMathAlphabet\mathit    {T1} {\My@Math@Family}{m} {it}
+  \SetMathAlphabet\mathit  {bold}{T1} {\My@Math@Family}{eb}{it}
+%    \end{macrocode}
+% Extra math versions |tabular| and |boldtabular|, which use tabular figures
+% instead of proportional ones. These math versions can be useful in tables
+% (cf.\ section~\ref{sec:Interferences}).
+%    \begin{macrocode}
+  \DeclareMathVersion{tabular}
+  \SetSymbolFont{operators}{tabular}    {T1} {\My@Math@TFamily}{m}{n}
+  \SetSymbolFont{letters}  {tabular}    {OML}{MyriadPro-TOsF}  {m}{\My@Math@LetterShape}
+  \SetMathAlphabet\mathit  {tabular}    {T1} {\My@Math@TFamily}{m}{it}
+
+  \DeclareMathVersion{boldtabular}
+  \SetSymbolFont{operators}{boldtabular}{T1} {\My@Math@TFamily}{eb}{n}
+  \SetSymbolFont{letters}  {boldtabular}{OML}{MyriadPro-TOsF}  {eb}{\My@Math@LetterShape}
+  \SetMathAlphabet\mathit  {boldtabular}{T1} {\My@Math@TFamily}{eb}{it}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+  \DeclareMathAccent{\grave}   {\mathalpha}{operators}{0}
+  \DeclareMathAccent{\acute}   {\mathalpha}{operators}{1}
+  \DeclareMathAccent{\hat}     {\mathalpha}{operators}{2}
+  \DeclareMathAccent{\tilde}   {\mathalpha}{operators}{3}
+  \DeclareMathAccent{\ddot}    {\mathalpha}{operators}{4}
+  \DeclareMathAccent{\mathring}{\mathalpha}{operators}{6}
+  \DeclareMathAccent{\check}   {\mathalpha}{operators}{7}
+  \DeclareMathAccent{\breve}   {\mathalpha}{operators}{8}
+  \DeclareMathAccent{\bar}     {\mathalpha}{operators}{9}
+  \DeclareMathAccent{\dot}     {\mathalpha}{operators}{10}
+%    \end{macrocode}
+% Execute the hooks set up above to load the various math alphabets.
+%    \begin{macrocode}
+  \My@load@bb
+  \My@load@frak
+  \My@load@cal
+\fi
+%    \end{macrocode}
+%
+% \subsection{Font selection}
+%
+% The font selection commands such as |\figureversion| are provided by
+% the companion package \pkg{fontaxes}, which may be useful for other
+% font families as well.
+%
+%    \begin{macrocode}
+\RequirePackage{fontaxes}[2005/05/04]
+%    \end{macrocode}
+% We define an additional short hand for compatibility's sake.
+%    \begin{macrocode}
+\let\oldstylenums\textfigures
+%    \end{macrocode}
+%
+% \subsection{Greek letters}
+% \label{sec:greek}
+%
+% We provide math-mode commands for each Greek letter, both italic and upright.
+% Furthermore, there are three commands to select the default version of the
+% letters (all upright, all italic, or capitals upright and lowercase italic).
+%
+% While declaring the Greek letters we collect the uppercase and lowercase
+% letters in two lists. (We distinguish them by the first letter of their
+% name.) These lists are then used to select the different versions.
+%    \begin{macrocode}
+\if@My@Math@
+  \newcommand\My@greek@list@upper{}
+  \newcommand\My@greek@list@lower{}
+  \let\My@greek@list@upper\@gobble
+  \let\My@greek@list@lower\@gobble
+%    \end{macrocode}
+% This macro holds one of the two list names.
+%    \begin{macrocode}
+  \newcommand\My@greek@list{}
+  \newcommand*\My@greek@letter[3]{%
+    \expandafter\DeclareMathSymbol
+    \expandafter{\csname it#1\endcsname}{\mathord}{letters}{#2}%
+    \expandafter\DeclareMathSymbol
+    \expandafter{\csname up#1\endcsname}{\mathord}{letters}{#3}%
+    \edef\@tempa{`\@car#1\@nil}%
+    \edef\My@greek@list{\expandafter\noexpand\csname
+      My@greek@list@\ifnum\uccode\@tempa=\@tempa upper\else lower\fi\endcsname}%
+    \expandafter\edef\My@greek@list{\My@greek@list,#1}%
+  }
+%    \end{macrocode}
+% We can now declare the Greek letters (left italic, right upright).
+%    \begin{macrocode}
+  \My@greek@letter{Gamma}         {'000}{'200}
+  \My@greek@letter{Delta}         {'001}{'201}
+  \My@greek@letter{Theta}         {'002}{'202}
+  \My@greek@letter{Lambda}        {'003}{'203}
+  \My@greek@letter{Xi}            {'004}{'204}
+  \My@greek@letter{Pi}            {'005}{'205}
+  \My@greek@letter{Sigma}         {'006}{'206}
+  \My@greek@letter{Upsilon}       {'007}{'207}
+  \My@greek@letter{Phi}           {'010}{'210}
+  \My@greek@letter{Psi}           {'011}{'211}
+  \My@greek@letter{Omega}         {'012}{'212}
+  \My@greek@letter{alpha}         {'013}{'213}
+  \My@greek@letter{beta}          {'014}{'214}
+  \My@greek@letter{gamma}         {'015}{'215}
+  \My@greek@letter{delta}         {'016}{'216}
+  \My@greek@letter{epsilon}       {'017}{'217}
+  \My@greek@letter{zeta}          {'020}{'220}
+  \My@greek@letter{eta}           {'021}{'221}
+  \My@greek@letter{theta}         {'022}{'222}
+  \My@greek@letter{iota}          {'023}{'223}
+  \My@greek@letter{kappa}         {'024}{'224}
+  \My@greek@letter{lambda}        {'025}{'225}
+  \My@greek@letter{mu}            {'026}{'226}
+  \My@greek@letter{nu}            {'027}{'227}
+  \My@greek@letter{xi}            {'030}{'230}
+  \My@greek@letter{pi}            {'031}{'231}
+  \My@greek@letter{rho}           {'032}{'232}
+  \My@greek@letter{sigma}         {'033}{'233}
+  \My@greek@letter{tau}           {'034}{'234}
+  \My@greek@letter{upsilon}       {'035}{'235}
+  \My@greek@letter{phi}           {'036}{'236}
+  \My@greek@letter{chi}           {'037}{'237}
+  \My@greek@letter{psi}           {'040}{'240}
+  \My@greek@letter{omega}         {'041}{'241}
+  \My@greek@letter{varepsilon}    {'042}{'242}
+  \My@greek@letter{vartheta}      {'043}{'243}
+  \My@greek@letter{varpi}         {'044}{'244}
+  \My@greek@letter{varrho}        {'045}{'245}
+  \My@greek@letter{varsigma}      {'046}{'246}
+  \My@greek@letter{varphi}        {'047}{'247}
+%    \end{macrocode}
+% Some of the following symbols are not really Greek letters but are treated in
+% the same way.
+%    \begin{macrocode}
+  \My@greek@letter{varbeta}       {'260}{'250}
+  \My@greek@letter{varkappa}      {'261}{'251}
+  \My@greek@letter{backepsilon}   {'262}{'252}
+  \My@greek@letter{varbackepsilon}{'263}{'253}
+  \My@greek@letter{digamma}       {'264}{'254}
+  \My@greek@letter{eth}           {'266}{'256}
+%    \end{macrocode}
+% Go through a list |#2| of Greek letters and |\let| them be their
+% |#1|-prefixed variants.
+%    \begin{macrocode}
+  \newcommand*\My@greek@select[2]{%
+    \expandafter\let\expandafter\My@greek@list\csname My@greek@list@#2\endcsname
+    \@for\@tempa:=\My@greek@list\do{%
+      \expandafter\let\csname\@tempa\expandafter\endcsname
+      \csname#1\@tempa\endcsname
+    }%
+  }
+  \newcommand*\My@greek@Upright{%
+    \My@greek@select{up}{upper}%
+    \My@greek@select{up}{lower}%
+  }
+  \newcommand*\My@greek@Italic{%
+    \My@greek@select{it}{upper}%
+    \My@greek@select{it}{lower}%
+  }
+  \newcommand*\My@greek@Mixed{%
+    \My@greek@select{up}{upper}%
+    \My@greek@select{it}{lower}%
+  }
+%    \end{macrocode}
+% Finally initialise the Greek letters.
+%    \begin{macrocode}
+  \My@load@greek
+\fi
+%    \end{macrocode}
+%
+% \subsection{\pdfTeX\ to-unicode support}
+%
+% Old versions of MyriadPro have non-standard glyph names.
+%    \begin{macrocode}
+\@ifundefined{pdfglyphtounicode}{}{
+  \pdfglyphtounicode{uniEFD5}{03DD}% uni03DD
+  \pdfglyphtounicode{uniEFED}{02D9}% dotaccent.cap
+  \pdfglyphtounicode{uniEFEE}{02D8}% breve.cap
+  \pdfglyphtounicode{uniEFF1}{02DB}% ogonek.cap
+  \pdfglyphtounicode{uniEFF2}{00B8}% cedilla.cap
+  \pdfglyphtounicode{uniEFF3}{02DA}% ring.cap
+  \pdfglyphtounicode{uniEFF5}{02DC}% tilde.cap
+  \pdfglyphtounicode{uniEFF7}{02C6}% circumflex.cap
+  \pdfglyphtounicode{uniF628}{2030}% perthousand.oldstyle
+  \pdfglyphtounicode{uniF62C}{0028}% parenleft.denominator
+  \pdfglyphtounicode{uniF62D}{0029}% parenright.denominator
+  \pdfglyphtounicode{uniF631}{0028}% parenleft.numerator
+  \pdfglyphtounicode{uniF632}{0029}% parenright.numerator
+  \pdfglyphtounicode{uniF638}{0030}% zero.slash
+  \pdfglyphtounicode{uniF639}{0030}% zero.fitted
+  \pdfglyphtounicode{uniF63A}{0032}% two.fitted
+  \pdfglyphtounicode{uniF63B}{0033}% three.fitted
+  \pdfglyphtounicode{uniF63C}{0034}% four.fitted
+  \pdfglyphtounicode{uniF63D}{0035}% five.fitted
+  \pdfglyphtounicode{uniF63E}{0036}% six.fitted
+  \pdfglyphtounicode{uniF63F}{0037}% seven.fitted
+  \pdfglyphtounicode{uniF640}{0038}% eight.fitted
+  \pdfglyphtounicode{uniF641}{0039}% nine.fitted
+  \pdfglyphtounicode{uniF642}{0025}% percent.oldstyle
+  \pdfglyphtounicode{uniF643}{0030}% zero.taboldstyle
+  \pdfglyphtounicode{uniF644}{0031}% one.taboldstyle
+  \pdfglyphtounicode{uniF645}{0032}% two.taboldstyle
+  \pdfglyphtounicode{uniF646}{0033}% three.taboldstyle
+  \pdfglyphtounicode{uniF647}{0034}% four.taboldstyle
+  \pdfglyphtounicode{uniF648}{0035}% five.taboldstyle
+  \pdfglyphtounicode{uniF649}{0036}% six.taboldstyle
+  \pdfglyphtounicode{uniF64A}{0037}% seven.taboldstyle
+  \pdfglyphtounicode{uniF64B}{0038}% eight.taboldstyle
+  \pdfglyphtounicode{uniF64C}{0039}% nine.taboldstyle
+  \pdfglyphtounicode{uniF64D}{20A1}% colonmonetary.taboldstyle
+  \pdfglyphtounicode{uniF64E}{20AC}% Euro.taboldstyle
+  \pdfglyphtounicode{uniF64F}{0192}% florin.taboldstyle
+  \pdfglyphtounicode{uniF650}{0023}% numbersign.taboldstyle
+  \pdfglyphtounicode{uniF651}{00A3}% sterling.taboldstyle
+  \pdfglyphtounicode{uniF652}{00A5}% yen.taboldstyle
+  \pdfglyphtounicode{uniF653}{0024}% dollar.taboldstyle
+  \pdfglyphtounicode{uniF654}{00A2}% cent.taboldstyle
+  \pdfglyphtounicode{uniF655}{0030}% zero.denominator
+  \pdfglyphtounicode{uniF656}{0031}% one.denominator
+  \pdfglyphtounicode{uniF657}{0032}% two.denominator
+  \pdfglyphtounicode{uniF658}{0033}% three.denominator
+  \pdfglyphtounicode{uniF659}{0034}% four.denominator
+  \pdfglyphtounicode{uniF65A}{0035}% five.denominator
+  \pdfglyphtounicode{uniF65B}{0036}% six.denominator
+  \pdfglyphtounicode{uniF65C}{0037}% seven.denominator
+  \pdfglyphtounicode{uniF65D}{0038}% eight.denominator
+  \pdfglyphtounicode{uniF65E}{0039}% nine.denominator
+  \pdfglyphtounicode{uniF65F}{002C}% comma.denominator
+  \pdfglyphtounicode{uniF660}{002E}% period.denominator
+  \pdfglyphtounicode{uniF661}{0030}% zero.numerator
+  \pdfglyphtounicode{uniF662}{0031}% one.numerator
+  \pdfglyphtounicode{uniF663}{0032}% two.numerator
+  \pdfglyphtounicode{uniF664}{0033}% three.numerator
+  \pdfglyphtounicode{uniF665}{0034}% four.numerator
+  \pdfglyphtounicode{uniF666}{0035}% five.numerator
+  \pdfglyphtounicode{uniF667}{0036}% six.numerator
+  \pdfglyphtounicode{uniF668}{0037}% seven.numerator
+  \pdfglyphtounicode{uniF669}{0038}% eight.numerator
+  \pdfglyphtounicode{uniF66A}{0039}% nine.numerator
+  \pdfglyphtounicode{uniF66B}{002C}% comma.numerator
+  \pdfglyphtounicode{uniF66C}{002E}% period.numerator
+  \pdfglyphtounicode{uniF66D}{0103}% abreve.sc
+  \pdfglyphtounicode{uniF66F}{0105}% aogonek.sc
+  \pdfglyphtounicode{uniF671}{0107}% cacute.sc
+  \pdfglyphtounicode{uniF672}{010D}% ccaron.sc
+  \pdfglyphtounicode{uniF675}{010F}% dcaron.sc
+  \pdfglyphtounicode{uniF676}{0111}% dcroat.sc
+  \pdfglyphtounicode{uniF678}{011B}% ecaron.sc
+  \pdfglyphtounicode{uniF67B}{014B}% eng.sc
+  \pdfglyphtounicode{uniF67C}{0119}% eogonek.sc
+  \pdfglyphtounicode{uniF67D}{011F}% gbreve.sc
+  \pdfglyphtounicode{uniF684}{0133}% ij.sc
+  \pdfglyphtounicode{uniF687}{0129}% itilde.sc
+  \pdfglyphtounicode{uniF68A}{013A}% lacute.sc
+  \pdfglyphtounicode{uniF68B}{013E}% lcaron.sc
+  \pdfglyphtounicode{uniF68E}{0144}% nacute.sc
+  \pdfglyphtounicode{uniF68F}{0148}% ncaron.sc
+  \pdfglyphtounicode{uniF692}{0151}% ohungarumlaut.sc
+  \pdfglyphtounicode{uniF695}{0155}% racute.sc
+  \pdfglyphtounicode{uniF696}{0159}% rcaron.sc
+  \pdfglyphtounicode{uniF698}{015B}% sacute.sc
+  \pdfglyphtounicode{uniF699}{015F}% scedilla.sc
+  \pdfglyphtounicode{uniF69D}{0165}% tcaron.sc
+  \pdfglyphtounicode{uniF69E}{0163}% tcommaaccent.sc
+  \pdfglyphtounicode{uniF6A0}{0171}% uhungarumlaut.sc
+  \pdfglyphtounicode{uniF6A3}{016F}% uring.sc
+  \pdfglyphtounicode{uniF6A4}{0169}% utilde.sc
+  \pdfglyphtounicode{uniF6AA}{1EF3}% ygrave.sc
+  \pdfglyphtounicode{uniF6AB}{017A}% zacute.sc
+  \pdfglyphtounicode{uniF6AC}{017C}% zdotaccent.sc
+  \pdfglyphtounicode{uniF6DC}{0031}% one.fitted
+}
+%    \end{macrocode}
+%
+% \subsection{Superior and inferior figures}
+%
+% We define commands to convert numbers to numerator figures and denominator figures.
+%    \begin{macrocode}
+\def\@for@tok#1:=#2\do#3{%
+  \expandafter\def\expandafter\@fortmp\expandafter{#2}%
+  \ifx\@fortmp\@empty \else
+    \expandafter\@forloop@tok#2\@nil\@nil\@@#1{#3}%
+  \fi}
+\def\@forloop@tok#1#2#3\@@#4#5{%
+  \def#4{#1}%
+  \ifx #4\@nnil \else
+    #5%
+    \def#4{#2}%
+    \ifx #4\@nnil \else
+      #5\@iforloop@tok #3\@@#4{#5}%
+  \fi\fi}
+\def\@iforloop@tok#1#2\@@#3#4{%
+  \def#3{#1}%
+  \ifx #3\@nnil
+    \expandafter\@fornoop
+  \else
+    #4\relax\expandafter\@iforloop@tok
+  \fi
+  #2\@@#3{#4}}
+%
+\newcommand*\My@extra@font{%
+  \fontencoding{U}\fontfamily{MyriadPro-Extra}\selectfont}
+\newcommand*\My@numerator@fig[1]{{\My@extra@font\My@@numerator@fig{#1}}}
+\newcommand*\My@denominator@fig[1]{{\My@extra@font\My@@denominator@fig{#1}}}
+\newcommand*\My@superior@fig[1]{{\My@extra@font\My@@superior@fig{#1}}}
+\newcommand*\My@inferior@fig[1]{{\My@extra@font\My@@inferior@fig{#1}}}
+\newcommand*\My@@numerator@fig[1]{%
+  \@for@tok\@nf@fig:=#1\do{%
+    \ifcase\@nf@fig
+       \char'00%
+    \or\char'01%
+    \or\char'02%
+    \or\char'03%
+    \or\char'04%
+    \or\char'05%
+    \or\char'06%
+    \or\char'07%
+    \or\char'10%
+    \or\char'11%
+    \else
+      \@latex@error{invalid argument to \string\My@@numerator@fig}%
+    \fi
+    }}
+\newcommand*\My@@denominator@fig[1]{%
+  \@for@tok\@nf@fig:=#1\do{%
+    \ifcase\@nf@fig
+       \char'20%
+    \or\char'21%
+    \or\char'22%
+    \or\char'23%
+    \or\char'24%
+    \or\char'25%
+    \or\char'26%
+    \or\char'27%
+    \or\char'30%
+    \or\char'31%
+    \else
+      \@latex@error{invalid argument to \string\My@@denominator@fig}%
+    \fi
+    }}
+\newcommand*\My@@superior@fig[1]{%
+  \@for@tok\@nf@fig:=#1\do{%
+    \ifcase\@nf@fig
+       \char'60%
+    \or\char'61%
+    \or\char'62%
+    \or\char'63%
+    \or\char'64%
+    \or\char'65%
+    \or\char'66%
+    \or\char'67%
+    \or\char'70%
+    \or\char'71%
+    \else
+      \@latex@error{invalid argument to \string\My@@superior@fig}%
+    \fi
+    }}
+\newcommand*\My@@inferior@fig[1]{%
+  \@for@tok\@nf@fig:=#1\do{%
+    \ifcase\@nf@fig
+       \char'100%
+    \or\char'101%
+    \or\char'102%
+    \or\char'103%
+    \or\char'104%
+    \or\char'105%
+    \or\char'106%
+    \or\char'107%
+    \or\char'110%
+    \or\char'111%
+    \else
+      \@latex@error{invalid argument to \string\My@@inferior@fig}%
+    \fi
+    }}
+%    \end{macrocode}
+% |\Myensure@text| switches to text mode, if necessary.
+%    \begin{macrocode}
+\newcommand*\Myensure@text[1]{%
+  \ifmmode
+    \Mn@Text@With@MathVersion{#1}%
+  \else
+    #1%
+  \fi}
+%    \end{macrocode}
+% |\smallfrac| and |\slantfrac| assemble numerical fractions.
+%    \begin{macrocode}
+\newcommand*\My@smallfrac[2]{%
+  \leavevmode
+  \setbox\@tempboxa
+    \vbox{%
+      \baselineskip\z@skip%
+      \lineskip.25ex%
+      \lineskiplimit-\maxdimen
+      \ialign{\hfil##\hfil\crcr
+              \vbox to 2.13ex{\vss\hbox{\My@numerator@fig{#1}}\vskip.68ex}\crcr
+              \leavevmode\leaders\hrule height 1.1ex depth -1.01ex\hfill\crcr
+              \vtop to 1ex{\vbox{}\hbox{\My@denominator@fig{#2}}\vss}\crcr
+              \noalign{\vskip-1.47ex}}}%
+  \dp\@tempboxa=0.49ex%
+  \box\@tempboxa}
+\newcommand*\My@slantfrac[2]{%
+  {\My@extra@font\My@@numerator@fig{#1}\kern-0.05em/\kern-0.06em\My@@denominator@fig{#2}}}
+\DeclareRobustCommand*\smallfrac[2]{\Myensure@text{\kern0.06em\My@smallfrac{#1}{#2}\kern0.09em}}
+\DeclareRobustCommand*\slantfrac[2]{\Myensure@text{\kern0.06em\My@slantfrac{#1}{#2}\kern0.09em}}
+%    \end{macrocode}
+%
+% \subsection{Additional symbols}
+%
+% Some symbols missing from MnSymbol can be taken from MyriadPro.
+%
+%    \begin{macrocode}
+\if@My@Math@
+  \let\hbar\undefined
+  \DeclareMathSymbol{\hbar}             {\mathord}{letters}{'265}
+  \DeclareMathSymbol{\uphbar}           {\mathord}{letters}{'255}
+  \DeclareMathSymbol{\partial}          {\mathord}{letters}{'100}
+  \DeclareMathSymbol{\uppartial}        {\mathord}{letters}{'300}
+  \DeclareMathSymbol{\ell}              {\mathord}{letters}{'140}
+  \DeclareMathSymbol{\upell}            {\mathord}{letters}{'340}
+  \DeclareMathSymbol{\slashedzero}      {\mathord}{letters}{'257}
+  \DeclareMathSymbol{\upimath}          {\mathord}{letters}{'373}
+  \DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
+  \DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
+  \DeclareMathSymbol{\openg}            {\mathalpha}{letters}{'267}
+  \DeclareRobustCommand\lambdabar       {\middlebar\lambda}
+  \DeclareRobustCommand\lambdaslash     {\middleslash\lambda}
+\fi
+%    \end{macrocode}
+% Archaic Greek letters not provided by MyriadPro.
+%    \begin{macrocode}
+\if@My@Text@
+  %\def\Qoppa{\reflectbox{P}}
+  %\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
+  \let\Stigma\stigma
+
+  % fix \r A
+  \DeclareTextCompositeCommand{\r}{OT1}{A}
+     {\leavevmode\setbox\z@\hbox{!}\dimen@\ht\z@\advance\dimen@-1ex%
+     \ooalign{\hss\raise.67\dimen@\hbox{\char23}\hss\crcr A}}
+
+  \DeclareEncodingSubset{TS1}{MyriadPro-LF}  {1}%
+  \DeclareEncodingSubset{TS1}{MyriadPro-TLF} {1}%
+  \DeclareEncodingSubset{TS1}{MyriadPro-OsF} {1}%
+  \DeclareEncodingSubset{TS1}{MyriadPro-TOsF}{1}%
+  \AtBeginDocument{
+    \UndeclareTextCommand{\textvisiblespace}{T1}%
+    \UndeclareTextCommand{\textcompwordmark}{T1}%
+    \UndeclareTextCommand{\textsterling}{T1}%
+    \UndeclareTextCommand{\j}{T1}%
+    \UndeclareTextCommand{\j}{LY1}%
+  }
+\fi
+%    \end{macrocode}
+%
+% \subsection{Integral symbols}
+%
+% We can also replace the integral signs from MnSymbol by those of MyriadPro.
+% The following definitions provide this as an option.
+%    \begin{macrocode}
+\if@My@Math@
+  \newcommand\My@Decl@Myriad@Ints{%
+%    \end{macrocode}
+% Replace |MnSymbolF| by |MnSymbolFI|.
+%    \begin{macrocode}
+    \DeclareFontFamily{U}{MnSymbolFI}{}
+    \DeclareFontShape{U}{MnSymbolFI}{m}{it}{
+        <-6>  MnSymbolFI\My@myriadint@opticals5
+       <6-7>  MnSymbolFI\My@myriadint@opticals6
+       <7-8>  MnSymbolFI\My@myriadint@opticals7
+       <8-9>  MnSymbolFI\My@myriadint@opticals8
+       <9-10> MnSymbolFI\My@myriadint@opticals9
+      <10-12> MnSymbolFI\My@myriadint@opticals10
+      <12->   MnSymbolFI\My@myriadint@opticals12
+    }{}
+    \DeclareFontShape{U}{MnSymbolFI}{b}{it}{
+        <-6>  MnSymbolFI\My@myriadint@bold\My@myriadint@opticals5
+       <6-7>  MnSymbolFI\My@myriadint@bold\My@myriadint@opticals6
+       <7-8>  MnSymbolFI\My@myriadint@bold\My@myriadint@opticals7
+       <8-9>  MnSymbolFI\My@myriadint@bold\My@myriadint@opticals8
+       <9-10> MnSymbolFI\My@myriadint@bold\My@myriadint@opticals9
+      <10-12> MnSymbolFI\My@myriadint@bold\My@myriadint@opticals10
+      <12->   MnSymbolFI\My@myriadint@bold\My@myriadint@opticals12
+    }{}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+    \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
+    \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
+%    \end{macrocode}
+% Make the original integral symbols available as |\var|\dots.
+%    \begin{macrocode}
+    \let\varint\tint
+    \let\variint\tiint
+    \let\variiint\tiiint
+    \let\variiiint\tiiiint
+    \let\varidotsint\tidotsint
+    \let\varlandupint\tlandupint
+    \let\varlanddownint\tlanddownint
+    \let\varstrokedint\tstrokedint
+    \let\varoint\toint
+    \let\varoiint\toiint
+    \let\varrcirclerightint\trcirclerightint
+    \let\varlcirclerightint\tlcirclerightint
+    \let\varrcircleleftint\trcircleleftint
+    \let\varlcircleleftint\tlcircleleftint
+    \let\varsumint\tsumint
+%    \end{macrocode}
+% Replace the symbols with the new integrals.
+%    \begin{macrocode}
+    \DeclareMathSymbol\tint            \mathop{symbols}{112}
+    \DeclareMathSymbol\tiint           \mathop{symbols}{114}
+    \DeclareMathSymbol\tiiint          \mathop{symbols}{116}
+    \DeclareMathSymbol\tiiiint         \mathop{symbols}{118}
+    \DeclareMathSymbol\tidotsint       \mathop{symbols}{120}
+    \DeclareMathSymbol\tlandupint      \mathop{symbols}{122}
+    \DeclareMathSymbol\tlanddownint    \mathop{symbols}{124}
+    \DeclareMathSymbol\tstrokedint     \mathop{symbols}{126}
+    \DeclareMathSymbol\toint           \mathop{symbols}{128}
+    \DeclareMathSymbol\toiint          \mathop{symbols}{130}
+    \DeclareMathSymbol\trcirclerightint\mathop{symbols}{132}
+    \DeclareMathSymbol\tlcirclerightint\mathop{symbols}{134}
+    \DeclareMathSymbol\trcircleleftint \mathop{symbols}{136}
+    \DeclareMathSymbol\tlcircleleftint \mathop{symbols}{138}
+    \DeclareMathSymbol\tsumint         \mathop{symbols}{140}
+    \let\intop\tint
+    \let\ointop\toint
+  }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+  \My@load@integrals
+\fi
+%    \end{macrocode}
+%
+% \subsection{Open G support}
+%
+% We can replace the closed~$g$ with the open variant~$\openg$.
+% The following definitions provide this as an option.
+%    \begin{macrocode}
+\if@My@Math@
+  \My@Define@Open@g
+\fi
+%    \end{macrocode}
+%
+% \subsection{Logos}
+%
+% Correct logos.
+%    \begin{macrocode}
+\if@My@Text@
+  \def\TeX{T\kern-.1667em\lower.4ex\hbox{E}\kern-.125emX\@}
+  \DeclareRobustCommand{\LaTeX}{L\kern-.32em%
+          {\sbox\z@ T%
+           \vbox to\ht\z@{\hbox{\check@mathfonts
+                                \fontsize\sf@size\z@
+                                \math@fontsfalse\selectfont
+                                A}%
+                          \vss}%
+          }%
+          \kern-.15em%
+          \TeX}
+\fi
+%    \end{macrocode}
+%
+% \subsection{AMS}
+%
+% Fix a bug in \pkg{amsmath.sty} which does not support
+% math fonts without a skew char.
+%    \begin{macrocode}
+\def\macc@set@skewchar#1{%
+  \begingroup
+  \ifnum\mathgroup=\m@ne \let\@tempa\@ne
+  \else
+    \ifnum\skewchar\textfont\mathgroup=\m@ne \let\@tempa\@ne
+    \else \let\@tempa\mathgroup
+    \fi
+  \fi
+  \count@=\skewchar\textfont\@tempa
+  \ifnum\count@=\m@ne
+    \endgroup
+    \def\macc@skewchar{}
+  \else
+    \advance\count@"7100
+    \edef\@tempa{\endgroup
+      \mathchardef\noexpand\macc@skewchar=\number\count@\relax}%
+    \@tempa
+  \fi
+  #1%
+}
+%    \end{macrocode}
+% Make the changes take effect. This concludes the main style file.
+%    \begin{macrocode}
+\if@My@Text@
+  \normalfont
+\fi
+%</style>
+%    \end{macrocode}
+%
+% \section{Support for character protrusion}
+%
+% The \pkg{microtype} configuration. All four MyriadPro families use the same
+% file (cf.\ section~\ref{sec:fontdef}).
+%    \begin{macrocode}
+%<*mtcfg>
+\SetProtrusion
+  [ name     = MyriadPro-OT1-Roman ]
+  { encoding = OT1,
+    family   = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF},
+    shape    = n }
+  {
+      A = {40,40},
+      F = {  ,60},
+      J = {90,  },
+      K = {  ,50},
+      L = {  ,60},
+      T = {50,50},
+      V = {40,40},
+      W = {30,30},
+      X = {50,50},
+      Y = {50,50},
+      k = {  ,60},
+      r = {  ,80},
+      t = {  ,100},
+      v = {70,70},
+      w = {40,40},
+      x = {60,60},
+      y = {70,70},
+      ! = {70,180},
+      ( = {60,30},    ) = {30,60},
+      [ = {100,160},  ] = {160,100},
+    {,} = {440,700},
+      . = {660,700},
+      : = {400,480},
+      ; = {350,440},
+      - = {700,700},
+    \textendash       = {390,480},  \textemdash        = {220,270},
+    \textquotedblleft = {380,250},  \textquotedblright = {250,380},
+    \textquoteleft    = {670,450},  \textquoteright    = {450,670},
+  }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\SetProtrusion
+  [ name     = MyriadPro-T1-Roman,
+    load     = MyriadPro-OT1-Roman ]
+  { encoding = T1,
+    family   = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF},
+    shape    = n }
+  {
+    023 = {  ,40}, % fft ligature
+    032 = {  ,50}, % ft ligature
+    191 = {30,30}, % Th ligature
+    127 = {620,700}, % hyphen
+    \AE = {40,  }, % AE
+    \quotesinglbase = {670,670},  \quotedblbase   = {370,370},
+    \guilsinglleft  = {500,360},  \guilsinglright = {360,500},
+    \guillemotleft  = {320,230},  \guillemotright = {230,320},
+  }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\SetProtrusion
+  [ name     = MyriadPro-OT1-Italic]
+  { encoding = OT1,
+    family   = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF},
+    shape    = {it,sl} }
+  {
+      A = {120,50},
+      B = {90,-50},
+      C = {50,-60},
+      D = {70,-30},
+      E = {90,-50},
+      F = {100,-40},
+      G = {50,-60},
+      H = {70,-40},
+      I = {150,-90},
+      J = {250,-130},
+      K = {80,-50},
+      L = {90,60},
+      M = {60,-40},
+      N = {70,-40},
+      O = {70,-30},
+      P = {70,-110},
+      Q = {40,-40},
+      R = {80,-50},
+      S = {70,-70},
+      T = {130,  },
+      U = {70,-40},
+      V = {120,30},
+      W = {90,20},
+      X = {50,  },
+      Y = {160,  },
+      Z = {50,-50},
+      d = {60,-60},
+      f = {  ,-190},
+    027 = {  ,-70}, % ff ligature
+      g = {-70,-70},
+      i = {  ,-110},
+    025 = {  ,-60}, % dotlessi
+    028 = {  ,-60}, % fi ligature
+    030 = {  ,-30}, % ffi ligature
+      j = {-90,-150},
+      p = {-40,  },
+      r = {  ,80},
+      t = {  ,100},
+      v = {90,  },
+      w = {60,10},
+      x = {90,  },
+      ! = {190,40},
+      ( = {90,  },    ) = {90,  },
+      [ = {90,90},    ] = {120,60},
+    {,} = {210,680},
+      . = {640,680},
+      : = {380,430},
+      ; = {   ,430},
+      - = {750,750},
+    \textquoteleft    = {690,140},  \textquoteright    = {470,230},
+    \textendash       = {400,500},  \textemdash        = {220,280},
+    \textquotedblleft = {520,130},  \textquotedblright = {520,130},
+  }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\SetProtrusion
+  [ name     = MyriadPro-T1-Italic,
+    load     = MyriadPro-OT1-Italic ]
+  { encoding = T1,
+    family   = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF},
+    shape    = {it,sl} }
+  {
+    023 = {  ,40}, % fft ligature
+    032 = {  ,50}, % ft ligature
+    191 = {80,30}, % Th ligature
+    127 = {660,750}, % hyphen
+    \AE = {90,-40}, % AE
+    131 = {80,-30}, % Dcaron
+    132 = {70,-40}, % Ecaron
+    156 = {80,-60}, % IJ
+    \OE = {50,-30}, % OE
+    188 = {  ,-80}, % ij
+    184 = {70,70}, % ydieresis
+    253 = {70,70}, % yacute
+    \quotesinglbase = {220,700},  \quotedblbase   = {130,400},
+    \guilsinglleft  = {500,180},  \guilsinglright = {350,350},
+    \guillemotleft  = {310,110},  \guillemotright = {230,230},
+  }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\SetProtrusion
+  [ name     = MyriadPro-other-Roman ]
+  { encoding = {LGR,U,OT2,T2A,T2B,T2C,T5,X2},
+    family   = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF},
+    shape    = n }
+  {
+      ! = {70,180},
+      ( = {60,30},    ) = {30,60},
+      [ = {100,160},  ] = {160,100},
+    {,} = {440,700},
+      . = {660,700},
+      : = {400,480},
+      ; = {350,440},
+      - = {700,700},
+    \textendash       = {390,480},  \textemdash        = {220,270},
+    \textquotedblleft = {380,250},  \textquotedblright = {250,380},
+    \textquoteleft    = {670,450},  \textquoteright    = {450,670},
+  }
+\SetProtrusion
+  [ name     = MyriadPro-other-Italic ]
+  { encoding = {LGR,U,OT2,T2A,T2B,T2C,T5,X2},
+    family   = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF},
+    shape    = {it,sl} }
+  {
+      ! = {190,40},
+      ( = {90,  },    ) = {90,  },
+      [ = {90,90},    ] = {120,60},
+    {,} = {210,680},
+      . = {640,680},
+      : = {380,430},
+      ; = {   ,430},
+      - = {750,750},
+    \textquoteleft    = {690,140},  \textquoteright    = {470,230},
+    \textendash       = {400,500},  \textemdash        = {220,280},
+    \textquotedblleft = {520,130},  \textquotedblright = {520,130},
+  }
+%</mtcfg>
+%    \end{macrocode}
+%
+% \section{Font definition files}
+% \label{sec:fontdef}
+%
+% As all the font definitions look the same we introduce macros to ease the
+% configuration. These macros are stored in the file
+% \file{MyriadPro-FontDef.sty} which is included by every \acro{FD} file.
+% Note that \file{MyriadPro-FontDef.sty} will be included several times and
+% that we do not know in which context the code is executed. Therefore, we have
+% to define all non-private commands as globals.
+%
+% \makeatletter
+% \newcommand*\exampleconfig[2]{%
+%   \begin{quote}\ttfamily
+%   \expandafter\string\csname My@config@#1@#2\endcsname\par
+%   \expandafter\expandafter\expandafter\strip@prefix
+%   \expandafter\meaning\csname My@config@#1@#2\endcsname\par
+%   \edef\@tempa{\My@UseConfig{#1}{#2}}%
+%   \expandafter\strip@prefix\meaning\@tempa
+%   \end{quote}%
+% }%
+% \makeatother
+%
+% Since this package should be loadable in an \acro{FD} file we have to
+% avoid all |\preambleonly| commands.
+% Therefore, we use |\ProvidesFile| instead of |\ProvidesPackage|.
+%
+% We add a guard so that this file is executed only once even if it is included
+% multiple times.
+%    \begin{macrocode}
+%<*fontdef>
+\ifx\My@DeclareFontShape\@undefined\else\endinput\fi
+%    \end{macrocode}
+% We distinguish between being loaded directly or via |\usepackage| in the
+% preamble by checking |\@nodocument|.
+%    \begin{macrocode}
+\ifx\@nodocument\relax
+  \input{otfontdef.sty}
+\else
+  \NeedsTeXFormat{LaTeX2e}
+  \RequirePackage{otfontdef}
+\fi
+%    \end{macrocode}
+% Reset |\escapechar| (which is set to $-1$ in \acro{FD} files) to make
+% |\newcommand| work. The additional group does not harm; we have to
+% make the important commands global anyway.
+%    \begin{macrocode}
+\ifx\@nodocument\relax
+  \begingroup\escapechar`\\
+\fi
+%    \end{macrocode}
+% These are the default values if it is impossible to process options.
+%    \begin{macrocode}
+\newcommand\My@option@opticals{noopticals}
+\newcommand\My@option@fontset{smallfamily}
+\newdimen\My@option@normalsize
+\global\My@option@normalsize10pt
+%    \end{macrocode}
+% Whether we should adapt the configuration to the |\normalsize| of the
+% document. This switch is only needed locally.
+%    \begin{macrocode}
+\newif\ifMy@option@normalsize
+\My@option@normalsizetrue
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\ifx\@nodocument\relax\else
+  \DeclareOption{noopticals} {\let\My@option@opticals\CurrentOption}
+  \DeclareOption{smallfamily}{\let\My@option@fontset\CurrentOption}
+  \DeclareOption{medfamily}  {\let\My@option@fontset\CurrentOption}
+%  \DeclareOption{fullfamily} {\let\My@option@fontset\CurrentOption}
+  \DeclareOption{normalsize}  {\My@option@normalsizetrue}
+  \ExecuteOptions{smallfamily,noopticals,normalsize}
+  \ProcessOptions\relax
+\fi
+%    \end{macrocode}
+% The method to determine the main font size is inspired by \pkg{microtype}'s
+% implementation.
+%    \begin{macrocode}
+\ifMy@option@normalsize
+  \begingroup
+  \def\set@fontsize#1#2#3#4\@nil{%
+    \@defaultunits\global\My@option@normalsize#2pt\relax\@nnil}%
+  \normalsize\@nil
+  \endgroup
+\fi
+%    \end{macrocode}
+% We use |\otf@makeglobal| from \pkg{otfontdef} to ``export'' the definitions
+% that are needed globally.
+%    \begin{macrocode}
+\otf@makeglobal{My@option@opticals}
+\otf@makeglobal{My@option@fontset}
+\ifx\@nodocument\relax\else
+  \PackageInfo{MyriadPro-FontDef}{%
+    Configuration:\space\My@option@fontset,\space\My@option@opticals,\space
+    normalsize=\the\My@option@normalsize}%
+\fi
+%    \end{macrocode}
+%
+% \subsubsection{Configuration database}
+%
+%    \begin{macrocode}
+\newcount\My@config@cnt
+\My@config@cnt=0
+\newcommand\My@curr@config{My@config@\romannumeral\My@config@cnt}
+%    \end{macrocode}
+% These commands help in setting up the configuration database. They do not
+% need to be global. But the config database itself has to be.
+%
+% |#3| is added to all instances listed in |#2| of configuration class |#1|.
+% |#3| is read with \acro{NFSS} catcodes.
+%    \begin{macrocode}
+\newcommand\My@AddToConfig{%
+  \begingroup
+  \nfss@catcodes
+  \expandafter\endgroup
+  \My@AddToConfig@
+}
+\newcommand\My@AddToConfig@[3]{%
+  \advance\My@config@cnt\@ne
+  \@namedef{\My@curr@config}{#3}%
+  \otf@makeglobal{\My@curr@config}
+%<debug&show>\expandafter\show\csname\My@curr@config\endcsname
+  \@for\My@tempa:=#2\do{%
+    \@ifundefined{My@config@#1@\My@tempa}{%
+      \@temptokena{}%
+    }{%
+      \@temptokena\expandafter\expandafter\expandafter
+        {\csname My@config@#1@\My@tempa\endcsname}%
+    }%
+    \@expandtwoargs\@namedef{My@config@#1@\My@tempa}{%
+      \the\@temptokena
+      \expandafter\noexpand\csname\My@curr@config\endcsname
+    }%
+    \otf@makeglobal{My@config@#1@\My@tempa}% perhaps defer to only execute once
+%<debug&show>\expandafter\show\csname My@config@#1@\My@tempa\endcsname
+  }%
+}
+%    \end{macrocode}
+%
+% The following commands are used in the |Declare...Family| commands to access
+% the previously built configuration database. They must be expandable. |#3| is
+% used as a default if no entry is found in the database.
+%    \begin{macrocode}
+\newcommand*\My@UseConfig[2]{%
+  \My@UseConfigOrDefault{#1}{#2}{}%
+}
+\newcommand*\My@UseConfigOrDefault[3]{%
+  \@ifundefined{My@config@#1@#2}{#3}%
+    {\@nameuse{My@config@#1@#2}}%
+}
+\newcommand*\My@TheConfig[2]{%
+  \@ifundefined{My@config@#1@#2}{}{%
+    \expandafter\noexpand\csname My@config@#1@#2\endcsname
+  }%
+}
+\otf@makeglobal{My@UseConfig}
+\otf@makeglobal{My@UseConfigOrDefault}
+\otf@makeglobal{My@TheConfig}
+%    \end{macrocode}
+% Here comes the configuration.
+%    \begin{macrocode}
+\My@AddToConfig{opticals}{opticals}{
+      <-8.5>  otf* [optical=Capt]
+   <8.5-13.1> otf* [optical=Text]
+  <13.1-20>   otf* [optical=Subh]
+    <20->     otf* [optical=Disp]
+}
+\My@AddToConfig{opticals}{noopticals}{
+      <->     otf* [optical=Text]
+}
+\My@AddToConfig{opticals}{slides}{
+      <->     otf* [optical=Capt]
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\ifdim\My@option@normalsize<10.1pt
+  \My@AddToConfig{fontset/weight}{fullfamily/m}{
+        <-6>    otf* [weight=Semibold]
+       <6-8.5>  otf* [weight=Medium]
+     <8.5->     otf* [weight=Regular]
+  }
+\else
+  \My@AddToConfig{fontset/weight}{fullfamily/m}{
+        <-6>    otf* [weight=Semibold]
+       <6-10.1> otf* [weight=Medium]
+    <10.1->     otf* [weight=Regular]
+  }
+\fi
+\My@AddToConfig{fontset/weight}{medfamily/m}{
+      <-6>    otf* [weight=Semibold]
+     <6->     otf* [weight=Regular]
+}
+\My@AddToConfig{fontset/weight}{smallfamily/m}{
+      <->     otf* [weight=Regular]
+}
+%
+\My@AddToConfig{fontset/weight}{fullfamily/b,medfamily/b}{
+      <-6>    otf* [weight=Bold]
+     <6->     otf* [weight=Semibold]
+}
+\My@AddToConfig{fontset/weight}{smallfamily/b}{
+      <->     otf* [weight=Bold]
+}
+%
+\My@AddToConfig{weight}{eb}{
+      <->     otf* [weight=Bold]
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\My@AddToConfig{shape}{n,it}{
+      <-8>    otf* [spacing=l1]
+}
+\My@AddToConfig{encoding/shape}{U/n,U/it}{
+      <->     otf* [spacing=]
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\My@AddToConfig{shape}{it}{
+      <->     otf* MyriadPro-It
+}
+\My@AddToConfig{shape}{n}{
+      <->     otf* MyriadPro
+}
+\My@AddToConfig{encoding/shape}{OML/it}{
+      <->     otf* [figures=] MyriadPro-Mixed
+}
+\My@AddToConfig{encoding/shape}{OML/n}{
+      <->     otf* [figures=] MyriadPro-French
+}
+%    \end{macrocode}
+% Substitutions
+%    \begin{macrocode}
+\My@AddToConfig{sub:series} {sb}    {b}
+\My@AddToConfig{sub:series} {bx}    {b}
+\My@AddToConfig{sub:shape}  {sl}    {it}
+%    \end{macrocode}
+% Code for the last argument of |\DeclareFontShape|
+%
+% \subsubsection{Declaration of font families and shapes}
+%
+%    \begin{macrocode}
+\newcommand*\My@DeclareFontShape[6][]{%
+%    \end{macrocode}
+% Check if any substitutions are specified.
+%    \begin{macrocode}
+  \edef\@tempa{%
+    \My@UseConfig{sub:series}{#4}%
+    \My@UseConfigOrDefault{sub:encoding/shape}{#2/#5}{%
+      \My@UseConfig{sub:shape}{#5}}%
+  }%
+  \ifx\@tempa\@empty
+%    \end{macrocode}
+% Collect the configuration and declare the font shape. |\DeclareFontShape|
+% fully expands its fifth argument (with our macros |\My@UseConfig| in it), but
+% we have to retrieve the code for the sixth argument ourselves.
+%    \begin{macrocode}
+    \@temptokena={%
+      \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
+        \My@UseConfig{opticals}      {\My@option@opticals}%
+        \My@UseConfig{fontset/weight}{\My@option@fontset/#4}%
+        \My@UseConfig{weight}        {#4}%
+        \My@UseConfig{encoding/shape}{#2/#5}%
+        \My@UseConfig{shape}         {#5}%
+      }}%
+    \edef\@tempa{\the\@temptokena{\My@TheConfig{code:shape}{#5}}}%
+    \@tempa
+  \else
+%    \end{macrocode}
+% Generate the substitution. (All substitutions are silent at the moment.)
+%    \begin{macrocode}
+    \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
+      <->ssub*#3-#6%
+      /\My@UseConfigOrDefault{sub:series}{#4}{#4}%
+      /\My@UseConfigOrDefault{sub:encoding/shape}{#2/#5}{%
+        \My@UseConfigOrDefault{sub:shape}{#5}{#5}}%
+    }{}%
+  \fi
+}
+\otf@makeglobal{My@DeclareFontShape}
+\otf@makeglobal{\string\My@DeclareFontShape}
+%    \end{macrocode}
+% |#2| contains the encoding, |#3| the family, and |#1| a list of figure
+% versions (or |Extra|).
+%    \begin{macrocode}
+\newcommand*\My@DeclareLargeFontFamily[3][LF,OsF,TLF,TOsF]{%
+  \My@DeclareFontFamily{#1}{#2}{#3}
+    {m,sb,b,bx,eb} {n,it,sl}%
+}
+\newcommand*\My@DeclareSmallFontFamily[3][LF,OsF,TLF,TOsF]{%
+  \My@DeclareFontFamily{#1}{#2}{#3}
+    {m,sb,b,bx,eb} {n,it,sl}%
+}
+\newcommand*\My@DeclareMathFontFamily[3][TOsF]{%
+  \My@DeclareFontFamily[\skewchar\font=255]{#1}{#2}{#3}
+    {m,sb,b,bx,eb} {n,it}%
+}
+%    \end{macrocode}
+% An additional macro |\csname\string\foo\endcsname| is generated by
+% |\newcommand| for processing an optional argument of |\foo|.
+%    \begin{macrocode}
+\otf@makeglobal{My@DeclareLargeFontFamily}
+\otf@makeglobal{\string\My@DeclareLargeFontFamily}
+\otf@makeglobal{My@DeclareSmallFontFamily}
+\otf@makeglobal{\string\My@DeclareSmallFontFamily}
+\otf@makeglobal{My@DeclareMathFontFamily}
+\otf@makeglobal{\string\My@DeclareMathFontFamily}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand*\My@DeclareFontFamily[6][]{%
+  \@for\My@variant:=#2\do{%
+    \DeclareFontFamily {#3}{#4-\My@variant}{#1}%
+  }%
+  \My@DeclareFontShapes{#3}{#4}
+    {#5} {#6} {#2}%
+}
+\otf@makeglobal{My@DeclareFontFamily}
+\otf@makeglobal{\string\My@DeclareFontFamily}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand*\My@DeclareFontShapes[5]{%
+  \@for\My@series:=#3\do{%
+    \@for\My@shape:=#4\do{%
+      \@for\My@variant:=#5\do{%
+        \My@DeclareFontShape{#1}{#2}{\My@series}{\My@shape}{\My@variant}%
+      }%
+    }%
+  }%
+}
+\otf@makeglobal{My@DeclareFontShapes}
+%    \end{macrocode}
+% Adjust font dimension |#1| of the current font. The function in |#2| should
+% replace the old value in dimen |\My@fontdimen| with a new one (which may
+% depend on other parameters like |\f@size|).
+%    \begin{macrocode}
+\newdimen\My@fontdimen
+\newcommand*\My@adjust@fontdimen[2]{%
+  \My@fontdimen=\fontdimen#1\font
+  #2%
+  \fontdimen#1\font=\My@fontdimen
+}
+\otf@makeglobal{My@adjust@fontdimen}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\ifx\@nodocument\relax
+  \endgroup
+\fi
+%    \end{macrocode}
+%    \begin{macrocode}
+%<*debug>
+\newcommand\old@DeclareFontFamily{}
+\let\old@DeclareFontFamily\DeclareFontFamily
+\renewcommand\DeclareFontFamily[3]{
+  \begingroup\escapechar`\\%
+  \edef\@tempa{\noexpand\DeclareFontFamily{#1}{#2}}%
+  \@temptokena\expandafter{\@tempa{#3}}%
+  \message{\the\@temptokena}%
+  \endgroup
+  \old@DeclareFontFamily{#1}{#2}{#3}%
+}
+\newcommand\old@DeclareFontShape{}
+\let\old@DeclareFontShape\DeclareFontShape
+\renewcommand\DeclareFontShape[6]{
+  \begingroup\escapechar`\\%
+  \edef\@tempa{\noexpand\DeclareFontShape{#1}{#2}{#3}{#4}{#5}}%
+  \@temptokena\expandafter{\@tempa{#6}}%
+  \message{\the\@temptokena}%
+  \endgroup
+  \old@DeclareFontShape{#1}{#2}{#3}{#4}{#5}{#6}%
+}
+%</debug>
+%    \end{macrocode}
+%
+% We define font family aliases so that we can place all configurations for
+% the MyriadPro family variants into one \pkg{microtype} file:
+% \file{mt-MyriadPro.cfg}. We use \pkg{microtype}'s hook if \pkg{microtype}
+% has not been loaded yet (which should be the case); otherwise we can
+% execute the alias definitions directly.
+%    \begin{macrocode}
+\gdef\My@MicroType@Aliases{%
+  \DeclareMicrotypeAlias{MyriadPro-LF}{MyriadPro}%
+  \DeclareMicrotypeAlias{MyriadPro-OsF}{MyriadPro}%
+  \DeclareMicrotypeAlias{MyriadPro-TLF}{MyriadPro}%
+  \DeclareMicrotypeAlias{MyriadPro-TOsF}{MyriadPro}%
+}
+\@ifundefined{Microtype@Hook}{%
+  \global\let\Microtype@Hook\My@MicroType@Aliases
+}{%
+  \g@addto@macro\Microtype@Hook{\My@MicroType@Aliases}%
+}%
+\@ifundefined{DeclareMicroTypeAlias}{}{\My@MicroType@Aliases}%
+%</fontdef>
+%    \end{macrocode}
+%
+% Using these macros the various \acro{FD} files become simple one-liners.
+%
+%    \begin{macrocode}
+%<*fd>
+\input{MyriadPro-FontDef.sty}%
+%<Uextra>    \My@DeclareSmallFontFamily[Extra]{U}  {MyriadPro}
+%<LGR>       \My@DeclareSmallFontFamily       {LGR}{MyriadPro}
+%<LGI>       \My@DeclareSmallFontFamily       {LGI}{MyriadPro}
+%<OT1>       \My@DeclareLargeFontFamily       {OT1}{MyriadPro}
+%<T1>        \My@DeclareLargeFontFamily       {T1} {MyriadPro}
+%<LY1>       \My@DeclareLargeFontFamily       {LY1}{MyriadPro}
+%<T5>        \My@DeclareLargeFontFamily       {T5} {MyriadPro}
+%<T2A>       \My@DeclareSmallFontFamily       {T2A}{MyriadPro}
+%<T2B>       \My@DeclareSmallFontFamily       {T2B}{MyriadPro}
+%<T2C>       \My@DeclareSmallFontFamily       {T2C}{MyriadPro}
+%<TS1>       \My@DeclareLargeFontFamily       {TS1}{MyriadPro}
+%<X2>        \My@DeclareSmallFontFamily       {X2} {MyriadPro}
+%<OT2>       \My@DeclareSmallFontFamily       {OT2}{MyriadPro}
+%<OML&tosf>  \My@DeclareMathFontFamily        {OML}{MyriadPro}
+%<*OML&(lf|osf|tlf)>
+  \@for\My@variant:=LF,TLF,OsF\do{%
+    \DeclareFontFamily{OML}{MyriadPro-\My@variant}{\skewchar\font=255}
+    \@for\My@series:=m,sb,b,bx,eb\do{%
+      \@for\My@shape:=n,it\do{%
+        \DeclareFontShape{OML}{MyriadPro-\My@variant}{\My@series}{\My@shape}%
+          { <-> ssub*MyriadPro-TOsF/\My@series/\My@shape }{}
+      }%
+    }%
+  }%
+%</OML&(lf|osf|tlf)>
+%</fd>
+%    \end{macrocode}
+%
+% \CheckSum{0}
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \Finale
+\endinput
+% vim:set ft=tex:
