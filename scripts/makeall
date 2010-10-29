@@ -1,5 +1,13 @@
 #!/bin/bash
 
+ffamily=$1
+shift
+echo "Chosen font family is $ffamily"
+
+cp enc/$ffamily/* enc/
+cp fontinst/$ffamily/* fontinst/
+cp kerning/$ffamily/* kerning/
+
 case "$*" in
   *--verbose*) verbose=true;;
   *)           verbose=false;;
@@ -9,7 +17,7 @@ mkdir -p pfb tfm vf dvips
 
 echo "Creating PostScript fonts ..."
 
-for font in otf/*.otf
+for font in otf/$ffamily*.otf
 do
   base=$(basename "$font" .otf)
   cfftot1    "$font"     "$base.pfb"
@@ -32,7 +40,7 @@ maketfm() {
   rm "dvips/$family.map.tmp"
 }
 
-maketfm MinionPro "$@"
+maketfm $ffamily "$@"
 
 mv *.pfb pfb
 
@@ -43,7 +51,7 @@ then
   exit 1
 fi
 
-(cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
+(cd fontinst; ../scripts/makeint $ffamily; ../scripts/makeoml $ffamily)
 
-(cd tex; latex MinionPro.ins; latex otfontdef.ins; latex fontaxes.ins; latex tabfigures.ins)
+(cd tex; latex $ffamily.ins; latex otfontdef.ins; latex fontaxes.ins; latex tabfigures.ins)
 
