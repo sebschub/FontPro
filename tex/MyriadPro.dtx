@@ -1,64 +1,64 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2009/09/12 v0.1 MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2010/11/01 v0.1alpha MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2009/09/12 v0.1 MyriadPro support for LaTeX]
-%<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2005/02/07 v1.0 microtype config file for MyriadPro]
-%<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2007/02/01 v2.2 font definition macros]
-%<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2005/01/23 v2.0 font definitions for U/MyriadPro-Extra.]
-%<LGR&lf>  \ProvidesFile{LGRMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for LGR/MyriadPro-LF.]
-%<LGR&osf> \ProvidesFile{LGRMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for LGR/MyriadPro-OsF.]
-%<LGR&tlf> \ProvidesFile{LGRMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for LGR/MyriadPro-TLF.]
-%<LGR&tosf>\ProvidesFile{LGRMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for LGR/MyriadPro-TOsF.]
-%<LGI&lf>  \ProvidesFile{LGIMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for LGI/MyriadPro-LF.]
-%<LGI&osf> \ProvidesFile{LGIMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for LGI/MyriadPro-OsF.]
-%<LGI&tlf> \ProvidesFile{LGIMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for LGI/MyriadPro-TLF.]
-%<LGI&tosf>\ProvidesFile{LGIMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for LGI/MyriadPro-TOsF.]
-%<OML&lf>  \ProvidesFile{OMLMyriadPro-LF.fd}   [2007/02/01 v2.1 font definitions for OML/MyriadPro-LF.]
-%<OML&osf> \ProvidesFile{OMLMyriadPro-OsF.fd}  [2007/02/01 v2.1 font definitions for OML/MyriadPro-OsF.]
-%<OML&tlf> \ProvidesFile{OMLMyriadPro-TLF.fd}  [2007/02/01 v2.1 font definitions for OML/MyriadPro-TLF.]
-%<OML&tosf>\ProvidesFile{OMLMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for OML/MyriadPro-TOsF.]
-%<OT1&lf>  \ProvidesFile{OT1MyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for OT1/MyriadPro-LF.]
-%<OT1&osf> \ProvidesFile{OT1MyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for OT1/MyriadPro-OsF.]
-%<OT1&tlf> \ProvidesFile{OT1MyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for OT1/MyriadPro-TLF.]
-%<OT1&tosf>\ProvidesFile{OT1MyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for OT1/MyriadPro-TOsF.]
-%<T1&lf>   \ProvidesFile{T1MyriadPro-LF.fd}    [2005/01/23 v2.0 font definitions for T1/MyriadPro-LF.]
-%<T1&osf>  \ProvidesFile{T1MyriadPro-OsF.fd}   [2005/01/23 v2.0 font definitions for T1/MyriadPro-OsF.]
-%<T1&tlf>  \ProvidesFile{T1MyriadPro-TLF.fd}   [2005/01/23 v2.0 font definitions for T1/MyriadPro-TLF.]
-%<T1&tosf> \ProvidesFile{T1MyriadPro-TOsF.fd}  [2005/01/23 v2.0 font definitions for T1/MyriadPro-TOsF.]
-%<LY1&lf>  \ProvidesFile{LY1MyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for LY1/MyriadPro-LF.]
-%<LY1&osf> \ProvidesFile{LY1MyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for LY1/MyriadPro-OsF.]
-%<LY1&tlf> \ProvidesFile{LY1MyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for LY1/MyriadPro-TLF.]
-%<LY1&tosf>\ProvidesFile{LY1MyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for LY1/MyriadPro-TOsF.]
-%<T5&lf>   \ProvidesFile{T5MyriadPro-LF.fd}    [2005/01/23 v2.0 font definitions for T5/MyriadPro-LF.]
-%<T5&osf>  \ProvidesFile{T5MyriadPro-OsF.fd}   [2005/01/23 v2.0 font definitions for T5/MyriadPro-OsF.]
-%<T5&tlf>  \ProvidesFile{T5MyriadPro-TLF.fd}   [2005/01/23 v2.0 font definitions for T5/MyriadPro-TLF.]
-%<T5&tosf> \ProvidesFile{T5MyriadPro-TOsF.fd}  [2005/01/23 v2.0 font definitions for T5/MyriadPro-TOsF.]
-%<T2A&lf>  \ProvidesFile{T2AMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for T2A/MyriadPro-LF.]
-%<T2A&osf> \ProvidesFile{T2AMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T2A/MyriadPro-OsF.]
-%<T2A&tlf> \ProvidesFile{T2AMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T2A/MyriadPro-TLF.]
-%<T2A&tosf>\ProvidesFile{T2AMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T2A/MyriadPro-TOsF.]
-%<T2B&lf>  \ProvidesFile{T2BMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for T2B/MyriadPro-LF.]
-%<T2B&osf> \ProvidesFile{T2BMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T2B/MyriadPro-OsF.]
-%<T2B&tlf> \ProvidesFile{T2BMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T2B/MyriadPro-TLF.]
-%<T2B&tosf>\ProvidesFile{T2BMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T2B/MyriadPro-TOsF.]
-%<T2C&lf>  \ProvidesFile{T2CMyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for T2C/MyriadPro-LF.]
-%<T2C&osf> \ProvidesFile{T2CMyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T2C/MyriadPro-OsF.]
-%<T2C&tlf> \ProvidesFile{T2CMyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T2C/MyriadPro-TLF.]
-%<T2C&tosf>\ProvidesFile{T2CMyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T2C/MyriadPro-TOsF.]
-%<TS1&lf>  \ProvidesFile{TS1MyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for TS1/MyriadPro-LF.]
-%<TS1&osf> \ProvidesFile{TS1MyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for TS1/MyriadPro-OsF.]
-%<TS1&tlf> \ProvidesFile{TS1MyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for TS1/MyriadPro-TLF.]
-%<TS1&tosf>\ProvidesFile{TS1MyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for TS1/MyriadPro-TOsF.]
-%<X2&lf>   \ProvidesFile{X2MyriadPro-LF.fd}    [2005/01/23 v2.0 font definitions for X2/MyriadPro-LF.]
-%<X2&osf>  \ProvidesFile{X2MyriadPro-OsF.fd}   [2005/01/23 v2.0 font definitions for X2/MyriadPro-OsF.]
-%<X2&tlf>  \ProvidesFile{X2MyriadPro-TLF.fd}   [2005/01/23 v2.0 font definitions for X2/MyriadPro-TLF.]
-%<X2&tosf> \ProvidesFile{X2MyriadPro-TOsF.fd}  [2005/01/23 v2.0 font definitions for X2/MyriadPro-TOsF.]
-%<OT2&lf>  \ProvidesFile{OT2MyriadPro-LF.fd}   [2005/01/23 v2.0 font definitions for OT2/MyriadPro-LF.]
-%<OT2&osf> \ProvidesFile{OT2MyriadPro-OsF.fd}  [2005/01/23 v2.0 font definitions for OT2/MyriadPro-OsF.]
-%<OT2&tlf> \ProvidesFile{OT2MyriadPro-TLF.fd}  [2005/01/23 v2.0 font definitions for OT2/MyriadPro-TLF.]
-%<OT2&tosf>\ProvidesFile{OT2MyriadPro-TOsF.fd} [2005/01/23 v2.0 font definitions for OT2/MyriadPro-TOsF.]
+%<style>   \ProvidesPackage{MyriadPro}         [2010/11/01 v0.1alpha MyriadPro support for LaTeX]
+%<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2010/11/01 v0.1alpha microtype config file for MyriadPro]
+%<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2010/11/01 v0.1alpha font definition macros]
+%<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2010/11/01 v0.1alpha font definitions for U/MyriadPro-Extra.]
+%<LGR&lf>  \ProvidesFile{LGRMyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for LGR/MyriadPro-LF.]
+%<LGR&osf> \ProvidesFile{LGRMyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for LGR/MyriadPro-OsF.]
+%<LGR&tlf> \ProvidesFile{LGRMyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for LGR/MyriadPro-TLF.]
+%<LGR&tosf>\ProvidesFile{LGRMyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for LGR/MyriadPro-TOsF.]
+%<LGI&lf>  \ProvidesFile{LGIMyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for LGI/MyriadPro-LF.]
+%<LGI&osf> \ProvidesFile{LGIMyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for LGI/MyriadPro-OsF.]
+%<LGI&tlf> \ProvidesFile{LGIMyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for LGI/MyriadPro-TLF.]
+%<LGI&tosf>\ProvidesFile{LGIMyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for LGI/MyriadPro-TOsF.]
+%<OML&lf>  \ProvidesFile{OMLMyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for OML/MyriadPro-LF.]
+%<OML&osf> \ProvidesFile{OMLMyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for OML/MyriadPro-OsF.]
+%<OML&tlf> \ProvidesFile{OMLMyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for OML/MyriadPro-TLF.]
+%<OML&tosf>\ProvidesFile{OMLMyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for OML/MyriadPro-TOsF.]
+%<OT1&lf>  \ProvidesFile{OT1MyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for OT1/MyriadPro-LF.]
+%<OT1&osf> \ProvidesFile{OT1MyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for OT1/MyriadPro-OsF.]
+%<OT1&tlf> \ProvidesFile{OT1MyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for OT1/MyriadPro-TLF.]
+%<OT1&tosf>\ProvidesFile{OT1MyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for OT1/MyriadPro-TOsF.]
+%<T1&lf>   \ProvidesFile{T1MyriadPro-LF.fd}    [2010/11/01 v0.1alpha font definitions for T1/MyriadPro-LF.]
+%<T1&osf>  \ProvidesFile{T1MyriadPro-OsF.fd}   [2010/11/01 v0.1alpha font definitions for T1/MyriadPro-OsF.]
+%<T1&tlf>  \ProvidesFile{T1MyriadPro-TLF.fd}   [2010/11/01 v0.1alpha font definitions for T1/MyriadPro-TLF.]
+%<T1&tosf> \ProvidesFile{T1MyriadPro-TOsF.fd}  [2010/11/01 v0.1alpha font definitions for T1/MyriadPro-TOsF.]
+%<LY1&lf>  \ProvidesFile{LY1MyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for LY1/MyriadPro-LF.]
+%<LY1&osf> \ProvidesFile{LY1MyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for LY1/MyriadPro-OsF.]
+%<LY1&tlf> \ProvidesFile{LY1MyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for LY1/MyriadPro-TLF.]
+%<LY1&tosf>\ProvidesFile{LY1MyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for LY1/MyriadPro-TOsF.]
+%<T5&lf>   \ProvidesFile{T5MyriadPro-LF.fd}    [2010/11/01 v0.1alpha font definitions for T5/MyriadPro-LF.]
+%<T5&osf>  \ProvidesFile{T5MyriadPro-OsF.fd}   [2010/11/01 v0.1alpha font definitions for T5/MyriadPro-OsF.]
+%<T5&tlf>  \ProvidesFile{T5MyriadPro-TLF.fd}   [2010/11/01 v0.1alpha font definitions for T5/MyriadPro-TLF.]
+%<T5&tosf> \ProvidesFile{T5MyriadPro-TOsF.fd}  [2010/11/01 v0.1alpha font definitions for T5/MyriadPro-TOsF.]
+%<T2A&lf>  \ProvidesFile{T2AMyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for T2A/MyriadPro-LF.]
+%<T2A&osf> \ProvidesFile{T2AMyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for T2A/MyriadPro-OsF.]
+%<T2A&tlf> \ProvidesFile{T2AMyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for T2A/MyriadPro-TLF.]
+%<T2A&tosf>\ProvidesFile{T2AMyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for T2A/MyriadPro-TOsF.]
+%<T2B&lf>  \ProvidesFile{T2BMyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for T2B/MyriadPro-LF.]
+%<T2B&osf> \ProvidesFile{T2BMyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for T2B/MyriadPro-OsF.]
+%<T2B&tlf> \ProvidesFile{T2BMyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for T2B/MyriadPro-TLF.]
+%<T2B&tosf>\ProvidesFile{T2BMyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for T2B/MyriadPro-TOsF.]
+%<T2C&lf>  \ProvidesFile{T2CMyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for T2C/MyriadPro-LF.]
+%<T2C&osf> \ProvidesFile{T2CMyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for T2C/MyriadPro-OsF.]
+%<T2C&tlf> \ProvidesFile{T2CMyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for T2C/MyriadPro-TLF.]
+%<T2C&tosf>\ProvidesFile{T2CMyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for T2C/MyriadPro-TOsF.]
+%<TS1&lf>  \ProvidesFile{TS1MyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for TS1/MyriadPro-LF.]
+%<TS1&osf> \ProvidesFile{TS1MyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for TS1/MyriadPro-OsF.]
+%<TS1&tlf> \ProvidesFile{TS1MyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for TS1/MyriadPro-TLF.]
+%<TS1&tosf>\ProvidesFile{TS1MyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for TS1/MyriadPro-TOsF.]
+%<X2&lf>   \ProvidesFile{X2MyriadPro-LF.fd}    [2010/11/01 v0.1alpha font definitions for X2/MyriadPro-LF.]
+%<X2&osf>  \ProvidesFile{X2MyriadPro-OsF.fd}   [2010/11/01 v0.1alpha font definitions for X2/MyriadPro-OsF.]
+%<X2&tlf>  \ProvidesFile{X2MyriadPro-TLF.fd}   [2010/11/01 v0.1alpha font definitions for X2/MyriadPro-TLF.]
+%<X2&tosf> \ProvidesFile{X2MyriadPro-TOsF.fd}  [2010/11/01 v0.1alpha font definitions for X2/MyriadPro-TOsF.]
+%<OT2&lf>  \ProvidesFile{OT2MyriadPro-LF.fd}   [2010/11/01 v0.1alpha font definitions for OT2/MyriadPro-LF.]
+%<OT2&osf> \ProvidesFile{OT2MyriadPro-OsF.fd}  [2010/11/01 v0.1alpha font definitions for OT2/MyriadPro-OsF.]
+%<OT2&tlf> \ProvidesFile{OT2MyriadPro-TLF.fd}  [2010/11/01 v0.1alpha font definitions for OT2/MyriadPro-TLF.]
+%<OT2&tosf>\ProvidesFile{OT2MyriadPro-TOsF.fd} [2010/11/01 v0.1alpha font definitions for OT2/MyriadPro-TOsF.]
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
@@ -74,7 +74,8 @@
   colorlinks=false,
   pdfborder={0 0 0},
   pdftitle={MyriadPro Support for LaTeX},
-  pdfauthor={Achim Blumensath, Andreas B\"uhmann, Michael Zedler},
+  pdfauthor={Achim Blumensath, Andreas B\"uhmann, Michael Zedler,
+    Sebastian Schubert},
   pdfkeywords={LaTeX, MyriadPro, MnSymbol}
 }
 
@@ -147,7 +148,7 @@
 %
 % \title{MyriadPro Support for \LaTeX}
 % \author{Achim Blumensath \and Andreas B\"uhmann \and Michael Zedler
-% \and ME}
+% \and Sebastian Schubert}
 % \date{\fileversion\ -- \filedate}
 % \maketitle
 % \tableofcontents
@@ -506,31 +507,7 @@
 %
 % \section{Version history}
 %
-% Version 2.0: Initial Release on \acro{CTAN}\\
-% Version 2.1:
-% \begin{compactitem}
-%   \item added package options \option{onlytext} and \option{onlymath}
-%   \item added package option \option{loosequotes}
-%   \item added package option \option{openg}
-%   \item added package options \option{normalsize} and \option{nonormalsize}
-%   \item fixed package option \option{frenchmath}
-%   \item fixed package option \option{abx}
-%   \item added support for \pdfTeX~1.4 \acro{cmap} inclusion
-%   \item update to \pkg{microtype} version~1.8
-%   \item added \pkg{tabfigures} to automatically handle tabular figures in toc, equation labels, bibliographies, enumerations
-%   \item fixed \verb|\t| accent
-%   \item fixed \verb|\r| accent in \acro{OT1} encoding
-%   \item fixed slashed zero in font version 2.000
-%   \item fixed arrows in \acro{TS1} and \acro{U} encodings
-%   \item fixed \acro{LGR} and \acro{LGI} encodings to use $\upvarphi$ instead of $\upphi$
-%   \item fixed {\fontencoding{LGR}\selectfont\char60 R} in \acro{LGI} encoding
-%   \item added punctuation support in \acro{LGI} encoding (thanks to Jens Boerstinghaus)
-%   \item added symbols \verb|\hslash|, \verb|\lambdabar|, \verb|\lambdaslash|
-%   \item fixed side bearings of $\sigma$ in math mode
-%   \item added {\small CODINGSCHEME} statements to encoding files
-%   \item fixed usage of MnSymbol's ``\textbar'' in \pkg{doc.sty}'s module prefix
-%   \item reduce number of raw encodings to five per font
-% \end{compactitem}
+% Version 0.1alpha: Development version
 %
 % \StopEventually{}
 %
