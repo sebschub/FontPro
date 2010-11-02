@@ -1,6 +1,13 @@
-=== MinionPro Source Distribution ===
+=== FontPro Source Distribution ===
 
+    Sebastian Schubert
+
+    currently supporting MinionPro (stable) and MyriadPro (in development)
+
+    forked from the amazing
     http://developer.berlios.de/projects/minionpro
+
+    by
 
     Achim Blumensath
     Andreas B\"uhmann
@@ -11,23 +18,24 @@ These files are public domain.
 Requirements
 ============
 
-o LCDF Typetools, version 2.62 or better (http://www.lcdf.org/type/)
+o LCDF Typetools, version 2.62 until 2.69 (http://www.lcdf.org/type/)
 o fontinst v1.925 or better
 
 Building
 ========
 
-1) Unpack the archive:
-
-  $ tar -xzvf MinionPro-source.tgz
+1) Put the sources in a FOLDER:
 
 2) Copy your OpenType font files into the otf directory.
 
+  $ mkdir $FOLDER/otf
   $ cp /some/path/*.otf otf
 
 3) Run ./scripts/makeall
 
-  $ ./scripts/makeall
+  $ ./scripts/makeall $FONT
+
+Currently, FONT can be MinionPro or MyriadPro.
 
 makeall has some options to specify which metrics to create:
 
@@ -61,7 +69,7 @@ should be put. The default is $TEXMFLOCAL.
 
   $ ./scripts/install /usr/local/teTeX/share/texmf-local
 
-2) Add MinionPro.map to your updmap.cfg and run updmap.
+2) Add $FONT.map to your updmap.cfg and run updmap.
 
 3) If you get errors about insufficient memory you might need to
 increase the values of font_mem_size and font_max in your TeX
