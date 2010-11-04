@@ -67,11 +67,11 @@
 \adjustmetrics{UPPhi}{-10}{-10}{0}{0}{30}
 \adjustmetrics{UPOmega}{0}{0}{0}{0}{30}
 
-\adjustmetrics{UPalpha}{0}{0}{0}{0}{25}
-\adjustmetrics{UPbeta}{0}{0}{0}{10}{10}
-\adjustmetrics{UPgamma}{0}{0}{0}{30}{25}
-\adjustmetrics{UPdelta}{0}{0}{0}{20}{10}
-\adjustmetrics{UPepsilon1}{0}{0}{0}{20}{15}
+\adjustmetrics{UPalpha}{0}{0}{0}{10}{25}
+\adjustmetrics{UPbeta}{0}{0}{0}{0}{10}
+\adjustmetrics{UPgamma}{0}{0}{0}{20}{25}
+\adjustmetrics{UPdelta}{0}{0}{0}{30}{10}
+\adjustmetrics{UPepsilon1}{0}{0}{0}{40}{30}
 \adjustmetrics{UPepsilon}{0}{0}{0}{20}{30}
 \adjustmetrics{UPzeta}{0}{0}{0}{50}{15}
 \adjustmetrics{UPeta}{0}{0}{0}{-10}{35}
@@ -81,20 +81,20 @@
 \adjustmetrics{UPkappa}{0}{0}{0}{0}{35}
 \adjustmetrics{UPlambda}{0}{0}{0}{-90}{10}
 \adjustmetrics{UPmu}{0}{0}{0}{0}{35}
-\adjustmetrics{UPnu}{0}{0}{0}{10}{35}
-\adjustmetrics{UPxi}{0}{0}{0}{20}{25}
+\adjustmetrics{UPnu}{0}{0}{0}{5}{35}
+\adjustmetrics{UPxi}{0}{0}{0}{50}{25}
 \adjustmetrics{UPpi}{0}{0}{0}{10}{25}
 \adjustmetrics{UPpi1}{0}{0}{0}{0}{20}
 \adjustmetrics{UPrho}{0}{0}{0}{20}{30}
 \adjustmetrics{UPrho1}{0}{0}{0}{20}{30}
-\adjustmetrics{UPsigma}{0}{0}{0}{0}{30}
-\adjustmetrics{UPsigma1}{0}{0}{0}{20}{35}
+\adjustmetrics{UPsigma}{0}{0}{0}{10}{30}
+\adjustmetrics{UPsigma1}{0}{0}{0}{40}{35}
 \adjustmetrics{UPtau}{0}{0}{0}{20}{30}
 \adjustmetrics{UPupsilon}{0}{0}{0}{0}{35}
 \adjustmetrics{UPphi}{0}{0}{0}{10}{10}
 \adjustmetrics{UPphi1}{0}{0}{0}{0}{40}
 \adjustmetrics{UPchi}{0}{0}{0}{10}{35}
-\adjustmetrics{UPpsi}{0}{0}{0}{15}{20}
+\adjustmetrics{UPpsi}{0}{0}{0}{5}{20}
 \adjustmetrics{UPomega}{0}{0}{0}{10}{30}
 
 \adjustmetrics{UPdotlessi}{0}{0}{0}{-10}{25}
@@ -177,7 +177,7 @@
 
 \adjustmetrics{ITalpha}{0}{20}{0}{20}{25}
 \adjustmetrics{ITbeta}{10}{10}{0}{90}{10}
-\adjustmetrics{ITgamma}{-20}{10}{0}{50}{35}
+\adjustmetrics{ITgamma}{-20}{10}{0}{20}{35}
 \adjustmetrics{ITdelta}{0}{20}{0}{60}{10}
 \adjustmetrics{ITepsilon1}{-40}{0}{0}{50}{25}
 \adjustmetrics{ITepsilon}{0}{0}{0}{50}{25}
@@ -189,10 +189,10 @@
 \adjustmetrics{ITkappa}{-15}{20}{0}{35}{25}
 \adjustmetrics{ITlambda}{20}{0}{00}{0}{10}
 \adjustmetrics{ITmu}{30}{10}{0}{60}{25}
-\adjustmetrics{ITnu}{-10}{10}{0}{60}{25}
-\adjustmetrics{ITxi}{30}{-10}{0}{90}{10}
-\adjustmetrics{ITpi}{0}{10}{0}{40}{25}
-\adjustmetrics{ITpi1}{0}{20}{0}{50}{20}
+\adjustmetrics{ITnu}{-10}{10}{0}{30}{25}
+\adjustmetrics{ITxi}{30}{-10}{0}{110}{10}
+\adjustmetrics{ITpi}{0}{20}{0}{55}{25}
+\adjustmetrics{ITpi1}{0}{20}{0}{55}{25}
 \adjustmetrics{ITrho}{10}{10}{0}{70}{25}
 \adjustmetrics{ITrho1}{10}{10}{0}{70}{25}
 \adjustmetrics{ITsigma}{0}{40}{-20}{25}{25}

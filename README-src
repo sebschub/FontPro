@@ -64,10 +64,10 @@ makeall has some options to specify which metrics to create:
 Installing
 ==========
 
-1) Run ./scripts/install. You can specify the directory where the files
+1) Run ./scripts/install $FONT. You can specify the directory where the files
 should be put. The default is $TEXMFLOCAL.
 
-  $ ./scripts/install /usr/local/teTeX/share/texmf-local
+  $ ./scripts/install $FONT /usr/local/teTeX/share/texmf-local
 
 2) Add $FONT.map to your updmap.cfg and run updmap.
 
