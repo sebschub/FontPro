@@ -1,0 +1,447 @@
+% Ibycus encoding
+% CODINGSCHEME IBYCUS4 /BASED ON TLG/
+
+% UNICODING uni03DD =: uni03DD uniEFD5 ;
+% UNICODING Sampigreek =: Sampigreek uni03E1 ;
+
+% LIGKERN || = 0 ;
+
+% LIGKERN hyphen hyphen =: endash ; endash hyphen =: emdash ;
+% LIGKERN parenleft parenleft =:  parenleft ;
+% LIGKERN parenright parenright =: parenright ;
+% LIGKERN quoteleft quoteleft =: quotedblleft ;
+% LIGKERN quoteright quoteright =: quotedblright ;
+% LIGKERN less less =: guillemotleft ;
+% LIGKERN greater greater =: guillemotright ;
+% LIGKERN sigma uni1FBE |=: cwm ;
+% LIGKERN Kappa plus =: Koppagreek ;
+% LIGKERN kappa plus =: Koppagreek ;
+% LIGKERN Xi plus =: C ;
+% LIGKERN xi plus =: c ;
+
+% LIGKERN sigma || =:| sigmafinal ; sigma guillemotright =:| sigmafinal ;
+% LIGKERN sigma parenright =:| sigmafinal ; sigma period =:| sigmafinal ;
+% LIGKERN sigma comma =:| sigmafinal ; sigma exclam =:| sigmafinal ;
+% LIGKERN sigma semicolon =:| sigmafinal ; sigma anoteleia =:| sigmafinal ;
+% LIGKERN sigma colon =:| sigmafinal ; sigma plus =: Sampigreek;
+
+% LIGKERN iota plus =: iotadieresis;
+% LIGKERN upsilon plus =: upsilondieresis;
+
+% '
+% LIGKERN quoteright Alpha =:| acute ;
+% LIGKERN quoteright Epsilon =:| acute ;
+% LIGKERN quoteright Eta =:| acute ;
+% LIGKERN quoteright Iota =:| acute ;
+% LIGKERN quoteright Omega =:| acute ;
+% LIGKERN quoteright Omicron =:| acute ;
+% LIGKERN quoteright Upsilon =:| acute ;
+% LIGKERN alpha quoteright =: uni1F71 ;
+% LIGKERN epsilon quoteright =: uni1F73 ;
+% LIGKERN eta quoteright =: uni1F75 ;
+% LIGKERN iota quoteright =: uni1F77 ;
+% LIGKERN omicron quoteright =: uni1F79 ;
+% LIGKERN upsilon quoteright =: uni1F7B ;
+% LIGKERN omega quoteright =: uni1F7D ;
+% LIGKERN iotadieresis quoteright =: uni1FD3 ;
+% LIGKERN upsilondieresis quoteright =: uni1FE3 ;
+
+% `
+% LIGKERN quoteleft Alpha =:| grave  ;
+% LIGKERN quoteleft Epsilon =:| grave ;
+% LIGKERN quoteleft Eta =:| grave ;
+% LIGKERN quoteleft Iota =:| grave ;
+% LIGKERN quoteleft Omega =:| grave ;
+% LIGKERN quoteleft Omicron =:| grave ;
+% LIGKERN quoteleft Upsilon =:| grave ;
+% LIGKERN alpha quoteleft =: uni1F70 ;
+% LIGKERN epsilon quoteleft =: uni1F72 ;
+% LIGKERN eta quoteleft =: uni1F74 ;
+% LIGKERN iota quoteleft =: uni1F76 ;
+% LIGKERN omicron quoteleft =: uni1F78 ;
+% LIGKERN upsilon quoteleft =: uni1F7A ;
+% LIGKERN omega quoteleft =: uni1F7C ;
+% LIGKERN iotadieresis quoteleft =: uni1FD2 ;
+% LIGKERN upsilondieresis quoteleft =: uni1FE2 ;
+
+% ~
+% LIGKERN alpha equal =: uni1FB6 ;
+% LIGKERN eta equal =: uni1FC6 ;
+% LIGKERN iota equal =: uni1FD6 ;
+% LIGKERN upsilon equal =: uni1FE6 ;
+% LIGKERN omega equal =: uni1FF6 ;
+% LIGKERN omicron equal =: otilde ;
+
+% (
+% LIGKERN parenleft Alpha =:| uni1FFE  ;
+% LIGKERN parenleft Epsilon =:| uni1FFE ;
+% LIGKERN parenleft Eta =:| uni1FFE ;
+% LIGKERN parenleft Iota =:| uni1FFE ;
+% LIGKERN parenleft Omega =:| uni1FFE ;
+% LIGKERN parenleft Omicron =:| uni1FFE ;
+% LIGKERN parenleft Upsilon =:| uni1FFE ;
+% LIGKERN parenleft Rho =:| uni1FFE ;
+% LIGKERN parenleft quoteleft =: uni1FDD ;
+% LIGKERN parenleft quoteright =: uni1FDE ;
+% LIGKERN parenleft equal =: uni1FDF ;
+% LIGKERN alpha parenleft =: uni1F01 ;
+% LIGKERN epsilon parenleft =: uni1F11 ;
+% LIGKERN eta parenleft =: uni1F21 ;
+% LIGKERN iota parenleft =: uni1F31 ;
+% LIGKERN omicron parenleft =: uni1F41 ;
+% LIGKERN upsilon parenleft =: uni1F51 ;
+% LIGKERN omega parenleft =: uni1F61 ;
+% LIGKERN rho parenleft =: uni1FE5 ;
+
+% ('
+% LIGKERN uni1F01 quoteright =: uni1F05 ;
+% LIGKERN uni1F11 quoteright =: uni1F15 ;
+% LIGKERN uni1F21 quoteright =: uni1F25 ;
+% LIGKERN uni1F31 quoteright =: uni1F35 ;
+% LIGKERN uni1F41 quoteright =: uni1F45 ;
+% LIGKERN uni1F51 quoteright =: uni1F55 ;
+% LIGKERN uni1F61 quoteright =: uni1F65 ;
+
+% (`
+% LIGKERN uni1F01 quoteleft =: uni1F03 ;
+% LIGKERN uni1F11 quoteleft =: uni1F13 ;
+% LIGKERN uni1F21 quoteleft =: uni1F23 ;
+% LIGKERN uni1F31 quoteleft =: uni1F33 ;
+% LIGKERN uni1F41 quoteleft =: uni1F43 ;
+% LIGKERN uni1F51 quoteleft =: uni1F53 ;
+% LIGKERN uni1F61 quoteleft =: uni1F63 ;
+
+% (=
+% LIGKERN uni1F01 equal =: uni1F07 ;
+% LIGKERN uni1F21 equal =: uni1F27 ;
+% LIGKERN uni1F31 equal =: uni1F37 ;
+% LIGKERN uni1F51 equal =: uni1F57 ;
+% LIGKERN uni1F61 equal =: uni1F67 ;
+
+% )
+% LIGKERN parenright Alpha =:| uni1FBD  ;
+% LIGKERN parenright Epsilon =:| uni1FBD ;
+% LIGKERN parenright Eta =:| uni1FBD ;
+% LIGKERN parenright Iota =:| uni1FBD ;
+% LIGKERN parenright Omega =:| uni1FBD ;
+% LIGKERN parenright Omicron =:| uni1FBD ;
+% LIGKERN parenright Upsilon =:| uni1FBD ;
+% LIGKERN parenright quoteleft =: uni1FCD ;
+% LIGKERN parenright quoteright =: uni1FCE ;
+% LIGKERN parenright equal =: uni1FCF ;
+% LIGKERN alpha parenright =: uni1F00 ;
+% LIGKERN epsilon parenright =: uni1F10 ;
+% LIGKERN eta parenright =: uni1F20 ;
+% LIGKERN iota parenright =: uni1F30 ;
+% LIGKERN omicron parenright =: uni1F40 ;
+% LIGKERN upsilon parenright =: uni1F50 ;
+% LIGKERN omega parenright =: uni1F60 ;
+% LIGKERN rho parenright =: uni1FE4 ;
+
+% )'
+% LIGKERN uni1F00 quoteright =: uni1F04 ;
+% LIGKERN uni1F10 quoteright =: uni1F14 ;
+% LIGKERN uni1F20 quoteright =: uni1F24 ;
+% LIGKERN uni1F30 quoteright =: uni1F34 ;
+% LIGKERN uni1F40 quoteright =: uni1F44 ;
+% LIGKERN uni1F50 quoteright =: uni1F54 ;
+% LIGKERN uni1F60 quoteright =: uni1F64 ;
+
+% )`
+% LIGKERN uni1F00 quoteleft =: uni1F02 ;
+% LIGKERN uni1F10 quoteleft =: uni1F12 ;
+% LIGKERN uni1F20 quoteleft =: uni1F22 ;
+% LIGKERN uni1F30 quoteleft =: uni1F32 ;
+% LIGKERN uni1F40 quoteleft =: uni1F42 ;
+% LIGKERN uni1F50 quoteleft =: uni1F52 ;
+% LIGKERN uni1F60 quoteleft =: uni1F62 ;
+
+% )=
+% LIGKERN uni1F00 equal =: uni1F06 ;
+% LIGKERN uni1F20 equal =: uni1F26 ;
+% LIGKERN uni1F30 equal =: uni1F36 ;
+% LIGKERN uni1F50 equal =: uni1F56 ;
+% LIGKERN uni1F60 equal =: uni1F66 ;
+
+% iota
+% LIGKERN alpha uni1FBE =: uni1FB3 ;
+% LIGKERN uni1F71 uni1FBE =: uni1FB4 ;
+% LIGKERN uni1F00 uni1FBE =: uni1F80 ;
+% LIGKERN uni1F01 uni1FBE =: uni1F81 ;
+% LIGKERN uni1F02 uni1FBE =: uni1F82 ;
+% LIGKERN uni1F03 uni1FBE =: uni1F83 ;
+% LIGKERN uni1F04 uni1FBE =: uni1F84 ;
+% LIGKERN uni1F05 uni1FBE =: uni1F85 ;
+% LIGKERN uni1F06 uni1FBE =: uni1F86 ;
+% LIGKERN uni1F07 uni1FBE =: uni1F87 ;
+% LIGKERN uni1F70 uni1FBE =: uni1FB2 ;
+% LIGKERN uni1FB6 uni1FBE =: uni1FB7 ;
+% LIGKERN eta uni1FBE =: uni1FC3 ;
+% LIGKERN uni1F75 uni1FBE =: uni1FC4 ;
+% LIGKERN uni1F20 uni1FBE =: uni1F90 ;
+% LIGKERN uni1F21 uni1FBE =: uni1F91 ;
+% LIGKERN uni1F22 uni1FBE =: uni1F92 ;
+% LIGKERN uni1F23 uni1FBE =: uni1F93 ;
+% LIGKERN uni1F24 uni1FBE =: uni1F94 ;
+% LIGKERN uni1F25 uni1FBE =: uni1F95 ;
+% LIGKERN uni1F26 uni1FBE =: uni1F96 ;
+% LIGKERN uni1F27 uni1FBE =: uni1F97 ;
+% LIGKERN uni1F74 uni1FBE =: uni1FC2 ;
+% LIGKERN uni1FC6 uni1FBE =: uni1FC7 ;
+% LIGKERN omega uni1FBE =: uni1FF3 ;
+% LIGKERN uni1F7D uni1FBE =: uni1FF4 ;
+% LIGKERN uni1F60 uni1FBE =: uni1FA0 ;
+% LIGKERN uni1F61 uni1FBE =: uni1FA1 ;
+% LIGKERN uni1F62 uni1FBE =: uni1FA2 ;
+% LIGKERN uni1F63 uni1FBE =: uni1FA3 ;
+% LIGKERN uni1F64 uni1FBE =: uni1FA4 ;
+% LIGKERN uni1F65 uni1FBE =: uni1FA5 ;
+% LIGKERN uni1F66 uni1FBE =: uni1FA6 ;
+% LIGKERN uni1F67 uni1FBE =: uni1FA7 ;
+% LIGKERN uni1F7C uni1FBE =: uni1FF2 ;
+% LIGKERN uni1FF6 uni1FBE =: uni1FF7 ;
+
+% LIGKERN Iota exclam |=: space_dotbelowcomb_Iota ;
+% LIGKERN uni03DD exclam |=: space_dotbelowcomb_Iota ;
+% LIGKERN iota exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN iotadieresis exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F77 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F76 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1FD3 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F31 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F33 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F37 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F35 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F34 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F32 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F30 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1F36 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1FD6 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN uni1FD2 exclam |=: space_dotbelowcomb_iota ;
+% LIGKERN upsilon exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN upsilondieresis exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F7B exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1FE6 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F7A exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F51 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F53 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F55 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F57 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F50 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F52 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F56 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1F54 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1FE3 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1FE2 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN mu exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN nu exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN rho exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1FE4 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN uni1FE5 exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN delta exclam |=: space_dotbelowcomb_upsilon ;
+% LIGKERN lambda exclam |=: space_dotbelowcomb_lambda ;
+% LIGKERN pi exclam |=: space_dotbelowcomb_lambda ;
+% LIGKERN sigma exclam |=: space_dotbelowcomb_lambda ;
+% LIGKERN beta exclam |=: space_dotbelowcomb_beta ;
+% LIGKERN tau exclam |=: space_dotbelowcomb_beta ;
+% LIGKERN rho exclam |=: space_dotbelowcomb_beta ;
+% LIGKERN zeta exclam |=: space_dotbelowcomb_zeta ;
+% LIGKERN sigmafinal exclam |=: space_dotbelowcomb_zeta ;
+% LIGKERN xi exclam |=: space_dotbelowcomb_zeta ;
+% LIGKERN eta exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F75 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F20 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F21 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F24 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F26 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F22 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F27 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F23 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F25 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1FC6 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN uni1F74 exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN Zeta    exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1FC3 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1FC4 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1FC2 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1FC7 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1F90 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1F91 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1F92 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1F93 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1F94 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1F95 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1F96 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN uni1F97 exclam |=: space_dotbelowcomb_etasub ;
+% LIGKERN Gamma exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN F exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN Upsilon exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN Chi exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN Alpha exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN Lambda exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN Nu exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN Pi exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN Delta exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN Kappa exclam |=: space_dotbelowcomb_Gamma ;
+% LIGKERN omicron exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN otilde exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN uni1F79 exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN uni1F40 exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN uni1F41 exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN uni1F42 exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN uni1F45 exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN uni1F43 exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN uni1F44 exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN uni1F78 exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN kappa exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN theta exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN Epsilon exclam |=: space_dotbelowcomb_omicron ;
+% LIGKERN alpha exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F70 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F00 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F04 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1FB3 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1FB2 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F06 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F84 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F86 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F80 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F02 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F82 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1FB6 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1FB7 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1FB4 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F71 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN omega exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1FF3 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FF4 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FF2 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FF7 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FA0 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FA1 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FA2 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FA3 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FA4 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FA5 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FA6 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1FA7 exclam |=: space_dotbelowcomb_omegasub ;
+% LIGKERN uni1F7D exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1FF6 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F01 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F05 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F81 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F85 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F07 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F03 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F87 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F83 exclam |=: space_dotbelowcomb_alphasub ;
+% LIGKERN uni1F60 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F62 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F66 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F64 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F61 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F63 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F67 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F65 exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN uni1F7C exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN Xi exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN Sigma exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN C exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN Beta exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN Tau exclam |=: space_dotbelowcomb_alpha ;
+% LIGKERN epsilon exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN uni1F10 exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN uni1F11 exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN uni1F12 exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN uni1F14 exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN uni1F13 exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN uni1F15 exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN uni1F73 exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN uni1F72 exclam |=: space_dotbelowcomb_epsilon ;
+% LIGKERN Eta exclam |=: space_dotbelowcomb_Eta ;
+% LIGKERN Phi exclam |=: space_dotbelowcomb_Eta ;
+% LIGKERN Omicron exclam |=: space_dotbelowcomb_Eta ;
+% LIGKERN Theta exclam |=: space_dotbelowcomb_Eta ;
+% LIGKERN c exclam |=: space_dotbelowcomb_beta ;
+% LIGKERN Omega exclam |=: space_dotbelowcomb_Eta ;
+% LIGKERN Rho exclam |=: space_dotbelowcomb_Eta ;
+% LIGKERN psi exclam |=: space_dotbelowcomb_psi ;
+% LIGKERN phi1 exclam |=: space_dotbelowcomb_psi ;
+% LIGKERN Sampigreek exclam |=: space_dotbelowcomb_psi ;
+% LIGKERN gamma exclam |=: space_dotbelowcomb_gamma ;
+% LIGKERN Koppagreek exclam |=: space_dotbelowcomb_gamma ;
+% LIGKERN chi exclam |=: space_dotbelowcomb_gamma ;
+% LIGKERN Psi exclam |=: space_dotbelowcomb_Psi ;
+% LIGKERN Mu exclam |=: space_dotbelowcomb_Mu ; 
+
+/CronosPro-IbycusHTGEncoding [          % now 256 chars follow
+% 0x00
+  /space   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0x10
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0x20
+/space /exclam /dieresis /dieresisacute
+/dieresisgrave /percent /endash /quoteright
+/parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
+% 0x30
+/zero /one /two /three /four /five /six /seven
+/eight /nine /colon /anoteleia /less /equal /greater /semicolon
+% 0x40
+/uni1FDF /Alpha /Beta /Xi /Delta /Epsilon /Phi /Gamma
+/Eta /Iota /c /Kappa /Lambda /Mu /Nu /Omicron
+% 0x50
+/Pi /Theta /Rho /Sigma /Tau /Upsilon /F /Omega
+/Chi /Psi /Zeta /bracketleft
+/uni1FCF /bracketright /uni1FCE /uni1FCD
+% 0x60
+/quoteleft /alpha /beta /xi /delta /epsilon /phi1 /gamma
+/eta /iota /sigmafinal /kappa /lambda /mu /nu /omicron
+% 0x70
+/pi /theta /rho /sigma /tau /upsilon /uni03DD /omega
+/chi /psi /zeta /guillemotleft
+/uni1FBE /guillemotright /tilde /emdash
+% 0x80
+/uni1F70 /uni1F01 /uni1F00 /uni1FDD
+/epsilonasperperispomene /otilde /Koppagreek /uni1FDE
+/uni1F71 /uni1F05 /uni1F04 /uni1F03
+/epsilonperispomene /.notdef /Koppagreek /Sampigreek
+% 0x90
+/uni1FB6 /uni1F07
+/uni1F06 /uni1F02
+/.notdef /.notdef /C /cwm
+/uni1F74 /uni1F21 /uni1F20 /uni1F23
+/.notdef /.notdef /.notdef /.notdef
+% 0xA0
+/uni1F75 /uni1F25 /uni1F24 /uni1F22
+/.notdef /.notdef /.notdef /.notdef
+/uni1FC6 /uni1F27 /uni1F26 /quotedblleft
+/.notdef /.notdef /.notdef /quotedblright
+% 0xB0
+/uni1F7C /uni1F61 /uni1F60 /uni1F63
+/.notdef /.notdef /.notdef /.notdef
+/uni1F7D /uni1F65 /uni1F64 /uni1F62
+/.notdef /grave /tonos /.notdef
+% 0xC0
+/uni1FF6 /uni1F67 /uni1F66 /uni1FFE
+/.notdef /breve /macron /uni1FBD
+/uni1F76 /uni1F31 /uni1F30 /uni1F33
+/uni1F7A /uni1F51 /uni1F50 /uni1F53
+% 0xD0
+/uni1F77 /uni1F35 /uni1F34 /uni1F32
+/uni1F7B /uni1F55 /uni1F54 /uni1F52
+/uni1FD6 /uni1F37 /uni1F36 /braceleft
+/uni1FE6 /uni1F57
+/uni1F56 /braceright
+% 0xE0
+/uni1F72 /uni1F11 /uni1F10 /uni1F12
+/uni1F78 /uni1F41 /uni1F40 /uni1F43
+/uni1F73 /uni1F15 /uni1F14 /uni1F13
+/uni1F79 /uni1F45 /uni1F44 /uni1F42
+% 0xF0
+/iotadieresis /uni1FD2 /uni1FD3 /.notdef
+/upsilondieresis /uni1FE2 /uni1FE3 /.notdef
+/.notdef /.notdef /.notdef /uni1FE5
+/uni1FE4 /dagger /daggerdbl /h
+] def

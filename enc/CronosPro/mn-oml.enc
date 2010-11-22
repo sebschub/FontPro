@@ -1,0 +1,62 @@
+% TeX math italic encoding.
+% CODINGSCHEME TEX MATH ITALIC
+% UNICODING digamma          =: uni03DD uniEFD5 ;
+% UNICODING sigmafinal       =: sigmafinal sigma ;
+% UNICODING pisymbolgreek    =: pisymbolgreek pi ;
+% UNICODING theta1           =: theta1 theta ;
+% UNICODING phi1             =: phi1 phi ;
+% UNICODING openg            =: uniF6C6 g ;
+%
+/CronosPro-OMLEncoding [          % now 256 chars follow
+% 0x0
+/Gamma /Delta /Theta /Lambda /Xi /Pi /Sigma /Upsilon
+/Phi /Psi /Omega /alpha /beta /gamma /delta
+/ecyrillic   % this is not the right glyph but looks similar
+% 0x10
+/zeta /eta /theta /iota /kappa /lambda /mu /nu
+/xi /pi /rho /sigma /tau /upsilon /phi /chi
+% 0x20
+/psi /omega /epsilon /theta1 /pisymbolgreek /rho1 /sigmafinal /phi1
+/arrowlefttophalf /arrowleftbothalf /arrowrighttophalf /arrowrightbothalf
+/arrowhookleft /arrowhookright /triangleright /triangleleft
+% 0x30
+/zero /one /two /three /four /five /six /seven
+/eight /nine /period /comma /less /slash /greater /star
+% 0x40
+/partialdiff /A /B /C /D /E /F /G
+/H /I /J /K /L /M /N /O
+% 0x50
+/P /Q /R /S /T /U /V /W
+/X /Y /Z /flat /natural /sharp /slurbelow /slurabove
+% 0x60
+/lscript /a /b /c /d /e /f /g
+/h /i /j /k /l /m /n /o
+% 0x70
+/p /q /r /s /t /u /v /w
+/x /y /z /dotlessi /dotlessj /weierstrass /vector /cyrflex
+% 0x80
+/integral /hbar /digamma /kappasymbolgreek
+/betasymbolgreek /ereversedcyrillic /zecyrillic /eth
+/.notdef /uniF638 /infinity /summation /product /openg /.notdef /.notdef
+% 0x90
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xA0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xB0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xC0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xD0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xE0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xF0
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /space
+] def

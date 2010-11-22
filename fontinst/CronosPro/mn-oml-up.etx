@@ -1,0 +1,598 @@
+\relax
+\encoding
+
+\needsfontinstversion{1.917}
+
+\setstr{codingscheme}{TEX MATH ITALIC}
+\setstr{encodingname}{TeXMathItalicEncoding}
+
+\setint{italicslant}{0}
+\setint{interword}{0}            % interword space
+\setint{stretchword}{0}          % interword stretch
+\setint{shrinkword}{0}           % interword shrink
+
+\ifisglyph{x}\then
+   \setint{xheight}{\height{x}}
+\Else
+   \setint{xheight}{500}
+\Fi
+
+\setint{quad}{1000}              % quad
+\setint{extraspace}{0}           % extra space after .
+
+\setfontdimen{1}{italicslant}    % italic slant
+\setfontdimen{2}{interword}      % interword space
+\setfontdimen{3}{stretchword}    % interword stretch
+\setfontdimen{4}{shrinkword}     % interword shrink
+\setfontdimen{5}{xheight}        % x-height
+\setfontdimen{6}{quad}           % quad
+\setfontdimen{7}{extraspace}     % extra space after .
+
+
+\setslot{UPGamma}
+   \comment{The greek letter `$\Gamma$'.}
+\endsetslot
+
+\setslot{UPDelta}
+   \comment{The greek letter `$\Delta$'.}
+\endsetslot
+
+\setslot{UPTheta}
+   \comment{The greek letter `$\Theta$'.}
+\endsetslot
+
+\setslot{UPLambda}
+   \comment{The greek letter `$\Lambda$'.}
+\endsetslot
+
+\setslot{UPXi}
+   \comment{The greek letter `$\Xi$'.}
+\endsetslot
+
+\setslot{UPPi}
+   \comment{The greek letter `$\Pi$'.}
+\endsetslot
+
+\setslot{UPSigma}
+   \comment{The greek letter `$\Sigma$'.}
+\endsetslot
+
+\setslot{UPUpsilon}
+   \comment{The greek letter `$\Upsilon$' named `Upsilon1' by Adobe.}
+\endsetslot
+
+\setslot{UPPhi}
+   \comment{The greek letter `$\Phi$'.}
+\endsetslot
+
+\setslot{UPPsi}
+   \comment{The greek letter `$\Psi$'.}
+\endsetslot
+
+\setslot{UPOmega}
+   \comment{The greek letter `$\Omega$'.}
+\endsetslot
+
+\setslot{UPalpha}
+   \comment{The greek letter `$\alpha$'.}
+\endsetslot
+
+\setslot{UPbeta}
+   \comment{The greek letter `$\beta$'.}
+\endsetslot
+
+\setslot{UPgamma}
+   \comment{The greek letter `$\gamma$'.}
+\endsetslot
+
+\setslot{UPdelta}
+   \comment{The greek letter `$\delta$'.}
+\endsetslot
+
+\setslot{UPepsilon1}
+   \comment{The greek letter `$\epsilon$'.}
+\endsetslot
+
+\setslot{UPzeta}
+   \comment{The greek letter `$\zeta$'.}
+\endsetslot
+
+\setslot{UPeta}
+   \comment{The greek letter `$\eta$'.}
+\endsetslot
+
+\setslot{UPtheta}
+   \comment{The greek letter `$\theta$'.}
+\endsetslot
+
+\setslot{UPiota}
+   \comment{The greek letter `$\iota$'.}
+\endsetslot
+
+\setslot{UPkappa}
+   \comment{The greek letter `$\kappa$'.}
+\endsetslot
+
+\setslot{UPlambda}
+   \comment{The greek letter `$\lambda$'.}
+\endsetslot
+
+\setslot{UPmu}
+   \comment{The greek letter `$\mu$'.}
+\endsetslot
+
+\setslot{UPnu}
+   \comment{The greek letter `$\nu$'.}
+\endsetslot
+
+\setslot{UPxi}
+   \comment{The greek letter `$\xi$'.}
+\endsetslot
+
+\setslot{UPpi}
+   \comment{The greek letter `$\pi$'.}
+\endsetslot
+
+\setslot{UPrho}
+   \comment{The greek letter `$\rho$'.}
+\endsetslot
+
+\setslot{UPsigma}
+   \comment{The greek letter `$\sigma$'.}
+\endsetslot
+
+\setslot{UPtau}
+   \comment{The greek letter `$\tau$'.}
+\endsetslot
+
+\setslot{UPupsilon}
+   \comment{The greek letter `$\upsilon$'.}
+\endsetslot
+
+\setslot{UPphi}
+   \comment{The greek letter `$\phi$'.}
+\endsetslot
+
+\setslot{UPchi}
+   \comment{The greek letter `$\chi$'.}
+\endsetslot
+
+\setslot{UPpsi}
+   \comment{The greek letter `$\psi$'.}
+\endsetslot
+
+\setslot{UPomega}
+   \comment{The greek letter `$\omega$'.}
+\endsetslot
+
+\setslot{UPepsilon}
+   \comment{The greek letter `$\varepsilon$'.}
+\endsetslot
+
+\setslot{UPtheta1}
+   \comment{The greek letter `$\vartheta$'.}
+\endsetslot
+
+\setslot{UPpi1}
+   \comment{The greek letter `$\varpi$', rather unfortunately named
+      `omega1' by Adobe.}
+\endsetslot
+
+\setslot{UPrho1}
+   \comment{The greek letter `$\varrho$'.}
+\endsetslot
+
+\setslot{UPsigma1}
+   \comment{The greek letter `$\varsigma$'.}
+\endsetslot
+
+\setslot{UPphi1}
+   \comment{The greek letter `$\varphi$'.}
+\endsetslot
+
+\setslot{UPharpoonleftup}
+   \comment{The harpoon symbol `$\leftharpoonup$',
+       named `arrowlefttophalf' in MathTime and Lucida New Math.}
+\endsetslot
+
+\setslot{UPharpoonleftdown}
+   \comment{The harpoon symbol `$\leftharpoondown$',
+       named `arrowleftbothalf' in MathTime and Lucida New Math.}
+\endsetslot
+
+\setslot{UPharpoonrightup}
+   \comment{The harpoon symbol `$\rightharpoonup$',
+       named `arrowrighttophalf' in MathTime and Lucida New Math.}
+\endsetslot
+
+\setslot{UPharpoonrightdown}
+   \comment{The harpoon symbol `$\rightharpoondown$',
+       named `arrowrightbothalf' in MathTime and Lucida New Math.}
+\endsetslot
+
+\setslot{UPhookrightchar}
+   \comment{The building block for `$\hookrightarrow$',
+       named `arrowhookleft' in MathTime and Lucida New Math.}
+\endsetslot
+
+\setslot{UPhookleftchar}
+   \comment{The building block for `$\hookleftarrow$',
+       named `arrowhookright' in MathTime and Lucida New Math.}
+\endsetslot
+
+\setslot{UPtriangleright}
+   \comment{The triangle symbol `$\triangleright$'.}
+\endsetslot
+
+\setslot{UPtriangleleft}
+   \comment{The triangle symbol `$\triangleleft$'.}
+\endsetslot
+
+\setslot{UPzerooldstyle}
+   \comment{The oldstyle digit zero `0'.}
+\endsetslot
+
+\setslot{UPoneoldstyle}
+   \comment{The oldstyle digit one `1'.}
+\endsetslot
+
+\setslot{UPtwooldstyle}
+   \comment{The oldstyle digit two `2'.}
+\endsetslot
+
+\setslot{UPthreeoldstyle}
+   \comment{The oldstyle digit three `3'.}
+\endsetslot
+
+\setslot{UPfouroldstyle}
+   \comment{The oldstyle digit four `4'.}
+\endsetslot
+
+\setslot{UPfiveoldstyle}
+   \comment{The oldstyle digit five `5'.}
+\endsetslot
+
+\setslot{UPsixoldstyle}
+   \comment{The oldstyle digit six `6'.}
+\endsetslot
+
+\setslot{UPsevenoldstyle}
+   \comment{The oldstyle digit seven `7'.}
+\endsetslot
+
+\setslot{UPeightoldstyle}
+   \comment{The oldstyle digit eight `8'.}
+\endsetslot
+
+\setslot{UPnineoldstyle}
+   \comment{The oldstyle digit nine `9'.}
+\endsetslot
+
+\setslot{UPperiod}
+   \comment{The period `$.$'.}
+\endsetslot
+
+\setslot{UPcomma}
+   \comment{The comma `$,$'.}
+\endsetslot
+
+\setslot{UPless}
+   \comment{The less-than sign `$<$'.}
+\endsetslot
+
+\setslot{UPslash}
+   \comment{The forwards oblique `$/$'.}
+\endsetslot
+
+\setslot{UPgreater}
+   \comment{The greater-than sign `$>$'.}
+\endsetslot
+
+\setslot{UPstar}
+   \comment{The star symbol `$\star$'.}
+\endsetslot
+
+\setslot{UPpartialdiff}
+   \comment{The partial differentiation symbol `$\partial$'.}
+\endsetslot
+
+\setslot{UPA}
+   \comment{The letter `$\mathnormal{A}$'.}
+\endsetslot
+
+\setslot{UPB}
+   \comment{The letter `$\mathnormal{B}$'.}
+\endsetslot
+
+\setslot{UPC}
+   \comment{The letter `$\mathnormal{C}$'.}
+\endsetslot
+
+\setslot{UPD}
+   \comment{The letter `$\mathnormal{D}$'.}
+\endsetslot
+
+\setslot{UPE}
+   \comment{The letter `$\mathnormal{E}$'.}
+\endsetslot
+
+\setslot{UPF}
+   \comment{The letter `$\mathnormal{F}$'.}
+\endsetslot
+
+\setslot{UPG}
+   \comment{The letter `$\mathnormal{G}$'.}
+\endsetslot
+
+\setslot{UPH}
+   \comment{The letter `$\mathnormal{H}$'.}
+\endsetslot
+
+\setslot{UPI}
+   \comment{The letter `$\mathnormal{I}$'.}
+\endsetslot
+
+\setslot{UPJ}
+   \comment{The letter `$\mathnormal{J}$'.}
+\endsetslot
+
+\setslot{UPK}
+   \comment{The letter `$\mathnormal{K}$'.}
+\endsetslot
+
+\setslot{UPL}
+   \comment{The letter `$\mathnormal{L}$'.}
+\endsetslot
+
+\setslot{UPM}
+   \comment{The letter `$\mathnormal{M}$'.}
+\endsetslot
+
+\setslot{UPN}
+   \comment{The letter `$\mathnormal{N}$'.}
+\endsetslot
+
+\setslot{UPO}
+   \comment{The letter `$\mathnormal{O}$'.}
+\endsetslot
+
+\setslot{UPP}
+   \comment{The letter `$\mathnormal{P}$'.}
+\endsetslot
+
+\setslot{UPQ}
+   \comment{The letter `$\mathnormal{Q}$'.}
+\endsetslot
+
+\setslot{UPR}
+   \comment{The letter `$\mathnormal{R}$'.}
+\endsetslot
+
+\setslot{UPS}
+   \comment{The letter `$\mathnormal{S}$'.}
+\endsetslot
+
+\setslot{UPT}
+   \comment{The letter `$\mathnormal{T}$'.}
+\endsetslot
+
+\setslot{UPU}
+   \comment{The letter `$\mathnormal{U}$'.}
+\endsetslot
+
+\setslot{UPV}
+   \comment{The letter `$\mathnormal{V}$'.}
+\endsetslot
+
+\setslot{UPW}
+   \comment{The letter `$\mathnormal{W}$'.}
+\endsetslot
+
+\setslot{UPX}
+   \comment{The letter `$\mathnormal{X}$'.}
+\endsetslot
+
+\setslot{UPY}
+   \comment{The letter `$\mathnormal{Y}$'.}
+\endsetslot
+
+\setslot{UPZ}
+   \comment{The letter `$\mathnormal{Z}$'.}
+\endsetslot
+
+\setslot{UPflat}
+   \comment{The flat musical symbol `$\flat$'.}
+\endsetslot
+
+\setslot{UPnatural}
+   \comment{The natural musical symbol `$\natural$'.}
+\endsetslot
+
+\setslot{UPsharp}
+   \comment{The sharp musical symbol `$\sharp$'.}
+\endsetslot
+
+\setslot{UPslurbelow}
+   \comment{The slur symbol `$\smile$'.}
+\endsetslot
+
+\setslot{UPslurabove}
+   \comment{The slur symbol `$\frown$'.}
+\endsetslot
+
+\setslot{UPlscript}
+   \comment{The script letter `$\ell$'.}
+\endsetslot
+
+\setslot{UPa}
+   \comment{The letter `$\mathnormal{a}$'.}
+\endsetslot
+
+\setslot{UPb}
+   \comment{The letter `$\mathnormal{b}$'.}
+\endsetslot
+
+\setslot{UPc}
+   \comment{The letter `$\mathnormal{c}$'.}
+\endsetslot
+
+\setslot{UPd}
+   \comment{The letter `$\mathnormal{d}$'.}
+\endsetslot
+
+\setslot{UPe}
+   \comment{The letter `$\mathnormal{e}$'.}
+\endsetslot
+
+\setslot{UPf}
+   \comment{The letter `$\mathnormal{f}$'.}
+\endsetslot
+
+\setslot{UPg}
+   \comment{The letter `$\mathnormal{g}$'.}
+\endsetslot
+
+\setslot{UPh}
+   \comment{The letter `$\mathnormal{h}$'.}
+\endsetslot
+
+\setslot{UPi}
+   \comment{The letter `$\mathnormal{i}$'.}
+\endsetslot
+
+\setslot{UPj}
+   \comment{The letter `$\mathnormal{j}$'.}
+\endsetslot
+
+\setslot{UPk}
+   \comment{The letter `$\mathnormal{k}$'.}
+\endsetslot
+
+\setslot{UPl}
+   \comment{The letter `$\mathnormal{l}$'.}
+\endsetslot
+
+\setslot{UPm}
+   \comment{The letter `$\mathnormal{m}$'.}
+\endsetslot
+
+\setslot{UPn}
+   \comment{The letter `$\mathnormal{n}$'.}
+\endsetslot
+
+\setslot{UPo}
+   \comment{The letter `$\mathnormal{o}$'.}
+\endsetslot
+
+\setslot{UPp}
+   \comment{The letter `$\mathnormal{p}$'.}
+\endsetslot
+
+\setslot{UPq}
+   \comment{The letter `$\mathnormal{q}$'.}
+\endsetslot
+
+\setslot{UPr}
+   \comment{The letter `$\mathnormal{r}$'.}
+\endsetslot
+
+\setslot{UPs}
+   \comment{The letter `$\mathnormal{s}$'.}
+\endsetslot
+
+\setslot{UPt}
+   \comment{The letter `$\mathnormal{t}$'.}
+\endsetslot
+
+\setslot{UPu}
+   \comment{The letter `$\mathnormal{u}$'.}
+\endsetslot
+
+\setslot{UPv}
+   \comment{The letter `$\mathnormal{v}$'.}
+\endsetslot
+
+\setslot{UPw}
+   \comment{The letter `$\mathnormal{w}$'.}
+\endsetslot
+
+\setslot{UPx}
+   \comment{The letter `$\mathnormal{x}$'.}
+\endsetslot
+
+\setslot{UPy}
+   \comment{The letter `$\mathnormal{y}$'.}
+\endsetslot
+
+\setslot{UPz}
+   \comment{The letter `$\mathnormal{z}$'.}
+\endsetslot
+
+\setslot{UPdotlessi}
+   \comment{The dotless letter `$\imath$'.}
+\endsetslot
+
+\setslot{UPdotlessj}
+   \comment{The dotless letter `$\jmath$'.}
+\endsetslot
+
+\setslot{UPweierstrass}
+   \comment{The Weierstrass P symbol `$\wp$'.}
+\endsetslot
+
+\setslot{UPvector}
+   \comment{The vector accent symbol `$\vec{x}$'.}
+\endsetslot
+
+\setslot{UPtie}
+   \comment{The tie accent symbol `\t oo'.}
+\endsetslot
+
+\setslot{UPintegral}
+\endsetslot
+
+\setslot{UPhbar}
+\endsetslot
+
+\setslot{UPdigamma}
+\endsetslot
+
+\setslot{UPkappa1}
+\endsetslot
+
+\setslot{UPbeta1}
+\endsetslot
+
+\setslot{UPbackepsilon}
+\endsetslot
+
+\setslot{UPbackepsilon1}
+\endsetslot
+
+\setslot{UPeth}
+\endsetslot
+
+% one empty slot
+
+\nextslot{137}
+\setslot{UPslashedzero}
+\endsetslot
+
+\setslot{UPinfinity}
+\endsetslot
+
+\setslot{UPsummation}
+\endsetslot
+
+\setslot{UPproduct}
+\endsetslot
+
+\setslot{UPopeng}
+\endsetslot
+
+\nextslot{255}
+\setslot{skew}
+\endsetslot
+
+\endencoding
+% vim:set ft=tex:
