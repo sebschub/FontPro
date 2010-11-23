@@ -237,6 +237,7 @@
 % \item[\option{abx}]   use the calligraphic symbols provided by mathabx:
 %                       \IfFileExists{mathabx.sty}{{\font\testabx=mathc10\testabx ABCabc}}{}\par
 %                       (This font contains also lowercase letters, but it is not quite finished.)
+% \item[\option{crswash}] use the swash letters from CronosPro
 % \end{options}
 %
 % \subsubsection*{Blackboard bold letters}
@@ -559,6 +560,8 @@
 \newcommand\My@Math@Family{MyriadPro-\My@Math@Fig}
 \newcommand\My@Math@TFamily{MyriadPro-T\My@Math@Fig}
 \newcommand\My@Math@LetterShape{it}
+\newcommand\Cr@Math@Family{CronosPro-\My@Math@Fig}
+\newcommand\Cr@Math@TFamily{CronosPro-T\My@Math@Fig}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -598,6 +601,13 @@
 %  \def\My@load@cal{
 %    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
 %  }
+}
+\DeclareOption{crswash}{
+  \def\My@load@cal{
+    \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
+    \SetMathAlphabet\mathcal{bold}       {T1}{\Cr@Math@Family} {eb}{sw}
+    \SetMathAlphabet\mathcal{tabular}    {T1}{\Cr@Math@TFamily}{m} {sw}
+    \SetMathAlphabet\mathcal{boldtabular}{T1}{\Cr@Math@TFamily}{eb}{sw}}
 }
 %    \end{macrocode}
 %
