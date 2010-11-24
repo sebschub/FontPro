@@ -1,0 +1,21 @@
+General
+=======
+
+* make scripts run with a lcdf typetools version > 2.69
+
+
+Myriad Pro
+==========
+
+* accent positions of mathrm letters
+* kerning
+* integrals including integral from Myriad Pro fonts
+* adaptation of MnSymbols
+
+
+Cronos Pro
+==========
+
+* some kind of math support
+* kerning
+* clean up of CronosPro.dtx
