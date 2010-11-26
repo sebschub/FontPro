@@ -80,7 +80,6 @@
 }
 
 \IfFileExists{lmodern.sty}{%
-  \renewcommand{\sfdefault}{lmss}%
   \renewcommand{\ttdefault}{lmtt}%
   \DeclareMathAlphabet\mathsf    {T1}{lmss}{m}{n}%
 }{}
@@ -1217,32 +1216,32 @@
 \if@My@Math@
   \newcommand\My@Decl@Myriad@Ints{%
 %    \end{macrocode}
-% Replace |MnSymbolF| by |MnSymbolFI|.
+% Replace |MnSymbolF| by |MySymbolFI|.
 %    \begin{macrocode}
-    \DeclareFontFamily{U}{MnSymbolFI}{}
-    \DeclareFontShape{U}{MnSymbolFI}{m}{it}{
-        <-6>  MnSymbolFI\My@myriadint@opticals5
-       <6-7>  MnSymbolFI\My@myriadint@opticals6
-       <7-8>  MnSymbolFI\My@myriadint@opticals7
-       <8-9>  MnSymbolFI\My@myriadint@opticals8
-       <9-10> MnSymbolFI\My@myriadint@opticals9
-      <10-12> MnSymbolFI\My@myriadint@opticals10
-      <12->   MnSymbolFI\My@myriadint@opticals12
+    \DeclareFontFamily{U}{MySymbolFI}{}
+    \DeclareFontShape{U}{MySymbolFI}{m}{it}{
+        <-6>  MySymbolFI\My@myriadint@opticals5
+       <6-7>  MySymbolFI\My@myriadint@opticals6
+       <7-8>  MySymbolFI\My@myriadint@opticals7
+       <8-9>  MySymbolFI\My@myriadint@opticals8
+       <9-10> MySymbolFI\My@myriadint@opticals9
+      <10-12> MySymbolFI\My@myriadint@opticals10
+      <12->   MySymbolFI\My@myriadint@opticals12
     }{}
-    \DeclareFontShape{U}{MnSymbolFI}{b}{it}{
-        <-6>  MnSymbolFI\My@myriadint@bold\My@myriadint@opticals5
-       <6-7>  MnSymbolFI\My@myriadint@bold\My@myriadint@opticals6
-       <7-8>  MnSymbolFI\My@myriadint@bold\My@myriadint@opticals7
-       <8-9>  MnSymbolFI\My@myriadint@bold\My@myriadint@opticals8
-       <9-10> MnSymbolFI\My@myriadint@bold\My@myriadint@opticals9
-      <10-12> MnSymbolFI\My@myriadint@bold\My@myriadint@opticals10
-      <12->   MnSymbolFI\My@myriadint@bold\My@myriadint@opticals12
+    \DeclareFontShape{U}{MySymbolFI}{b}{it}{
+        <-6>  MySymbolFI\My@myriadint@bold\My@myriadint@opticals5
+       <6-7>  MySymbolFI\My@myriadint@bold\My@myriadint@opticals6
+       <7-8>  MySymbolFI\My@myriadint@bold\My@myriadint@opticals7
+       <8-9>  MySymbolFI\My@myriadint@bold\My@myriadint@opticals8
+       <9-10> MySymbolFI\My@myriadint@bold\My@myriadint@opticals9
+      <10-12> MySymbolFI\My@myriadint@bold\My@myriadint@opticals10
+      <12->   MySymbolFI\My@myriadint@bold\My@myriadint@opticals12
     }{}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-    \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
-    \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
+    \DeclareSymbolFont{symbols}  {U}{MySymbolFI}{m}{it}
+    \SetSymbolFont{symbols}{bold}{U}{MySymbolFI}{b}{it}
 %    \end{macrocode}
 % Make the original integral symbols available as |\var|\dots.
 %    \begin{macrocode}

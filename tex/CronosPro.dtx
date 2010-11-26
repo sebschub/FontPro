@@ -1139,10 +1139,10 @@
 \if@Cr@Math@
   \newcommand\Cr@Decl@Minion@Ints{%
 %    \end{macrocode}
-% Replace |MnSymbolF| by |MnSymbolFI|.
+% Replace |MnSymbolF| by |CrSymbolFI|.
 %    \begin{macrocode}
-    \DeclareFontFamily{U}{MnSymbolFI}{}
-    \DeclareFontShape{U}{MnSymbolFI}{m}{it}{
+    \DeclareFontFamily{U}{CrSymbolFI}{}
+    \DeclareFontShape{U}{CrSymbolFI}{m}{it}{
         <-6>  CrSymbolFI\Cr@minionint@opticals5
        <6-7>  CrSymbolFI\Cr@minionint@opticals6
        <7-8>  CrSymbolFI\Cr@minionint@opticals7
@@ -1151,7 +1151,7 @@
       <10-12> CrSymbolFI\Cr@minionint@opticals10
       <12->   CrSymbolFI\Cr@minionint@opticals12
     }{}
-    \DeclareFontShape{U}{MnSymbolFI}{b}{it}{
+    \DeclareFontShape{U}{CrSymbolFI}{b}{it}{
         <-6>  CrSymbolFI\Cr@minionint@bold\Cr@minionint@opticals5
        <6-7>  CrSymbolFI\Cr@minionint@bold\Cr@minionint@opticals6
        <7-8>  CrSymbolFI\Cr@minionint@bold\Cr@minionint@opticals7
@@ -1163,8 +1163,8 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-    \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
-    \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
+    \DeclareSymbolFont{symbols}  {U}{CrSymbolFI}{m}{it}
+    \SetSymbolFont{symbols}{bold}{U}{CrSymbolFI}{b}{it}
 %    \end{macrocode}
 % Make the original integral symbols available as |\var|\dots.
 %    \begin{macrocode}

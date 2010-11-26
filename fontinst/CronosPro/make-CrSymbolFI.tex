@@ -1,0 +1,52 @@
+\input fontinst-macros.tex
+
+\def\installopt#1#2{%
+  \installfont{#1}{%
+     MnSymbolF10                       encoding mn-symbol-f-partialints,%
+     #2                                encoding mn-symbol-f,%
+     CronosPro-It-integral             encoding mn-tint scaled 1100,%
+     CronosPro-ItDisp-integral-cn1     encoding mn-dint scaled 1100,%
+     mn-intop-text,%
+     mn-intop-disp%
+  }{mn-symbol-fi}{}{}{}{}{}%
+}
+
+\def\installsemiboldopt#1#2{%
+  \installfont{#1}{%
+     MnSymbolF-Bold10                      encoding mn-symbol-f-partialints,%
+     #2                                    encoding mn-symbol-f,%
+     CronosPro-SemiboldIt-integral         encoding mn-tint scaled 1140,%
+     CronosPro-SemiboldItDisp-integral-cn1 encoding mn-dint scaled 1140,%
+     mn-intop-semibold-text,%
+     mn-intop-semibold-disp%
+  }{mn-symbol-fi}{}{}{}{}{}%
+}
+
+
+\installfonts
+
+  \installopt{CrSymbolFI5}{MnSymbolF5}%
+  \installopt{CrSymbolFI6}{MnSymbolF6}%
+  \installopt{CrSymbolFI7}{MnSymbolF7}%
+  \installopt{CrSymbolFI8}{MnSymbolF8}%
+  \installopt{CrSymbolFI9}{MnSymbolF9}%
+  \installopt{CrSymbolFI10}{MnSymbolF10}%
+  \installopt{CrSymbolFI12}{MnSymbolF12}%
+  \installsemiboldopt{CrSymbolFI-Semibold5}{MnSymbolF-Bold5}%
+  \installsemiboldopt{CrSymbolFI-Semibold6}{MnSymbolF-Bold6}%
+  \installsemiboldopt{CrSymbolFI-Semibold7}{MnSymbolF-Bold7}%
+  \installsemiboldopt{CrSymbolFI-Semibold8}{MnSymbolF-Bold8}%
+  \installsemiboldopt{CrSymbolFI-Semibold9}{MnSymbolF-Bold9}%
+  \installsemiboldopt{CrSymbolFI-Semibold10}{MnSymbolF-Bold10}%
+  \installsemiboldopt{CrSymbolFI-Semibold12}{MnSymbolF-Bold12}%
+%  \installboldopt{CrSymbolFI-Bold5}{MnSymbolF-Bold5}%
+%  \installboldopt{CrSymbolFI-Bold6}{MnSymbolF-Bold6}%
+%  \installboldopt{CrSymbolFI-Bold7}{MnSymbolF-Bold7}%
+%  \installboldopt{CrSymbolFI-Bold8}{MnSymbolF-Bold8}%
+%  \installboldopt{CrSymbolFI-Bold9}{MnSymbolF-Bold9}%
+%  \installboldopt{CrSymbolFI-Bold10}{MnSymbolF-Bold10}%
+%  \installboldopt{CrSymbolFI-Bold12}{MnSymbolF-Bold12}%
+
+\endinstallfonts
+
+\bye

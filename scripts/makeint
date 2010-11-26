@@ -9,6 +9,13 @@ then
   exit 1
 fi
 
+if [ -e "../scripts/makeint-$font.cfg" ]
+then
+  . "../scripts/makeint-$font.cfg"
+else
+    prefix=Mn
+fi
+
 for s in 5 6 7 8 9 10 12
 do
   if [ ! -e MnSymbolF$s.pl ]
@@ -28,14 +35,14 @@ tftopl "../tfm/$font-It-integral-cn2.tfm"     "$font-It-integral-cn2.pl"
 tftopl "../tfm/$font-BoldIt-integral.tfm"     "$font-BoldIt-integral.pl"
 tftopl "../tfm/$font-BoldIt-integral-cn2.tfm" "$font-BoldIt-integral-cn2.pl"
 
-tex make-MnSymbolFI-noopt.tex
+tex make-${prefix}SymbolFI-noopt.tex
 
 if [ -e "../tfm/$font-SemiboldIt-integral.tfm" ]
 then
   tftopl "../tfm/$font-SemiboldIt-integral.tfm"     "$font-SemiboldIt-integral.pl"
   tftopl "../tfm/$font-SemiboldIt-integral-cn2.tfm" "$font-SemiboldIt-integral-cn2.pl"
 
-  tex make-MnSymbolFI-noopt-sb.tex
+  tex make-${prefix}SymbolFI-noopt-sb.tex
 fi
 
 
@@ -45,7 +52,7 @@ then
   tftopl "../tfm/$font-SemiboldItDisp-integral-cn1.tfm" "$font-SemiboldItDisp-integral-cn1.pl"
 #  tftopl "../tfm/$font-BoldItDisp-integral-cn1.tfm"     "$font-BoldItDisp-integral-cn1.pl"
 
-  tex make-MnSymbolFI.tex
+  tex make-${prefix}SymbolFI.tex
 fi
 
 for v in *.vpl
@@ -53,6 +60,6 @@ do
   vptovf "$v"
 done
 
-cp MnSymbolFI*.vf  ../vf
-cp MnSymbolFI*.tfm ../tfm
+cp ${prefix}SymbolFI*.vf  ../vf
+cp ${prefix}SymbolFI*.tfm ../tfm
 
