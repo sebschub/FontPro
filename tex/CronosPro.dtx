@@ -979,11 +979,11 @@
 %
 \newcommand*\Cr@extra@font{%
   \fontencoding{U}\fontfamily{CronosPro-Extra}\selectfont}
-\newcommand*\@numerator@fig[1]{{\Cr@extra@font\@@numerator@fig{#1}}}
-\newcommand*\@denominator@fig[1]{{\Cr@extra@font\@@denominator@fig{#1}}}
-\newcommand*\@superior@fig[1]{{\Cr@extra@font\@@superior@fig{#1}}}
-\newcommand*\@inferior@fig[1]{{\Cr@extra@font\@@inferior@fig{#1}}}
-\newcommand*\@@numerator@fig[1]{%
+\newcommand*\Cr@numerator@fig[1]{{\Cr@extra@font\Cr@@numerator@fig{#1}}}
+\newcommand*\Cr@denominator@fig[1]{{\Cr@extra@font\Cr@@denominator@fig{#1}}}
+\newcommand*\Cr@superior@fig[1]{{\Cr@extra@font\Cr@@superior@fig{#1}}}
+\newcommand*\Cr@inferior@fig[1]{{\Cr@extra@font\Cr@@inferior@fig{#1}}}
+\newcommand*\Cr@@numerator@fig[1]{%
   \@for@tok\@nf@fig:=#1\do{%
     \ifcase\@nf@fig
        \char'00%
@@ -997,10 +997,10 @@
     \or\char'10%
     \or\char'11%
     \else
-      \@latex@error{invalid argument to \string\@@numerator@fig}%
+      \@latex@error{invalid argument to \string\Cr@@numerator@fig}%
     \fi
     }}
-\newcommand*\@@denominator@fig[1]{%
+\newcommand*\Cr@@denominator@fig[1]{%
   \@for@tok\@nf@fig:=#1\do{%
     \ifcase\@nf@fig
        \char'20%
@@ -1014,10 +1014,10 @@
     \or\char'30%
     \or\char'31%
     \else
-      \@latex@error{invalid argument to \string\@@denominator@fig}%
+      \@latex@error{invalid argument to \string\Cr@@denominator@fig}%
     \fi
     }}
-\newcommand*\@@superior@fig[1]{%
+\newcommand*\Cr@@superior@fig[1]{%
   \@for@tok\@nf@fig:=#1\do{%
     \ifcase\@nf@fig
        \char'60%
@@ -1031,10 +1031,10 @@
     \or\char'70%
     \or\char'71%
     \else
-      \@latex@error{invalid argument to \string\@@superior@fig}%
+      \@latex@error{invalid argument to \string\Cr@@superior@fig}%
     \fi
     }}
-\newcommand*\@@inferior@fig[1]{%
+\newcommand*\Cr@@inferior@fig[1]{%
   \@for@tok\@nf@fig:=#1\do{%
     \ifcase\@nf@fig
        \char'100%
@@ -1048,13 +1048,13 @@
     \or\char'110%
     \or\char'111%
     \else
-      \@latex@error{invalid argument to \string\@@inferior@fig}%
+      \@latex@error{invalid argument to \string\Cr@@inferior@fig}%
     \fi
     }}
 %    \end{macrocode}
-% |\ensure@text| switches to text mode, if necessary.
+% |\Cr@ensure@text| switches to text mode, if necessary.
 %    \begin{macrocode}
-\newcommand*\ensure@text[1]{%
+\newcommand*\Cr@ensure@text[1]{%
   \ifmmode
     \Mn@Text@With@MathVersion{#1}%
   \else
@@ -1063,7 +1063,7 @@
 %    \end{macrocode}
 % |\smallfrac| and |\slantfrac| assemble numerical fractions.
 %    \begin{macrocode}
-\newcommand*\@smallfrac[2]{%
+\newcommand*\@Cr@smallfrac[2]{%
   \leavevmode
   \setbox\@tempboxa
     \vbox{%
@@ -1071,16 +1071,16 @@
       \lineskip.25ex%
       \lineskiplimit-\maxdimen
       \ialign{\hfil##\hfil\crcr
-              \vbox to 2.13ex{\vss\hbox{\@numerator@fig{#1}}\vskip.68ex}\crcr
+              \vbox to 2.13ex{\vss\hbox{\Cr@numerator@fig{#1}}\vskip.68ex}\crcr
               \leavevmode\leaders\hrule height 1.1ex depth -1.01ex\hfill\crcr
-              \vtop to 1ex{\vbox{}\hbox{\@denominator@fig{#2}}\vss}\crcr
+              \vtop to 1ex{\vbox{}\hbox{\Cr@denominator@fig{#2}}\vss}\crcr
               \noalign{\vskip-1.47ex}}}%
   \dp\@tempboxa=0.49ex%
   \box\@tempboxa}
-\newcommand*\@slantfrac[2]{%
-  {\Cr@extra@font\@@numerator@fig{#1}\kern-0.05em/\kern-0.06em\@@denominator@fig{#2}}}
-\DeclareRobustCommand*\smallfrac[2]{\ensure@text{\kern0.06em\@smallfrac{#1}{#2}\kern0.09em}}
-\DeclareRobustCommand*\slantfrac[2]{\ensure@text{\kern0.06em\@slantfrac{#1}{#2}\kern0.09em}}
+\newcommand*\@Cr@slantfrac[2]{%
+  {\Cr@extra@font\Cr@@numerator@fig{#1}\kern-0.05em/\kern-0.06em\Cr@@denominator@fig{#2}}}
+\DeclareRobustCommand*\smallfrac[2]{\Cr@ensure@text{\kern0.06em\@Cr@smallfrac{#1}{#2}\kern0.09em}}
+\DeclareRobustCommand*\slantfrac[2]{\Cr@ensure@text{\kern0.06em\@Cr@slantfrac{#1}{#2}\kern0.09em}}
 %    \end{macrocode}
 %
 % \subsection{Additional symbols}
