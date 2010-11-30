@@ -2,7 +2,11 @@
 
     Sebastian Schubert (schubert.seb@googlemail.com)
 
-    currently supporting MinionPro (stable) and MyriadPro (in development)
+    currently supporting MinionPro (stable) and MyriadPro (in
+    development).  In addition, there is also text only support for
+    CronosPro (in development), which has to be installed if you want
+    to use the Cronos' swash letters as mathcal symbols with
+    MyriadPro's math (option 'crswash').
 
     forked from the amazing
     http://developer.berlios.de/projects/minionpro
@@ -71,10 +75,22 @@ should be put. The default is $TEXMFLOCAL.
 
 2) Add $FONT.map to your updmap.cfg and run updmap.
 
-3) If you get errors about insufficient memory you might need to
+Usage
+=====
+
+Use the FONT with
+
+\usepackage{FONT}
+
+All valid options are included in the documentation which can be
+generated _after_ installing with
+
+latex $FONT.dtx
+
+If you get errors about insufficient memory you might need to
 increase the values of font_mem_size and font_max in your TeX
 configuration. For most distributions, these can be changed in the file
 texmf/web2c/texmf.cnf. For MiKTeX the file is called miktex.ini.
 
-4) Happy TeXing!
 
+Happy TeXing!
