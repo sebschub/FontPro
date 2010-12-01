@@ -2,6 +2,9 @@ General
 =======
 
 * make scripts run with a lcdf typetools version > 2.69
+* fix generation of dotless j
+* include font scaling option in fd or $FONT-FontDef.sty (eg to
+  increase CronosPro Swash characters in Myriad's math)
 
 
 Myriad Pro
