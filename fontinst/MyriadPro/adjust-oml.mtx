@@ -207,13 +207,13 @@
 
 \adjustmetrics{ITdotlessi}{10}{30}{0}{50}{25}
 \adjustmetrics{ITdotlessj}{80}{-20}{0}{100}{25}
-\adjustmetrics{ITpartialdiff}{0}{0}{0}{60}{10}
+\adjustmetrics{ITpartialdiff}{0}{0}{0}{50}{10}
 \adjustmetrics{ITdigamma}{20}{-10}{0}{80}{25}
 \adjustmetrics{ITkappa1}{0}{0}{0}{60}{25}
 \adjustmetrics{ITbeta1}{-20}{10}{0}{100}{10}
-\adjustmetrics{ITbackepsilon}{10}{0}{0}{40}{25}
+\adjustmetrics{ITbackepsilon}{10}{0}{0}{0}{25}
 \adjustmetrics{ITbackepsilon1}{10}{0}{0}{20}{25}
-\adjustmetrics{IThbar}{0}{0}{0}{0}{10}
+\adjustmetrics{IThbar}{0}{0}{0}{-20}{10}
 \adjustmetrics{ITeth}{0}{0}{0}{60}{10}
 \adjustmetrics{ITlscript}{0}{0}{0}{100}{20}
 \adjustmetrics{ITopeng}{50}{0}{-60}{80}{40}
