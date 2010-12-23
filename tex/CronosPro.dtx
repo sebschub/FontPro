@@ -221,6 +221,8 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
+% \item[\option{scaled=<\emph{factor}>}]
+%      scale the font size by <\emph{factor}>
 % \item[\option{footnotefigures}]
 %      use special figures for footnote marks, i.e.,\newline
 %      example\begingroup\fontfamily{CronosPro-Extra}\fontencoding{U}\selectfont
@@ -438,40 +440,46 @@
 \newif\if@Cr@Math@
 \@Cr@Text@true
 \@Cr@Math@false
-%\DeclareOption{onlytext}{\@Cr@Text@true\@Cr@Math@false}
-%\DeclareOption{onlymath}{\@Cr@Text@false\@Cr@Math@true}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family = Cr,
+  prefix = Cr@
+}
+%\DeclareVoidOption{onlytext}{\@Cr@Text@true\@Cr@Math@false}
+%\DeclareVoidOption{onlymath}{\@Cr@Text@false\@Cr@Math@true}
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
 %
-% The package \pkg{CronosPro-FontDef} adapts the font definitions to the
-% requested font set (see section~\ref{sec:fontdef}). So we simply pass on the
-% relevant options; only CronosPro integrals are handled here in
-% \pkg{CronosPro}.
+% The package \pkg{CronosPro-FontDef} adapts the font definitions to
+% the requested font set (see section~\ref{sec:fontdef}). So we simply
+% pass on the relevant options including the font scale factor; only
+% CronosPro integrals are handled here in \pkg{CronosPro}.
 %    \begin{macrocode}
+\DeclareStringOption{scaled}
 \newcommand\Cr@minionint@opticals{-NoOpticals}
 \newcommand\Cr@minionint@bold{-Bold}
-\DeclareOption{slides}{%
+\DeclareVoidOption{slides}{%
   \def\Cr@minionint@opticals{-NoOpticals}%
   \PassOptionsToPackage{slides}{CronosPro-FontDef}}
-\DeclareOption{noopticals}{%
+\DeclareVoidOption{noopticals}{%
   \def\Cr@minionint@opticals{-NoOpticals}%
   \PassOptionsToPackage{noopticals}{CronosPro-FontDef}}
-\DeclareOption{opticals}{%
+\DeclareVoidOption{opticals}{%
   \def\Cr@minionint@opticals{}%
   \PassOptionsToPackage{opticals}{CronosPro-FontDef}}
-\DeclareOption{smallfamily}{%
+\DeclareVoidOption{smallfamily}{%
   \def\Cr@minionint@bold{-Bold}%
   \PassOptionsToPackage{smallfamily}{CronosPro-FontDef}}
-\DeclareOption{medfamily}{%
+\DeclareVoidOption{medfamily}{%
   \def\Cr@minionint@bold{-Semibold}%
   \PassOptionsToPackage{medfamily}{CronosPro-FontDef}}
-%\DeclareOption{fullfamily}{%
+%\DeclareVoidOption{fullfamily}{%
 %  \def\Cr@minionint@bold{-Semibold}%
 %  \PassOptionsToPackage{fullfamily}{CronosPro-FontDef}}
-\DeclareOption{normalsize}{%
+\DeclareVoidOption{normalsize}{%
   \PassOptionsToPackage{normalsize}{CronosPro-FontDef}}
-\DeclareOption{nonormalsize}{%
+\DeclareVoidOption{nonormalsize}{%
   \PassOptionsToPackage{nonormalsize}{CronosPro-FontDef}}
 %    \end{macrocode}
 %
@@ -487,13 +495,13 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\DeclareOption{textosf}{\def\Cr@Text@Fig{OsF}}
-\DeclareOption{textlf} {\def\Cr@Text@Fig{LF}}
-\DeclareOption{mathosf}{\def\Cr@Math@Fig{OsF}}
-\DeclareOption{mathlf} {\def\Cr@Math@Fig{LF}}
-\DeclareOption{osf}{\ExecuteOptions{textosf,mathosf}}
-\DeclareOption{lf} {\ExecuteOptions{textlf,mathlf}}
-\DeclareOption{mathtabular}{\let\Cr@Math@Family\Cr@Math@TFamily}
+\DeclareVoidOption{textosf}{\def\Cr@Text@Fig{OsF}}
+\DeclareVoidOption{textlf}{\def\Cr@Text@Fig{LF}}
+\DeclareVoidOption{mathosf}{\def\Cr@Math@Fig{OsF}}
+\DeclareVoidOption{mathlf}{\def\Cr@Math@Fig{LF}}
+\DeclareVoidOption{osf}{\setkeys{Cr}{textosf,mathosf}}
+\DeclareVoidOption{lf}{\setkeys{Cr}{textlf,mathlf}}
+\DeclareVoidOption{mathtabular}{\let\Cr@Math@Family\Cr@Math@TFamily}
 %    \end{macrocode}
 %
 % \subsubsection{Calligraphic fonts}
@@ -506,25 +514,25 @@
 %    \end{macrocode}
 % Most options are handled by \pkg{MnSymbol}.
 %    \begin{macrocode}
-\DeclareOption{mnsy}{
+\DeclareVoidOption{mnsy}{
   \PassOptionsToPackage{mnsy}{MnSymbol}
   \def\Cr@load@cal{
     \SetMathAlphabet\mathcal{boldtabular}{OMS}{MnSymbolS}{b}{n}
   }
 }
-\DeclareOption{cmsy}{
+\DeclareVoidOption{cmsy}{
   \PassOptionsToPackage{cmsy}{MnSymbol}
   \def\Cr@load@cal{
     \SetMathAlphabet\mathcal{boldtabular}{OMS}{cmsy}{b}{n}
   }
 }
-\DeclareOption{abx}{
+\DeclareVoidOption{abx}{
   \PassOptionsToPackage{abx}{MnSymbol}
 %  \def\Cr@load@cal{
 %    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
 %  }
 }
-\DeclareOption{swash}{
+\DeclareVoidOption{swash}{
   \def\Cr@load@cal{
     \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
     \SetMathAlphabet\mathcal{bold}       {T1}{\Cr@Math@Family} {eb}{sw}
@@ -539,12 +547,12 @@
 % section~\ref{sec:greek} before |\Cr@load@greek| is executed.
 %    \begin{macrocode}
 \newcommand\Cr@load@greek{\Cr@greek@Mixed}
-\DeclareOption{frenchmath}{%
+\DeclareVoidOption{frenchmath}{%
   \def\Cr@load@greek{\Cr@greek@Upright}%
   \def\Cr@Math@LetterShape{n}}
-\DeclareOption{mixedgreek}{%
+\DeclareVoidOption{mixedgreek}{%
   \def\Cr@load@greek{\Cr@greek@Mixed}}
-\DeclareOption{italicgreek}{%
+\DeclareVoidOption{italicgreek}{%
   \def\Cr@load@greek{\Cr@greek@Italic}}
 %    \end{macrocode}
 %
@@ -574,23 +582,23 @@
   \DeclareFontShape{U}{futm}{m}{n}{ <->s*[0.95] fourier-bb }{}
   \DeclareMathAlphabet\mathbb{U}{futm}{m}{n}
   \newcommand\Bbbk{\mathbb{k}}}
-\DeclareOption{amsbb}    {\let\Cr@load@bb\Cr@load@amsbb}
-\DeclareOption{lucidabb} {\let\Cr@load@bb\Cr@load@lucidabb}
-\DeclareOption{fourierbb}{\let\Cr@load@bb\Cr@load@fourierbb}
+\DeclareVoidOption{amsbb}{\let\Cr@load@bb\Cr@load@amsbb}
+\DeclareVoidOption{lucidabb}{\let\Cr@load@bb\Cr@load@lucidabb}
+\DeclareVoidOption{fourierbb}{\let\Cr@load@bb\Cr@load@fourierbb}
 %    \end{macrocode}
 %
 % \subsubsection{Integrals}
 %
 %    \begin{macrocode}
 \newcommand\Cr@load@integrals{}
-\DeclareOption{minionint}{\def\Cr@load@integrals{\Cr@Decl@Minion@Ints}}
+\DeclareVoidOption{minionint}{\def\Cr@load@integrals{\Cr@Decl@Minion@Ints}}
 %    \end{macrocode}
 %
 % \subsubsection{Miscellaneous options}
 %
 % Footnote figures, the g glyph in math mode, extra spacing for the apostrophe.
 %    \begin{macrocode}
-\DeclareOption{footnotefigures}{%
+\DeclareVoidOption{footnotefigures}{%
   \def\@makefnmark{%
     \begingroup
     \normalfont
@@ -599,7 +607,7 @@
     \endgroup}}
 %
 \newcommand\Cr@Define@Open@g{}
-\DeclareOption{openg}{%
+\DeclareVoidOption{openg}{%
   \def\Cr@Define@Open@g{%
     \mathcode`g="8000%
     \DeclareMathSymbol{\Cr@g}{\mathalpha}{letters}{`g}%
@@ -610,15 +618,15 @@
   }}
 %
 \newcommand\Cr@Quote@Spacing{}
-\DeclareOption{loosequotes}{%
+\DeclareVoidOption{loosequotes}{%
   \def\Cr@Quote@Spacing{\Cr@Quote@Spacing@Loose}}
 %    \end{macrocode}
 %
 % \subsubsection{Defaults}
 %
 %    \begin{macrocode}
-\ExecuteOptions{amsbb,eufrak}
-\ProcessOptions\relax
+\setkeys{Cr}{amsbb}
+\ProcessKeyvalOptions{Cr}\relax
 %    \end{macrocode}
 %
 % \subsection{Font declarations}
@@ -1542,6 +1550,14 @@
   \begingroup\escapechar`\\
 \fi
 %    \end{macrocode}
+% Check, if scale factor is defined, if not set it to 1
+%    \begin{macrocode}
+\expandafter\ifx\csname Cr@scaled\endcsname\relax
+\def\Cr@@scale{1}
+\else
+\def\Cr@@scale{\csname Cr@scaled\endcsname}
+\fi
+%    \end{macrocode}
 % These are the default values if it is impossible to process options.
 %    \begin{macrocode}
 \newcommand\Cr@option@opticals{noopticals}
@@ -1742,6 +1758,9 @@
 \Cr@AddToConfig{encoding/shape}{OML/n}{
       <->     otf* [figures=] CronosPro-French
 }
+\Cr@AddToConfig{scale}{scale}{
+      <->     otf* [scale=\Cr@@scale]
+}
 %    \end{macrocode}
 % Substitutions
 %    \begin{macrocode}
@@ -1786,6 +1805,7 @@
         \Cr@UseConfig{weight}        {#4}%
         \Cr@UseConfig{encoding/shape}{#2/#5}%
         \Cr@UseConfig{shape}         {#5}%
+        \Cr@UseConfig{scale}         {scale}%
       }}%
     \edef\@tempa{\the\@temptokena{\Cr@TheConfig{code:shape}{#5}}}%
     \@tempa

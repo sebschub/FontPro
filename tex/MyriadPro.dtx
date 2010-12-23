@@ -273,6 +273,8 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
+% \item[\option{scaled=<\emph{factor}>}]
+%      scale the font size by <\emph{factor}>
 % \item[\option{myriadint}]
 %      take the integral symbols from MyriadPro, not from
 %      MnSymbol: $\displaystyle\int$ instead of $\displaystyle\varint$
@@ -521,32 +523,38 @@
 \newif\if@My@Math@
 \@My@Text@true
 \@My@Math@true
-\DeclareOption{onlytext}{\@My@Text@true\@My@Math@false}
-\DeclareOption{onlymath}{\@My@Text@false\@My@Math@true}
+\RequirePackage[patch]{kvoptions}
+\SetupKeyvalOptions{
+  family = My,
+  prefix = My@
+}
+\DeclareVoidOption{onlytext}{\@My@Text@true\@My@Math@false}
+\DeclareVoidOption{onlymath}{\@My@Text@false\@My@Math@true}
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
 %
-% The package \pkg{MyriadPro-FontDef} adapts the font definitions to the
-% requested font set (see section~\ref{sec:fontdef}). So we simply pass on the
-% relevant options; only MyriadPro integrals are handled here in
-% \pkg{MyriadPro}.
+% The package \pkg{MyriadPro-FontDef} adapts the font definitions to
+% the requested font set (see section~\ref{sec:fontdef}). So we simply
+% pass on the relevant options including the font scale factor; only
+% MyriadPro integrals are handled here in \pkg{MyriadPro}.
 %    \begin{macrocode}
+\DeclareStringOption{scaled}
 \newcommand\My@myriadint@opticals{-NoOpticals}
 \newcommand\My@myriadint@bold{-Bold}
-\DeclareOption{noopticals}{%
+\DeclareVoidOption{noopticals}{%
   \def\My@myriadint@opticals{-NoOpticals}%
   \PassOptionsToPackage{noopticals}{MyriadPro-FontDef}}
-\DeclareOption{smallfamily}{%
+\DeclareVoidOption{smallfamily}{%
   \def\My@myriadint@bold{-Bold}%
   \PassOptionsToPackage{smallfamily}{MyriadPro-FontDef}}
-\DeclareOption{medfamily}{%
+\DeclareVoidOption{medfamily}{%
   \def\My@myriadint@bold{-Semibold}%
   \PassOptionsToPackage{medfamily}{MyriadPro-FontDef}}
-%\DeclareOption{fullfamily}{%
+%\DeclareVoidOption{fullfamily}{%
 %  \def\My@myriadint@bold{-Semibold}%
 %  \PassOptionsToPackage{fullfamily}{MyriadPro-FontDef}}
-\DeclareOption{normalsize}{%
+\DeclareVoidOption{normalsize}{%
   \PassOptionsToPackage{normalsize}{MyriadPro-FontDef}}
 %    \end{macrocode}
 %
@@ -564,13 +572,13 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\DeclareOption{textosf}{\def\My@Text@Fig{OsF}}
-\DeclareOption{textlf} {\def\My@Text@Fig{LF}}
-\DeclareOption{mathosf}{\def\My@Math@Fig{OsF}}
-\DeclareOption{mathlf} {\def\My@Math@Fig{LF}}
-\DeclareOption{osf}{\ExecuteOptions{textosf,mathosf}}
-\DeclareOption{lf} {\ExecuteOptions{textlf,mathlf}}
-\DeclareOption{mathtabular}{\let\My@Math@Family\My@Math@TFamily}
+\DeclareVoidOption{textosf}{\def\My@Text@Fig{OsF}}
+\DeclareVoidOption{textlf}{\def\My@Text@Fig{LF}}
+\DeclareVoidOption{mathosf}{\def\My@Math@Fig{OsF}}
+\DeclareVoidOption{mathlf}{\def\My@Math@Fig{LF}}
+\DeclareVoidOption{osf}{\setkeys{My}{textosf,mathosf}}
+\DeclareVoidOption{lf}{\setkeys{My}{textlf,mathlf}}
+\DeclareVoidOption{mathtabular}{\let\My@Math@Family\My@Math@TFamily}
 %    \end{macrocode}
 %
 % \subsubsection{Calligraphic fonts}
@@ -583,26 +591,28 @@
 %    \end{macrocode}
 % Most options are handled by \pkg{MnSymbol}.
 %    \begin{macrocode}
-\DeclareOption{mnsy}{
+\DeclareVoidOption{mnsy}{
   \PassOptionsToPackage{mnsy}{MnSymbol}
   \def\My@load@cal{
     \SetMathAlphabet\mathcal{boldtabular}{OMS}{MnSymbolS}{b}{n}
   }
 }
-\DeclareOption{cmsy}{
+\DeclareVoidOption{cmsy}{
   \PassOptionsToPackage{cmsy}{MnSymbol}
   \def\My@load@cal{
     \SetMathAlphabet\mathcal{boldtabular}{OMS}{cmsy}{b}{n}
   }
 }
-\DeclareOption{abx}{
+\DeclareVoidOption{abx}{
   \PassOptionsToPackage{abx}{MnSymbol}
 %  \def\My@load@cal{
 %    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
 %  }
 }
-\DeclareOption{crswash}{
+\DeclareVoidOption{crswash}{
   \def\My@load@cal{
+    \def\Cr@scaled{1.05}
+    \RequirePackage{CronosPro-FontDef}
     \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
     \SetMathAlphabet\mathcal{bold}       {T1}{\Cr@Math@Family} {eb}{sw}
     \SetMathAlphabet\mathcal{tabular}    {T1}{\Cr@Math@TFamily}{m} {sw}
@@ -616,12 +626,12 @@
 % section~\ref{sec:greek} before |\My@load@greek| is executed.
 %    \begin{macrocode}
 \newcommand\My@load@greek{\My@greek@Mixed}
-\DeclareOption{frenchmath}{%
+\DeclareVoidOption{frenchmath}{%
   \def\My@load@greek{\My@greek@Upright}%
   \def\My@Math@LetterShape{n}}
-\DeclareOption{mixedgreek}{%
+\DeclareVoidOption{mixedgreek}{%
   \def\My@load@greek{\My@greek@Mixed}}
-\DeclareOption{italicgreek}{%
+\DeclareVoidOption{italicgreek}{%
   \def\My@load@greek{\My@greek@Italic}}
 %    \end{macrocode}
 %
@@ -651,23 +661,23 @@
   \DeclareFontShape{U}{futm}{m}{n}{ <->s*[0.95] fourier-bb }{}
   \DeclareMathAlphabet\mathbb{U}{futm}{m}{n}
   \newcommand\Bbbk{\mathbb{k}}}
-\DeclareOption{amsbb}    {\let\My@load@bb\My@load@amsbb}
-\DeclareOption{lucidabb} {\let\My@load@bb\My@load@lucidabb}
-\DeclareOption{fourierbb}{\let\My@load@bb\My@load@fourierbb}
+\DeclareVoidOption{amsbb}{\let\My@load@bb\My@load@amsbb}
+\DeclareVoidOption{lucidabb}{\let\My@load@bb\My@load@lucidabb}
+\DeclareVoidOption{fourierbb}{\let\My@load@bb\My@load@fourierbb}
 %    \end{macrocode}
 %
 % \subsubsection{Integrals}
 %
 %    \begin{macrocode}
 \newcommand\My@load@integrals{}
-\DeclareOption{myriadint}{\def\My@load@integrals{\My@Decl@Myriad@Ints}}
+\DeclareVoidOption{myriadint}{\def\My@load@integrals{\My@Decl@Myriad@Ints}}
 %    \end{macrocode}
 %
 % \subsubsection{Miscellaneous options}
 %
 % Footnote figures, the g glyph in math mode, extra spacing for the apostrophe.
 %    \begin{macrocode}
-\DeclareOption{footnotefigures}{%
+\DeclareVoidOption{footnotefigures}{%
   \def\@makefnmark{%
     \begingroup
     \normalfont
@@ -676,7 +686,7 @@
     \endgroup}}
 %
 \newcommand\My@Define@Open@g{}
-\DeclareOption{openg}{%
+\DeclareVoidOption{openg}{%
   \def\My@Define@Open@g{%
     \mathcode`g="8000%
     \DeclareMathSymbol{\My@g}{\mathalpha}{letters}{`g}%
@@ -687,15 +697,15 @@
   }}
 %
 \newcommand\My@Quote@Spacing{}
-\DeclareOption{loosequotes}{%
+\DeclareVoidOption{loosequotes}{%
   \def\My@Quote@Spacing{\My@Quote@Spacing@Loose}}
 %    \end{macrocode}
 %
 % \subsubsection{Defaults}
 %
 %    \begin{macrocode}
-\ExecuteOptions{amsbb,eufrak}
-\ProcessOptions\relax
+\setkeys{My}{amsbb}
+\ProcessKeyvalOptions{My}\relax
 %    \end{macrocode}
 %
 % \subsection{Font declarations}
@@ -1591,6 +1601,14 @@
   \begingroup\escapechar`\\
 \fi
 %    \end{macrocode}
+% Check, if scale factor is defined, if not set it to 1
+%    \begin{macrocode}
+\expandafter\ifx\csname My@scaled\endcsname\relax
+\def\My@@scale{1}
+\else
+\def\My@@scale{\csname My@scaled\endcsname}
+\fi
+%    \end{macrocode}
 % These are the default values if it is impossible to process options.
 %    \begin{macrocode}
 \newcommand\My@option@opticals{noopticals}
@@ -1773,6 +1791,9 @@
 \My@AddToConfig{encoding/shape}{OML/n}{
       <->     otf* [figures=] MyriadPro-French
 }
+\My@AddToConfig{scale}{scale}{
+      <->     otf* [scale=\My@@scale]
+}
 %    \end{macrocode}
 % Substitutions
 %    \begin{macrocode}
@@ -1807,6 +1828,7 @@
         \My@UseConfig{weight}        {#4}%
         \My@UseConfig{encoding/shape}{#2/#5}%
         \My@UseConfig{shape}         {#5}%
+        \My@UseConfig{scale}         {scale}%
       }}%
     \edef\@tempa{\the\@temptokena{\My@TheConfig{code:shape}{#5}}}%
     \@tempa

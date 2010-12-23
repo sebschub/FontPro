@@ -287,6 +287,8 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
+% \item[\option{scaled=<\emph{factor}>}]
+%      scale the font size by <\emph{factor}>
 % \item[\option{minionint}]
 %      take the integral symbols from MinionPro, not from
 %      MnSymbol: $\displaystyle\int$ instead of $\displaystyle\varint$
@@ -576,40 +578,46 @@
 \newif\if@Mn@Math@
 \@Mn@Text@true
 \@Mn@Math@true
-\DeclareOption{onlytext}{\@Mn@Text@true\@Mn@Math@false}
-\DeclareOption{onlymath}{\@Mn@Text@false\@Mn@Math@true}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family = Mn,
+  prefix = Mn@
+}
+\DeclareVoidOption{onlytext}{\@Mn@Text@true\@Mn@Math@false}
+\DeclareVoidOption{onlymath}{\@Mn@Text@false\@Mn@Math@true}
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
 %
-% The package \pkg{MinionPro-FontDef} adapts the font definitions to the
-% requested font set (see section~\ref{sec:fontdef}). So we simply pass on the
-% relevant options; only MinionPro integrals are handled here in
-% \pkg{MinionPro}.
+% The package \pkg{MinionPro-FontDef} adapts the font definitions to
+% the requested font set (see section~\ref{sec:fontdef}). So we simply
+% pass on the relevant options including the font scale factor; only
+% MinionPro integrals are handled here in \pkg{MinionPro}.
 %    \begin{macrocode}
+\DeclareStringOption{scaled}
 \newcommand\Mn@minionint@opticals{-NoOpticals}
 \newcommand\Mn@minionint@bold{-Bold}
-\DeclareOption{slides}{%
+\DeclareVoidOption{slides}{%
   \def\Mn@minionint@opticals{-NoOpticals}%
   \PassOptionsToPackage{slides}{MinionPro-FontDef}}
-\DeclareOption{noopticals}{%
+\DeclareVoidOption{noopticals}{%
   \def\Mn@minionint@opticals{-NoOpticals}%
   \PassOptionsToPackage{noopticals}{MinionPro-FontDef}}
-\DeclareOption{opticals}{%
+\DeclareVoidOption{opticals}{%
   \def\Mn@minionint@opticals{}%
   \PassOptionsToPackage{opticals}{MinionPro-FontDef}}
-\DeclareOption{smallfamily}{%
+\DeclareVoidOption{smallfamily}{%
   \def\Mn@minionint@bold{-Bold}%
   \PassOptionsToPackage{smallfamily}{MinionPro-FontDef}}
-\DeclareOption{medfamily}{%
+\DeclareVoidOption{medfamily}{%
   \def\Mn@minionint@bold{-Semibold}%
   \PassOptionsToPackage{medfamily}{MinionPro-FontDef}}
-\DeclareOption{fullfamily}{%
+\DeclareVoidOption{fullfamily}{%
   \def\Mn@minionint@bold{-Semibold}%
   \PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
-\DeclareOption{normalsize}{%
+\DeclareVoidOption{normalsize}{%
   \PassOptionsToPackage{normalsize}{MinionPro-FontDef}}
-\DeclareOption{nonormalsize}{%
+\DeclareVoidOption{nonormalsize}{%
   \PassOptionsToPackage{nonormalsize}{MinionPro-FontDef}}
 %    \end{macrocode}
 %
@@ -625,13 +633,13 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\DeclareOption{textosf}{\def\Mn@Text@Fig{OsF}}
-\DeclareOption{textlf} {\def\Mn@Text@Fig{LF}}
-\DeclareOption{mathosf}{\def\Mn@Math@Fig{OsF}}
-\DeclareOption{mathlf} {\def\Mn@Math@Fig{LF}}
-\DeclareOption{osf}{\ExecuteOptions{textosf,mathosf}}
-\DeclareOption{lf} {\ExecuteOptions{textlf,mathlf}}
-\DeclareOption{mathtabular}{\let\Mn@Math@Family\Mn@Math@TFamily}
+\DeclareVoidOption{textosf}{\def\Mn@Text@Fig{OsF}}
+\DeclareVoidOption{textlf}{\def\Mn@Text@Fig{LF}}
+\DeclareVoidOption{mathosf}{\def\Mn@Math@Fig{OsF}}
+\DeclareVoidOption{mathlf}{\def\Mn@Math@Fig{LF}}
+\DeclareVoidOption{osf}{\setkeys{Mn}{textosf,mathosf}}
+\DeclareVoidOption{lf}{\setkeys{Mn}{textlf,mathlf}}
+\DeclareVoidOption{mathtabular}{\let\Mn@Math@Family\Mn@Math@TFamily}
 %    \end{macrocode}
 %
 % \subsubsection{Calligraphic fonts}
@@ -644,25 +652,25 @@
 %    \end{macrocode}
 % Most options are handled by \pkg{MnSymbol}.
 %    \begin{macrocode}
-\DeclareOption{mnsy}{
+\DeclareVoidOption{mnsy}{
   \PassOptionsToPackage{mnsy}{MnSymbol}
   \def\Mn@load@cal{
     \SetMathAlphabet\mathcal{boldtabular}{OMS}{MnSymbolS}{b}{n}
   }
 }
-\DeclareOption{cmsy}{
+\DeclareVoidOption{cmsy}{
   \PassOptionsToPackage{cmsy}{MnSymbol}
   \def\Mn@load@cal{
     \SetMathAlphabet\mathcal{boldtabular}{OMS}{cmsy}{b}{n}
   }
 }
-\DeclareOption{abx}{
+\DeclareVoidOption{abx}{
   \PassOptionsToPackage{abx}{MnSymbol}
 %  \def\Mn@load@cal{
 %    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
 %  }
 }
-\DeclareOption{swash}{
+\DeclareVoidOption{swash}{
   \def\Mn@load@cal{
     \DeclareMathAlphabet\mathcal         {T1}{\Mn@Math@Family} {m} {sw}
     \SetMathAlphabet\mathcal{bold}       {T1}{\Mn@Math@Family} {eb}{sw}
@@ -677,12 +685,12 @@
 % section~\ref{sec:greek} before |\Mn@load@greek| is executed.
 %    \begin{macrocode}
 \newcommand\Mn@load@greek{\Mn@greek@Mixed}
-\DeclareOption{frenchmath}{%
+\DeclareVoidOption{frenchmath}{%
   \def\Mn@load@greek{\Mn@greek@Upright}%
   \def\Mn@Math@LetterShape{n}}
-\DeclareOption{mixedgreek}{%
+\DeclareVoidOption{mixedgreek}{%
   \def\Mn@load@greek{\Mn@greek@Mixed}}
-\DeclareOption{italicgreek}{%
+\DeclareVoidOption{italicgreek}{%
   \def\Mn@load@greek{\Mn@greek@Italic}}
 %    \end{macrocode}
 %
@@ -712,23 +720,23 @@
   \DeclareFontShape{U}{futm}{m}{n}{ <->s*[0.95] fourier-bb }{}
   \DeclareMathAlphabet\mathbb{U}{futm}{m}{n}
   \newcommand\Bbbk{\mathbb{k}}}
-\DeclareOption{amsbb}    {\let\Mn@load@bb\Mn@load@amsbb}
-\DeclareOption{lucidabb} {\let\Mn@load@bb\Mn@load@lucidabb}
-\DeclareOption{fourierbb}{\let\Mn@load@bb\Mn@load@fourierbb}
+\DeclareVoidOption{amsbb}{\let\Mn@load@bb\Mn@load@amsbb}
+\DeclareVoidOption{lucidabb}{\let\Mn@load@bb\Mn@load@lucidabb}
+\DeclareVoidOption{fourierbb}{\let\Mn@load@bb\Mn@load@fourierbb}
 %    \end{macrocode}
 %
 % \subsubsection{Integrals}
 %
 %    \begin{macrocode}
 \newcommand\Mn@load@integrals{}
-\DeclareOption{minionint}{\def\Mn@load@integrals{\Mn@Decl@Minion@Ints}}
+\DeclareVoidOption{minionint}{\def\Mn@load@integrals{\Mn@Decl@Minion@Ints}}
 %    \end{macrocode}
 %
 % \subsubsection{Miscellaneous options}
 %
 % Footnote figures, the g glyph in math mode, extra spacing for the apostrophe.
 %    \begin{macrocode}
-\DeclareOption{footnotefigures}{%
+\DeclareVoidOption{footnotefigures}{%
   \def\@makefnmark{%
     \begingroup
     \normalfont
@@ -737,7 +745,7 @@
     \endgroup}}
 %
 \newcommand\Mn@Define@Open@g{}
-\DeclareOption{openg}{%
+\DeclareVoidOption{openg}{%
   \def\Mn@Define@Open@g{%
     \mathcode`g="8000%
     \DeclareMathSymbol{\Mn@g}{\mathalpha}{letters}{`g}%
@@ -748,15 +756,15 @@
   }}
 %
 \newcommand\Mn@Quote@Spacing{}
-\DeclareOption{loosequotes}{%
+\DeclareVoidOption{loosequotes}{%
   \def\Mn@Quote@Spacing{\Mn@Quote@Spacing@Loose}}
 %    \end{macrocode}
 %
 % \subsubsection{Defaults}
 %
 %    \begin{macrocode}
-\ExecuteOptions{amsbb,eufrak}
-\ProcessOptions\relax
+\setkeys{Mn}{amsbb}
+\ProcessKeyvalOptions{Mn}\relax
 %    \end{macrocode}
 %
 % \subsection{Font declarations}
@@ -1690,6 +1698,14 @@
   \begingroup\escapechar`\\
 \fi
 %    \end{macrocode}
+% Check, if scale factor is defined, if not set it to 1
+%    \begin{macrocode}
+\expandafter\ifx\csname Mn@scaled\endcsname\relax
+\def\Mn@@scale{1}
+\else
+\def\Mn@@scale{\csname Mn@scaled\endcsname}
+\fi
+%    \end{macrocode}
 % These are the default values if it is impossible to process options.
 %    \begin{macrocode}
 \newcommand\Mn@option@opticals{noopticals}
@@ -1890,6 +1906,9 @@
 \Mn@AddToConfig{encoding/shape}{OML/n}{
       <->     otf* [figures=] MinionPro-French
 }
+\Mn@AddToConfig{scale}{scale}{
+      <->     otf* [scale=\Mn@@scale]
+}
 %    \end{macrocode}
 % Substitutions
 %    \begin{macrocode}
@@ -1934,6 +1953,7 @@
         \Mn@UseConfig{weight}        {#4}%
         \Mn@UseConfig{encoding/shape}{#2/#5}%
         \Mn@UseConfig{shape}         {#5}%
+        \Mn@UseConfig{scale}         {scale}%
       }}%
     \edef\@tempa{\the\@temptokena{\Mn@TheConfig{code:shape}{#5}}}%
     \@tempa
