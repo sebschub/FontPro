@@ -236,7 +236,14 @@
 % \item[\option{abx}]   use the calligraphic symbols provided by mathabx:
 %                       \IfFileExists{mathabx.sty}{{\font\testabx=mathc10\testabx ABCabc}}{}\par
 %                       (This font contains also lowercase letters, but it is not quite finished.)
-% \item[\option{crswash}] use the swash letters from CronosPro
+% \item[\option{crswash[=\emph{option}]}] %
+%                       use the swash letters from
+%                       CronosPro. \emph{option} can be either
+%                       \emph{noptsmall}, \emph{optsmall},
+%                       \emph{noptmed} or \emph{optmed} using (no)
+%                       optical weights, small or medium family
+%                       configuration (see CronosPro
+%                       documentation). First one is default.
 % \end{options}
 %
 % \subsubsection*{Blackboard bold letters}
@@ -273,7 +280,7 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
-% \item[\option{scaled=<\emph{factor}>}]
+% \item[\option{scaled=\emph{factor}}]
 %      scale the font size by <\emph{factor}>
 % \item[\option{myriadint}]
 %      take the integral symbols from MyriadPro, not from
@@ -609,15 +616,7 @@
 %    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
 %  }
 }
-\DeclareVoidOption{crswash}{
-  \def\My@load@cal{
-    \def\Cr@scaled{1.05}
-    \RequirePackage{CronosPro-FontDef}
-    \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
-    \SetMathAlphabet\mathcal{bold}       {T1}{\Cr@Math@Family} {eb}{sw}
-    \SetMathAlphabet\mathcal{tabular}    {T1}{\Cr@Math@TFamily}{m} {sw}
-    \SetMathAlphabet\mathcal{boldtabular}{T1}{\Cr@Math@TFamily}{eb}{sw}}
-}
+\DeclareStringOption[false]{crswash}[noptsmall]
 %    \end{macrocode}
 %
 % \subsubsection{Greek letters}
@@ -706,6 +705,23 @@
 %    \begin{macrocode}
 \setkeys{My}{amsbb}
 \ProcessKeyvalOptions{My}\relax
+\RequirePackage{ifthen}
+\ifthenelse{\equal{\My@crswash}{false}}{}{%
+  \def\My@load@cal{
+    \def\Cr@scaled{1.05}
+    \ifthenelse{\equal{\My@crswash}{noptsmall}}{%
+      \RequirePackage{CronosPro-FontDef}}{}
+    \ifthenelse{\equal{\My@crswash}{optsmall}}{%
+      \RequirePackage[opticals]{CronosPro-FontDef}}{}
+    \ifthenelse{\equal{\My@crswash}{noptmed}}{%
+      \RequirePackage[medfamily]{CronosPro-FontDef}}{}
+    \ifthenelse{\equal{\My@crswash}{optmed}}{%
+      \RequirePackage[opticals,medfamily]{CronosPro-FontDef}}{}
+    \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
+    \SetMathAlphabet\mathcal{bold}       {T1}{\Cr@Math@Family} {eb}{sw}
+    \SetMathAlphabet\mathcal{tabular}    {T1}{\Cr@Math@TFamily}{m} {sw}
+    \SetMathAlphabet\mathcal{boldtabular}{T1}{\Cr@Math@TFamily}{eb}{sw}}
+}
 %    \end{macrocode}
 %
 % \subsection{Font declarations}
