@@ -39,7 +39,7 @@ Building
 
   $ ./scripts/makeall $FONT
 
-Currently, FONT can be MinionPro or MyriadPro.
+Currently, FONT can be MinionPro, MyriadPro or CronosPro.
 
 makeall has some options to specify which metrics to create:
 
