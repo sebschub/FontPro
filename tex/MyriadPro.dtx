@@ -546,7 +546,7 @@
 % pass on the relevant options including the font scale factor; only
 % MyriadPro integrals are handled here in \pkg{MyriadPro}.
 %    \begin{macrocode}
-\DeclareStringOption{scaled}
+\DeclareStringOption[1.]{scaled}
 \newcommand\My@myriadint@opticals{-NoOpticals}
 \newcommand\My@myriadint@bold{-Bold}
 \DeclareVoidOption{noopticals}{%
@@ -1617,14 +1617,6 @@
   \begingroup\escapechar`\\
 \fi
 %    \end{macrocode}
-% Check, if scale factor is defined, if not set it to 1
-%    \begin{macrocode}
-\expandafter\ifx\csname My@scaled\endcsname\relax
-\def\My@@scale{1}
-\else
-\def\My@@scale{\csname My@scaled\endcsname}
-\fi
-%    \end{macrocode}
 % These are the default values if it is impossible to process options.
 %    \begin{macrocode}
 \newcommand\My@option@opticals{noopticals}
@@ -1734,13 +1726,25 @@
 \otf@makeglobal{My@UseConfigOrDefault}
 \otf@makeglobal{My@TheConfig}
 %    \end{macrocode}
+% The size range in the configuration has to be divided by the scaling
+% factor to take the changed size into account because the scaling
+% takes place after choosing the right combination. Provide
+% calculation routine here.
+%    \begin{macrocode}
+\RequirePackage{fltpoint}
+\fpDecimalSign{.}
+\newcommand*{\My@calc@bsize}[2]{\fpDiv{#1}{#2}{\My@scaled}}
+%    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
+\My@calc@bsize{\My@s@capt}{8.5}
+\My@calc@bsize{\My@s@text}{13.1}
+\My@calc@bsize{\My@s@subh}{20}
 \My@AddToConfig{opticals}{opticals}{
-      <-8.5>  otf* [optical=Capt]
-   <8.5-13.1> otf* [optical=Text]
-  <13.1-20>   otf* [optical=Subh]
-    <20->     otf* [optical=Disp]
+            <-\My@s@capt>  otf* [optical=Capt]
+  <\My@s@capt-\My@s@text>  otf* [optical=Text]
+  <\My@s@text-\My@s@subh>  otf* [optical=Subh]
+  <\My@s@subh->            otf* [optical=Disp]
 }
 \My@AddToConfig{opticals}{noopticals}{
       <->     otf* [optical=Text]
@@ -1751,30 +1755,19 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\ifdim\My@option@normalsize<10.1pt
-  \My@AddToConfig{fontset/weight}{fullfamily/m}{
-        <-6>    otf* [weight=Semibold]
-       <6-8.5>  otf* [weight=Medium]
-     <8.5->     otf* [weight=Regular]
-  }
-\else
-  \My@AddToConfig{fontset/weight}{fullfamily/m}{
-        <-6>    otf* [weight=Semibold]
-       <6-10.1> otf* [weight=Medium]
-    <10.1->     otf* [weight=Regular]
-  }
-\fi
+\My@calc@bsize{\My@s@semim}{6}
 \My@AddToConfig{fontset/weight}{medfamily/m}{
-      <-6>    otf* [weight=Semibold]
-     <6->     otf* [weight=Regular]
+             <-\My@s@semim> otf* [weight=Semibold]
+  <\My@s@semim->            otf* [weight=Regular]
 }
 \My@AddToConfig{fontset/weight}{smallfamily/m}{
       <->     otf* [weight=Regular]
 }
 %
+\My@calc@bsize{\My@s@bold}{6}
 \My@AddToConfig{fontset/weight}{fullfamily/b,medfamily/b}{
-      <-6>    otf* [weight=Bold]
-     <6->     otf* [weight=Semibold]
+            <-\My@s@bold>  otf* [weight=Bold]
+  <\My@s@bold->            otf* [weight=Semibold]
 }
 \My@AddToConfig{fontset/weight}{smallfamily/b}{
       <->     otf* [weight=Bold]
@@ -1786,8 +1779,9 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
+\My@calc@bsize{\My@s@spac}{8}
 \My@AddToConfig{shape}{n,it}{
-      <-8>    otf* [spacing=l1]
+      <-\My@s@spac>    otf* [spacing=l1]
 }
 \My@AddToConfig{encoding/shape}{U/n,U/it}{
       <->     otf* [spacing=]
@@ -1808,7 +1802,7 @@
       <->     otf* [figures=] MyriadPro-French
 }
 \My@AddToConfig{scale}{scale}{
-      <->     otf* [scale=\My@@scale]
+      <->     otf* [scale=\My@scaled]
 }
 %    \end{macrocode}
 % Substitutions

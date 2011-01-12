@@ -456,7 +456,7 @@
 % pass on the relevant options including the font scale factor; only
 % CronosPro integrals are handled here in \pkg{CronosPro}.
 %    \begin{macrocode}
-\DeclareStringOption{scaled}
+\DeclareStringOption[1.]{scaled}
 \newcommand\Cr@minionint@opticals{-NoOpticals}
 \newcommand\Cr@minionint@bold{-Bold}
 \DeclareVoidOption{slides}{%
@@ -1550,14 +1550,6 @@
   \begingroup\escapechar`\\
 \fi
 %    \end{macrocode}
-% Check, if scale factor is defined, if not set it to 1
-%    \begin{macrocode}
-\expandafter\ifx\csname Cr@scaled\endcsname\relax
-\def\Cr@@scale{1}
-\else
-\def\Cr@@scale{\csname Cr@scaled\endcsname}
-\fi
-%    \end{macrocode}
 % These are the default values if it is impossible to process options.
 %    \begin{macrocode}
 \newcommand\Cr@option@opticals{noopticals}
@@ -1675,13 +1667,25 @@
 \otf@makeglobal{Cr@UseConfigOrDefault}
 \otf@makeglobal{Cr@TheConfig}
 %    \end{macrocode}
+% The size range in the configuration has to be divided by the scaling
+% factor to take the changed size into account because the scaling
+% takes place after choosing the right combination. Provide
+% calculation routine here.
+%    \begin{macrocode}
+\RequirePackage{fltpoint}
+\fpDecimalSign{.}
+\newcommand*{\Cr@calc@bsize}[2]{\fpDiv{#1}{#2}{\Cr@scaled}}
+%    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
+\Cr@calc@bsize{\Cr@s@capt}{8.5}
+\Cr@calc@bsize{\Cr@s@text}{13.1}
+\Cr@calc@bsize{\Cr@s@subh}{20}
 \Cr@AddToConfig{opticals}{opticals}{
-      <-8.5>  otf* [optical=Capt]
-   <8.5-13.1> otf* [optical=Text]
-  <13.1-20>   otf* [optical=Subh]
-    <20->     otf* [optical=Disp]
+            <-\Cr@s@capt>  otf* [optical=Capt]
+  <\Cr@s@capt-\Cr@s@text>  otf* [optical=Text]
+  <\Cr@s@text-\Cr@s@subh>  otf* [optical=Subh]
+  <\Cr@s@subh->            otf* [optical=Disp]
 }
 \Cr@AddToConfig{opticals}{noopticals}{
       <->     otf* [optical=Text]
@@ -1693,29 +1697,30 @@
 %
 %    \begin{macrocode}
 \ifdim\Cr@option@normalsize<10.1pt
-  \Cr@AddToConfig{fontset/weight}{fullfamily/m}{
-        <-6>    otf* [weight=Semibold]
-       <6-8.5>  otf* [weight=Medium]
-     <8.5->     otf* [weight=Regular]
-  }
+  \Cr@calc@bsize{\Cr@s@semif}{6}
+  \Cr@calc@bsize{\Cr@s@medif}{8.5}
 \else
-  \Cr@AddToConfig{fontset/weight}{fullfamily/m}{
-        <-6>    otf* [weight=Semibold]
-       <6-10.1> otf* [weight=Medium]
-    <10.1->     otf* [weight=Regular]
-  }
+  \Cr@calc@bsize{\Cr@s@semif}{6}
+  \Cr@calc@bsize{\Cr@s@medif}{10.1}
 \fi
+\Cr@AddToConfig{fontset/weight}{fullfamily/m}{
+            < -\Cr@s@semif>  otf* [weight=Semibold]
+  <\Cr@s@semif-\Cr@s@medif>  otf* [weight=Medium]
+  <\Cr@s@medif->             otf* [weight=Regular]
+}
+\Cr@calc@bsize{\Cr@s@semim}{6}
 \Cr@AddToConfig{fontset/weight}{medfamily/m}{
-      <-6>    otf* [weight=Semibold]
-     <6->     otf* [weight=Regular]
+             <-\Cr@s@semim> otf* [weight=Semibold]
+  <\Cr@s@semim->            otf* [weight=Regular]
 }
 \Cr@AddToConfig{fontset/weight}{smallfamily/m}{
       <->     otf* [weight=Regular]
 }
 %
+\Cr@calc@bsize{\Cr@s@bold}{6}
 \Cr@AddToConfig{fontset/weight}{fullfamily/b,medfamily/b}{
-      <-6>    otf* [weight=Bold]
-     <6->     otf* [weight=Semibold]
+            <-\Cr@s@bold>  otf* [weight=Bold]
+  <\Cr@s@bold->            otf* [weight=Semibold]
 }
 \Cr@AddToConfig{fontset/weight}{smallfamily/b}{
       <->     otf* [weight=Bold]
@@ -1730,8 +1735,9 @@
 \Cr@AddToConfig{shape}{ssc,sscit}{
       <->     otf* [spacing=l2]
 }
+\Cr@calc@bsize{\Cr@s@spac}{8}
 \Cr@AddToConfig{shape}{n,it,sw,sc,scit}{
-      <-8>    otf* [spacing=l1]
+      <-\Cr@s@spac>    otf* [spacing=l1]
 }
 \Cr@AddToConfig{encoding/shape}{U/n,U/it}{
       <->     otf* [spacing=]
@@ -1759,7 +1765,7 @@
       <->     otf* [figures=] CronosPro-French
 }
 \Cr@AddToConfig{scale}{scale}{
-      <->     otf* [scale=\Cr@@scale]
+      <->     otf* [scale=\Cr@scaled]
 }
 %    \end{macrocode}
 % Substitutions

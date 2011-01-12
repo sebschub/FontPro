@@ -594,7 +594,7 @@
 % pass on the relevant options including the font scale factor; only
 % MinionPro integrals are handled here in \pkg{MinionPro}.
 %    \begin{macrocode}
-\DeclareStringOption{scaled}
+\DeclareStringOption[1.]{scaled}
 \newcommand\Mn@minionint@opticals{-NoOpticals}
 \newcommand\Mn@minionint@bold{-Bold}
 \DeclareVoidOption{slides}{%
@@ -1698,14 +1698,6 @@
   \begingroup\escapechar`\\
 \fi
 %    \end{macrocode}
-% Check, if scale factor is defined, if not set it to 1
-%    \begin{macrocode}
-\expandafter\ifx\csname Mn@scaled\endcsname\relax
-\def\Mn@@scale{1}
-\else
-\def\Mn@@scale{\csname Mn@scaled\endcsname}
-\fi
-%    \end{macrocode}
 % These are the default values if it is impossible to process options.
 %    \begin{macrocode}
 \newcommand\Mn@option@opticals{noopticals}
@@ -1823,13 +1815,25 @@
 \otf@makeglobal{Mn@UseConfigOrDefault}
 \otf@makeglobal{Mn@TheConfig}
 %    \end{macrocode}
+% The size range in the configuration has to be divided by the scaling
+% factor to take the changed size into account because the scaling
+% takes place after choosing the right combination. Provide
+% calculation routine here.
+%    \begin{macrocode}
+\RequirePackage{fltpoint}
+\fpDecimalSign{.}
+\newcommand*{\Mn@calc@bsize}[2]{\fpDiv{#1}{#2}{\Mn@scaled}}
+%    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
+\Mn@calc@bsize{\Mn@s@capt}{8.5}
+\Mn@calc@bsize{\Mn@s@text}{13.1}
+\Mn@calc@bsize{\Mn@s@subh}{20}
 \Mn@AddToConfig{opticals}{opticals}{
-      <-8.5>  otf* [optical=Capt]
-   <8.5-13.1> otf* [optical=Text]
-  <13.1-20>   otf* [optical=Subh]
-    <20->     otf* [optical=Disp]
+            <-\Mn@s@capt>  otf* [optical=Capt]
+  <\Mn@s@capt-\Mn@s@text>  otf* [optical=Text]
+  <\Mn@s@text-\Mn@s@subh>  otf* [optical=Subh]
+  <\Mn@s@subh->            otf* [optical=Disp]
 }
 \Mn@AddToConfig{opticals}{noopticals}{
       <->     otf* [optical=Text]
@@ -1841,29 +1845,30 @@
 %
 %    \begin{macrocode}
 \ifdim\Mn@option@normalsize<10.1pt
-  \Mn@AddToConfig{fontset/weight}{fullfamily/m}{
-        <-6>    otf* [weight=Semibold]
-       <6-8.5>  otf* [weight=Medium]
-     <8.5->     otf* [weight=Regular]
-  }
+  \Mn@calc@bsize{\Mn@s@semif}{6}
+  \Mn@calc@bsize{\Mn@s@medif}{8.5}
 \else
-  \Mn@AddToConfig{fontset/weight}{fullfamily/m}{
-        <-6>    otf* [weight=Semibold]
-       <6-10.1> otf* [weight=Medium]
-    <10.1->     otf* [weight=Regular]
-  }
+  \Mn@calc@bsize{\Mn@s@semif}{6}
+  \Mn@calc@bsize{\Mn@s@medif}{10.1}
 \fi
+\Mn@AddToConfig{fontset/weight}{fullfamily/m}{
+            < -\Mn@s@semif>  otf* [weight=Semibold]
+  <\Mn@s@semif-\Mn@s@medif>  otf* [weight=Medium]
+  <\Mn@s@medif->             otf* [weight=Regular]
+}
+\Mn@calc@bsize{\Mn@s@semim}{6}
 \Mn@AddToConfig{fontset/weight}{medfamily/m}{
-      <-6>    otf* [weight=Semibold]
-     <6->     otf* [weight=Regular]
+             <-\Mn@s@semim> otf* [weight=Semibold]
+  <\Mn@s@semim->            otf* [weight=Regular]
 }
 \Mn@AddToConfig{fontset/weight}{smallfamily/m}{
       <->     otf* [weight=Regular]
 }
 %
+\Mn@calc@bsize{\Mn@s@bold}{6}
 \Mn@AddToConfig{fontset/weight}{fullfamily/b,medfamily/b}{
-      <-6>    otf* [weight=Bold]
-     <6->     otf* [weight=Semibold]
+            <-\Mn@s@bold>  otf* [weight=Bold]
+  <\Mn@s@bold->            otf* [weight=Semibold]
 }
 \Mn@AddToConfig{fontset/weight}{smallfamily/b}{
       <->     otf* [weight=Bold]
@@ -1878,8 +1883,9 @@
 \Mn@AddToConfig{shape}{ssc,sscit}{
       <->     otf* [spacing=l2]
 }
+\Mn@calc@bsize{\Mn@s@spac}{8}
 \Mn@AddToConfig{shape}{n,it,sw,sc,scit}{
-      <-8>    otf* [spacing=l1]
+      <-\Mn@s@spac>    otf* [spacing=l1]
 }
 \Mn@AddToConfig{encoding/shape}{U/n,U/it}{
       <->     otf* [spacing=]
@@ -1907,7 +1913,7 @@
       <->     otf* [figures=] MinionPro-French
 }
 \Mn@AddToConfig{scale}{scale}{
-      <->     otf* [scale=\Mn@@scale]
+      <->     otf* [scale=\Mn@scaled]
 }
 %    \end{macrocode}
 % Substitutions
