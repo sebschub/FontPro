@@ -708,7 +708,9 @@
 \RequirePackage{ifthen}
 \ifthenelse{\equal{\My@crswash}{false}}{}{%
   \def\My@load@cal{
-    \def\Cr@scaled{1.05}
+    \RequirePackage{fltpoint}
+    \fpDecimalSign{.}
+    \fpMul{\Cr@scaled}{\My@scaled}{1.05}
     \ifthenelse{\equal{\My@crswash}{noptsmall}}{%
       \RequirePackage{CronosPro-FontDef}}{}
     \ifthenelse{\equal{\My@crswash}{optsmall}}{%

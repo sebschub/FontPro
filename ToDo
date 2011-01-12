@@ -3,8 +3,7 @@ General
 
 * make scripts run with a lcdf typetools version > 2.69
 * fix generation of dotless j
-* the font scaling option is not taken into account when determining
-  the (optical) weight; fix that
+* check and fix possible math issues when scaling fonts
 
 
 Myriad Pro
