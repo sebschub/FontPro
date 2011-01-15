@@ -1,7 +1,6 @@
 General
 =======
 
-* make scripts run with a lcdf typetools version > 2.69
 * fix generation of dotless j
 * check and fix possible math issues when scaling fonts
 
