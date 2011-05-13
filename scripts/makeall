@@ -2,7 +2,17 @@
 
 ffamily=$1
 shift
-echo "Chosen font family is $ffamily"
+
+case $ffamily in
+    "MinionPro" | "MyriadPro" | "CronosPro")
+	echo "Chosen font family is $ffamily"
+	echo "$ffamily" > fontname
+	;;
+    *)
+	echo "Entered font not supported"
+	exit 1
+	;;
+esac
 
 cp enc/$ffamily/* enc/
 cp fontinst/$ffamily/* fontinst/

@@ -33,48 +33,58 @@ Building
 
 2) Copy your OpenType font files into the otf directory.
 
-  $ mkdir $FOLDER/otf
-  $ cp /some/path/*.otf otf
+    $ mkdir $FOLDER/otf
+    $ cp /some/path/*.otf otf
 
 3) Run ./scripts/makeall
 
-  $ ./scripts/makeall $FONT
+    $ ./scripts/makeall $FONT
 
-Currently, FONT can be MinionPro, MyriadPro or CronosPro.
+   Currently, FONT can be MinionPro, MyriadPro or CronosPro.
 
-makeall has some options to specify which metrics to create:
+   makeall has some options to specify which metrics to create:
 
-  --verbose            show warning messages from otftotfm
-  --quiet              omit these messages (default)
-  --smallcaps          create small caps metrics (default)
-  --nosmallcaps        turn --smallcaps off
-  --swash              create swash metrics (default)
-  --noswash            turn --swash off
-  --greek              create greek metrics (default)
-  --nogreek            turn --greek off
-  --cyrillic           create cyrillic metrics (default)
-  --nocyrillic         turn --cyrillic off
-  --vietnamese         create vietnamese metrics (default)
-  --novietnamese       turn --vietnamese off
-  --expanded           create expanded metrics for pdftex
-  --noexpanded         turn --expanded off (default)
-  --kern               add some missing kerning pairs (default)
-  --nokern             use the original Adobe kerning
-  --dotlessj           create a fake dotless j glyph (default)
-  --nodotlessj         do not create a fake dotless j glyph
-  --wide-spacing       increase the sidebearings of quote glyphs
-  --narrow-spacing     turn --wide-spacing off (default)
-  --pack=<glyph-list>  create base fonts to reduce the size of the map file
+    --verbose            show warning messages from otftotfm
+    --quiet              omit these messages (default)
+    --smallcaps          create small caps metrics (default)
+    --nosmallcaps        turn --smallcaps off
+    --swash              create swash metrics (default)
+    --noswash            turn --swash off
+    --greek              create greek metrics (default)
+    --nogreek            turn --greek off
+    --cyrillic           create cyrillic metrics (default)
+    --nocyrillic         turn --cyrillic off
+    --vietnamese         create vietnamese metrics (default)
+    --novietnamese       turn --vietnamese off
+    --expanded           create expanded metrics for pdftex
+    --noexpanded         turn --expanded off (default)
+    --kern               add some missing kerning pairs (default)
+    --nokern             use the original Adobe kerning
+    --dotlessj           create a fake dotless j glyph (default)
+    --nodotlessj         do not create a fake dotless j glyph
+    --wide-spacing       increase the sidebearings of quote glyphs
+    --narrow-spacing     turn --wide-spacing off (default)
+    --pack=<glyph-list>  create base fonts to reduce the size of the map
+                         file; some glyph lists are supplied in the
+                         scripts folder; they can also be generated
+                         using generate-glyph-list.sh AFTER a successful
+                         build
 
 Installing
 ==========
 
-1) Run ./scripts/install $FONT. You can specify the directory where the files
-should be put. The default is $TEXMFLOCAL.
+1) Run ./scripts/install. You can specify the directory where the files
+   should be put. The default is $TEXMFLOCAL.
 
-  $ ./scripts/install $FONT /usr/local/teTeX/share/texmf-local
+     $ ./scripts/install /usr/local/teTeX/share/texmf-local
 
-2) Add $FONT.map to your updmap.cfg and run updmap.
+   (If you use a distribution older than 2005 which does not follow
+   TDS v1.1, uncomment the "old directory folders" in the install
+   script!)
+
+2) Add $FONT.map to your updmap.cfg and run updmap-sys or follow the
+   procedure meant for your tex distribution (check its
+   documentation!).
 
 Usage
 =====

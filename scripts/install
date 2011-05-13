@@ -1,8 +1,7 @@
 #!/bin/bash
 
 vendor=adobe
-font=$1
-shift
+font=`cat fontname`
 
 dir="$1"
 
@@ -11,26 +10,23 @@ then
   dir="$(kpsewhich -expand-var='$TEXMFLOCAL')"
 fi
 
-if [ -d "$dir/fonts/enc" ]
-then
-  # new directory layout
-  enc_dir="$dir/fonts/enc/dvips/$font"
-  map_dir="$dir/fonts/map/dvips/$font"
-  pfb_dir="$dir/fonts/type1/$vendor/$font"
-  tfm_dir="$dir/fonts/tfm/$vendor/$font"
-  vf_dir="$dir/fonts/vf/$vendor/$font"
-  tex_dir="$dir/tex/latex/$font"
-  doc_dir="$dir/doc/latex/$font"
-else
-  # old directory layout
-  enc_dir="$dir/dvips/$font"
-  map_dir="$dir/dvips/$font"
-  pfb_dir="$dir/fonts/type1/$vendor/$font"
-  tfm_dir="$dir/fonts/tfm/$vendor/$font"
-  vf_dir="$dir/fonts/vf/$vendor/$font"
-  tex_dir="$dir/tex/latex/$font"
-  doc_dir="$dir/doc/latex/$font"
-fi
+# new directory layout (TDS v1.1)
+enc_dir="$dir/fonts/enc/dvips/$font"
+map_dir="$dir/fonts/map/dvips/$font"
+pfb_dir="$dir/fonts/type1/$vendor/$font"
+tfm_dir="$dir/fonts/tfm/$vendor/$font"
+vf_dir="$dir/fonts/vf/$vendor/$font"
+tex_dir="$dir/tex/latex/$font"
+doc_dir="$dir/doc/latex/$font"
+#  # old directory layout
+#  enc_dir="$dir/dvips/$font"
+#  map_dir="$dir/dvips/$font"
+#  pfb_dir="$dir/fonts/type1/$vendor/$font"
+#  tfm_dir="$dir/fonts/tfm/$vendor/$font"
+#  vf_dir="$dir/fonts/vf/$vendor/$font"
+#  tex_dir="$dir/tex/latex/$font"
+#  doc_dir="$dir/doc/latex/$font"
+
 
 mkdir -p "$enc_dir" "$map_dir" "$pfb_dir" "$tfm_dir" "$vf_dir" "$tex_dir" "$doc_dir"
 
