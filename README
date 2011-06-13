@@ -60,8 +60,6 @@ Building
     --noexpanded         turn --expanded off (default)
     --kern               add some missing kerning pairs (default)
     --nokern             use the original Adobe kerning
-    --dotlessj           create a fake dotless j glyph (default)
-    --nodotlessj         do not create a fake dotless j glyph
     --wide-spacing       increase the sidebearings of quote glyphs
     --narrow-spacing     turn --wide-spacing off (default)
     --pack=<glyph-list>  create base fonts to reduce the size of the map
