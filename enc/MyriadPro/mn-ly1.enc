@@ -4,7 +4,7 @@
 /MyriadPro-TeXnANSIEncoding [
 % 0x00
 /.notdef /Euro /.notdef /.notdef /fraction /dotaccent /hungarumlaut /ogonek
-/fl /.notdef /.notdef /ff /fi /.notdef /ffi /ffl
+/f_l /.notdef /.notdef /ff /f_i /.notdef /ffi /ffl
 /dotlessi /dotlessj /grave /acute /caron /breve /macron /ring
 /cedilla /germandbls /ae /oe /oslash /AE /OE /Oslash
 % 0x20

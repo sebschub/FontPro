@@ -23,7 +23,7 @@
   /f_j %/perthousandzero
   /dotlessi
   /f_f_j %/dotlessj
-  /ff /fi /fl /ffi /ffl
+  /ff /f_i /f_l /ffi /ffl
 % 0x20
   /f_t %/visualspace
   /exclam /quotedbl /numbersign

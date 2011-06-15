@@ -31,6 +31,7 @@ for font in otf/$ffamily*.otf
 do
   base=$(basename "$font" .otf)
   cfftot1    "$font"     "$base.pfb"
+  t1dotlessj "$base.pfb" "${base}LCDFJ.pfb"
 done
 
 echo "Creating TeX metrics ..."
