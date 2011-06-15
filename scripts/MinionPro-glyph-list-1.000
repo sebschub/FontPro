@@ -244,6 +244,7 @@
 /twooldstyle 
 /twosuperior 
 /dotlessi
+/dotlessj
 /uniF645 
 /uacute
 /ugrave
@@ -1214,7 +1215,6 @@
 /upsilontonos
 /xi
 /zeta
-/.notdef 
 /.notdef 
 /.notdef 
 /.notdef 
