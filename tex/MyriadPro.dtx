@@ -285,8 +285,6 @@
 % \item[\option{myriadint}]
 %      take the integral symbols from MyriadPro, not from
 %      MnSymbol: $\displaystyle\int$ instead of $\displaystyle\varint$
-% \item[\option{openg}]
-%      use $\openg$ instead of $g$ in math mode.
 % \item[\option{loosequotes}]
 %      The quote signs of MyriadPro are set rather tight. This can
 %      lead to undesirable spacing for apostrophes. The \option{loosequotes}
@@ -362,13 +360,16 @@
 % \begingroup
 % \newcommand*\sym[1]{$#1$ & \ttfamily\string#1}%
 % \begin{tabular}{@{}*2{ll@{\qquad}}ll@{}}
-%   \sym\digamma     & \sym\varkappa       & \sym\varbeta \\
+%   \sym\openg       & \sym\varkappa       & \sym\varbeta \\
 %   \sym\backepsilon & \sym\varbackepsilon & \sym\hbar \\
 %   \sym\hslash      & \sym\lambdabar      & \sym\lambdaslash \\
 %   \sym\jmath       & \sym\eth            & \sym\Bbbk \\
-%   \sym\slashedzero & \sym\openg \\
+%   \sym\slashedzero  \\
 % \end{tabular}
 % \endgroup
+% Some of the alternative characters above resemble the normal
+% character because MyriadPro offers no respective glyph.  They are
+% defined for compatibility reasons.
 %
 % \medskip\noindent
 % Small and slanted fractions are fractions with a height matching the font's
@@ -883,8 +884,10 @@
 % Some of the following symbols are not really Greek letters but are treated in
 % the same way.
 %    \begin{macrocode}
-  \My@greek@letter{varbeta}       {'260}{'250}
-  \My@greek@letter{varkappa}      {'261}{'251}
+%%  \My@greek@letter{varbeta}       {'260}{'250}
+  \My@greek@letter{varbeta}       {'014}{'214}
+%%  \My@greek@letter{varkappa}      {'261}{'251}
+  \My@greek@letter{varkappa}      {'024}{'224}
   \My@greek@letter{backepsilon}   {'262}{'252}
   \My@greek@letter{varbackepsilon}{'263}{'253}
   \My@greek@letter{digamma}       {'264}{'254}

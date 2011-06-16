@@ -101,8 +101,8 @@
 \adjustmetrics{UPdotlessj}{90}{0}{0}{40}{25}
 \adjustmetrics{UPpartialdiff}{0}{0}{0}{0}{10}
 \adjustmetrics{UPdigamma}{0}{0}{0}{10}{30}
-\adjustmetrics{UPkappa1}{0}{0}{0}{10}{30}
-\adjustmetrics{UPbeta1}{0}{0}{0}{20}{10}
+%\adjustmetrics{UPkappa1}{0}{0}{0}{10}{30}
+%\adjustmetrics{UPbeta1}{0}{0}{0}{20}{10}
 \adjustmetrics{UPbackepsilon}{30}{-10}{0}{10}{35}
 \adjustmetrics{UPbackepsilon1}{10}{0}{0}{10}{35}
 \adjustmetrics{UPhbar}{0}{0}{0}{-60}{10}
@@ -209,8 +209,8 @@
 \adjustmetrics{ITdotlessj}{80}{-20}{0}{100}{25}
 \adjustmetrics{ITpartialdiff}{0}{0}{0}{50}{10}
 \adjustmetrics{ITdigamma}{20}{-10}{0}{80}{25}
-\adjustmetrics{ITkappa1}{0}{0}{0}{60}{25}
-\adjustmetrics{ITbeta1}{-20}{10}{0}{100}{10}
+%\adjustmetrics{ITkappa1}{0}{0}{0}{60}{25}
+%\adjustmetrics{ITbeta1}{-20}{10}{0}{100}{10}
 \adjustmetrics{ITbackepsilon}{10}{0}{0}{0}{25}
 \adjustmetrics{ITbackepsilon1}{10}{0}{0}{20}{25}
 \adjustmetrics{IThbar}{0}{0}{0}{-20}{10}
