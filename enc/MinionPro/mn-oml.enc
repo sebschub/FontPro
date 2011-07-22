@@ -3,7 +3,6 @@
 % UNICODING digamma          =: uni03DD uniEFD5 ;
 % UNICODING sigmafinal       =: sigmafinal sigma ;
 % UNICODING pisymbolgreek    =: pisymbolgreek pi ;
-% UNICODING theta1           =: theta1 theta ;
 % UNICODING phi1             =: phi1 phi ;
 %
 /MinionPro-OMLEncoding [          % now 256 chars follow
