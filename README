@@ -36,6 +36,39 @@ Building
     $ mkdir $FOLDER/otf
     $ cp /some/path/*.otf otf
 
+   MinionPro and MyriadPro font files normally follow the in the
+   scripts assumed naming scheme. Make sure that the CronosPro files
+   are of the form
+
+    $FONT-$WEIGHT$SHAPE$OPTICAL.otf
+
+   resulting in for example
+    
+    CronosPro-BoldCapt.otf
+    CronosPro-BoldDisp.otf
+    CronosPro-BoldItCapt.otf
+    CronosPro-BoldItDisp.otf
+    CronosPro-BoldIt.otf
+    CronosPro-BoldItSubh.otf
+    CronosPro-Bold.otf
+    CronosPro-BoldSubh.otf
+    CronosPro-Capt.otf
+    CronosPro-Disp.otf
+    CronosPro-ItCapt.otf
+    CronosPro-ItDisp.otf
+    CronosPro-It.otf
+    CronosPro-ItSubh.otf
+    CronosPro-Regular.otf
+    CronosPro-SemiboldCapt.otf
+    CronosPro-SemiboldDisp.otf
+    CronosPro-SemiboldItCapt.otf
+    CronosPro-SemiboldItDisp.otf
+    CronosPro-SemiboldIt.otf
+    CronosPro-SemiboldItSubh.otf
+    CronosPro-Semibold.otf
+    CronosPro-SemiboldSubh.otf
+    CronosPro-Subh.otf 
+
 3) Run ./scripts/makeall
 
     $ ./scripts/makeall $FONT

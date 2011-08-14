@@ -11,7 +11,8 @@ Myriad Pro
 * kerning
 * integrals including integral from Myriad Pro fonts
 * adaptation of MnSymbols
-
+* adjust spacing of denominator and nominator figures for different
+  font versions (used by slantfrac)
 
 Cronos Pro
 ==========
