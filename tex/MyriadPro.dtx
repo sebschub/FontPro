@@ -205,6 +205,12 @@
 % \begin{options}
 % \item[\option{onlytext}] only change the text fonts
 % \item[\option{onlymath}] only change the math fonts
+% \item[\option{sansmath}] provide mathversion \emph{sans} and
+%   \emph{sansbold} independently of options \option{onlytext} and
+%   \option{onlymath} and change |\mathsf| to use MyriadPro. This can
+%   be used together with \option{onlytext} to only use MyriadPro's
+%   math in a part of the document. Works only with \pkg{MinionPro} as
+%   the main font at the moment.
 % \end{options}
 %
 % \subsubsection*{Figure selection}
@@ -496,8 +502,10 @@
 %<*style>
 \newif\if@My@Text@
 \newif\if@My@Math@
+\newif\if@My@Sans@Math@
 \@My@Text@true
 \@My@Math@true
+\@My@Sans@Math@false
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family = My,
@@ -505,6 +513,7 @@
 }
 \DeclareVoidOption{onlytext}{\@My@Text@true\@My@Math@false}
 \DeclareVoidOption{onlymath}{\@My@Text@false\@My@Math@true}
+\DeclareVoidOption{sansmath}{\@My@Sans@Math@true}
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
@@ -561,6 +570,7 @@
 % These hooks are executed once the math versions have been set up.
 %    \begin{macrocode}
 \newcommand\My@load@cal{}
+\newcommand\My@load@sans@cal{}
 \newcommand\My@load@bb{}
 \newcommand\My@load@frak{}
 %    \end{macrocode}
@@ -674,8 +684,7 @@
 \setkeys{My}{amsbb}
 \ProcessKeyvalOptions{My}\relax
 \RequirePackage{ifthen}
-\ifthenelse{\equal{\My@crswash}{false}}{}{%
-  \def\My@load@cal{
+\def\My@setup@crswash{
     \RequirePackage{fltpoint}
     \fpDecimalSign{.}
     \fpMul{\Cr@scaled}{\My@scaled}{1.08}
@@ -686,12 +695,20 @@
     \ifthenelse{\equal{\My@crswash}{noptmed}}{%
       \RequirePackage[medfamily]{CronosPro-FontDef}}{}
     \ifthenelse{\equal{\My@crswash}{optmed}}{%
-      \RequirePackage[opticals,medfamily]{CronosPro-FontDef}}{}
+      \RequirePackage[opticals,medfamily]{CronosPro-FontDef}}{}}
+\ifthenelse{\equal{\My@crswash}{false}}{}{%
+  \def\My@load@cal{
+    \My@setup@crswash
     \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
     \SetMathAlphabet\mathcal{bold}       {T1}{\Cr@Math@Family} {eb}{sw}
     \SetMathAlphabet\mathcal{tabular}    {T1}{\Cr@Math@TFamily}{m} {sw}
     \SetMathAlphabet\mathcal{boldtabular}{T1}{\Cr@Math@TFamily}{eb}{sw}}
-}
+  \def\My@load@sans@cal{
+    \My@setup@crswash
+    \@ifundefined{mathfrak}{%
+      \DeclareMathAlphabet\mathcal    {T1}{\Cr@Math@Family}{m} {sw}}
+    \SetMathAlphabet\mathcal{sans}    {T1}{\Cr@Math@Family}{m} {sw}
+    \SetMathAlphabet\mathcal{sansbold}{T1}{\Cr@Math@Family}{eb}{sw}}}
 %    \end{macrocode}
 %
 % \subsection{Font declarations}
@@ -792,6 +809,35 @@
   \My@load@bb
   \My@load@frak
   \My@load@cal
+\fi
+%    \end{macrocode}
+% Setup for sans serif math: set mathsf, create two new math versions
+% for sans serif math and load correct swash letters.
+%    \begin{macrocode}
+\if@My@Sans@Math@
+
+  \DeclareMathAlphabet\mathsf    {T1} {\My@Math@Family}{m} {n}
+  \SetMathAlphabet\mathsf  {bold}{T1} {\My@Math@Family}{eb}{n}
+
+  \DeclareMathVersion{sans}
+  \SetSymbolFont{operators}{sans}{T1} {\My@Math@Family}{m}{n}
+  \SetSymbolFont{letters}  {sans}{OML}{MyriadPro-OsF}
+  {r}{\My@Math@LetterShape}
+  \SetMathAlphabet\mathit  {sans}{T1}{\My@Math@Family}{m}{it}
+
+  \DeclareMathVersion{sansbold}
+  \SetSymbolFont{operators}{sansbold}{T1} {\My@Math@Family}{eb}{n}
+  \SetSymbolFont{letters}  {sansbold}{OML}{MyriadPro-OsF}
+  {eb}{\My@Math@LetterShape}
+  \SetMathAlphabet\mathit  {sansbold}{T1}{\My@Math@Family}{eb}{it}
+  \SetSymbolFont{MnSyA}       {sansbold}{U}  {MnSymbolA}{b}{n}
+  \SetSymbolFont{MnSyB}       {sansbold}{U}  {MnSymbolB}{b}{n}
+  \SetSymbolFont{MnSyC}       {sansbold}{U}  {MnSymbolC}{b}{n}
+  \SetSymbolFont{MnSyD}       {sansbold}{U}  {MnSymbolD}{b}{n}
+  \SetSymbolFont{largesymbols}{sansbold}{OMX}{MnSymbolE}{b}{n}
+  \SetSymbolFont{symbols}     {sansbold}{U}  {MnSymbolF}{b}{n}
+
+  \My@load@sans@cal
 \fi
 %    \end{macrocode}
 %
