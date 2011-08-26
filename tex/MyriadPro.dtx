@@ -816,20 +816,60 @@
 %    \begin{macrocode}
 \if@My@Sans@Math@
 
+  \newcommand\IfSymbolFont[3]{\@ifundefined{sym#1}{#3}{#2}}
+
   \DeclareMathAlphabet\mathsf    {T1} {\My@Math@Family}{m} {n}
   \SetMathAlphabet\mathsf  {bold}{T1} {\My@Math@Family}{eb}{n}
 
   \DeclareMathVersion{sans}
-  \SetSymbolFont{operators}{sans}{T1} {\My@Math@Family}{m}{n}
-  \SetSymbolFont{letters}  {sans}{OML}{MyriadPro-OsF}
-  {r}{\My@Math@LetterShape}
   \SetMathAlphabet\mathit  {sans}{T1}{\My@Math@Family}{m}{it}
+  \IfSymbolFont{operators}{%
+    \SetSymbolFont{operators}{sans}{T1} {\My@Math@Family}{m}{n}
+  }{%
+    \DeclareSymbolFont{operators}  {T1} {\My@Math@Family}{m}{n}
+  }
+  \IfSymbolFont{letters}{%
+    \SetSymbolFont{letters}{sans}{OML}{MyriadPro-OsF}{r}{\My@Math@LetterShape}
+  }{%
+    \DeclareSymbolFont{letters}  {OML}{MyriadPro-OsF}{r}{\My@Math@LetterShape}
+  }
+  \IfSymbolFont{MnSyA}{%
+    \SetSymbolFont{MnSyA}    {sans}{U}  {MnSymbolA}{m}{n}
+  }{%
+    \DeclareSymbolFont{MnSyA}{sans}{U}  {MnSymbolA}{m}{n}
+  }
+  \IfSymbolFont{MnSyB}{%
+    \SetSymbolFont{MnSyB}    {sans}{U}  {MnSymbolB}{m}{n}
+  }{%
+    \DeclareSymbolFont{MnSyB}{sans}{U}  {MnSymbolB}{m}{n}
+  }
+  \IfSymbolFont{MnSyC}{%
+    \SetSymbolFont{MnSyC}    {sans}{U}  {MnSymbolC}{m}{n}
+  }{%
+    \DeclareSymbolFont{MnSyC}{sans}{U}  {MnSymbolC}{m}{n}
+  }
+  \IfSymbolFont{MnSyD}{%
+    \SetSymbolFont{MnSyD}    {sans}{U}  {MnSymbolD}{m}{n}
+  }{%
+    \DeclareSymbolFont{MnSyD}{sans}{U}  {MnSymbolD}{m}{n}
+  }
+  \IfSymbolFont{largesymbols}{%
+    \SetSymbolFont{largesymbols}{sans}{OMX}{MnSymbolE}{m}{n}
+  }{%
+    \DeclareSymbolFont{largesymbols}   {OMX}{MnSymbolE}{m}{n}
+  }
+  \IfSymbolFont{symbols}{%
+    \SetSymbolFont{symbols}  {sans}{U}  {MnSymbolF}{m}{n}
+  }{%
+    \DeclareSymbolFont{symbols}        {U}  {MnSymbolF}{m}{n}
+  }
+
 
   \DeclareMathVersion{sansbold}
-  \SetSymbolFont{operators}{sansbold}{T1} {\My@Math@Family}{eb}{n}
+  \SetMathAlphabet\mathit  {sansbold}{T1}{\My@Math@Family}{eb}{it}
+  \SetSymbolFont{operators}{sansbold}{T1}{\My@Math@Family}{eb}{n}
   \SetSymbolFont{letters}  {sansbold}{OML}{MyriadPro-OsF}
   {eb}{\My@Math@LetterShape}
-  \SetMathAlphabet\mathit  {sansbold}{T1}{\My@Math@Family}{eb}{it}
   \SetSymbolFont{MnSyA}       {sansbold}{U}  {MnSymbolA}{b}{n}
   \SetSymbolFont{MnSyB}       {sansbold}{U}  {MnSymbolB}{b}{n}
   \SetSymbolFont{MnSyC}       {sansbold}{U}  {MnSymbolC}{b}{n}
