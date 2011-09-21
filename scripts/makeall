@@ -63,5 +63,5 @@ fi
 
 (cd fontinst; ../scripts/makeint $ffamily; ../scripts/makeoml $ffamily)
 
-(cd tex; latex $ffamily.ins; latex otfontdef.ins; latex fontaxes.ins; latex tabfigures.ins)
+(cd tex; latex $ffamily.ins; latex otfontdef.ins)
 

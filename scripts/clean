@@ -13,6 +13,6 @@ rm -rf pfb/ tfm/ vf/
 rm -f dvips/*.{enc,map}
 rm -f enc/*.enckern
 rm -f fontinst/*.{tfm,vpl,vf,log} fontinst/*-integral*.pl
-rm -f tex/*.{fd,drv,sty,log,cfg,aux,idx,ind,glo,pdf,toc,out} tex/test-fontaxes.tex
+rm -f tex/*.{fd,drv,sty,log,cfg,aux,idx,ind,glo,pdf,toc,out}
 rm -f maketfm{,-expanded}.{tmp,tmp2} maketfm.error glyph-list-?? base-fonts-*
 rm -f *.pfb

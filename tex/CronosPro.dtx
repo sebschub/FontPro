@@ -171,7 +171,7 @@
 % \label{sec:Interferences}
 %
 % The \pkg{CronosPro} package automatically loads the following packages:
-% \pkg{textcomp}. 
+% \pkg{textcomp} and \pkg{fontaxes}.
 % If you want to pass options to these packages you can
 % either put the corresponding |\usepackage| command before the
 % |\usepackage{CronosPro}| or you can include the options in the
@@ -263,22 +263,13 @@
 % \item[\option{proportional}, \option{prop}] proportional figures
 % \end{options}
 %
-% Usually it is desirable to set most text with proportional figures and to use
-% tabular figures only in tables and lists. Unfortunately most \LaTeX\ document
-% classes do not support fonts with several figure versions. Therefore we
-% provide a package \pkg{tabfigures} that patches some common document classes
-% and packages (the standard \LaTeX\ clases, KOMA-Script, \pkg{memoir}, and
-% \pkg{amsmath}) to use tabular figures at some places. The \pkg{tabfigures}
-% package supports the following options:
-%
-% \begin{options}
-% \item[\option{toc}]    use tabular figures in the table of contents
-% \item[\option{eqno}]   use tabular figures for equation numbers
-% \item[\option{enum}]   use tabular figures in enumerate environments
-% \item[\option{bib}]    use tabular figures in the bibliography
-% \item[\option{lineno}] use tabular figures for line numbers (this affects only the
-%               \pkg{doc} class)
-% \end{options}
+% Usually it is desirable to set most text with proportional figures
+% and to use tabular figures only in tables and lists. Unfortunately
+% most \LaTeX\ document classes do not support fonts with several
+% figure versions. Use the package \pkg{tabfigures} that patches some
+% common document classes and packages (the standard \LaTeX\ classes,
+% KOMA-Script, \pkg{memoir}, and \pkg{amsmath}) to use tabular figures
+% at some places.
 %
 % \section{Additional font shapes and symbols}
 %
@@ -731,8 +722,7 @@
 % \subsection{Font selection}
 %
 % The font selection commands such as |\figureversion|, |\textsw|, and
-% |\textssc| are provided by the companion package \pkg{fontaxes}, which may be
-% useful for other font families as well.
+% |\textssc| are provided by the package \pkg{fontaxes}.
 %
 %    \begin{macrocode}
 \RequirePackage{fontaxes}[2005/05/04]
