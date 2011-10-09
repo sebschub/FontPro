@@ -516,6 +516,7 @@
 \DeclareStringOption[1.]{scaled}
 \newcommand\My@myriadint@opticals{-NoOpticals}
 \newcommand\My@myriadint@bold{-Bold}
+\newcommand\My@mdsym@regular{regular}
 \DeclareVoidOption{noopticals}{%
   \def\My@myriadint@opticals{-NoOpticals}%
   \PassOptionsToPackage{noopticals}{MyriadPro-FontDef}}
@@ -524,6 +525,7 @@
   \PassOptionsToPackage{smallfamily}{MyriadPro-FontDef}}
 \DeclareVoidOption{medfamily}{%
   \def\My@myriadint@bold{-Semibold}%
+  \def\My@mdsym@regular{autoregular}%
   \PassOptionsToPackage{medfamily}{MyriadPro-FontDef}}
 %\DeclareVoidOption{fullfamily}{%
 %  \def\My@myriadint@bold{-Semibold}%
@@ -690,7 +692,7 @@
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 
 \if@My@Math@
-  \RequirePackage{mdsymbol}
+  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled]{mdsymbol}
 %    \end{macrocode}
 % If no fraktur font is loaded then take the Euler font.
 %    \begin{macrocode}
