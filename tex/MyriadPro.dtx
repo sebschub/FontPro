@@ -670,7 +670,10 @@
       \RequirePackage[medfamily]{CronosPro-FontDef}}{}
     \ifthenelse{\equal{\My@crswash}{optmed}}{%
       \RequirePackage[opticals,medfamily]{CronosPro-FontDef}}{}}
-\ifthenelse{\equal{\My@crswash}{false}}{}{%
+\ifthenelse{\equal{\My@crswash}{false}}{%
+  \def\MdS@load@cal{}%
+}{%
+  \def\MdS@load@cal{nomathcal}
   \def\My@load@cal{
     \My@setup@crswash
     \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
@@ -692,13 +695,17 @@
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 
 \if@My@Math@
-  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled]{mdsymbol}
+  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled,\MdS@load@cal]{mdsymbol}
 %    \end{macrocode}
 % If no fraktur font is loaded then take the Euler font.
 %    \begin{macrocode}
   \@ifundefined{mathfrak}{%
     \RequirePackage{eufrak}%
     \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}{}
+\else
+  \if@My@Sans@Math@
+    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled,onlysansmath,\MdS@load@cal]{mdsymbol}
+  \fi
 \fi
 %    \end{macrocode}
 % By default, we use |b| for the bold series. If |MyriadPro-Semibold| is not
@@ -795,7 +802,6 @@
   \DeclareMathAlphabet\mathsf    {T1} {\My@Math@Family}{m} {n}
   \SetMathAlphabet\mathsf  {bold}{T1} {\My@Math@Family}{eb}{n}
 
-  \DeclareMathVersion{sans}
   \SetMathAlphabet\mathit  {sans}{T1}{\My@Math@Family}{m}{it}
   \IfSymbolFont{operators}{%
     \SetSymbolFont{operators}{sans}{T1} {\My@Math@Family}{m}{n}
@@ -807,49 +813,11 @@
   }{%
     \DeclareSymbolFont{letters}  {OML}{MyriadPro-OsF}{r}{\My@Math@LetterShape}
   }
-  \IfSymbolFont{MnSyA}{%
-    \SetSymbolFont{MnSyA}    {sans}{U}  {MnSymbolA}{m}{n}
-  }{%
-    \DeclareSymbolFont{MnSyA}{sans}{U}  {MnSymbolA}{m}{n}
-  }
-  \IfSymbolFont{MnSyB}{%
-    \SetSymbolFont{MnSyB}    {sans}{U}  {MnSymbolB}{m}{n}
-  }{%
-    \DeclareSymbolFont{MnSyB}{sans}{U}  {MnSymbolB}{m}{n}
-  }
-  \IfSymbolFont{MnSyC}{%
-    \SetSymbolFont{MnSyC}    {sans}{U}  {MnSymbolC}{m}{n}
-  }{%
-    \DeclareSymbolFont{MnSyC}{sans}{U}  {MnSymbolC}{m}{n}
-  }
-  \IfSymbolFont{MnSyD}{%
-    \SetSymbolFont{MnSyD}    {sans}{U}  {MnSymbolD}{m}{n}
-  }{%
-    \DeclareSymbolFont{MnSyD}{sans}{U}  {MnSymbolD}{m}{n}
-  }
-  \IfSymbolFont{largesymbols}{%
-    \SetSymbolFont{largesymbols}{sans}{OMX}{MnSymbolE}{m}{n}
-  }{%
-    \DeclareSymbolFont{largesymbols}   {OMX}{MnSymbolE}{m}{n}
-  }
-  \IfSymbolFont{symbols}{%
-    \SetSymbolFont{symbols}  {sans}{U}  {MnSymbolF}{m}{n}
-  }{%
-    \DeclareSymbolFont{symbols}        {U}  {MnSymbolF}{m}{n}
-  }
 
-
-  \DeclareMathVersion{sansbold}
   \SetMathAlphabet\mathit  {sansbold}{T1}{\My@Math@Family}{eb}{it}
   \SetSymbolFont{operators}{sansbold}{T1}{\My@Math@Family}{eb}{n}
   \SetSymbolFont{letters}  {sansbold}{OML}{MyriadPro-OsF}
   {eb}{\My@Math@LetterShape}
-  \SetSymbolFont{MnSyA}       {sansbold}{U}  {MnSymbolA}{b}{n}
-  \SetSymbolFont{MnSyB}       {sansbold}{U}  {MnSymbolB}{b}{n}
-  \SetSymbolFont{MnSyC}       {sansbold}{U}  {MnSymbolC}{b}{n}
-  \SetSymbolFont{MnSyD}       {sansbold}{U}  {MnSymbolD}{b}{n}
-  \SetSymbolFont{largesymbols}{sansbold}{OMX}{MnSymbolE}{b}{n}
-  \SetSymbolFont{symbols}     {sansbold}{U}  {MnSymbolF}{b}{n}
 
   \My@load@sans@cal
 \fi
