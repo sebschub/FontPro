@@ -493,9 +493,11 @@
 \newif\if@My@Text@
 \newif\if@My@Math@
 \newif\if@My@Sans@Math@
+\newif\if@My@Math@Symbols@
 \@My@Text@true
 \@My@Math@true
 \@My@Sans@Math@false
+\@My@Math@Symbols@false
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family = My,
@@ -504,6 +506,12 @@
 \DeclareVoidOption{onlytext}{\@My@Text@true\@My@Math@false}
 \DeclareVoidOption{onlymath}{\@My@Text@false\@My@Math@true}
 \DeclareVoidOption{sansmath}{\@My@Sans@Math@true}
+\if@My@Math@
+  \@My@Math@Symbols@true
+\fi
+\if@My@Sans@Math@
+  \@My@Math@Symbols@true
+\fi
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
@@ -577,13 +585,21 @@
 % section~\ref{sec:greek} before |\My@load@greek| is executed.
 %    \begin{macrocode}
 \newcommand\My@load@greek{\My@greek@Mixed}
+\def\My@greek@upper{up}%
+\def\My@greek@lower{it}%
 \DeclareVoidOption{frenchmath}{%
-  \def\My@load@greek{\My@greek@Upright}%
-  \def\My@Math@LetterShape{n}}
+  \def\My@greek@upper{up}%
+  \def\My@greek@lower{up}%
+  \def\My@Math@LetterShape{n}%
+}
 \DeclareVoidOption{mixedgreek}{%
-  \def\My@load@greek{\My@greek@Mixed}}
+  \def\My@greek@upper{up}%
+  \def\My@greek@lower{it}%
+}
 \DeclareVoidOption{italicgreek}{%
-  \def\My@load@greek{\My@greek@Italic}}
+  \def\My@greek@upper{it}%
+  \def\My@greek@lower{it}%
+}
 %    \end{macrocode}
 %
 % \subsubsection{Blackboard bold and fraktur fonts}
@@ -842,29 +858,34 @@
 % We provide math-mode commands for each Greek letter, both italic and upright.
 % Furthermore, there are three commands to select the default version of the
 % letters (all upright, all italic, or capitals upright and lowercase italic).
-%
-% While declaring the Greek letters we collect the uppercase and lowercase
-% letters in two lists. (We distinguish them by the first letter of their
-% name.) These lists are then used to select the different versions.
 %    \begin{macrocode}
-\if@My@Math@
-  \newcommand\My@greek@list@upper{}
-  \newcommand\My@greek@list@lower{}
-  \let\My@greek@list@upper\@gobble
-  \let\My@greek@list@lower\@gobble
-%    \end{macrocode}
-% This macro holds one of the two list names.
+\if@My@Math@Symbols@
 %    \begin{macrocode}
-  \newcommand\My@greek@list{}
+  \if@My@Sans@Math@
+    \newcommand\My@greek@letter@[2]{
+      \ifcsdef{#1}{%
+        \csletcs{#1@old}{#1}%
+      }{%
+        \csletcs{#1@old}{#2#1}%
+      }%
+      \csletcs{sans#1}{#2#1}%
+      \csundef{#1}%
+      \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
+    }%
+  \else
+    \newcommand\My@greek@letter@[2]{%
+      \csletcs{#1}{#2#1}
+    }
+  \fi
   \newcommand*\My@greek@letter[3]{%
-    \expandafter\DeclareMathSymbol
-    \expandafter{\csname it#1\endcsname}{\mathord}{letters}{#2}%
-    \expandafter\DeclareMathSymbol
-    \expandafter{\csname up#1\endcsname}{\mathord}{letters}{#3}%
+    \mdsy@DeclareMathSymbol{it#1}{\mathord}{letters}{#2}%
+    \mdsy@DeclareMathSymbol{up#1}{\mathord}{letters}{#3}%
     \edef\@tempa{`\@car#1\@nil}%
-    \edef\My@greek@list{\expandafter\noexpand\csname
-      My@greek@list@\ifnum\uccode\@tempa=\@tempa upper\else lower\fi\endcsname}%
-    \expandafter\edef\My@greek@list{\My@greek@list,#1}%
+    \ifnum\uccode\@tempa=\@tempa%
+      \My@greek@letter@{#1}{\My@greek@upper}%
+    \else%
+      \My@greek@letter@{#1}{\My@greek@lower}%
+    \fi%
   }
 %    \end{macrocode}
 % We can now declare the Greek letters (left italic, right upright).
@@ -921,34 +942,6 @@
   \My@greek@letter{varbackepsilon}{'263}{'253}
   \My@greek@letter{digamma}       {'264}{'254}
   \My@greek@letter{eth}           {'266}{'256}
-%    \end{macrocode}
-% Go through a list |#2| of Greek letters and |\let| them be their
-% |#1|-prefixed variants.
-%    \begin{macrocode}
-  \newcommand*\My@greek@select[2]{%
-    \expandafter\let\expandafter\My@greek@list\csname My@greek@list@#2\endcsname
-    \@for\@tempa:=\My@greek@list\do{%
-      \expandafter\let\csname\@tempa\expandafter\endcsname
-      \csname#1\@tempa\endcsname
-    }%
-  }
-  \newcommand*\My@greek@Upright{%
-    \My@greek@select{up}{upper}%
-    \My@greek@select{up}{lower}%
-  }
-  \newcommand*\My@greek@Italic{%
-    \My@greek@select{it}{upper}%
-    \My@greek@select{it}{lower}%
-  }
-  \newcommand*\My@greek@Mixed{%
-    \My@greek@select{up}{upper}%
-    \My@greek@select{it}{lower}%
-  }
-%    \end{macrocode}
-% Finally initialise the Greek letters.
-%    \begin{macrocode}
-  \My@load@greek
-\fi
 %    \end{macrocode}
 %
 % \subsection{\pdfTeX\ to-unicode support}
