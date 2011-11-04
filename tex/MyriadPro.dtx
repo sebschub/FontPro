@@ -788,19 +788,6 @@
   \SetSymbolFont{letters}  {boldtabular}{OML}{MyriadPro-TOsF}  {eb}{\My@Math@LetterShape}
   \SetMathAlphabet\mathit  {boldtabular}{T1} {\My@Math@TFamily}{eb}{it}
 %    \end{macrocode}
-%
-%    \begin{macrocode}
-  \DeclareMathAccent{\grave}   {\mathalpha}{operators}{0}
-  \DeclareMathAccent{\acute}   {\mathalpha}{operators}{1}
-  \DeclareMathAccent{\hat}     {\mathalpha}{operators}{2}
-  \DeclareMathAccent{\tilde}   {\mathalpha}{operators}{3}
-  \DeclareMathAccent{\ddot}    {\mathalpha}{operators}{4}
-  \DeclareMathAccent{\mathring}{\mathalpha}{operators}{6}
-  \DeclareMathAccent{\check}   {\mathalpha}{operators}{7}
-  \DeclareMathAccent{\breve}   {\mathalpha}{operators}{8}
-  \DeclareMathAccent{\bar}     {\mathalpha}{operators}{9}
-  \DeclareMathAccent{\dot}     {\mathalpha}{operators}{10}
-%    \end{macrocode}
 % Execute the hooks set up above to load the various math alphabets.
 %    \begin{macrocode}
   \My@load@bb
@@ -837,6 +824,21 @@
 
   \My@load@sans@cal
 \fi
+%    \end{macrocode}
+% The accents are defined for math and/or sansmath.
+%    \begin{macrocode}
+  \if@My@Math@Symbols@
+    \mdsy@DeclareMathAccent{grave}   {\mathalpha}{operators}{0}
+    \mdsy@DeclareMathAccent{acute}   {\mathalpha}{operators}{1}
+    \mdsy@DeclareMathAccent{hat}     {\mathalpha}{operators}{2}
+    \mdsy@DeclareMathAccent{tilde}   {\mathalpha}{operators}{3}
+    \mdsy@DeclareMathAccent{ddot}    {\mathalpha}{operators}{4}
+    \mdsy@DeclareMathAccent{mathring}{\mathalpha}{operators}{6}
+    \mdsy@DeclareMathAccent{check}   {\mathalpha}{operators}{7}
+    \mdsy@DeclareMathAccent{breve}   {\mathalpha}{operators}{8}
+    \mdsy@DeclareMathAccent{bar}     {\mathalpha}{operators}{9}
+    \mdsy@DeclareMathAccent{dot}     {\mathalpha}{operators}{10}
+  \fi
 %    \end{macrocode}
 %
 % \subsection{Font selection}
