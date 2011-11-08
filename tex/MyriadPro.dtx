@@ -698,7 +698,7 @@
     \SetMathAlphabet\mathcal{boldtabular}{T1}{\Cr@Math@TFamily}{eb}{sw}}
   \def\My@load@sans@cal{
     \My@setup@crswash
-    \@ifundefined{mathfrak}{%
+    \@ifundefined{mathcal}{%
       \DeclareMathAlphabet\mathcal    {T1}{\Cr@Math@Family}{m} {sw}}
     \SetMathAlphabet\mathcal{sans}    {T1}{\Cr@Math@Family}{m} {sw}
     \SetMathAlphabet\mathcal{sansbold}{T1}{\Cr@Math@Family}{eb}{sw}}}
@@ -806,6 +806,7 @@
   \SetMathAlphabet\mathsf  {bold}{T1} {\My@Math@Family}{eb}{n}
 
   \SetMathAlphabet\mathit  {sans}{T1}{\My@Math@Family}{m}{it}
+  \SetMathAlphabet\mathbf  {sans}{T1}{\My@Math@Family}{eb}{n}
   \IfSymbolFont{operators}{%
     \SetSymbolFont{operators}{sans}{T1} {\My@Math@Family}{m}{n}
   }{%
