@@ -1188,21 +1188,18 @@
 % Some symbols missing from MdSymbol can be taken from MyriadPro.
 %
 %    \begin{macrocode}
-\if@My@Math@
-  \let\hbar\undefined
-  \DeclareMathSymbol{\hbar}             {\mathord}{letters}{'265}
-  \DeclareMathSymbol{\uphbar}           {\mathord}{letters}{'255}
-  \DeclareMathSymbol{\partial}          {\mathord}{letters}{'100}
-  \DeclareMathSymbol{\uppartial}        {\mathord}{letters}{'300}
-  \DeclareMathSymbol{\ell}              {\mathord}{letters}{'140}
-  \DeclareMathSymbol{\upell}            {\mathord}{letters}{'340}
-  \DeclareMathSymbol{\slashedzero}      {\mathord}{letters}{'257}
-  \DeclareMathSymbol{\upimath}          {\mathord}{letters}{'373}
-  \DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
-  \DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
-  \DeclareMathSymbol{\openg}            {\mathalpha}{letters}{'267}
-  \DeclareRobustCommand\lambdabar       {\middlebar\lambda}
-  \DeclareRobustCommand\lambdaslash     {\middleslash\lambda}
+\if@My@Math@Symbols@
+  \mdsy@DeclareMathSymbol{hbar}             {\mathord}{letters}{'265}
+  \mdsy@DeclareMathSymbol{uphbar}           {\mathord}{letters}{'255}
+  \mdsy@DeclareMathSymbol{partial}          {\mathord}{letters}{'100}
+  \mdsy@DeclareMathSymbol{uppartial}        {\mathord}{letters}{'300}
+  \mdsy@DeclareMathSymbol{ell}              {\mathord}{letters}{'140}
+  \mdsy@DeclareMathSymbol{upell}            {\mathord}{letters}{'340}
+  \mdsy@DeclareMathSymbol{slashedzero}      {\mathord}{letters}{'257}
+  \mdsy@DeclareMathSymbol{upimath}          {\mathord}{letters}{'373}
+  \mdsy@DeclareMathSymbol{upjmath}          {\mathord}{letters}{'374}
+  \mdsy@DeclareMathSymbol{varsmallint}      {\mathord}{letters}{'376}
+  \mdsy@DeclareMathSymbol{openg}            {\mathalpha}{letters}{'267}
 \fi
 %    \end{macrocode}
 % Archaic Greek letters not provided by MyriadPro.
