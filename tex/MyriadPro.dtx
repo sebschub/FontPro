@@ -209,8 +209,7 @@
 %   \emph{sansbold} independently of options \option{onlytext} and
 %   \option{onlymath} and change |\mathsf| to use MyriadPro. This can
 %   be used together with \option{onlytext} to only use MyriadPro's
-%   math in a part of the document. Works only with \pkg{MinionPro} as
-%   the main font at the moment.
+%   math in a part of the document.
 % \end{options}
 %
 % \subsubsection*{Figure selection}
@@ -287,9 +286,6 @@
 % \begin{options}
 % \item[\option{scaled=\emph{factor}}]
 %      scale the font size by <\emph{factor}>
-% \item[\option{myriadint}]
-%      take the integral symbols from MyriadPro, not from
-%      MdSymbol: $\displaystyle\int$ instead of $\displaystyle\varint$
 % \item[\option{loosequotes}]
 %      The quote signs of MyriadPro are set rather tight. This can
 %      lead to undesirable spacing for apostrophes. The \option{loosequotes}
@@ -356,13 +352,11 @@
 % \begingroup
 % \newcommand*\sym[1]{$#1$ & \ttfamily\string#1}%
 % \begin{tabular}{@{}*2{ll@{\qquad}}ll@{}}
-%   \sym\openg       & \sym\varkappa       & \sym\varbeta \\
+%   \sym\slashedzero & \sym\varkappa       & \sym\varbeta \\
 %   \sym\backepsilon & \sym\varbackepsilon & \sym\hbar \\
-%   \sym\hslash      & \sym\lambdabar      & \sym\lambdaslash \\
-%   \sym\jmath       & \sym\eth            & \sym\Bbbk \\
-%   \sym\slashedzero  \\
+%   \sym\imath       & \sym\jmath          & \sym\eth  \\
 % \end{tabular}
-% \endgroup
+% \endgroup\\
 % Some of the alternative characters above resemble the normal
 % character because MyriadPro offers no respective glyph.  They are
 % defined for compatibility reasons.
@@ -642,7 +636,7 @@
 %
 % \subsubsection{Miscellaneous options}
 %
-% Footnote figures, the g glyph in math mode, extra spacing for the apostrophe.
+% Footnote figures, extra spacing for the apostrophe.
 %    \begin{macrocode}
 \DeclareVoidOption{footnotefigures}{%
   \def\@makefnmark{%
@@ -651,18 +645,6 @@
     \fontfamily{MyriadPro-Extra}\fontencoding{U}\selectfont
     \@thefnmark
     \endgroup}}
-%
-\newcommand\My@Define@Open@g{}
-\DeclareVoidOption{openg}{%
-  \def\My@Define@Open@g{%
-    \mathcode`g="8000%
-    \DeclareMathSymbol{\My@g}{\mathalpha}{letters}{`g}%
-    \begingroup
-    \lccode`\~=`\g
-    \lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \openg \else \My@g \fi}}%
-    \endgroup
-  }}
-%
 \newcommand\My@Quote@Spacing{}
 \DeclareVoidOption{loosequotes}{%
   \def\My@Quote@Spacing{\My@Quote@Spacing@Loose}}
@@ -1200,7 +1182,6 @@
   \mdsy@DeclareMathSymbol{upimath}          {\mathord}{letters}{'373}
   \mdsy@DeclareMathSymbol{upjmath}          {\mathord}{letters}{'374}
   \mdsy@DeclareMathSymbol{varsmallint}      {\mathord}{letters}{'376}
-  \mdsy@DeclareMathSymbol{openg}            {\mathalpha}{letters}{'267}
 \fi
 %    \end{macrocode}
 % Archaic Greek letters not provided by MyriadPro.
@@ -1306,16 +1287,6 @@
 %
 %    \begin{macrocode}
   \My@load@integrals
-\fi
-%    \end{macrocode}
-%
-% \subsection{Open G support}
-%
-% We can replace the closed~$g$ with the open variant~$\openg$.
-% The following definitions provide this as an option.
-%    \begin{macrocode}
-\if@My@Math@
-  \My@Define@Open@g
 \fi
 %    \end{macrocode}
 %
