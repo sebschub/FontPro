@@ -566,11 +566,118 @@
 \newcommand\My@load@cal{}
 \newcommand\My@load@sans@cal{}
 \newcommand\My@load@bb{}
+\newcommand\My@load@sans@bb{}
 \newcommand\My@load@frak{}
+\newcommand\My@load@sans@frak{}
 %    \end{macrocode}
-% Most options are handled by \pkg{MdSymbol}.
+% Calligraphic fonts from Computer Modern:
 %    \begin{macrocode}
+\DeclareVoidOption{cmsy}{%
+  \def\My@load@cal{%
+    \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}%
+    \SetMathAlphabet{\mathcal}{bold}{OMS}{cmsy}{b}{n}%
+    \SetMathAlphabet{\mathcal}{boldtabular}{OMS}{cmsy}{b}{n}%
+  }%
+  \def\My@load@sans@cal{%
+    \@ifundefined{mathcal}{%
+      \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}}
+    \SetMathAlphabet{\mathcal}{sans}{OMS}{cmsy}{m}{n}%
+    \SetMathAlphabet{\mathcal}{sansbold}{OMS}{cmsy}{b}{n}%
+  }%
+}
+\DeclareVoidOption{abx}{%
+  \DeclareFontFamily{OT1}{mathc}{}%
+  \DeclareFontShape{OT1}{mathc}{m}{n}{ <-> mathcm10 }{}%
+  \DeclareFontShape{OT1}{mathc}{b}{n}{ <-> mathcb10 }{}%
+  \def\My@load@cal{%
+    \DeclareMathAlphabet\mathcal{OT1}{mathc}{m}{n}%
+    \SetMathAlphabet\mathcal{bold}{OT1}{mathc}{b}{n}%
+  }%
+  \def\My@load@sans@cal{%
+    \@ifundefined{mathcal}{%
+      \DeclareMathAlphabet{\mathcal}{OT1}{mathc}{m}{n}}%
+    \SetMathAlphabet{\mathcal}{sans}{OT1}{mathc}{m}{n}%
+    \SetMathAlphabet{\mathcal}{sansbold}{OT1}{mathc}{b}{n}%
+  }%
+}
 \DeclareStringOption[false]{crswash}[noptsmall]
+%    \end{macrocode}
+%
+% \subsubsection{Blackboard bold and fraktur fonts}
+%
+% We have to undefine |\mathfrak| and |\mathbb| before redefining them, because
+% they might be defined in such a way that |\DeclareMathAlphabet| does not
+% recognize them as math alphabets and refuses to overwrite their definitions
+% (e.g., package \pkg{eufrak} uses |\newcommand{\mathfrak}{\EuFrak}|).
+%    \begin{macrocode}
+\DeclareVoidOption{amsbb}{
+  \def\My@load@bb{%
+    \let\mathbb\@undefined%
+    \let\Bbbk\@undefined%
+    \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}%
+    \newcommand\Bbbk{\mathbb{\mathchar"717C}}}
+  \def\My@load@sans@bb{%
+    \@ifundefined{mathbb}{%
+      \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}}%
+    \SetMathAlphabet{\mathbb}{sans}{U}{msb}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sansbold}{U}{msb}{m}{n}%
+    \mdsy@renewcommand{Bbbk}{\mathbb{\mathchar"717C}}}
+}
+\DeclareVoidOption{lucidabb}{
+  \DeclareFontFamily{U}{mdhlcm}{}
+  \DeclareFontShape{U}{mdhlcm}{m}{n}{ <->s*[0.92] hlcra }{}
+  \def\My@load@bb{
+    \let\mathbb\@undefined
+    \let\Bbbk\@undefined
+    \DeclareMathAlphabet\mathbb{U}{mdhlcm}{m}{n}
+    \newcommand\Bbbk{\mathbb{k}}}
+  \def\My@load@sans@bb{
+    \@ifundefined{mathbb}{%
+      \DeclareMathAlphabet\mathbb{U}{mdhlcm}{m}{n}}%
+    \SetMathAlphabet{\mathbb}{sans}{U}{mdhlcm}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sansbold}{U}{mdhlcm}{m}{n}%
+    \mdsy@renewcommand{Bbbk}{\mathbb{k}}}
+}
+\DeclareVoidOption{fourierbb}{
+  \DeclareFontFamily{U}{mdfutm}{}
+  \DeclareFontShape{U}{mdfutm}{m}{n}{ <->s*[0.95] fourier-bb }{}
+  \def\My@load@bb{
+    \let\mathbb\@undefined
+    \let\Bbbk\@undefined
+    \DeclareMathAlphabet\mathbb{U}{mdfutm}{m}{n}
+    \newcommand\Bbbk{\mathbb{k}}}
+  \def\My@load@sans@bb{
+    \@ifundefined{mathbb}{%
+      \DeclareMathAlphabet\mathbb{U}{mdfutm}{m}{n}}%
+    \SetMathAlphabet{\mathbb}{sans}{U}{mdfutm}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sansbold}{U}{mdfutm}{m}{n}%
+    \mdsy@renewcommand{Bbbk}{\mathbb{k}}}
+}
+%    \end{macrocode}
+% Fracture fonts
+%    \begin{macrocode}
+\def\My@load@frak{%
+  \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
+  \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}
+  \SetMathAlphabet{\mathfrak}{boldtabular}{U}{euf}{b}{n}
+  \DeclareRobustCommand{\Re}{\mathfrak{R}}
+  \DeclareRobustCommand{\Im}{\mathfrak{I}}
+}
+\def\My@load@sans@frak{%
+  \ifundef{\mathfrak}{%
+    \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}%
+    \SetMathAlphabet{\mathfrak}{bold}{U}{mdeuf}{b}{n}%
+  }{}
+  \@ifpackageloaded{eufrak}{%
+    \SetMathAlphabet{\EuFrak}{sans}{U}{euf}{m}{n}%
+    \SetMathAlphabet{\EuFrak}{sansbold}{U}{euf}{b}{n}%
+  }{%
+    \SetMathAlphabet{\mathfrak}{sans}{U}{euf}{m}{n}%
+    \SetMathAlphabet{\mathfrak}{sansbold}{U}{euf}{b}{n}%
+  }
+  \mdsy@DeclareRobustCommand{Re}{\mathfrak{R}}
+  \mdsy@DeclareRobustCommand{Im}{\mathfrak{I}}
+}
 %    \end{macrocode}
 %
 % \subsubsection{Greek letters}
@@ -594,37 +701,6 @@
   \def\My@greek@upper{it}%
   \def\My@greek@lower{it}%
 }
-%    \end{macrocode}
-%
-% \subsubsection{Blackboard bold and fraktur fonts}
-%
-% We have to undefine |\mathfrak| and |\mathbb| before redefining them, because
-% they might be defined in such a way that |\DeclareMathAlphabet| does not
-% recognize them as math alphabets and refuses to overwrite their definitions
-% (e.g., package \pkg{eufrak} uses |\newcommand{\mathfrak}{\EuFrak}|).
-%    \begin{macrocode}
-\newcommand\My@load@amsbb{
-  \let\mathbb\@undefined
-  \let\Bbbk\@undefined
-  \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}
-  \newcommand\Bbbk{\mathbb{\mathchar"717C}}}
-\newcommand\My@load@lucidabb{
-  \let\mathbb\@undefined
-  \let\Bbbk\@undefined
-  \DeclareFontFamily{U}{hlcm}{}
-  \DeclareFontShape{U}{hlcm}{m}{n}{ <->s*[0.92] hlcra }{}
-  \DeclareMathAlphabet\mathbb{U}{hlcm}{m}{n}
-  \newcommand\Bbbk{\mathbb{k}}}
-\newcommand\My@load@fourierbb{
-  \let\mathbb\@undefined
-  \let\Bbbk\@undefined
-  \DeclareFontFamily{U}{futm}{}
-  \DeclareFontShape{U}{futm}{m}{n}{ <->s*[0.95] fourier-bb }{}
-  \DeclareMathAlphabet\mathbb{U}{futm}{m}{n}
-  \newcommand\Bbbk{\mathbb{k}}}
-\DeclareVoidOption{amsbb}{\let\My@load@bb\My@load@amsbb}
-\DeclareVoidOption{lucidabb}{\let\My@load@bb\My@load@lucidabb}
-\DeclareVoidOption{fourierbb}{\let\My@load@bb\My@load@fourierbb}
 %    \end{macrocode}
 %
 % \subsubsection{Integrals}
@@ -668,10 +744,7 @@
       \RequirePackage[medfamily]{CronosPro-FontDef}}{}
     \ifthenelse{\equal{\My@crswash}{optmed}}{%
       \RequirePackage[opticals,medfamily]{CronosPro-FontDef}}{}}
-\ifthenelse{\equal{\My@crswash}{false}}{%
-  \def\MdS@load@cal{}%
-}{%
-  \def\MdS@load@cal{nomathcal}
+\ifthenelse{\equal{\My@crswash}{false}}{}{%
   \def\My@load@cal{
     \My@setup@crswash
     \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
@@ -693,16 +766,10 @@
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 
 \if@My@Math@
-  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled,\MdS@load@cal]{mdsymbol}
-%    \end{macrocode}
-% If no fraktur font is loaded then take the Euler font.
-%    \begin{macrocode}
-  \@ifundefined{mathfrak}{%
-    \RequirePackage{eufrak}%
-    \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}{}
+  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled]{mdsymbol}
 \else
   \if@My@Sans@Math@
-    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled,onlysansmath,\MdS@load@cal]{mdsymbol}
+    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled,onlysansmath]{mdsymbol}
   \fi
 \fi
 %    \end{macrocode}
@@ -806,6 +873,8 @@
   {eb}{\My@Math@LetterShape}
 
   \My@load@sans@cal
+  \My@load@sans@bb
+  \My@load@sans@frak
 \fi
 %    \end{macrocode}
 % The accents are defined for math and/or sansmath.
