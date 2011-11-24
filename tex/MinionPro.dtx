@@ -287,7 +287,7 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
-% \item[\option{scaled=<\emph{factor}>}]
+% \item[\option{scale=<\emph{factor}>}]
 %      scale the font size by <\emph{factor}>
 % \item[\option{minionint}]
 %      take the integral symbols from MinionPro, not from
@@ -585,7 +585,7 @@
 % pass on the relevant options including the font scale factor; only
 % MinionPro integrals are handled here in \pkg{MinionPro}.
 %    \begin{macrocode}
-\DeclareStringOption[1.]{scaled}
+\DeclareStringOption[1.]{scale}
 \newcommand\Mn@minionint@opticals{-NoOpticals}
 \newcommand\Mn@minionint@bold{-Bold}
 \DeclareVoidOption{slides}{%
@@ -1812,7 +1812,7 @@
 %    \begin{macrocode}
 \RequirePackage{fltpoint}
 \fpDecimalSign{.}
-\newcommand*{\Mn@calc@bsize}[2]{\fpDiv{#1}{#2}{\Mn@scaled}}
+\newcommand*{\Mn@calc@bsize}[2]{\fpDiv{#1}{#2}{\Mn@scale}}
 %    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
@@ -1903,7 +1903,7 @@
       <->     otf* [figures=] MinionPro-French
 }
 \Mn@AddToConfig{scale}{scale}{
-      <->     otf* [scale=\Mn@scaled]
+      <->     otf* [scale=\Mn@scale]
 }
 %    \end{macrocode}
 % Substitutions

@@ -221,7 +221,7 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
-% \item[\option{scaled=<\emph{factor}>}]
+% \item[\option{scale=<\emph{factor}>}]
 %      scale the font size by <\emph{factor}>
 % \item[\option{footnotefigures}]
 %      use special figures for footnote marks, i.e.,\newline
@@ -447,7 +447,7 @@
 % pass on the relevant options including the font scale factor; only
 % CronosPro integrals are handled here in \pkg{CronosPro}.
 %    \begin{macrocode}
-\DeclareStringOption[1.]{scaled}
+\DeclareStringOption[1.]{scale}
 \newcommand\Cr@minionint@opticals{-NoOpticals}
 \newcommand\Cr@minionint@bold{-Bold}
 \DeclareVoidOption{slides}{%
@@ -1664,7 +1664,7 @@
 %    \begin{macrocode}
 \RequirePackage{fltpoint}
 \fpDecimalSign{.}
-\newcommand*{\Cr@calc@bsize}[2]{\fpDiv{#1}{#2}{\Cr@scaled}}
+\newcommand*{\Cr@calc@bsize}[2]{\fpDiv{#1}{#2}{\Cr@scale}}
 %    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
@@ -1755,7 +1755,7 @@
       <->     otf* [figures=] CronosPro-French
 }
 \Cr@AddToConfig{scale}{scale}{
-      <->     otf* [scale=\Cr@scaled]
+      <->     otf* [scale=\Cr@scale]
 }
 %    \end{macrocode}
 % Substitutions

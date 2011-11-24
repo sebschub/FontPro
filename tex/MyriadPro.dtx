@@ -284,7 +284,7 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
-% \item[\option{scaled=\emph{factor}}]
+% \item[\option{scale=\emph{factor}}]
 %      scale the font size by <\emph{factor}>
 % \item[\option{loosequotes}]
 %      The quote signs of MyriadPro are set rather tight. This can
@@ -515,7 +515,7 @@
 % pass on the relevant options including the font scale factor; only
 % MyriadPro integrals are handled here in \pkg{MyriadPro}.
 %    \begin{macrocode}
-\DeclareStringOption[1.]{scaled}
+\DeclareStringOption[1.]{scale}
 \newcommand\My@myriadint@opticals{-NoOpticals}
 \newcommand\My@myriadint@bold{-Bold}
 \newcommand\My@mdsym@regular{regular}
@@ -565,8 +565,8 @@
 %    \begin{macrocode}
 \RequirePackage{fltpoint}
 \fpDecimalSign{.}
-\newcommand*{\My@calc@scaled}[2]{\fpMul{#1}{#2}{\My@scaled}}
-\newcommand*{\My@calc@bsize}[2]{\fpDiv{#1}{#2}{\My@scaled}}
+\newcommand*{\My@calc@scale}[2]{\fpMul{#1}{#2}{\My@scale}}
+\newcommand*{\My@calc@bsize}[2]{\fpDiv{#1}{#2}{\My@scale}}
 \newcommand\My@load@cal{}
 \newcommand\My@load@sans@cal{}
 \newcommand\My@load@cal@both{}
@@ -581,25 +581,25 @@
 %    \begin{macrocode}
 \DeclareVoidOption{cmsy}{%
   \def\My@load@cal@both{%
-    \My@calc@scaled{\mdcmsy@scaled}{1.}
-    \My@calc@bsize{\mdcmsy@scaleda}{6.}
-    \My@calc@bsize{\mdcmsy@scaledb}{7.}
-    \My@calc@bsize{\mdcmsy@scaledc}{8.}
-    \My@calc@bsize{\mdcmsy@scaledd}{9.}
-    \My@calc@bsize{\mdcmsy@scalede}{10.}
+    \My@calc@scale{\mdcmsy@scale}{1.}
+    \My@calc@bsize{\mdcmsy@scalea}{6.}
+    \My@calc@bsize{\mdcmsy@scaleb}{7.}
+    \My@calc@bsize{\mdcmsy@scalec}{8.}
+    \My@calc@bsize{\mdcmsy@scaled}{9.}
+    \My@calc@bsize{\mdcmsy@scalee}{10.}
     \DeclareFontFamily{OMS}{mdcmsy}{\skewchar\font48 }
     \DeclareFontShape{OMS}{mdcmsy}{m}{n}{%
-      <               -\mdcmsy@scaleda> [\mdcmsy@scaled] cmsy5
-      <\mdcmsy@scaleda-\mdcmsy@scaledb> [\mdcmsy@scaled] cmsy6
-      <\mdcmsy@scaledb-\mdcmsy@scaledc> [\mdcmsy@scaled] cmsy7
-      <\mdcmsy@scaledc-\mdcmsy@scaledd> [\mdcmsy@scaled] cmsy8
-      <\mdcmsy@scaledd-\mdcmsy@scalede> [\mdcmsy@scaled] cmsy9
-      <\mdcmsy@scalede-               > [\mdcmsy@scaled] cmsy10
+      <               -\mdcmsy@scalea> [\mdcmsy@scale] cmsy5
+      <\mdcmsy@scalea-\mdcmsy@scaleb> [\mdcmsy@scale] cmsy6
+      <\mdcmsy@scaleb-\mdcmsy@scalec> [\mdcmsy@scale] cmsy7
+      <\mdcmsy@scalec-\mdcmsy@scaled> [\mdcmsy@scale] cmsy8
+      <\mdcmsy@scaled-\mdcmsy@scalee> [\mdcmsy@scale] cmsy9
+      <\mdcmsy@scalee-               > [\mdcmsy@scale] cmsy10
     }{}
     \DeclareFontShape{OMS}{mdcmsy}{b}{n}{%
-      <               -\mdcmsy@scaledb> [\mdcmsy@scaled] cmbsy5
-      <\mdcmsy@scaledb-\mdcmsy@scalede> [\mdcmsy@scaled] cmbsy7
-      <\mdcmsy@scalede-               > [\mdcmsy@scaled] cmbsy10
+      <               -\mdcmsy@scaleb> [\mdcmsy@scale] cmbsy5
+      <\mdcmsy@scaleb-\mdcmsy@scalee> [\mdcmsy@scale] cmbsy7
+      <\mdcmsy@scalee-               > [\mdcmsy@scale] cmbsy10
     }{}
   }
   \def\My@load@cal{%
@@ -616,10 +616,10 @@
 }
 \DeclareVoidOption{abx}{%
   \def\My@load@cal@both{
-    \My@calc@scaled{\mdmathc@scaled}{1.}
+    \My@calc@scale{\mdmathc@scale}{1.}
     \DeclareFontFamily{OT1}{mdmathc}{}%
-    \DeclareFontShape{OT1}{mdmathc}{m}{n}{ <-> [\mdmathc@scaled] mathcm10 }{}%
-    \DeclareFontShape{OT1}{mdmathc}{b}{n}{ <-> [\mdmathc@scaled] mathcb10 }{}%
+    \DeclareFontShape{OT1}{mdmathc}{m}{n}{ <-> [\mdmathc@scale] mathcm10 }{}%
+    \DeclareFontShape{OT1}{mdmathc}{b}{n}{ <-> [\mdmathc@scale] mathcb10 }{}%
   }
   \def\My@load@cal{%
     \DeclareMathAlphabet\mathcal{OT1}{mathc}{m}{n}%
@@ -644,20 +644,20 @@
 %    \begin{macrocode}
 \DeclareVoidOption{amsbb}{
   \def\My@load@bb@both{
-    \My@calc@scaled{\mdmsb@scaled}{1.}
-    \My@calc@bsize{\mdmsb@scaleda}{6.}
-    \My@calc@bsize{\mdmsb@scaledb}{7.}
-    \My@calc@bsize{\mdmsb@scaledc}{8.}
-    \My@calc@bsize{\mdmsb@scaledd}{9.}
-    \My@calc@bsize{\mdmsb@scalede}{10.}
+    \My@calc@scale{\mdmsb@scale}{1.}
+    \My@calc@bsize{\mdmsb@scalea}{6.}
+    \My@calc@bsize{\mdmsb@scaleb}{7.}
+    \My@calc@bsize{\mdmsb@scalec}{8.}
+    \My@calc@bsize{\mdmsb@scaled}{9.}
+    \My@calc@bsize{\mdmsb@scalee}{10.}
     \DeclareFontFamily{U}{mdmsb}{}
     \DeclareFontShape{U}{mdmsb}{m}{n}{%
-      <              -\mdmsb@scaleda> [\mdmsb@scaled] msbm5%
-      <\mdmsb@scaleda-\mdmsb@scaledb> [\mdmsb@scaled] msbm6%
-      <\mdmsb@scaledb-\mdmsb@scaledc> [\mdmsb@scaled] msbm7%
-      <\mdmsb@scaledc-\mdmsb@scaledd> [\mdmsb@scaled] msbm8%
-      <\mdmsb@scaledd-\mdmsb@scalede> [\mdmsb@scaled] msbm9%
-      <\mdmsb@scalede-              > [\mdmsb@scaled] msbm10%
+      <              -\mdmsb@scalea> [\mdmsb@scale] msbm5%
+      <\mdmsb@scalea-\mdmsb@scaleb> [\mdmsb@scale] msbm6%
+      <\mdmsb@scaleb-\mdmsb@scalec> [\mdmsb@scale] msbm7%
+      <\mdmsb@scalec-\mdmsb@scaled> [\mdmsb@scale] msbm8%
+      <\mdmsb@scaled-\mdmsb@scalee> [\mdmsb@scale] msbm9%
+      <\mdmsb@scalee-              > [\mdmsb@scale] msbm10%
     }{}
   }
   \def\My@load@bb{%
@@ -674,9 +674,9 @@
 }
 \DeclareVoidOption{lucidabb}{
   \def\My@load@bb@both{
-    \My@calc@scaled{\mdhlcm@scaled}{0.96}
+    \My@calc@scale{\mdhlcm@scale}{0.96}
     \DeclareFontFamily{U}{mdhlcm}{}
-    \DeclareFontShape{U}{mdhlcm}{m}{n}{ <->s*[\mdhlcm@scaled] hlcra }{}
+    \DeclareFontShape{U}{mdhlcm}{m}{n}{ <->s*[\mdhlcm@scale] hlcra }{}
   }
   \def\My@load@bb{
     \let\mathbb\@undefined
@@ -692,9 +692,9 @@
 }
 \DeclareVoidOption{fourierbb}{
   \def\My@load@bb@both{
-    \My@calc@scaled{\mdfutm@scaled}{0.99}
+    \My@calc@scale{\mdfutm@scale}{0.99}
     \DeclareFontFamily{U}{mdfutm}{}
-    \DeclareFontShape{U}{mdfutm}{m}{n}{ <->s*[\mdfutm@scaled] fourier-bb }{}
+    \DeclareFontShape{U}{mdfutm}{m}{n}{ <->s*[\mdfutm@scale] fourier-bb }{}
   }
   \def\My@load@bb{
     \let\mathbb\@undefined
@@ -712,22 +712,22 @@
 % Fracture fonts
 %    \begin{macrocode}
 \def\My@load@frak@both{%
-  \My@calc@scaled{\mdeuf@scaled}{1.}
-  \My@calc@bsize{\mdeuf@scaleda}{6.}
-  \My@calc@bsize{\mdeuf@scaledb}{7.}
-  \My@calc@bsize{\mdeuf@scaledc}{8.}
-  \My@calc@bsize{\mdeuf@scaledd}{9.}
-  \My@calc@bsize{\mdeuf@scalede}{10.}
+  \My@calc@scale{\mdeuf@scale}{1.}
+  \My@calc@bsize{\mdeuf@scalea}{6.}
+  \My@calc@bsize{\mdeuf@scaleb}{7.}
+  \My@calc@bsize{\mdeuf@scalec}{8.}
+  \My@calc@bsize{\mdeuf@scaled}{9.}
+  \My@calc@bsize{\mdeuf@scalee}{10.}
   \DeclareFontFamily{U}{mdeuf}{}
   \DeclareFontShape{U}{mdeuf}{m}{n}{
-    <              -\mdeuf@scaledb> [\mdeuf@scaled] eufm5
-    <\mdeuf@scaledb-\mdeuf@scalede> [\mdeuf@scaled] eufm7
-    <\mdeuf@scalede-              > [\mdeuf@scaled] eufm10
+    <              -\mdeuf@scaleb> [\mdeuf@scale] eufm5
+    <\mdeuf@scaleb-\mdeuf@scalee> [\mdeuf@scale] eufm7
+    <\mdeuf@scalee-              > [\mdeuf@scale] eufm10
   }{}
   \DeclareFontShape{U}{mdeuf}{b}{n}{
-    <              -\mdeuf@scaledb> [\mdeuf@scaled] eufb5
-    <\mdeuf@scaledb-\mdeuf@scalede> [\mdeuf@scaled] eufb7
-    <\mdeuf@scalede-              > [\mdeuf@scaled] eufb10
+    <              -\mdeuf@scaleb> [\mdeuf@scale] eufb5
+    <\mdeuf@scaleb-\mdeuf@scalee> [\mdeuf@scale] eufb7
+    <\mdeuf@scalee-              > [\mdeuf@scale] eufb10
   }{}
 }
 \def\My@load@frak{%
@@ -808,7 +808,7 @@
 \ProcessKeyvalOptions{My}\relax
 \RequirePackage{ifthen}
 \def\My@load@cal@both{
-   \My@calc@scaled{\Cr@scaled}{1.08}
+   \My@calc@scale{\Cr@scale}{1.08}
     \ifthenelse{\equal{\My@crswash}{noptsmall}}{%
       \RequirePackage{CronosPro-FontDef}}{}
     \ifthenelse{\equal{\My@crswash}{optsmall}}{%
@@ -837,10 +837,10 @@
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 
 \if@My@Math@
-  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled]{mdsymbol}
+  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scale]{mdsymbol}
 \else
   \if@My@Sans@Math@
-    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scaled,onlysansmath]{mdsymbol}
+    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=bold,scale=\My@scale,onlysansmath]{mdsymbol}
   \fi
 \fi
 %    \end{macrocode}
@@ -1846,7 +1846,7 @@
 \RequirePackage{fltpoint}
 \fpDecimalSign{.}
 \@ifundefined{My@calc@bsize}{%
-\newcommand*{\My@calc@bsize}[2]{\fpDiv{#1}{#2}{\My@scaled}}}
+\newcommand*{\My@calc@bsize}[2]{\fpDiv{#1}{#2}{\My@scale}}}
 %    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
@@ -1915,7 +1915,7 @@
       <->     otf* [figures=] MyriadPro-French
 }
 \My@AddToConfig{scale}{scale}{
-      <->     otf* [scale=\My@scaled]
+      <->     otf* [scale=\My@scale]
 }
 %    \end{macrocode}
 % Substitutions
