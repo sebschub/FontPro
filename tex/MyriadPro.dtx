@@ -563,32 +563,64 @@
 %
 % These hooks are executed once the math versions have been set up.
 %    \begin{macrocode}
+\RequirePackage{fltpoint}
+\fpDecimalSign{.}
+\newcommand*{\My@calc@scaled}[2]{\fpMul{#1}{#2}{\My@scaled}}
+\newcommand*{\My@calc@bsize}[2]{\fpDiv{#1}{#2}{\My@scaled}}
 \newcommand\My@load@cal{}
 \newcommand\My@load@sans@cal{}
+\newcommand\My@load@cal@both{}
 \newcommand\My@load@bb{}
 \newcommand\My@load@sans@bb{}
+\newcommand\My@load@bb@both{}
 \newcommand\My@load@frak{}
 \newcommand\My@load@sans@frak{}
+\newcommand\My@load@frak@both{}
 %    \end{macrocode}
 % Calligraphic fonts from Computer Modern:
 %    \begin{macrocode}
 \DeclareVoidOption{cmsy}{%
+  \def\My@load@cal@both{%
+    \My@calc@scaled{\mdcmsy@scaled}{1.}
+    \My@calc@bsize{\mdcmsy@scaleda}{6.}
+    \My@calc@bsize{\mdcmsy@scaledb}{7.}
+    \My@calc@bsize{\mdcmsy@scaledc}{8.}
+    \My@calc@bsize{\mdcmsy@scaledd}{9.}
+    \My@calc@bsize{\mdcmsy@scalede}{10.}
+    \DeclareFontFamily{OMS}{mdcmsy}{\skewchar\font48 }
+    \DeclareFontShape{OMS}{mdcmsy}{m}{n}{%
+      <               -\mdcmsy@scaleda> [\mdcmsy@scaled] cmsy5
+      <\mdcmsy@scaleda-\mdcmsy@scaledb> [\mdcmsy@scaled] cmsy6
+      <\mdcmsy@scaledb-\mdcmsy@scaledc> [\mdcmsy@scaled] cmsy7
+      <\mdcmsy@scaledc-\mdcmsy@scaledd> [\mdcmsy@scaled] cmsy8
+      <\mdcmsy@scaledd-\mdcmsy@scalede> [\mdcmsy@scaled] cmsy9
+      <\mdcmsy@scalede-               > [\mdcmsy@scaled] cmsy10
+    }{}
+    \DeclareFontShape{OMS}{mdcmsy}{b}{n}{%
+      <               -\mdcmsy@scaledb> [\mdcmsy@scaled] cmbsy5
+      <\mdcmsy@scaledb-\mdcmsy@scalede> [\mdcmsy@scaled] cmbsy7
+      <\mdcmsy@scalede-               > [\mdcmsy@scaled] cmbsy10
+    }{}
+  }
   \def\My@load@cal{%
-    \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}%
-    \SetMathAlphabet{\mathcal}{bold}{OMS}{cmsy}{b}{n}%
-    \SetMathAlphabet{\mathcal}{boldtabular}{OMS}{cmsy}{b}{n}%
+    \DeclareMathAlphabet{\mathcal}{OMS}{mdcmsy}{m}{n}%
+    \SetMathAlphabet{\mathcal}{bold}{OMS}{mdcmsy}{b}{n}%
+    \SetMathAlphabet{\mathcal}{boldtabular}{OMS}{mdcmsy}{b}{n}%
   }%
   \def\My@load@sans@cal{%
     \@ifundefined{mathcal}{%
-      \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}}
-    \SetMathAlphabet{\mathcal}{sans}{OMS}{cmsy}{m}{n}%
-    \SetMathAlphabet{\mathcal}{sansbold}{OMS}{cmsy}{b}{n}%
+      \DeclareMathAlphabet{\mathcal}{OMS}{mdcmsy}{m}{n}}
+    \SetMathAlphabet{\mathcal}{sans}{OMS}{mdcmsy}{m}{n}%
+    \SetMathAlphabet{\mathcal}{sansbold}{OMS}{mdcmsy}{b}{n}%
   }%
 }
 \DeclareVoidOption{abx}{%
-  \DeclareFontFamily{OT1}{mathc}{}%
-  \DeclareFontShape{OT1}{mathc}{m}{n}{ <-> mathcm10 }{}%
-  \DeclareFontShape{OT1}{mathc}{b}{n}{ <-> mathcb10 }{}%
+  \def\My@load@cal@both{
+    \My@calc@scaled{\mdmathc@scaled}{1.}
+    \DeclareFontFamily{OT1}{mdmathc}{}%
+    \DeclareFontShape{OT1}{mdmathc}{m}{n}{ <-> [\mdmathc@scaled] mathcm10 }{}%
+    \DeclareFontShape{OT1}{mdmathc}{b}{n}{ <-> [\mdmathc@scaled] mathcb10 }{}%
+  }
   \def\My@load@cal{%
     \DeclareMathAlphabet\mathcal{OT1}{mathc}{m}{n}%
     \SetMathAlphabet\mathcal{bold}{OT1}{mathc}{b}{n}%
@@ -611,44 +643,67 @@
 % (e.g., package \pkg{eufrak} uses |\newcommand{\mathfrak}{\EuFrak}|).
 %    \begin{macrocode}
 \DeclareVoidOption{amsbb}{
+  \def\My@load@bb@both{
+    \My@calc@scaled{\mdmsb@scaled}{1.}
+    \My@calc@bsize{\mdmsb@scaleda}{6.}
+    \My@calc@bsize{\mdmsb@scaledb}{7.}
+    \My@calc@bsize{\mdmsb@scaledc}{8.}
+    \My@calc@bsize{\mdmsb@scaledd}{9.}
+    \My@calc@bsize{\mdmsb@scalede}{10.}
+    \DeclareFontFamily{U}{mdmsb}{}
+    \DeclareFontShape{U}{mdmsb}{m}{n}{%
+      <              -\mdmsb@scaleda> [\mdmsb@scaled] msbm5%
+      <\mdmsb@scaleda-\mdmsb@scaledb> [\mdmsb@scaled] msbm6%
+      <\mdmsb@scaledb-\mdmsb@scaledc> [\mdmsb@scaled] msbm7%
+      <\mdmsb@scaledc-\mdmsb@scaledd> [\mdmsb@scaled] msbm8%
+      <\mdmsb@scaledd-\mdmsb@scalede> [\mdmsb@scaled] msbm9%
+      <\mdmsb@scalede-              > [\mdmsb@scaled] msbm10%
+    }{}
+  }
   \def\My@load@bb{%
     \let\mathbb\@undefined%
     \let\Bbbk\@undefined%
-    \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}%
+    \DeclareMathAlphabet\mathbb{U}{mdmsb}{m}{n}%
     \newcommand\Bbbk{\mathbb{\mathchar"717C}}}
   \def\My@load@sans@bb{%
-    \@ifundefined{mathbb}{%
-      \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}}%
-    \SetMathAlphabet{\mathbb}{sans}{U}{msb}{m}{n}%
-    \SetMathAlphabet{\mathbb}{sansbold}{U}{msb}{m}{n}%
+    \ifundef{\mathbb}{%
+      \DeclareMathAlphabet\mathbb{U}{mdmsb}{m}{n}}{}%
+    \SetMathAlphabet{\mathbb}{sans}{U}{mdmsb}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sansbold}{U}{mdmsb}{m}{n}%
     \mdsy@renewcommand{Bbbk}{\mathbb{\mathchar"717C}}}
 }
 \DeclareVoidOption{lucidabb}{
-  \DeclareFontFamily{U}{mdhlcm}{}
-  \DeclareFontShape{U}{mdhlcm}{m}{n}{ <->s*[0.92] hlcra }{}
+  \def\My@load@bb@both{
+    \My@calc@scaled{\mdhlcm@scaled}{0.96}
+    \DeclareFontFamily{U}{mdhlcm}{}
+    \DeclareFontShape{U}{mdhlcm}{m}{n}{ <->s*[\mdhlcm@scaled] hlcra }{}
+  }
   \def\My@load@bb{
     \let\mathbb\@undefined
     \let\Bbbk\@undefined
     \DeclareMathAlphabet\mathbb{U}{mdhlcm}{m}{n}
     \newcommand\Bbbk{\mathbb{k}}}
   \def\My@load@sans@bb{
-    \@ifundefined{mathbb}{%
-      \DeclareMathAlphabet\mathbb{U}{mdhlcm}{m}{n}}%
+    \ifundef{\mathbb}{%
+      \DeclareMathAlphabet\mathbb{U}{mdhlcm}{m}{n}}{}%
     \SetMathAlphabet{\mathbb}{sans}{U}{mdhlcm}{m}{n}%
     \SetMathAlphabet{\mathbb}{sansbold}{U}{mdhlcm}{m}{n}%
     \mdsy@renewcommand{Bbbk}{\mathbb{k}}}
 }
 \DeclareVoidOption{fourierbb}{
-  \DeclareFontFamily{U}{mdfutm}{}
-  \DeclareFontShape{U}{mdfutm}{m}{n}{ <->s*[0.95] fourier-bb }{}
+  \def\My@load@bb@both{
+    \My@calc@scaled{\mdfutm@scaled}{0.99}
+    \DeclareFontFamily{U}{mdfutm}{}
+    \DeclareFontShape{U}{mdfutm}{m}{n}{ <->s*[\mdfutm@scaled] fourier-bb }{}
+  }
   \def\My@load@bb{
     \let\mathbb\@undefined
     \let\Bbbk\@undefined
     \DeclareMathAlphabet\mathbb{U}{mdfutm}{m}{n}
     \newcommand\Bbbk{\mathbb{k}}}
   \def\My@load@sans@bb{
-    \@ifundefined{mathbb}{%
-      \DeclareMathAlphabet\mathbb{U}{mdfutm}{m}{n}}%
+    \ifundef{\mathbb}{%
+      \DeclareMathAlphabet\mathbb{U}{mdfutm}{m}{n}}{}%
     \SetMathAlphabet{\mathbb}{sans}{U}{mdfutm}{m}{n}%
     \SetMathAlphabet{\mathbb}{sansbold}{U}{mdfutm}{m}{n}%
     \mdsy@renewcommand{Bbbk}{\mathbb{k}}}
@@ -656,24 +711,43 @@
 %    \end{macrocode}
 % Fracture fonts
 %    \begin{macrocode}
+\def\My@load@frak@both{%
+  \My@calc@scaled{\mdeuf@scaled}{1.}
+  \My@calc@bsize{\mdeuf@scaleda}{6.}
+  \My@calc@bsize{\mdeuf@scaledb}{7.}
+  \My@calc@bsize{\mdeuf@scaledc}{8.}
+  \My@calc@bsize{\mdeuf@scaledd}{9.}
+  \My@calc@bsize{\mdeuf@scalede}{10.}
+  \DeclareFontFamily{U}{mdeuf}{}
+  \DeclareFontShape{U}{mdeuf}{m}{n}{
+    <              -\mdeuf@scaledb> [\mdeuf@scaled] eufm5
+    <\mdeuf@scaledb-\mdeuf@scalede> [\mdeuf@scaled] eufm7
+    <\mdeuf@scalede-              > [\mdeuf@scaled] eufm10
+  }{}
+  \DeclareFontShape{U}{mdeuf}{b}{n}{
+    <              -\mdeuf@scaledb> [\mdeuf@scaled] eufb5
+    <\mdeuf@scaledb-\mdeuf@scalede> [\mdeuf@scaled] eufb7
+    <\mdeuf@scalede-              > [\mdeuf@scaled] eufb10
+  }{}
+}
 \def\My@load@frak{%
-  \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
-  \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}
-  \SetMathAlphabet{\mathfrak}{boldtabular}{U}{euf}{b}{n}
+  \DeclareMathAlphabet{\mathfrak}{U}{mdeuf}{m}{n}
+  \SetMathAlphabet{\mathfrak}{bold}{U}{mdeuf}{b}{n}
+  \SetMathAlphabet{\mathfrak}{boldtabular}{U}{mdeuf}{b}{n}
   \DeclareRobustCommand{\Re}{\mathfrak{R}}
   \DeclareRobustCommand{\Im}{\mathfrak{I}}
 }
 \def\My@load@sans@frak{%
   \ifundef{\mathfrak}{%
-    \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}%
+    \DeclareMathAlphabet{\mathfrak}{U}{mdeuf}{m}{n}%
     \SetMathAlphabet{\mathfrak}{bold}{U}{mdeuf}{b}{n}%
   }{}
   \@ifpackageloaded{eufrak}{%
-    \SetMathAlphabet{\EuFrak}{sans}{U}{euf}{m}{n}%
-    \SetMathAlphabet{\EuFrak}{sansbold}{U}{euf}{b}{n}%
+    \SetMathAlphabet{\EuFrak}{sans}{U}{mdeuf}{m}{n}%
+    \SetMathAlphabet{\EuFrak}{sansbold}{U}{mdeuf}{b}{n}%
   }{%
-    \SetMathAlphabet{\mathfrak}{sans}{U}{euf}{m}{n}%
-    \SetMathAlphabet{\mathfrak}{sansbold}{U}{euf}{b}{n}%
+    \SetMathAlphabet{\mathfrak}{sans}{U}{mdeuf}{m}{n}%
+    \SetMathAlphabet{\mathfrak}{sansbold}{U}{mdeuf}{b}{n}%
   }
   \mdsy@DeclareRobustCommand{Re}{\mathfrak{R}}
   \mdsy@DeclareRobustCommand{Im}{\mathfrak{I}}
@@ -730,12 +804,11 @@
 %
 %    \begin{macrocode}
 \setkeys{My}{amsbb}
+\setkeys{My}{cmsy}
 \ProcessKeyvalOptions{My}\relax
 \RequirePackage{ifthen}
-\def\My@setup@crswash{
-    \RequirePackage{fltpoint}
-    \fpDecimalSign{.}
-    \fpMul{\Cr@scaled}{\My@scaled}{1.08}
+\def\My@load@cal@both{
+   \My@calc@scaled{\Cr@scaled}{1.08}
     \ifthenelse{\equal{\My@crswash}{noptsmall}}{%
       \RequirePackage{CronosPro-FontDef}}{}
     \ifthenelse{\equal{\My@crswash}{optsmall}}{%
@@ -746,13 +819,11 @@
       \RequirePackage[opticals,medfamily]{CronosPro-FontDef}}{}}
 \ifthenelse{\equal{\My@crswash}{false}}{}{%
   \def\My@load@cal{
-    \My@setup@crswash
     \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
     \SetMathAlphabet\mathcal{bold}       {T1}{\Cr@Math@Family} {eb}{sw}
     \SetMathAlphabet\mathcal{tabular}    {T1}{\Cr@Math@TFamily}{m} {sw}
     \SetMathAlphabet\mathcal{boldtabular}{T1}{\Cr@Math@TFamily}{eb}{sw}}
   \def\My@load@sans@cal{
-    \My@setup@crswash
     \@ifundefined{mathcal}{%
       \DeclareMathAlphabet\mathcal    {T1}{\Cr@Math@Family}{m} {sw}}
     \SetMathAlphabet\mathcal{sans}    {T1}{\Cr@Math@Family}{m} {sw}
@@ -839,8 +910,11 @@
 %    \end{macrocode}
 % Execute the hooks set up above to load the various math alphabets.
 %    \begin{macrocode}
+  \My@load@bb@both
   \My@load@bb
+  \My@load@frak@both
   \My@load@frak
+  \My@load@cal@both
   \My@load@cal
 \fi
 %    \end{macrocode}
@@ -872,8 +946,11 @@
   \SetSymbolFont{letters}  {sansbold}{OML}{MyriadPro-OsF}
   {eb}{\My@Math@LetterShape}
 
+  \My@load@cal@both
   \My@load@sans@cal
+  \My@load@bb@both
   \My@load@sans@bb
+  \My@load@frak@both
   \My@load@sans@frak
 \fi
 %    \end{macrocode}
@@ -1768,7 +1845,8 @@
 %    \begin{macrocode}
 \RequirePackage{fltpoint}
 \fpDecimalSign{.}
-\newcommand*{\My@calc@bsize}[2]{\fpDiv{#1}{#2}{\My@scaled}}
+\@ifundefined{My@calc@bsize}{%
+\newcommand*{\My@calc@bsize}[2]{\fpDiv{#1}{#2}{\My@scaled}}}
 %    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
