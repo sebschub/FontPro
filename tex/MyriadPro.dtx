@@ -581,7 +581,7 @@
 %    \begin{macrocode}
 \DeclareVoidOption{cmsy}{%
   \def\My@load@cal@both{%
-    \My@calc@scale{\mdcmsy@scale}{1.}
+    \My@calc@scale{\mdcmsy@scale}{0.99}
     \My@calc@bsize{\mdcmsy@scalea}{6.}
     \My@calc@bsize{\mdcmsy@scaleb}{7.}
     \My@calc@bsize{\mdcmsy@scalec}{8.}
@@ -589,17 +589,17 @@
     \My@calc@bsize{\mdcmsy@scalee}{10.}
     \DeclareFontFamily{OMS}{mdcmsy}{\skewchar\font48 }
     \DeclareFontShape{OMS}{mdcmsy}{m}{n}{%
-      <               -\mdcmsy@scalea> [\mdcmsy@scale] cmsy5
-      <\mdcmsy@scalea-\mdcmsy@scaleb> [\mdcmsy@scale] cmsy6
-      <\mdcmsy@scaleb-\mdcmsy@scalec> [\mdcmsy@scale] cmsy7
-      <\mdcmsy@scalec-\mdcmsy@scaled> [\mdcmsy@scale] cmsy8
-      <\mdcmsy@scaled-\mdcmsy@scalee> [\mdcmsy@scale] cmsy9
-      <\mdcmsy@scalee-               > [\mdcmsy@scale] cmsy10
+      <              -\mdcmsy@scalea>s*[\mdcmsy@scale] cmsy5
+      <\mdcmsy@scalea-\mdcmsy@scaleb>s*[\mdcmsy@scale] cmsy6
+      <\mdcmsy@scaleb-\mdcmsy@scalec>s*[\mdcmsy@scale] cmsy7
+      <\mdcmsy@scalec-\mdcmsy@scaled>s*[\mdcmsy@scale] cmsy8
+      <\mdcmsy@scaled-\mdcmsy@scalee>s*[\mdcmsy@scale] cmsy9
+      <\mdcmsy@scalee-              >s*[\mdcmsy@scale] cmsy10
     }{}
     \DeclareFontShape{OMS}{mdcmsy}{b}{n}{%
-      <               -\mdcmsy@scaleb> [\mdcmsy@scale] cmbsy5
-      <\mdcmsy@scaleb-\mdcmsy@scalee> [\mdcmsy@scale] cmbsy7
-      <\mdcmsy@scalee-               > [\mdcmsy@scale] cmbsy10
+      <              -\mdcmsy@scaleb>s*[\mdcmsy@scale] cmbsy5
+      <\mdcmsy@scaleb-\mdcmsy@scalee>s*[\mdcmsy@scale] cmbsy7
+      <\mdcmsy@scalee-              >s*[\mdcmsy@scale] cmbsy10
     }{}
   }
   \def\My@load@cal{%
@@ -616,20 +616,17 @@
 }
 \DeclareVoidOption{abx}{%
   \def\My@load@cal@both{
-    \My@calc@scale{\mdmathc@scale}{1.}
+    \My@calc@scale{\mdmathc@scale}{0.99}
     \DeclareFontFamily{OT1}{mdmathc}{}%
-    \DeclareFontShape{OT1}{mdmathc}{m}{n}{ <-> [\mdmathc@scale] mathcm10 }{}%
-    \DeclareFontShape{OT1}{mdmathc}{b}{n}{ <-> [\mdmathc@scale] mathcb10 }{}%
+    \DeclareFontShape{OT1}{mdmathc}{m}{n}{ <->s*[\mdmathc@scale] mathc10 }{}%
   }
   \def\My@load@cal{%
-    \DeclareMathAlphabet\mathcal{OT1}{mathc}{m}{n}%
-    \SetMathAlphabet\mathcal{bold}{OT1}{mathc}{b}{n}%
+    \DeclareMathAlphabet\mathcal{OT1}{mdmathc}{m}{n}%
   }%
   \def\My@load@sans@cal{%
     \@ifundefined{mathcal}{%
-      \DeclareMathAlphabet{\mathcal}{OT1}{mathc}{m}{n}}%
-    \SetMathAlphabet{\mathcal}{sans}{OT1}{mathc}{m}{n}%
-    \SetMathAlphabet{\mathcal}{sansbold}{OT1}{mathc}{b}{n}%
+      \DeclareMathAlphabet{\mathcal}{OT1}{mdmathc}{m}{n}}%
+    \SetMathAlphabet{\mathcal}{sans}{OT1}{mdmathc}{m}{n}%
   }%
 }
 \DeclareStringOption[false]{crswash}[noptsmall]
@@ -652,12 +649,12 @@
     \My@calc@bsize{\mdmsb@scalee}{10.}
     \DeclareFontFamily{U}{mdmsb}{}
     \DeclareFontShape{U}{mdmsb}{m}{n}{%
-      <              -\mdmsb@scalea> [\mdmsb@scale] msbm5%
-      <\mdmsb@scalea-\mdmsb@scaleb> [\mdmsb@scale] msbm6%
-      <\mdmsb@scaleb-\mdmsb@scalec> [\mdmsb@scale] msbm7%
-      <\mdmsb@scalec-\mdmsb@scaled> [\mdmsb@scale] msbm8%
-      <\mdmsb@scaled-\mdmsb@scalee> [\mdmsb@scale] msbm9%
-      <\mdmsb@scalee-              > [\mdmsb@scale] msbm10%
+      <             -\mdmsb@scalea>s*[\mdmsb@scale] msbm5%
+      <\mdmsb@scalea-\mdmsb@scaleb>s*[\mdmsb@scale] msbm6%
+      <\mdmsb@scaleb-\mdmsb@scalec>s*[\mdmsb@scale] msbm7%
+      <\mdmsb@scalec-\mdmsb@scaled>s*[\mdmsb@scale] msbm8%
+      <\mdmsb@scaled-\mdmsb@scalee>s*[\mdmsb@scale] msbm9%
+      <\mdmsb@scalee-             >s*[\mdmsb@scale] msbm10%
     }{}
   }
   \def\My@load@bb{%
@@ -720,14 +717,14 @@
   \My@calc@bsize{\mdeuf@scalee}{10.}
   \DeclareFontFamily{U}{mdeuf}{}
   \DeclareFontShape{U}{mdeuf}{m}{n}{
-    <              -\mdeuf@scaleb> [\mdeuf@scale] eufm5
-    <\mdeuf@scaleb-\mdeuf@scalee> [\mdeuf@scale] eufm7
-    <\mdeuf@scalee-              > [\mdeuf@scale] eufm10
+    <             -\mdeuf@scaleb>s*[\mdeuf@scale] eufm5
+    <\mdeuf@scaleb-\mdeuf@scalee>s*[\mdeuf@scale] eufm7
+    <\mdeuf@scalee-             >s*[\mdeuf@scale] eufm10
   }{}
   \DeclareFontShape{U}{mdeuf}{b}{n}{
-    <              -\mdeuf@scaleb> [\mdeuf@scale] eufb5
-    <\mdeuf@scaleb-\mdeuf@scalee> [\mdeuf@scale] eufb7
-    <\mdeuf@scalee-              > [\mdeuf@scale] eufb10
+    <             -\mdeuf@scaleb>s*[\mdeuf@scale] eufb5
+    <\mdeuf@scaleb-\mdeuf@scalee>s*[\mdeuf@scale] eufb7
+    <\mdeuf@scalee-             >s*[\mdeuf@scale] eufb10
   }{}
 }
 \def\My@load@frak{%
@@ -807,8 +804,9 @@
 \setkeys{My}{cmsy}
 \ProcessKeyvalOptions{My}\relax
 \RequirePackage{ifthen}
-\def\My@load@cal@both{
-   \My@calc@scale{\Cr@scale}{1.08}
+\ifthenelse{\equal{\My@crswash}{false}}{}{%
+  \def\My@load@cal@both{
+    \My@calc@scale{\Cr@scale}{1.08}
     \ifthenelse{\equal{\My@crswash}{noptsmall}}{%
       \RequirePackage{CronosPro-FontDef}}{}
     \ifthenelse{\equal{\My@crswash}{optsmall}}{%
@@ -817,7 +815,6 @@
       \RequirePackage[medfamily]{CronosPro-FontDef}}{}
     \ifthenelse{\equal{\My@crswash}{optmed}}{%
       \RequirePackage[opticals,medfamily]{CronosPro-FontDef}}{}}
-\ifthenelse{\equal{\My@crswash}{false}}{}{%
   \def\My@load@cal{
     \DeclareMathAlphabet\mathcal         {T1}{\Cr@Math@Family} {m} {sw}
     \SetMathAlphabet\mathcal{bold}       {T1}{\Cr@Math@Family} {eb}{sw}
