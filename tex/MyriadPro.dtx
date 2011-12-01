@@ -304,7 +304,7 @@
 %      \emph{solely} of figures.
 % \end{options}
 %
-% \section{Figure selection}
+% \section{Figure selection and bold math symbols}
 % \label{sec:fig}
 %
 % MyriadPro offers four different figure versions. One can choose between
@@ -342,6 +342,14 @@
 % common document classes and packages (the standard \LaTeX\ classes,
 % KOMA-Script, \pkg{memoir}, and \pkg{amsmath}) to use tabular figures
 % at some places.
+%
+% In addition to the |\mathsf| command, which produces bold symbols of
+% Roman letters in math, MyriadPro offers the command
+% |\boldsymbol|. It prints bold versions of Roman, Greek and other
+% math symbols.\\
+% Example: |\boldsymbol{A}, \boldsymbol{\beta}, \boldsymbol{\mathcal{D}}| produces
+% $\boldsymbol{A}, \boldsymbol{\beta}, \boldsymbol{\mathcal{D}}$.
+%
 %
 % \section{Additional font shapes and symbols}
 %
@@ -950,7 +958,21 @@
   \My@load@sans@bb
   \My@load@frak@both
   \My@load@sans@frak
-\fi
+%    \end{macrocode}
+% Declare command to print a bold symbol of any math symbol. Code is
+% taken from amsbsy to locally switch mathversion.
+%    \begin{macrocode}
+  \mdsy@DeclareRobustCommandArg{boldsymbol}{1}{%
+    \begingroup
+    \let\@nomath\@gobble \mathversion{sansbold}%
+    \math@atom{#1}{%
+      \mathchoice%
+      {\hbox{$\m@th\displaystyle#1$}}%
+      {\hbox{$\m@th\textstyle#1$}}%
+      {\hbox{$\m@th\scriptstyle#1$}}%
+      {\hbox{$\m@th\scriptscriptstyle#1$}}}%
+    \endgroup}
+ \fi
 %    \end{macrocode}
 % The accents are defined for math and/or sansmath.
 %    \begin{macrocode}
