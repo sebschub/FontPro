@@ -63,8 +63,12 @@
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
 \usepackage[expansion=false]{microtype}
-\usepackage[medfamily, fourierbb,  myriadint, crswash=optmed]{MyriadPro}
+\usepackage[medfamily, crswash=optmed]{MyriadPro}
 \renewcommand{\familydefault}{\sfdefault}
+\DeclareFontFamily{T1}{mdsylmtt}{}
+\DeclareFontShape{T1}{mdsylmtt}{m}{n}
+{ <-> [1.13] ec-lmtt10}{}
+\renewcommand{\ttdefault}{mdsylmtt}
 \usepackage[toc,enum,lineno]{tabfigures}
 \usepackage[greek,british]{babel}
 \usepackage{array,booktabs,pifont,paralist,calc}
@@ -78,11 +82,6 @@
     Sebastian Schubert},
   pdfkeywords={LaTeX, MyriadPro, MdSymbol}
 }
-
-\IfFileExists{lmodern.sty}{%
-  \renewcommand{\ttdefault}{lmtt}%
-  \DeclareMathAlphabet\mathsf    {T1}{lmss}{m}{n}%
-}{}
 
 \newcommand*\pkg[1]{\mbox{\textsf{#1}}}
 \newcommand*\file[1]{\textsf{#1}}
@@ -161,14 +160,23 @@
 %   |\usepackage{MyriadPro}|
 % \end{quote}
 % to the preamble.
-% This will change both the text font and the math font to MyriadPro.
-% If you prefer another math font (such as \pkg{eulervm}) use the option
-% \option{onlytext} as explained in Section~\ref{sec:Options}.
+% This will change both the sans serif text font and the math font to
+% MyriadPro. If you want to use MyriadPro as your main font, add
+% \begin{quote}
+%   |\renewcommand{\familydefault}{\sfdefault}|
+% \end{quote}
+% to your preamble.  If you prefer another math font (such as
+% \pkg{eulervm}), use the option \option{onlytext} as explained in
+% Section~\ref{sec:Options}.  Together with the option
+% \option{sansmath} which defines a sans and sansbold mathversion,
+% this allows the usage of a complete MyriadPro setup consisting of
+% text and math to be used in only a part of the document
+% (see Section~\ref{sec:sansmath}).
 %
 % \section{Interference with other packages}
 % \label{sec:Interferences}
 %
-% The \pkg{MyriadPro} package automatically loads the following packages:
+% The \pkg{MyriadPro} package loads the following packages:
 % \pkg{textcomp}, \pkg{amsmath}, \pkg{fontaxes} and \pkg{MdSymbol}.
 % If you want to pass options to these packages you can
 % either put the corresponding |\usepackage| command before the
@@ -201,7 +209,9 @@
 % \item[\option{medfamily}]    use semibold face in addition to \option{smallfamily}
 % \end{options}
 %
-% The package also provides a way to only change the text fonts or only the math fonts.
+% The package also provides a way to only change the text fonts or
+% only the math fonts. In addition, also additional font versions for
+% sans serif math can be defined.
 % \begin{options}
 % \item[\option{onlytext}] only change the text fonts
 % \item[\option{onlymath}] only change the math fonts
@@ -209,7 +219,7 @@
 %   \emph{sansbold} independently of options \option{onlytext} and
 %   \option{onlymath} and change |\mathsf| to use MyriadPro. This can
 %   be used together with \option{onlytext} to only use MyriadPro's
-%   math in a part of the document.
+%   math in a part of the document (see Section~\ref{sec:sansmath}).
 % \end{options}
 %
 % \subsubsection*{Figure selection}
@@ -305,6 +315,31 @@
 %      \emph{solely} of figures.
 % \end{options}
 %
+%
+% \section{Additional mathversions sans and sansbold}
+% \label{sec:sansmath}
+%
+% With the option \option{sansmath}, this package defines the
+% additional mathversions sans and sansbold. They allow the usage of
+% MyriadPro in math completely independent of the main math font.
+% Also single input character symbols (e.g. |+|, |-|, |(|, |)|) adapt
+% to the math version except when used with a delimiter size
+% increasing command like |\big(|.\footnote{Any help to solve this
+% problem is highly welcome!} As a workaround, use the corresponding
+% full command instead (|\big\lparen|) (see \pkg{MdSymbol}).\\
+% Example: You want to use MyriadPro in table environments
+% independently of the main text and math fonts. Use the
+% \option{onlytext} option to redefine the sans serif text font to
+% MyriadPro and the \option{sansmath} option to define the additional
+% math versions.  Then use it in the following way:
+% \begin{verbatim}
+%   \begin{table}
+%     \sffamily
+%     \mathversion{sans}
+%     ...
+%   \end{table}
+% \end{verbatim}
+%
 % \section{Figure selection and bold math symbols}
 % \label{sec:fig}
 %
@@ -348,8 +383,12 @@
 % Roman letters in math, MyriadPro offers the command
 % |\boldsymbol|. It prints bold versions of Roman, Greek and other
 % math symbols.\\
-% Example: |\boldsymbol{A}, \boldsymbol{\beta}, \boldsymbol{\mathcal{D}}| produces
-% $\boldsymbol{A}, \boldsymbol{\beta}, \boldsymbol{\mathcal{D}}$.
+% Example:\\
+% |\boldsymbol{A} \boldsymbol{+} \boldsymbol{\beta} =|\\
+% |\boldsymbol{\mathcal{E}} \boldsymbol{\wedge}| \\
+% |\boldsymbol{\mathrm{H}}| produces
+% $\boldsymbol{A} \boldsymbol{+} \boldsymbol{\beta} =
+% \boldsymbol{\mathcal{E}} \boldsymbol{\wedge} \boldsymbol{\mathrm{H}}$.
 %
 %
 % \section{Additional font shapes and symbols}
