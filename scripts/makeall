@@ -14,6 +14,16 @@ case $ffamily in
 	;;
 esac
 
+case $ffamily in
+    "CronosPro")
+	math=false
+	;;
+    *)
+	math=true
+	;;
+esac
+
+
 cp enc/$ffamily/* enc/
 cp fontinst/$ffamily/* fontinst/
 cp kerning/$ffamily/* kerning/
@@ -61,7 +71,9 @@ then
   exit 1
 fi
 
-(cd fontinst; ../scripts/makeint $ffamily; ../scripts/makeoml $ffamily)
+if $math; then
+    (cd fontinst; ../scripts/makeint $ffamily; ../scripts/makeoml $ffamily)
+fi
 
 (cd tex; latex $ffamily.ins; latex otfontdef.ins)
 
