@@ -102,7 +102,7 @@ Building
                          file; some glyph lists are supplied in the
                          scripts folder; they can also be generated
                          using generate-glyph-list.sh AFTER a successful
-                         build; RECOMMENDED OPTION
+                         build without the pack option; RECOMMENDED OPTION
 
 Installing
 ==========
@@ -110,7 +110,7 @@ Installing
 1) Run ./scripts/install. You can specify the directory where the files
    should be put. The default is $TEXMFLOCAL.
 
-     $ ./scripts/install /usr/local/teTeX/share/texmf-local
+     $ ./scripts/install /usr/local/share/texmf
 
    (If you use a distribution older than 2005 which does not follow
    TDS v1.1, uncomment the "old directory folders" in the install
