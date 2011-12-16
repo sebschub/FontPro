@@ -663,6 +663,8 @@
       \DeclareMathAlphabet{\mathcal}{OMS}{mdcmsy}{m}{n}}
     \SetMathAlphabet{\mathcal}{sans}{OMS}{mdcmsy}{m}{n}%
     \SetMathAlphabet{\mathcal}{sansbold}{OMS}{mdcmsy}{b}{n}%
+    \SetMathAlphabet{\mathcal}{sanstabular}{OMS}{mdcmsy}{m}{n}%
+    \SetMathAlphabet{\mathcal}{sansboldtabular}{OMS}{mdcmsy}{b}{n}%
   }%
 }
 \DeclareVoidOption{abx}{%
@@ -678,6 +680,7 @@
     \@ifundefined{mathcal}{%
       \DeclareMathAlphabet{\mathcal}{OT1}{mdmathc}{m}{n}}%
     \SetMathAlphabet{\mathcal}{sans}{OT1}{mdmathc}{m}{n}%
+    \SetMathAlphabet{\mathcal}{sansbold}{OT1}{mdmathc}{m}{n}%
   }%
 }
 \DeclareStringOption[false]{crswash}[noptsmall]
@@ -718,6 +721,8 @@
       \DeclareMathAlphabet\mathbb{U}{mdmsb}{m}{n}}{}%
     \SetMathAlphabet{\mathbb}{sans}{U}{mdmsb}{m}{n}%
     \SetMathAlphabet{\mathbb}{sansbold}{U}{mdmsb}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sanstabular}{U}{mdmsb}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sansboldtabular}{U}{mdmsb}{m}{n}%
     \mdsy@renewcommand{Bbbk}{\mathbb{\mathchar"717C}}}
 }
 \DeclareVoidOption{lucidabb}{
@@ -736,6 +741,8 @@
       \DeclareMathAlphabet\mathbb{U}{mdhlcm}{m}{n}}{}%
     \SetMathAlphabet{\mathbb}{sans}{U}{mdhlcm}{m}{n}%
     \SetMathAlphabet{\mathbb}{sansbold}{U}{mdhlcm}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sanstabular}{U}{mdhlcm}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sansboldtabular}{U}{mdhlcm}{m}{n}%
     \mdsy@renewcommand{Bbbk}{\mathbb{k}}}
 }
 \DeclareVoidOption{fourierbb}{
@@ -754,6 +761,8 @@
       \DeclareMathAlphabet\mathbb{U}{mdfutm}{m}{n}}{}%
     \SetMathAlphabet{\mathbb}{sans}{U}{mdfutm}{m}{n}%
     \SetMathAlphabet{\mathbb}{sansbold}{U}{mdfutm}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sanstabular}{U}{mdfutm}{m}{n}%
+    \SetMathAlphabet{\mathbb}{sansboldtabular}{U}{mdfutm}{m}{n}%
     \mdsy@renewcommand{Bbbk}{\mathbb{k}}}
 }
 %    \end{macrocode}
@@ -789,13 +798,18 @@
   \ifundef{\mathfrak}{%
     \DeclareMathAlphabet{\mathfrak}{U}{mdeuf}{m}{n}%
     \SetMathAlphabet{\mathfrak}{bold}{U}{mdeuf}{b}{n}%
+    \SetMathAlphabet{\mathfrak}{boldtabular}{U}{mdeuf}{b}{n}%
   }{}
   \@ifpackageloaded{eufrak}{%
     \SetMathAlphabet{\EuFrak}{sans}{U}{mdeuf}{m}{n}%
     \SetMathAlphabet{\EuFrak}{sansbold}{U}{mdeuf}{b}{n}%
+    \SetMathAlphabet{\EuFrak}{sanstabular}{U}{mdeuf}{m}{n}%
+    \SetMathAlphabet{\EuFrak}{sansboldtabular}{U}{mdeuf}{b}{n}%
   }{%
     \SetMathAlphabet{\mathfrak}{sans}{U}{mdeuf}{m}{n}%
     \SetMathAlphabet{\mathfrak}{sansbold}{U}{mdeuf}{b}{n}%
+    \SetMathAlphabet{\mathfrak}{sanstabular}{U}{mdeuf}{m}{n}%
+    \SetMathAlphabet{\mathfrak}{sansboldtabular}{U}{mdeuf}{b}{n}%
   }
   \mdsy@DeclareRobustCommand{Re}{\mathfrak{R}}
   \mdsy@DeclareRobustCommand{Im}{\mathfrak{I}}
@@ -885,6 +899,8 @@
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 
 \if@My@Math@
+  \DeclareMathVersion{tabular}
+  \DeclareMathVersion{boldtabular}
   \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale]{MdSymbol}
 \else
   \if@My@Sans@Math@
@@ -946,12 +962,10 @@
 % instead of proportional ones. These math versions can be useful in tables
 % (cf.\ section~\ref{sec:Interferences}).
 %    \begin{macrocode}
-  \DeclareMathVersion{tabular}
   \SetSymbolFont{operators}{tabular}    {T1} {\My@Math@TFamily}{m}{n}
   \SetSymbolFont{letters}  {tabular}    {OML}{MyriadPro-TOsF}  {m}{\My@Math@LetterShape}
   \SetMathAlphabet\mathit  {tabular}    {T1} {\My@Math@TFamily}{m}{it}
 
-  \DeclareMathVersion{boldtabular}
   \SetSymbolFont{operators}{boldtabular}{T1} {\My@Math@TFamily}{b}{n}
   \SetSymbolFont{letters}  {boldtabular}{OML}{MyriadPro-TOsF}  {b}{\My@Math@LetterShape}
   \SetMathAlphabet\mathit  {boldtabular}{T1} {\My@Math@TFamily}{b}{it}
