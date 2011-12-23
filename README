@@ -26,7 +26,8 @@ o LCDF Typetools, version 2.62 until 2.69 or
   2.85 and later (http://www.lcdf.org/type/)
 o fontinst v1.925 or better
 
-o fontaxes packages
+o fontaxes package
+o MnSymbol for MinionPro, MdSymbol for MyriadPro
 o tabfigures package (optional)
 
 Building
