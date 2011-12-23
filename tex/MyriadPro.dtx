@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2011/12/19 v0.1 MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2011/12/23 v0.1a MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2011/12/19 v0.1 MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2011/12/23 v0.1a MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
@@ -526,14 +526,16 @@
 %
 % \section{Version history}
 %
-% Version 0.1: First version
-%
+% Version 0.1: First version\\
+% Version 0.1a: Fixed onlytext option
+% 
 % \StopEventually{}
 %
 % \section{The main style file}
 %
 % \subsection{Options}
-%
+% Set the default options. The given package options are taken into
+% account after |\ProcessKeyvalOptions| below.
 %    \begin{macrocode}
 %<*style>
 \newif\if@My@Text@
@@ -552,12 +554,6 @@
 \DeclareVoidOption{onlytext}{\@My@Text@true\@My@Math@false}
 \DeclareVoidOption{onlymath}{\@My@Text@false\@My@Math@true}
 \DeclareVoidOption{sansmath}{\@My@Sans@Math@true}
-\if@My@Math@
-  \@My@Math@Symbols@true
-\fi
-\if@My@Sans@Math@
-  \@My@Math@Symbols@true
-\fi
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
@@ -871,6 +867,12 @@
 \setkeys{My}{amsbb}
 \setkeys{My}{cmsy}
 \ProcessKeyvalOptions{My}\relax
+\if@My@Math@
+  \@My@Math@Symbols@true
+\fi
+\if@My@Sans@Math@
+  \@My@Math@Symbols@true
+\fi
 \RequirePackage{ifthen}
 \ifthenelse{\equal{\My@crswash}{false}}{}{%
   \def\My@load@cal@both{
