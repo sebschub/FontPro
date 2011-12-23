@@ -528,7 +528,10 @@
 %
 % Version 0.1: First version\\
 % Version 0.1a: Fixed onlytext option
-% 
+% Version 0.1b:
+% \begin{compactitem}
+% \item Correction of mathfrak definition
+% \end{compactitem}
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -626,6 +629,9 @@
 \newcommand\My@load@frak{}
 \newcommand\My@load@sans@frak{}
 \newcommand\My@load@frak@both{}
+\newcommand*\my@if@boldtabular@math[1]{%
+  \@ifundefined{mv@boldtabular}{}{#1}%
+}
 %    \end{macrocode}
 % Calligraphic fonts from Computer Modern:
 %    \begin{macrocode}
@@ -797,7 +803,7 @@
   \ifundef{\mathfrak}{%
     \DeclareMathAlphabet{\mathfrak}{U}{mdeuf}{m}{n}%
     \SetMathAlphabet{\mathfrak}{bold}{U}{mdeuf}{b}{n}%
-    \SetMathAlphabet{\mathfrak}{boldtabular}{U}{mdeuf}{b}{n}%
+    \my@if@boldtabular@math{\SetMathAlphabet{\mathfrak}{boldtabular}{U}{mdeuf}{b}{n}}%
   }{}
   \@ifpackageloaded{eufrak}{%
     \SetMathAlphabet{\EuFrak}{sans}{U}{mdeuf}{m}{n}%
