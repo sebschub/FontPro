@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2011/12/23 v0.1b MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2012/01/07 v0.1c MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2011/12/23 v0.1b MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2012/01/07 v0.1c MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
@@ -180,14 +180,14 @@
 % \label{sec:Interferences}
 %
 % The \pkg{MyriadPro} package loads the following packages:
-% \pkg{textcomp}, \pkg{amsmath}, \pkg{fontaxes} and \pkg{MdSymbol}. Do
-% not load \pkg{MdSymbol} manually.  If you want to pass options to
+% \pkg{textcomp}, \pkg{amsmath}, \pkg{fontaxes} and \pkg{mdsymbol}. Do
+% not load \pkg{mdsymbol} manually.  If you want to pass options to
 % the other packages, you can either put the corresponding
 % |\usepackage| command before the |\usepackage{MyriadPro}| or you can
 % include the options in the |\documentclass| command. The
 % \pkg{MyriadPro} package is \emph{not} compatible with \pkg{amssymb}
 % and \pkg{amsfonts}. Please see also the corresponding section in the
-% \pkg{MdSymbol} documentation.
+% \pkg{mdsymbol} documentation.
 %
 % The MyriadPro package includes support files for the \pkg{microtype} package
 % (version~1.8 or higher), consult the package's documentation for further details.
@@ -330,7 +330,7 @@
 % to the math version except when used with a delimiter size
 % increasing command like |\big(|.\footnote{Any help to solve this
 % problem is highly welcome!} As a workaround, use the corresponding
-% full command instead (|\big\lparen|) (see \pkg{MdSymbol}).\\
+% full command instead (|\big\lparen|) (see \pkg{mdsymbol}).\\
 % Example: You want to use MyriadPro in table environments
 % independently of the main text and math fonts. Use the
 % \option{onlytext} option to redefine the sans serif text font to
@@ -412,7 +412,7 @@
 %
 % \section{Additional font shapes and symbols}
 %
-% The \pkg{MyriadPro} package provides all symbols from the \pkg{MdSymbol} package.
+% The \pkg{MyriadPro} package provides all symbols from the \pkg{mdsymbol} package.
 % Additionally, the following math symbols are available:
 %
 % \medskip\tabindent
@@ -549,6 +549,7 @@
 % \item Correction of mathfrak definition
 % \item Correct mathversion sanstabular and sansboldtabular
 % \end{compactitem}
+% Version 0.1c: Use down-case mdsymbol
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -931,10 +932,10 @@
 \if@My@Math@
   \DeclareMathVersion{tabular}
   \DeclareMathVersion{boldtabular}
-  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale]{MdSymbol}
+  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale]{mdsymbol}
 \else
   \if@My@Sans@Math@
-    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale,onlysansmath]{MdSymbol}
+    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale,onlysansmath]{mdsymbol}
   \fi
 \fi
 %    \end{macrocode}
