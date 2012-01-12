@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2012/01/07 v0.1c MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2012/01/12 v0.1d MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2012/01/07 v0.1c MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2012/01/12 v0.1d MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
@@ -165,11 +165,13 @@
 % \end{quote}
 % to your preamble.  If you prefer another math font (such as
 % \pkg{eulervm}), use the option \option{onlytext} as explained in
-% Section~\ref{sec:Options}.  Together with the option
-% \option{sansmath} which defines a sans and sansbold mathversion,
-% this allows the usage of a complete MyriadPro setup consisting of
-% text and math to be used in only a part of the document
-% (see Section~\ref{sec:sansmath}).
+% Section~\ref{sec:Options}.  With the option \option{sansmath},
+% \pkg{MyriadPro} does not modify the main math fonts but defines a
+% sans and sansbold mathversion, which use MyriadPro and MdSymbol.
+% This allows the usage of a complete MyriadPro setup consisting of
+% text and math to be used in only a part of the document.  Load
+% \pkg{MyriadPro} with \option{sansmath} after all other font packages
+% (see Section~\ref{sec:sansmath})!
 %
 % \subsubsection*{Acknowledgements}
 %
@@ -220,10 +222,10 @@
 % \item[\option{onlytext}] only change the text fonts
 % \item[\option{onlymath}] only change the math fonts
 % \item[\option{sansmath}] provide mathversion \emph{sans} and
-%   \emph{sansbold} independently of options \option{onlytext} and
-%   \option{onlymath} and change |\mathsf| to use MyriadPro. This can
-%   be used together with \option{onlytext} to only use MyriadPro's
-%   math in a part of the document (see Section~\ref{sec:sansmath}).
+%   \emph{sansbold} and change |\mathsf| to use MyriadPro.  The other
+%   main math fonts are not modified.  This can be used to only use
+%   MyriadPro's math in a part of the document (see
+%   Section~\ref{sec:sansmath}).
 % \end{options}
 %
 % \subsubsection*{Figure selection}
@@ -330,12 +332,12 @@
 % to the math version except when used with a delimiter size
 % increasing command like |\big(|.\footnote{Any help to solve this
 % problem is highly welcome!} As a workaround, use the corresponding
-% full command instead (|\big\lparen|) (see \pkg{mdsymbol}).\\
+% full command instead (|\big\lparen|) (see \pkg{mdsymbol} documentation).\\
 % Example: You want to use MyriadPro in table environments
-% independently of the main text and math fonts. Use the
-% \option{onlytext} option to redefine the sans serif text font to
-% MyriadPro and the \option{sansmath} option to define the additional
-% math versions.  Then use it in the following way:
+% independently of the main text and math fonts.  Load \pkg{MyriadPro}
+% with the \option{sansmath} option after all other font packages to
+% define the additional math versions without modifying the main math
+% font.  Then use it in the following way:
 % \begin{verbatim}
 %   \begin{table}
 %     \sffamily
@@ -550,6 +552,7 @@
 % \item Correct mathversion sanstabular and sansboldtabular
 % \end{compactitem}
 % Version 0.1c: Use down-case mdsymbol
+% Version 0.1d: \option{sansmath} does not need \option{onlytext}
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -574,7 +577,7 @@
 }
 \DeclareVoidOption{onlytext}{\@My@Text@true\@My@Math@false}
 \DeclareVoidOption{onlymath}{\@My@Text@false\@My@Math@true}
-\DeclareVoidOption{sansmath}{\@My@Sans@Math@true}
+\DeclareVoidOption{sansmath}{\@My@Sans@Math@true\@My@Math@false}
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
@@ -932,10 +935,10 @@
 \if@My@Math@
   \DeclareMathVersion{tabular}
   \DeclareMathVersion{boldtabular}
-  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale]{mdsymbol}
+  \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale]{mdsymbol}[2012/01/07]
 \else
   \if@My@Sans@Math@
-    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale,onlysansmath]{mdsymbol}
+    \RequirePackage[normalweight=\My@mdsym@regular,boldweight=\My@mdsym@bold,scale=\My@scale,onlysansmath]{mdsymbol}[2012/01/07]
   \fi
 \fi
 %    \end{macrocode}
