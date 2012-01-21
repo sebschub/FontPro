@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2012/01/20 v0.2 MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2012/01/21 v0.2 MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2012/01/20 v0.2 MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2012/01/21 v0.2 MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
@@ -450,6 +450,20 @@
 % normal or sans math.  With the \option{sansmath} option, Myriad Pro
 % figures are only shown if a sans mathversion is active.
 %
+% If the spacing of the numbers relative to the slash in the slantfrac
+% command is not right, modify the lengths
+% |MdSlantfracSpacingBeforeSlash| and\\
+% |MdSlantfracSpacingAfterSlash| via for example
+% \begin{verbatim}
+%   \setlength{\MdSlantfracSpacingBeforeSlash}{-0.15em}
+%   \setlength{\MdSlantfracSpacingAfterSlash}{-0.14em}
+% \end{verbatim}
+% with the modified lengths.  This can be done either in the preamble
+% of the document or in the |MyriadPro.cfg| file.  If the default
+% value in |MyriadPro.cfg| does not fit well, write me an email with
+% better values and your font version of Myriad Pro and I will
+% incorporate them.
+%
 % \section{Language support}
 %
 % The following encodings are supported:
@@ -560,8 +574,7 @@
 % Version 0.2:
 % \begin{compactitem}
 % \item Correct smallfrac and slantfrac with \option{sansmath}
-% \item Tuning of slantfrac spacing (this may depend on you version of
-% Myriad Pro)
+% \item Make the spacing in slantfrac customizable
 % \end{compactitem}
 % \StopEventually{}
 %
@@ -1425,6 +1438,12 @@
 % ensure not overwriting existing commands, they are only defined if
 % mathversion reacting commands are available.
 %    \begin{macrocode}
+\newlength{\MdSlantfracSpacingBeforeSlash}
+\newlength{\MdSlantfracSpacingAfterSlash}
+\setlength{\MdSlantfracSpacingBeforeSlash}{-0.15em}
+\setlength{\MdSlantfracSpacingAfterSlash}{-0.14em}
+\InputIfFileExists{MyriadPro.cfg}{%
+  \typeout{Using the configuration file MyriadPro.cfg}}{}
 \newcommand*\My@smallfrac[2]{%
   \leavevmode
   \setbox\@tempboxa
@@ -1440,7 +1459,7 @@
   \dp\@tempboxa=0.49ex%
   \box\@tempboxa}
 \newcommand*\My@slantfrac[2]{%
-  {\My@extra@font\My@@numerator@fig{#1}\kern-0.15em/\kern-0.14em\My@@denominator@fig{#2}}}
+  {\My@extra@font\My@@numerator@fig{#1}\kern\MdSlantfracSpacingBeforeSlash/\kern\MdSlantfracSpacingAfterSlash\My@@denominator@fig{#2}}}
 \if@My@Math@Symbols@
   \mdsy@DeclareRobustCommandArg{smallfrac}{2}{\Myensure@text{\kern0.06em\My@smallfrac{#1}{#2}\kern0.09em}}
   \mdsy@DeclareRobustCommandArg{slantfrac}{2}{\Myensure@text{\kern0.06em\My@slantfrac{#1}{#2}\kern0.09em}}
