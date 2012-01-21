@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2012/01/12 v0.1d MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2012/01/20 v0.2 MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2012/01/12 v0.1d MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2012/01/20 v0.2 MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
@@ -84,7 +84,7 @@
 
 \newcommand*\pkg[1]{\mbox{\textsf{#1}}}
 \newcommand*\file[1]{\textsf{#1}}
-\newcommand*\acro[1]{\MakeLowercase{#1}}
+\newcommand*\acro[1]{#1}
 \newcommand\pdfTeX{pdf\TeX}
 \pdfstringdefDisableCommands{%
   \renewcommand*\acro[1]{#1}%
@@ -553,6 +553,12 @@
 % \end{compactitem}
 % Version 0.1c: Use down-case mdsymbol
 % Version 0.1d: \option{sansmath} does not need \option{onlytext}
+% Version 0.2:
+% \begin{compactitem}
+% \item Correct smallfrac and slantfrac with \option{sansmath}
+% \item Tuning of slantfrac spacing (this may depend on you version of
+% Myriad Pro)
+% \end{compactitem}
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -1428,9 +1434,9 @@
   \dp\@tempboxa=0.49ex%
   \box\@tempboxa}
 \newcommand*\My@slantfrac[2]{%
-  {\My@extra@font\My@@numerator@fig{#1}\kern-0.05em/\kern-0.06em\My@@denominator@fig{#2}}}
-\DeclareRobustCommand*\smallfrac[2]{\Myensure@text{\kern0.06em\My@smallfrac{#1}{#2}\kern0.09em}}
-\DeclareRobustCommand*\slantfrac[2]{\Myensure@text{\kern0.06em\My@slantfrac{#1}{#2}\kern0.09em}}
+  {\My@extra@font\My@@numerator@fig{#1}\kern-0.15em/\kern-0.14em\My@@denominator@fig{#2}}}
+\mdsy@DeclareRobustCommandArg{smallfrac}{2}{\Myensure@text{\kern0.06em\My@smallfrac{#1}{#2}\kern0.09em}}
+\mdsy@DeclareRobustCommandArg{slantfrac}{2}{\Myensure@text{\kern0.06em\My@slantfrac{#1}{#2}\kern0.09em}}
 %    \end{macrocode}
 %
 % \subsection{Additional symbols}
