@@ -444,7 +444,11 @@
 % \end{tabular}
 %
 % \medskip\noindent
-% Note that \emph{only} figures can be used for \meta{numerator} and \meta{denominator}.
+% Note that \emph{only} figures can be used for \meta{numerator} and
+% \meta{denominator}. For compatability reasons with other packages, both commands are
+% defined only if \pkg{MyriadPro} is used with math support either for
+% normal or sans math.  With the \option{sansmath} option, Myriad Pro
+% figures are only shown if a sans mathversion is active.
 %
 % \section{Language support}
 %
@@ -1311,25 +1315,25 @@
 %
 % We define commands to convert numbers to numerator figures and denominator figures.
 %    \begin{macrocode}
-\def\@for@tok#1:=#2\do#3{%
+\def\My@for@tok#1:=#2\do#3{%
   \expandafter\def\expandafter\@fortmp\expandafter{#2}%
   \ifx\@fortmp\@empty \else
-    \expandafter\@forloop@tok#2\@nil\@nil\@@#1{#3}%
+    \expandafter\My@forloop@tok#2\@nil\@nil\@@#1{#3}%
   \fi}
-\def\@forloop@tok#1#2#3\@@#4#5{%
+\def\My@forloop@tok#1#2#3\@@#4#5{%
   \def#4{#1}%
   \ifx #4\@nnil \else
     #5%
     \def#4{#2}%
     \ifx #4\@nnil \else
-      #5\@iforloop@tok #3\@@#4{#5}%
+      #5\My@iforloop@tok #3\@@#4{#5}%
   \fi\fi}
-\def\@iforloop@tok#1#2\@@#3#4{%
+\def\My@iforloop@tok#1#2\@@#3#4{%
   \def#3{#1}%
   \ifx #3\@nnil
     \expandafter\@fornoop
   \else
-    #4\relax\expandafter\@iforloop@tok
+    #4\relax\expandafter\My@iforloop@tok
   \fi
   #2\@@#3{#4}}
 %
@@ -1340,7 +1344,7 @@
 \newcommand*\My@superior@fig[1]{{\My@extra@font\My@@superior@fig{#1}}}
 \newcommand*\My@inferior@fig[1]{{\My@extra@font\My@@inferior@fig{#1}}}
 \newcommand*\My@@numerator@fig[1]{%
-  \@for@tok\@nf@fig:=#1\do{%
+  \My@for@tok\@nf@fig:=#1\do{%
     \ifcase\@nf@fig
        \char'00%
     \or\char'01%
@@ -1357,7 +1361,7 @@
     \fi
     }}
 \newcommand*\My@@denominator@fig[1]{%
-  \@for@tok\@nf@fig:=#1\do{%
+  \My@for@tok\@nf@fig:=#1\do{%
     \ifcase\@nf@fig
        \char'20%
     \or\char'21%
@@ -1374,7 +1378,7 @@
     \fi
     }}
 \newcommand*\My@@superior@fig[1]{%
-  \@for@tok\@nf@fig:=#1\do{%
+  \My@for@tok\@nf@fig:=#1\do{%
     \ifcase\@nf@fig
        \char'60%
     \or\char'61%
@@ -1391,7 +1395,7 @@
     \fi
     }}
 \newcommand*\My@@inferior@fig[1]{%
-  \@for@tok\@nf@fig:=#1\do{%
+  \My@for@tok\@nf@fig:=#1\do{%
     \ifcase\@nf@fig
        \char'100%
     \or\char'101%
@@ -1417,7 +1421,9 @@
     #1%
   \fi}
 %    \end{macrocode}
-% |\smallfrac| and |\slantfrac| assemble numerical fractions.
+% |\smallfrac| and |\slantfrac| assemble numerical fractions.  To
+% ensure not overwriting existing commands, they are only defined if
+% mathversion reacting commands are available.
 %    \begin{macrocode}
 \newcommand*\My@smallfrac[2]{%
   \leavevmode
@@ -1435,8 +1441,10 @@
   \box\@tempboxa}
 \newcommand*\My@slantfrac[2]{%
   {\My@extra@font\My@@numerator@fig{#1}\kern-0.15em/\kern-0.14em\My@@denominator@fig{#2}}}
-\mdsy@DeclareRobustCommandArg{smallfrac}{2}{\Myensure@text{\kern0.06em\My@smallfrac{#1}{#2}\kern0.09em}}
-\mdsy@DeclareRobustCommandArg{slantfrac}{2}{\Myensure@text{\kern0.06em\My@slantfrac{#1}{#2}\kern0.09em}}
+\if@My@Math@Symbols@
+  \mdsy@DeclareRobustCommandArg{smallfrac}{2}{\Myensure@text{\kern0.06em\My@smallfrac{#1}{#2}\kern0.09em}}
+  \mdsy@DeclareRobustCommandArg{slantfrac}{2}{\Myensure@text{\kern0.06em\My@slantfrac{#1}{#2}\kern0.09em}}
+\fi
 %    \end{macrocode}
 %
 % \subsection{Additional symbols}
