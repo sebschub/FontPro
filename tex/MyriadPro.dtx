@@ -1,11 +1,11 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2012/01/21 v0.2 MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2012/02/17 v0.3 MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2012/01/21 v0.2 MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2012/02/17 v0.3 MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
-%<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
+%<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2012/02/17 v0.3 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
 %<LGR&lf>  \ProvidesFile{LGRMyriadPro-LF.fd}   [2011/12/19 v0.1 font definitions for LGR/MyriadPro-LF.]
 %<LGR&osf> \ProvidesFile{LGRMyriadPro-OsF.fd}  [2011/12/19 v0.1 font definitions for LGR/MyriadPro-OsF.]
@@ -211,9 +211,11 @@
 % The default settings are marked with an asterisk*.
 %
 % \begin{options}[\option{proportional}, \option{prop}]
-% \item[\option*{smallfamily}] use only regular and bold face
+% \item[\option*{smallfamily}] use only regular and bold face by default
 % \item[\option{medfamily}]    use semibold face in addition to \option{smallfamily}
 % \end{options}
+% In addition, the light and black weight can be used for text if the
+% respective font is installed (see Section~\ref{sec:addfont}).
 %
 % The package also provides a way to only change the text fonts or
 % only the math fonts. In addition, also additional font versions for
@@ -412,7 +414,8 @@
 % \boldsymbol{\mathcal{E}} \boldsymbol{\wedge} \boldsymbol{\mathrm{H}}$.
 %
 %
-% \section{Additional font shapes and symbols}
+% \section{Additional symbols, font weights and shapes}
+% \label{sec:addfont}
 %
 % The \pkg{MyriadPro} package provides all symbols from the \pkg{mdsymbol} package.
 % Additionally, the following math symbols are available:
@@ -463,6 +466,24 @@
 % value in |MyriadPro.cfg| does not fit well, write me an email with
 % better values and your font version of Myriad Pro and I will
 % incorporate them.
+% \newpage
+% If installed, the {\fontseries{l}\selectfont light} and
+% {\fontseries{ub}\selectfont black} weight can be accessed by either
+% \begin{verbatim}
+%   \fontseries{l}\selectfont
+% \end{verbatim}
+% or
+% \begin{verbatim}
+%   \fontseries{ub}\selectfont
+% \end{verbatim}
+% for text only.  In case of the \option{medfamily} option, \LaTeX{}
+% commands like |\textbf| use Myriad's {\fontseries{b}\selectfont
+% semibold} weight. Myriad's {\fontseries{eb}\selectfont bold} can be
+% used with
+% \begin{verbatim}
+%   \fontseries{eb}\selectfont
+% \end{verbatim}
+%
 %
 % \section{Language support}
 %
@@ -533,28 +554,28 @@
 %   \midrule
 %   \raggedright \acro{OT1,} \acro{T1,} \acro{TS1,} \acro{LY1,} \acro{T5} &
 %   MyriadPro-OsF, MyriadPro-LF, MyriadPro-TOsF, MyriadPro-TLF &
-%   m, b (sb, bx), eb &
+%   m, b (sb, bx), eb, ub &
 %   n, it (sl)\\
 %   \addlinespace
 %   \midrule
 %   \addlinespace
 %   \raggedright \acro{LGR,} \acro{LGI,} \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2} &
 %   MyriadPro-OsF, MyriadPro-LF, MyriadPro-TOsF, MyriadPro-TLF &
-%   m, b (sb, bx), eb &
+%   m, b (sb, bx), eb, ub &
 %   n, it (sl) \\
 %   \addlinespace
 %   \midrule
 %   \addlinespace
 %   \acro{OML} &
 %   MyriadPro-TOsF &
-%   m, b (sb, bx), eb &
+%   m, b (sb, bx), eb, ub &
 %   n, it \\
 %   \addlinespace
 %   \midrule
 %   \addlinespace
 %   \acro{U} &
 %   MyriadPro-Extra &
-%   m, b (sb, bx), eb &
+%   m, b (sb, bx), eb, ub &
 %   n, it (sl) \\
 %   \bottomrule
 % \end{tabular}\par
@@ -576,6 +597,7 @@
 % \item Correct smallfrac and slantfrac with \option{sansmath}
 % \item Make the spacing in slantfrac customizable
 % \end{compactitem}
+% Version 0.3: Add support for Light and Black weight
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -2022,6 +2044,10 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
+\My@AddToConfig{weight}{l}{
+      <->     otf* [weight=Light]
+}
+%
 \My@calc@bsize{\My@s@semim}{6}
 \My@AddToConfig{fontset/weight}{medfamily/m}{
              <-\My@s@semim> otf* [weight=Semibold]
@@ -2040,8 +2066,17 @@
       <->     otf* [weight=Bold]
 }
 %
-\My@AddToConfig{weight}{eb}{
+\My@AddToConfig{fontset/weight}{smallfamily/eb}{
+      <->     otf* [weight=Black]
+}
+\My@AddToConfig{fontset/weight}{smallfamily/ub}{
+      <->     otf* [weight=Black]
+}
+\My@AddToConfig{fontset/weight}{medfamily/eb}{
       <->     otf* [weight=Bold]
+}
+\My@AddToConfig{fontset/weight}{medfamily/ub}{
+      <->     otf* [weight=Black]
 }
 %    \end{macrocode}
 %
@@ -2129,15 +2164,15 @@
 %    \begin{macrocode}
 \newcommand*\My@DeclareLargeFontFamily[3][LF,OsF,TLF,TOsF]{%
   \My@DeclareFontFamily{#1}{#2}{#3}
-    {m,sb,b,bx,eb} {n,it,sl}%
+    {l,m,sb,b,bx,eb,ub} {n,it,sl}%
 }
 \newcommand*\My@DeclareSmallFontFamily[3][LF,OsF,TLF,TOsF]{%
   \My@DeclareFontFamily{#1}{#2}{#3}
-    {m,sb,b,bx,eb} {n,it,sl}%
+    {l,m,sb,b,bx,eb,ub} {n,it,sl}%
 }
 \newcommand*\My@DeclareMathFontFamily[3][TOsF]{%
   \My@DeclareFontFamily[\skewchar\font=255]{#1}{#2}{#3}
-    {m,sb,b,bx,eb} {n,it}%
+    {l,m,sb,b,bx,eb,ub} {n,it}%
 }
 %    \end{macrocode}
 % An additional macro |\csname\string\foo\endcsname| is generated by
@@ -2261,7 +2296,7 @@
 %<*OML&(lf|osf|tlf)>
   \@for\My@variant:=LF,TLF,OsF\do{%
     \DeclareFontFamily{OML}{MyriadPro-\My@variant}{\skewchar\font=255}
-    \@for\My@series:=m,sb,b,bx,eb\do{%
+    \@for\My@series:=l,m,sb,b,bx,eb,ub\do{%
       \@for\My@shape:=n,it\do{%
         \DeclareFontShape{OML}{MyriadPro-\My@variant}{\My@series}{\My@shape}%
           { <-> ssub*MyriadPro-TOsF/\My@series/\My@shape }{}
