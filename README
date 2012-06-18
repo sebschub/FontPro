@@ -28,6 +28,7 @@ o fontinst v1.925 or better
 
 o fontaxes package
 o MnSymbol for MinionPro, MdSymbol for MyriadPro
+o fltpoint package
 o tabfigures package (optional)
 
 Building
