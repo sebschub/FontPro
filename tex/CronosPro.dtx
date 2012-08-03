@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{CronosPro.dtx}        [2011/12/19 v0.1 CronosPro support for LaTeX]
+           \ProvidesFile{CronosPro.dtx}        [2012/08/03 v0.2 CronosPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{CronosPro}         [2011/12/19 v0.1 CronosPro support for LaTeX]
+%<style>   \ProvidesPackage{CronosPro}         [2012/08/03 v0.2 CronosPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-CronosPro.cfg}     [2011/12/19 v0.1 microtype config file for CronosPro]
 %<fontdef> \ProvidesFile{CronosPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
 %<Uextra>  \ProvidesFile{UCronosPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/CronosPro-Extra.]
@@ -349,7 +349,8 @@
 %
 % \section{Version history}
 %
-% Version 0.1: First version
+% Version 0.1: First version\\
+% Version 0.2: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes
 %
 % \StopEventually{}
 %
@@ -431,7 +432,9 @@
     \normalfont
     \fontfamily{CronosPro-Extra}\fontencoding{U}\selectfont
     \@thefnmark
-    \endgroup}}
+    \endgroup}%
+  \@ifundefined{KOMAClassName}{}{\deffootnote[1em]{1.5em}{1em}{%
+      \fontfamily{CronosPro-Extra}\fontencoding{U}\selectfont\thefootnotemark}}}
 %
 \newcommand\Cr@Quote@Spacing{}
 \DeclareVoidOption{loosequotes}{%

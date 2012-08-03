@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MinionPro.dtx}        [2011/12/19 v2.2 MinionPro support for LaTeX]
+           \ProvidesFile{MinionPro.dtx}        [2012/08/03 v2.3 MinionPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MinionPro}         [2011/12/19 v2.2 MinionPro support for LaTeX]
+%<style>   \ProvidesPackage{MinionPro}         [2012/08/03 v2.3 MinionPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}     [2005/02/07 v1.0 microtype config file for MinionPro]
 %<fontdef> \ProvidesFile{MinionPro-FontDef.sty}[2007/02/01 v2.2 font definition macros]
 %<Uextra>  \ProvidesFile{UMinionPro-Extra.fd}  [2005/01/23 v2.0 font definitions for U/MinionPro-Extra.]
@@ -561,7 +561,10 @@
 %   \item add \option{scale} option
 %   \item fix typo in microtype hook
 % \end{compactitem}
-%
+% Version 2.3:
+% \begin{compactitem}
+%   \item fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes
+% \end{compactitem}%
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -738,7 +741,9 @@
     \normalfont
     \fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
     \@thefnmark
-    \endgroup}}
+    \endgroup}%
+  \@ifundefined{KOMAClassName}{}{\deffootnote[1em]{1.5em}{1em}{%
+  \fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont\thefootnotemark}}}
 %
 \newcommand\Mn@Define@Open@g{}
 \DeclareVoidOption{openg}{%

@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2012/02/17 v0.3 MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2012/08/03 v0.4 MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2012/02/17 v0.3 MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2012/08/03 v0.4 MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2012/02/17 v0.3 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
@@ -597,7 +597,8 @@
 % \item Correct smallfrac and slantfrac with \option{sansmath}
 % \item Make the spacing in slantfrac customizable
 % \end{compactitem}
-% Version 0.3: Add support for Light and Black weight
+% Version 0.3: Add support for Light and Black weight\\
+% Version 0.4: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -927,7 +928,9 @@
     \normalfont
     \fontfamily{MyriadPro-Extra}\fontencoding{U}\selectfont
     \@thefnmark
-    \endgroup}}
+    \endgroup}%
+  \@ifundefined{KOMAClassName}{}{\deffootnote[1em]{1.5em}{1em}{%
+      \fontfamily{MyriadPro-Extra}\fontencoding{U}\selectfont\thefootnotemark}}}
 \newcommand\My@Quote@Spacing{}
 \DeclareVoidOption{loosequotes}{%
   \def\My@Quote@Spacing{\My@Quote@Spacing@Loose}}
