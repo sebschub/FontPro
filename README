@@ -100,11 +100,14 @@ Building
     --nokern             use the original Adobe kerning
     --wide-spacing       increase the sidebearings of quote glyphs
     --narrow-spacing     turn --wide-spacing off (default)
-    --pack=<glyph-list>  create base fonts to reduce the size of the map
-                         file; some glyph lists are supplied in the
-                         scripts folder; they can also be generated
-                         using generate-glyph-list.sh AFTER a successful
-                         build without the pack option; RECOMMENDED OPTION
+    --pack=<glyph-list>  explicitly name the glyph list which is used
+                         to create base fonts to reduce the size of
+                         the map file. The default behaviour is to use
+                         the glyph list that fits to your font
+                         version; if this glyph list is not available
+                         in the scripts folder, it can be generated
+                         using generate-glyph-list.sh AFTER a
+                         successful build.
 
 Installing
 ==========
