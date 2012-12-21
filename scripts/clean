@@ -9,10 +9,11 @@ for dir in dvips enc fontinst kerning scripts tex; do
     fi
 done
 
-rm -rf pfb/ tfm/ vf/
-rm -f dvips/*.{enc,map}
-rm -f enc/*.enckern
-rm -f fontinst/*.{tfm,vpl,vf,log} fontinst/*-integral*.pl
-rm -f tex/*.{fd,drv,sty,log,cfg,aux,idx,ind,glo,pdf,toc,out}
-rm -f maketfm{,-expanded}.{tmp,tmp2} maketfm.error glyph-list-?? base-fonts-*
+rm -rf pfb/ tfm/ vf/ dvips/
+rm -f enc/*
+cd fontinst; ls | grep -v fontinst-macros.tex | xargs rm -f; cd ..
+rm -f kerning/*
+rm -f tex/*.{fd,drv,sty,log,cfg,aux,idx,ind,glo,toc,out}
+rm -f maketfm{,-expanded}.{tmp,tmp2} maketfm.error base-fonts-*
 rm -f *.pfb
+rm -f fontname
