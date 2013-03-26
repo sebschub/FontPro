@@ -23,18 +23,31 @@ case $ffamily in
 	;;
 esac
 
+get_font_version() {
+    echo $(otfinfo -v $1 | \
+	sed -e 's/[[:alpha:]]* \([[:digit:]]*\.[[:digit:]]*\).*/\1/')
+}
 ADDPACK=""
 case "$*" in
     *--pack*) echo Using explicitly given glyph list;;
-    *)  fontver=$(otfinfo -v otf/${ffamily}-Regular.otf | \
-	          sed -e 's/[[:alpha:]]* \([[:digit:]]*\.[[:digit:]]*\).*/\1/')
-	echo Found font version ${fontver}
-	if [ -e "scripts/${ffamily}-glyph-list-${fontver}" ]; then
-	    echo Using glyph list "scripts/${ffamily}-glyph-list-${fontver}"
-	    ADDPACK="--pack=scripts/${ffamily}-glyph-list-${fontver}"
+    *)  fontver=$(get_font_version otf/${ffamily}-Regular.otf)
+	uniquefv=true
+	for ff in otf/*otf; do
+	    if [ "$fontver" != "$(get_font_version $ff)" ]; then
+		uniquefv=false
+	    fi
+	done
+	if $uniquefv; then
+	    echo Found font version ${fontver}
+	    if [ -e "scripts/${ffamily}-glyph-list-${fontver}" ]; then
+		echo Using glyph list "scripts/${ffamily}-glyph-list-${fontver}"
+		ADDPACK="--pack=scripts/${ffamily}-glyph-list-${fontver}"
+	    else
+		echo "No matching glyph list found"
+		echo "Please run \"scripts/generate-glyph-list.sh > scripts/${ffamily}-glyph-list-${fontver}\" after this script and use the resulting file with a clean script folder"
+	    fi
 	else
-	    echo "No matching glyph list found"
-	    echo "Please run \"scripts/generate-glyph-list.sh > scripts/${ffamily}-glyph-list-${fontver}\" after this script and use the resulting file with a clean script folder"
+	    echo "Different font versions found: --pack option is disabled"
 	fi
 	;;
 esac
