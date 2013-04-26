@@ -79,10 +79,24 @@ type tools in Cygwin from source or install the
 
    Currently, `$FONT` can be MinionPro, MyriadPro or CronosPro.
 
-   `makeall` has some options to specify which metrics to create:
+   `makeall` has some options, which normally you do not need to use.
 
         --verbose            show warning messages from otftotfm
         --quiet              omit these messages (default)
+        --pack=<glyph-list>  explicitly name the glyph list
+
+   The glyph list of the last option is used to reduce the number of
+   generated files and the size of the map file. This speeds up the
+   compilation slightly but does not affect the output. The default
+   behaviour without the `--pack` option is to use the glyph list that
+   fits to your font version; if this glyph list is not available in
+   the scripts folder, it can be generated using
+   `generate-glyph-list.sh` _after_ a successful build. The `--pack`
+   option can only be used if all you font files are of the same
+   version.
+
+   Furthermore, you can specify which metrics to create:
+
         --smallcaps          create small caps metrics (default)
         --nosmallcaps        turn --smallcaps off
         --swash              create swash metrics (default)
@@ -99,13 +113,10 @@ type tools in Cygwin from source or install the
         --nokern             use the original Adobe kerning
         --wide-spacing       increase the sidebearings of quote glyphs
         --narrow-spacing     turn --wide-spacing off (default)
-        --pack=<glyph-list>  explicitly name the glyph list
 
-   The glyph list of the last option is used to reduce the size of the
-   map file. The default behaviour without the `--pack` option is to
-   use the glyph list that fits to your font version; if this glyph
-   list is not available in the scripts folder, it can be generated
-   using `generate-glyph-list.sh` _after_ a successful build.
+   The `--expanded` option allows to use the font expansion feature of
+   microtype even with pdftex in dvi mode but increases the run-time
+   of `makeall` and the number of produced files considerably.
 
 
 Installing
