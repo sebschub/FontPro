@@ -170,9 +170,16 @@ Use the FONT with
 
     \usepackage{FONT}
 
-All valid options are included in the documentation, which is provided
-in the `tex` folder and which can also be generated _after_ installing
-with
+By default, the MinionPro package modifies the default serif and the
+main math fonts; the MyriadPro and CronosPro change only the sans
+serif font. In the latter case, if you want to use the respective font
+as your main document's font, you probably have to set
+
+    \renewcommand{\familydefault}{\sfdefault}
+
+All valid options of the font packages are included in the
+documentation, which is provided in the `tex` folder and which can
+also be generated _after_ installing with
 
     latex $FONT.dtx
 

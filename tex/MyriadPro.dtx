@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2012/08/03 v0.4 MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2013/04/20 v0.5 MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2012/08/03 v0.4 MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2013/04/20 v0.5 MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2012/02/17 v0.3 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
@@ -151,23 +151,23 @@
 %
 % \section{Overview}
 %
-% The \pkg{MyriadPro} package provides support for the MyriadPro
+% The \pkg{MyriadPro} package provides support for the Myriad Pro
 % font family from Adobe.
 % You can use these fonts in a \LaTeX\ document by adding the command
 % \begin{quote}
 %   |\usepackage{MyriadPro}|
 % \end{quote}
-% to the preamble.
-% This will change both the sans serif text font and the math font to
-% MyriadPro. If you want to use MyriadPro as your main font, add
+% to the preamble.  This will change \emph{only} the sans serif text
+% font. For most cases, if you want to use MyriadPro as your main
+% font, add
 % \begin{quote}
 %   |\renewcommand{\familydefault}{\sfdefault}|
 % \end{quote}
-% to your preamble.  If you prefer another math font (such as
-% \pkg{eulervm}), use the option \option{onlytext} as explained in
+% to your preamble.  If you want to adjust the main math font to
+% Myriad Pro as well, use the option \option{math} as explained in
 % Section~\ref{sec:Options}.  With the option \option{sansmath},
-% \pkg{MyriadPro} does not modify the main math fonts but defines a
-% sans and sansbold mathversion, which use MyriadPro and MdSymbol.
+% \pkg{MyriadPro} defines a sans and sansbold mathversion, which use
+% MyriadPro and MdSymbol, independently of the default math font.
 % This allows the usage of a complete MyriadPro setup consisting of
 % text and math to be used in only a part of the document.  Load
 % \pkg{MyriadPro} with \option{sansmath} after all other font packages
@@ -221,8 +221,11 @@
 % only the math fonts. In addition, also additional font versions for
 % sans serif math can be defined.
 % \begin{options}
-% \item[\option{onlytext}] only change the text fonts
-% \item[\option{onlymath}] only change the math fonts
+% \item[\option*{onlytext}] only change the sans serif text font, not
+%   the default math fonts
+% \item[\option{onlymath}] only change the default math fonts, not the
+%   sans serif text font
+% \item[\option{math}] change the default math fonts
 % \item[\option{sansmath}] provide mathversion \emph{sans} and
 %   \emph{sansbold} and change |\mathsf| to use MyriadPro.  The other
 %   main math fonts are not modified.  This can be used to only use
@@ -592,15 +595,17 @@
 % \item Correction of mathfrak definition
 % \item Correct mathversion sanstabular and sansboldtabular
 % \end{compactitem}
-% Version 0.1c: Use down-case mdsymbol
-% Version 0.1d: \option{sansmath} does not need \option{onlytext}
+% Version 0.1c: Use down-case mdsymbol\\
+% Version 0.1d: \option{sansmath} does not need \option{onlytext}\\
 % Version 0.2:
 % \begin{compactitem}
 % \item Correct smallfrac and slantfrac with \option{sansmath}
 % \item Make the spacing in slantfrac customizable
 % \end{compactitem}
 % Version 0.3: Add support for Light and Black weight\\
-% Version 0.4: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes
+% Version 0.4: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes\\
+% Version 0.5: Modify by default only the sans serif text font, use
+% the \option{math} option to also adjust the main math font
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -615,7 +620,7 @@
 \newif\if@My@Sans@Math@
 \newif\if@My@Math@Symbols@
 \@My@Text@true
-\@My@Math@true
+\@My@Math@false
 \@My@Sans@Math@false
 \@My@Math@Symbols@false
 \RequirePackage{kvoptions}
@@ -625,7 +630,8 @@
 }
 \DeclareVoidOption{onlytext}{\@My@Text@true\@My@Math@false}
 \DeclareVoidOption{onlymath}{\@My@Text@false\@My@Math@true}
-\DeclareVoidOption{sansmath}{\@My@Sans@Math@true\@My@Math@false}
+\DeclareVoidOption{math}{\@My@Math@true}
+\DeclareVoidOption{sansmath}{\@My@Sans@Math@true}
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
