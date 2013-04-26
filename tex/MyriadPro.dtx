@@ -63,7 +63,7 @@
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
 \usepackage[expansion=false]{microtype}
-\usepackage[medfamily, crswash=optmed]{MyriadPro}
+\usepackage[medfamily, crswash=optmed, math]{MyriadPro}
 \renewcommand{\familydefault}{\sfdefault}
 \DeclareFontFamily{T1}{mdsylmtt}{}
 \DeclareFontShape{T1}{mdsylmtt}{m}{n}
@@ -1101,9 +1101,9 @@
   \SetSymbolFont{operators}{sansboldtabular}{T1}{\My@Math@TFamily}{b}{n}%
 
   \IfSymbolFont{letters}{%
-    \SetSymbolFont{letters}{sans}{OML}{MyriadPro-OsF}{r}{\My@Math@LetterShape}
+    \SetSymbolFont{letters}{sans}{OML}{MyriadPro-OsF}{m}{\My@Math@LetterShape}
   }{%
-    \DeclareSymbolFont{letters}  {OML}{MyriadPro-OsF}{r}{\My@Math@LetterShape}
+    \DeclareSymbolFont{letters}  {OML}{MyriadPro-OsF}{m}{\My@Math@LetterShape}
   }
   \SetSymbolFont{letters}{sansbold}       {OML}{MyriadPro-OsF} {b}{\My@Math@LetterShape}
   \SetSymbolFont{letters}{sanstabular}    {OML}{MyriadPro-TOsF}{m}{\My@Math@LetterShape}
