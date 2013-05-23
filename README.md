@@ -189,10 +189,12 @@ as your main document's font, you probably have to set
     \renewcommand{\familydefault}{\sfdefault}
 
 All valid options of the font packages are included in the
-documentation, which is provided in the `tex` folder and which can
+documentation, which is provided in the `doc` folder and which can
 also be generated _after_ installing with
 
     latex $FONT.dtx
+
+The `dtx` file resides in the `tex` folder.
 
 If you get errors about insufficient memory you might need to increase
 the values of `font_mem_size` and `font_max` in your TeX
