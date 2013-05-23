@@ -5,8 +5,8 @@ FontPro provides scripts that automatically generate all necessary
 files to use Adobe Minion Pro, Adobe Myriad Pro and Adobe Cronos Pro
 with (pdf)latex.  In contrast to other solutions, the supplied LaTeX
 packages provide extensive math support in the case of Minion and
-Myriad.  The swash letters of CronosPro can be used as mathcal symbols
-with MyriadPro's math (option 'crswash').
+Myriad.  The swash letters of CronosPro can be used as `mathcal`
+symbols with MyriadPro's math (option `crswash`).
 
 
 Requirements
@@ -22,6 +22,25 @@ installation, are necessary:
 * MnSymbol for MinionPro, MdSymbol for MyriadPro
 * fltpoint package
 * tabfigures package (optional)
+
+
+Supported font styles
+---------------------
+
+For the basic set-up (`smallfamily` LaTeX package option), the regular
+and bold face font are required together with their respective italic
+version.  This set-up can be extended with the semibold face and its
+italic (`medfamily` option), and even further with the medium face and
+its italic (`fullfamily` option).
+
+Furthermore, the optical sizes Caption, Text, Subhead and Display are
+supported independently from the set-up above (`opticals` option).
+Here, every font file has to be available in every optical size.
+
+For Myriad Pro, also the light and the black weight can be used (see
+documentation).
+
+Extended or condensed font styles are not supported.
 
 
 Building
@@ -207,7 +226,7 @@ Maintainer and acknowledgement
 ------------------------------
 
 The scripts and LaTeX packages are maintained by Sebastian Schubert
-<schubert.seb@googlemail.com>.
+<schubert.seb@gmail.com>.
 
 They have been forked from the amazing [MinionPro scripts and
 package](http://developer.berlios.de/projects/minionpro) written by
