@@ -70,7 +70,14 @@ for font in otf/$ffamily*.otf
 do
   base=$(basename "$font" .otf)
   cfftot1    "$font"     "$base.pfb"
-  t1dotlessj "$base.pfb" "${base}LCDFJ.pfb"
+  t1dotlessj --quiet "$base.pfb" "${base}LCDFJ.pfb"
+  rc=$?
+  if [ "$rc" -ne "0" ] ; then
+      # creation of dotless j failed, probably because dotless j
+      # already exists; unfortunately, not always exit code 1 is used
+      # in this case so just delete file and hope the best
+      rm "${base}LCDFJ.pfb"
+  fi
 done
 
 echo "Creating TeX metrics ..."
