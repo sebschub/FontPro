@@ -22,6 +22,16 @@
   }{mn-symbol-fi}{}{}{}{}{}%
 }
 
+\def\installboldopt#1#2{%
+  \installfont{#1}{%
+     MnSymbolF-Bold10                      encoding mn-symbol-f-partialints,%
+     #2                                    encoding mn-symbol-f,%
+     MinionPro-BoldIt-integral             encoding mn-tint scaled 1140,%
+     MinionPro-BoldItDisp-integral-cn1     encoding mn-dint scaled 1140,%
+     mn-intop-bold-text,%
+     mn-intop-bold-disp%
+  }{mn-symbol-fi}{}{}{}{}{}%
+}
 
 \installfonts
 
@@ -39,13 +49,13 @@
   \installsemiboldopt{MnSymbolFI-Semibold9}{MnSymbolF-Bold9}%
   \installsemiboldopt{MnSymbolFI-Semibold10}{MnSymbolF-Bold10}%
   \installsemiboldopt{MnSymbolFI-Semibold12}{MnSymbolF-Bold12}%
-%  \installboldopt{MnSymbolFI-Bold5}{MnSymbolF-Bold5}%
-%  \installboldopt{MnSymbolFI-Bold6}{MnSymbolF-Bold6}%
-%  \installboldopt{MnSymbolFI-Bold7}{MnSymbolF-Bold7}%
-%  \installboldopt{MnSymbolFI-Bold8}{MnSymbolF-Bold8}%
-%  \installboldopt{MnSymbolFI-Bold9}{MnSymbolF-Bold9}%
-%  \installboldopt{MnSymbolFI-Bold10}{MnSymbolF-Bold10}%
-%  \installboldopt{MnSymbolFI-Bold12}{MnSymbolF-Bold12}%
+  \installboldopt{MnSymbolFI-Bold5}{MnSymbolF-Bold5}%
+  \installboldopt{MnSymbolFI-Bold6}{MnSymbolF-Bold6}%
+  \installboldopt{MnSymbolFI-Bold7}{MnSymbolF-Bold7}%
+  \installboldopt{MnSymbolFI-Bold8}{MnSymbolF-Bold8}%
+  \installboldopt{MnSymbolFI-Bold9}{MnSymbolF-Bold9}%
+  \installboldopt{MnSymbolFI-Bold10}{MnSymbolF-Bold10}%
+  \installboldopt{MnSymbolFI-Bold12}{MnSymbolF-Bold12}%
 
 \endinstallfonts
 
