@@ -12,8 +12,9 @@ symbols with MyriadPro's math (option `crswash`).
 Requirements
 ------------
 
-The scripts need the [LCDF Typetools](http://www.lcdf.org/type/),
-version 2.85 or later, to run.  Furthermore, the following LaTeX
+The scripts need the [LCDF Typetools](http://www.lcdf.org/type/) to
+run.  Version 2.85 or later is required, certain recent font versions
+need version 2.99 or later.  Furthermore, the following LaTeX
 packages, which are currently included in a complete TeXLive or MikTeX
 installation, are necessary:
 
