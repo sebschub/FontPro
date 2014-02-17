@@ -735,7 +735,8 @@
 %
 % \subsubsection{Miscellaneous options}
 %
-% Footnote figures, the g glyph in math mode, extra spacing for the apostrophe.
+% Footnote figures, the g and v glyph in math mode, extra spacing for
+% the apostrophe.
 %    \begin{macrocode}
 \DeclareVoidOption{footnotefigures}{%
   \def\@makefnmark{%
@@ -755,6 +756,17 @@
     \begingroup
     \lccode`\~=`\g
     \lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \openg \else \Mn@g \fi}}%
+    \endgroup
+  }}
+%
+\newcommand\Mn@Define@Round@v{}
+\DeclareVoidOption{roundv}{%
+  \def\Mn@Define@Round@v{%
+    \mathcode`v="8000%
+    \DeclareMathSymbol{\Mn@v}{\mathalpha}{letters}{`v}%
+    \begingroup
+    \lccode`\~=`\v
+    \lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \upsilon \else \Mn@v \fi}}%
     \endgroup
   }}
 %
@@ -1359,13 +1371,15 @@
 \fi
 %    \end{macrocode}
 %
-% \subsection{Open G support}
+% \subsection{Open G and Round V support}
 %
-% We can replace the closed~$g$ with the open variant~$\openg$.
+% We can replace the closed~$g$ with the open variant~$\openg$ as well
+% as the $v$ with $\upsilon$.
 % The following definitions provide this as an option.
 %    \begin{macrocode}
 \if@Mn@Math@
   \Mn@Define@Open@g
+  \Mn@Define@Round@v
 \fi
 %    \end{macrocode}
 %
