@@ -1,10 +1,10 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{CronosPro.dtx}        [2012/08/03 v0.2 CronosPro support for LaTeX]
+           \ProvidesFile{CronosPro.dtx}        [2015/01/10 v0.2a CronosPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
 %<style>   \ProvidesPackage{CronosPro}         [2012/08/03 v0.2 CronosPro support for LaTeX]
-%<mtcfg>   \ProvidesFile{mt-CronosPro.cfg}     [2011/12/19 v0.1 microtype config file for CronosPro]
+%<mtcfg>   \ProvidesFile{mt-CronosPro.cfg}     [2015/01/10 v0.2 microtype config file for CronosPro]
 %<fontdef> \ProvidesFile{CronosPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
 %<Uextra>  \ProvidesFile{UCronosPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/CronosPro-Extra.]
 %<OT1&lf>  \ProvidesFile{OT1CronosPro-LF.fd}   [2011/12/19 v0.1 font definitions for OT1/CronosPro-LF.]
@@ -352,8 +352,9 @@
 % \section{Version history}
 %
 % Version 0.1: First version\\
-% Version 0.2: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes
-%
+% Version 0.2: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes\\
+% Version 0.2a: remove\footnote{based on \url{http://tex.stackexchange.com/a/222471/11605}} \pkg{microtype} warning concerning |\j|
+% 
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -782,9 +783,46 @@
 % \section{Support for character protrusion}
 %
 % The \pkg{microtype} configuration. All four CronosPro families use the same
-% file (cf.\ section~\ref{sec:fontdef}).
+% file (cf.\ section~\ref{sec:fontdef}). The inheritance tables are
+% taken from \file{microtype.cfg} except |\j|.
 %    \begin{macrocode}
 %<*mtcfg>
+\DeclareCharacterInheritance
+   { encoding = T1,
+     family = {CronosPro-OsF,CronosPro-LF,CronosPro-TOsF,CronosPro-TLF} }
+   { A = {\`A,\'A,\^A,\~A,\"A,\r A,\k A,\u A},
+     a = {\`a,\'a,\^a,\~a,\"a,\r a,\k a,\u a},
+     C = {\'C,\c C,\v C},
+     c = {\'c,\c c,\v c},
+     D = {\v D,\DH},
+     d = {\v d,\dj},
+     E = {\`E,\'E,\^E,\"E,\k E,\v E},
+     e = {\`e,\'e,\^e,\"e,\k e,\v e},
+     f = {027}, % ff
+     G = {\u G},
+     g = {\u g},
+     I = {\`I,\'I,\^I,\"I,\.I},
+     i = {\`i,\'i,\^i,\"i,\i},
+ %   j = {\j},
+     L = {\L,\'L,\v L},
+     l = {\l,\'l,\v l},
+     N = {\'N,\~N,\v N},
+     n = {\'n,\~n,\v n},
+     O = {\O,\`O,\'O,\^O,\~O,\"O,\H O},
+     o = {\o,\`o,\'o,\^o,\~o,\"o,\H o},
+     R = {\'R,\v R},
+     r = {\'r,\v r},
+     S = {\'S,\c S,\v S,\SS},
+     s = {\'s,\c s,\v s},
+     T = {\c T,\v T},
+     t = {\c t,\v t},
+     U = {\`U,\'U,\^U,\"U,\H U,\r U},
+     u = {\`u,\'u,\^u,\"u,\H u,\r u},
+     Y = {\'Y,\"Y},
+     y = {\'y,\"y},
+     Z = {\'Z,\.Z,\v Z},
+     z = {\'z,\.z,\v z}
+   }
 \SetProtrusion
   [ name     = CronosPro-OT1-Roman ]
   { encoding = OT1,

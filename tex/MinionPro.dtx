@@ -1,10 +1,10 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MinionPro.dtx}        [2012/08/03 v2.3 MinionPro support for LaTeX]
+           \ProvidesFile{MinionPro.dtx}        [2015/01/10 v2.3a MinionPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
 %<style>   \ProvidesPackage{MinionPro}         [2012/08/03 v2.3 MinionPro support for LaTeX]
-%<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}     [2005/02/07 v1.0 microtype config file for MinionPro]
+%<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}     [2015/01/10 v1.1 microtype config file for MinionPro]
 %<fontdef> \ProvidesFile{MinionPro-FontDef.sty}[2007/02/01 v2.2 font definition macros]
 %<Uextra>  \ProvidesFile{UMinionPro-Extra.fd}  [2005/01/23 v2.0 font definitions for U/MinionPro-Extra.]
 %<LGR&lf>  \ProvidesFile{LGRMinionPro-LF.fd}   [2005/01/23 v2.0 font definitions for LGR/MinionPro-LF.]
@@ -566,6 +566,10 @@
 % Version 2.3:
 % \begin{compactitem}
 %   \item fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes
+% \end{compactitem}%
+% Version 2.3a:
+% \begin{compactitem}
+%   \item remove\footnote{based on \url{http://tex.stackexchange.com/a/222471/11605}} \pkg{microtype} warning concerning |\j|
 % \end{compactitem}%
 % \StopEventually{}
 %
@@ -1439,9 +1443,46 @@
 % \section{Support for character protrusion}
 %
 % The \pkg{microtype} configuration. All four MinionPro families use the same
-% file (cf.\ section~\ref{sec:fontdef}).
+% file (cf.\ section~\ref{sec:fontdef}). The inheritance tables are
+% taken from \file{microtype.cfg} except |\j|.
 %    \begin{macrocode}
 %<*mtcfg>
+\DeclareCharacterInheritance
+   { encoding = T1,
+     family = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF} }
+   { A = {\`A,\'A,\^A,\~A,\"A,\r A,\k A,\u A},
+     a = {\`a,\'a,\^a,\~a,\"a,\r a,\k a,\u a},
+     C = {\'C,\c C,\v C},
+     c = {\'c,\c c,\v c},
+     D = {\v D,\DH},
+     d = {\v d,\dj},
+     E = {\`E,\'E,\^E,\"E,\k E,\v E},
+     e = {\`e,\'e,\^e,\"e,\k e,\v e},
+     f = {027}, % ff
+     G = {\u G},
+     g = {\u g},
+     I = {\`I,\'I,\^I,\"I,\.I},
+     i = {\`i,\'i,\^i,\"i,\i},
+ %   j = {\j},
+     L = {\L,\'L,\v L},
+     l = {\l,\'l,\v l},
+     N = {\'N,\~N,\v N},
+     n = {\'n,\~n,\v n},
+     O = {\O,\`O,\'O,\^O,\~O,\"O,\H O},
+     o = {\o,\`o,\'o,\^o,\~o,\"o,\H o},
+     R = {\'R,\v R},
+     r = {\'r,\v r},
+     S = {\'S,\c S,\v S,\SS},
+     s = {\'s,\c s,\v s},
+     T = {\c T,\v T},
+     t = {\c t,\v t},
+     U = {\`U,\'U,\^U,\"U,\H U,\r U},
+     u = {\`u,\'u,\^u,\"u,\H u,\r u},
+     Y = {\'Y,\"Y},
+     y = {\'y,\"y},
+     Z = {\'Z,\.Z,\v Z},
+     z = {\'z,\.z,\v z}
+   }
 \SetProtrusion
   [ name     = MinionPro-OT1-Roman ]
   { encoding = OT1,

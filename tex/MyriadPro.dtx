@@ -1,10 +1,10 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2013/04/20 v0.5 MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2015/01/10 v0.5a MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
 %<style>   \ProvidesPackage{MyriadPro}         [2013/04/20 v0.5 MyriadPro support for LaTeX]
-%<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2011/12/19 v0.1 microtype config file for MyriadPro]
+%<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2015/01/10 v0.2 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2012/02/17 v0.3 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
 %<LGR&lf>  \ProvidesFile{LGRMyriadPro-LF.fd}   [2011/12/19 v0.1 font definitions for LGR/MyriadPro-LF.]
@@ -605,7 +605,8 @@
 % Version 0.3: Add support for Light and Black weight\\
 % Version 0.4: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes\\
 % Version 0.5: Modify by default only the sans serif text font, use
-% the \option{math} option to also adjust the main math font
+% the \option{math} option to also adjust the main math font\\
+% Version 0.5a: remove\footnote{based on \url{http://tex.stackexchange.com/a/222471/11605}} \pkg{microtype} warning concerning |\j|
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -1679,9 +1680,46 @@
 % \section{Support for character protrusion}
 %
 % The \pkg{microtype} configuration. All four MyriadPro families use the same
-% file (cf.\ section~\ref{sec:fontdef}).
+% file (cf.\ section~\ref{sec:fontdef}). The inheritance tables are
+% taken from \file{microtype.cfg} except |\j|.
 %    \begin{macrocode}
 %<*mtcfg>
+\DeclareCharacterInheritance
+   { encoding = T1,
+     family = {MyriadPro-OsF,MyriadPro-LF,MyriadPro-TOsF,MyriadPro-TLF} }
+   { A = {\`A,\'A,\^A,\~A,\"A,\r A,\k A,\u A},
+     a = {\`a,\'a,\^a,\~a,\"a,\r a,\k a,\u a},
+     C = {\'C,\c C,\v C},
+     c = {\'c,\c c,\v c},
+     D = {\v D,\DH},
+     d = {\v d,\dj},
+     E = {\`E,\'E,\^E,\"E,\k E,\v E},
+     e = {\`e,\'e,\^e,\"e,\k e,\v e},
+     f = {027}, % ff
+     G = {\u G},
+     g = {\u g},
+     I = {\`I,\'I,\^I,\"I,\.I},
+     i = {\`i,\'i,\^i,\"i,\i},
+ %   j = {\j},
+     L = {\L,\'L,\v L},
+     l = {\l,\'l,\v l},
+     N = {\'N,\~N,\v N},
+     n = {\'n,\~n,\v n},
+     O = {\O,\`O,\'O,\^O,\~O,\"O,\H O},
+     o = {\o,\`o,\'o,\^o,\~o,\"o,\H o},
+     R = {\'R,\v R},
+     r = {\'r,\v r},
+     S = {\'S,\c S,\v S,\SS},
+     s = {\'s,\c s,\v s},
+     T = {\c T,\v T},
+     t = {\c t,\v t},
+     U = {\`U,\'U,\^U,\"U,\H U,\r U},
+     u = {\`u,\'u,\^u,\"u,\H u,\r u},
+     Y = {\'Y,\"Y},
+     y = {\'y,\"y},
+     Z = {\'Z,\.Z,\v Z},
+     z = {\'z,\.z,\v z}
+   }
 \SetProtrusion
   [ name     = MyriadPro-OT1-Roman ]
   { encoding = OT1,
