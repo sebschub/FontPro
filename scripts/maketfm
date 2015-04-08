@@ -46,6 +46,7 @@ usage() {
   echo "--cyrillic     | --nocyrillic"
   echo "--vietnamese   | --novietnamese"
   echo "--kern         | --nokern"
+  echo "--ligatures    | --noligatures"
   echo "--wide-spacing | --narrow-spacing"
   echo "--expanded     | --noexpanded"
   echo "--pack=<glyph list>"
@@ -68,6 +69,7 @@ create_smallcaps=true
 create_sc_grekcyrl=false
 create_swash=true
 wide_spacing=false
+lig_flags="-fliga"
 glyph_list=""
 base_font_list=""
 
@@ -100,6 +102,8 @@ do
     --noexpanded)     create_expanded=false;;
     --kern)           create_kerned=true;;
     --nokern)         create_kerned=false;;
+    --ligatures)      lig_flags="-fliga";;
+    --noligatures)    lig_flags="";;
     --wide-spacing)   wide_spacing=true;;
     --narrow-spacing) wide_spacing=false;;
     --pack=*)         glyph_list="${opt#--pack=}";;
@@ -418,10 +422,10 @@ make_normal_metrics() {
   get_it_ot1_flags "$1"
   get_lgr_flags    "$1"
 
-  make_tfm   "$1" t1  $2-t1  "-fliga $std_flags $flags"
-  make_tfm   "$1" ot1 $2-ot1 "-fliga $std_flags $it_ot1_flags $flags"
-  make_tfm   "$1" ly1 $2-ly1 "-fliga $std_flags $flags"
-  make_tfm   "$1" ts1 $2-ts1 "       $std_flags $ts_flags"
+  make_tfm   "$1" t1  $2-t1  "$lig_flags $std_flags $flags"
+  make_tfm   "$1" ot1 $2-ot1 "$lig_flags $std_flags $it_ot1_flags $flags"
+  make_tfm   "$1" ly1 $2-ly1 "$lig_flags $std_flags $flags"
+  make_tfm   "$1" ts1 $2-ts1 "           $std_flags $ts_flags"
 
   if $create_greek
   then
@@ -611,18 +615,18 @@ make_swash_metrics() {
 
     local swash="--include-alternates '*.swash' -faalt"
 
-    make_tfm   "$1" t1-swash  lf-swash-t1    "-fliga -flnum -fpnum $std_flags $swash"
-    make_tfm   "$1" t1-swash  osf-swash-t1   "-fliga -fonum -fpnum $std_flags $swash"
-    make_tfm   "$1" t1-swash  tlf-swash-t1   "-fliga -flnum -ftnum $std_flags $swash"
-    make_tfm   "$1" t1-swash  tosf-swash-t1  "-fliga -fonum -ftnum $std_flags $swash"
-    make_tfm   "$1" ot1-swash lf-swash-ot1   "-fliga -flnum -fpnum $std_flags $it_ot1_flags $swash"
-    make_tfm   "$1" ot1-swash osf-swash-ot1  "-fliga -fonum -fpnum $std_flags $it_ot1_flags $swash"
-    make_tfm   "$1" ot1-swash tlf-swash-ot1  "-fliga -flnum -ftnum $std_flags $it_ot1_flags $swash"
-    make_tfm   "$1" ot1-swash tosf-swash-ot1 "-fliga -fonum -ftnum $std_flags $it_ot1_flags $swash"
-    make_tfm   "$1" ly1-swash lf-swash-ly1   "-fliga -flnum -fpnum $std_flags $swash"
-    make_tfm   "$1" ly1-swash osf-swash-ly1  "-fliga -fonum -fpnum $std_flags $swash"
-    make_tfm   "$1" ly1-swash tlf-swash-ly1  "-fliga -flnum -ftnum $std_flags $swash"
-    make_tfm   "$1" ly1-swash tosf-swash-ly1 "-fliga -fonum -ftnum $std_flags $swash"
+    make_tfm   "$1" t1-swash  lf-swash-t1    "$lig_flags -flnum -fpnum $std_flags $swash"
+    make_tfm   "$1" t1-swash  osf-swash-t1   "$lig_flags -fonum -fpnum $std_flags $swash"
+    make_tfm   "$1" t1-swash  tlf-swash-t1   "$lig_flags -flnum -ftnum $std_flags $swash"
+    make_tfm   "$1" t1-swash  tosf-swash-t1  "$lig_flags -fonum -ftnum $std_flags $swash"
+    make_tfm   "$1" ot1-swash lf-swash-ot1   "$lig_flags -flnum -fpnum $std_flags $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash osf-swash-ot1  "$lig_flags -fonum -fpnum $std_flags $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash tlf-swash-ot1  "$lig_flags -flnum -ftnum $std_flags $it_ot1_flags $swash"
+    make_tfm   "$1" ot1-swash tosf-swash-ot1 "$lig_flags -fonum -ftnum $std_flags $it_ot1_flags $swash"
+    make_tfm   "$1" ly1-swash lf-swash-ly1   "$lig_flags -flnum -fpnum $std_flags $swash"
+    make_tfm   "$1" ly1-swash osf-swash-ly1  "$lig_flags -fonum -fpnum $std_flags $swash"
+    make_tfm   "$1" ly1-swash tlf-swash-ly1  "$lig_flags -flnum -ftnum $std_flags $swash"
+    make_tfm   "$1" ly1-swash tosf-swash-ly1 "$lig_flags -fonum -ftnum $std_flags $swash"
 
     if $create_vietnamese
     then
