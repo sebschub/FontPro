@@ -132,6 +132,8 @@ type tools in Cygwin from source or install the
         --noexpanded         turn --expanded off (default)
         --kern               add some missing kerning pairs (default)
         --nokern             use the original Adobe kerning
+        --ligatures          provide standard ligatures (default)
+        --noligatures        provide no ligatures
         --wide-spacing       increase the sidebearings of quote glyphs
         --narrow-spacing     turn --wide-spacing off (default)
 
