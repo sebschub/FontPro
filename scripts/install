@@ -10,6 +10,15 @@ then
   dir="$(kpsewhich -expand-var='$TEXMFLOCAL')"
 fi
 
+while true; do
+    read -p "Do you wish to install the font files into $dir? (y/n) " yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
 # new directory layout (TDS v1.1)
 enc_dir="$dir/fonts/enc/dvips/$font"
 map_dir="$dir/fonts/map/dvips/$font"
