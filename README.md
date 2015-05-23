@@ -168,7 +168,7 @@ Under Windows with MikTeX, do the following:
 
 1. Run in the Cygwin Bash
 
-        $ ./scripts/install /cydrive/c/path/to/Miktex
+        $ ./scripts/install /cygdrive/c/path/to/Miktex
 
    where `c/path/to/Miktex` is the path to the Miktex installation
    tree of choice.
