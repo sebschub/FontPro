@@ -77,6 +77,11 @@ then
   run_fontinst fullfamily-opticals MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
 fi
 
+if [ -e "../tfm/$font-Light-tosf-oml.tfm" ]
+then
+  run_fontinst light Light LightIt
+fi
+
 for v in *.vpl
 do
   vptovf "$v"

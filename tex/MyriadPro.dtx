@@ -645,6 +645,8 @@
 \DeclareStringOption[1.]{scale}
 \newcommand\My@myriadint@opticals{-NoOpticals}
 \newcommand\My@myriadint@bold{-Bold}
+\newcommand\My@myriad@regular{m}
+\newcommand\My@myriad@bold{b}
 \newcommand\My@mdsym@regular{regular}
 \newcommand\My@mdsym@bold{bold}
 \DeclareVoidOption{noopticals}{%
@@ -658,6 +660,14 @@
   \def\My@mdsym@regular{autoregular}%
   \def\My@mdsym@bold{autosemibold}%
   \PassOptionsToPackage{medfamily}{MyriadPro-FontDef}}
+\DeclareVoidOption{lightsetup}{%
+  \def\My@myriadint@bold{-Regular}%
+  \def\My@mdsym@regular{autolight}%
+  \def\My@mdsym@bold{bold}%
+  \def\My@myriad@regular{l}%
+  \def\My@myriad@bold{m}%
+  \AtBeginDocument{\fontseries{l}\selectfont}%
+  \PassOptionsToPackage{smallfamily}{MyriadPro-FontDef}}
 %\DeclareVoidOption{fullfamily}{%
 %  \def\My@myriadint@bold{-Semibold}%
 %  \PassOptionsToPackage{fullfamily}{MyriadPro-FontDef}}
@@ -1039,27 +1049,27 @@
 % Redefine the standard math versions |normal| and |bold|.
 %    \begin{macrocode}
 \if@My@Math@
-  \DeclareSymbolFont{operators}  {T1} {\My@Math@Family}{m} {n}
-  \DeclareSymbolFont{letters}    {OML}{MyriadPro-TOsF} {m} {\My@Math@LetterShape}
-  \SetSymbolFont{operators}{bold}{T1} {\My@Math@Family}{b}{n}
-  \SetSymbolFont{letters}  {bold}{OML}{MyriadPro-TOsF} {b}{\My@Math@LetterShape}
-  \DeclareMathAlphabet\mathbf    {T1} {\My@Math@Family}{b}{n}
-  \DeclareMathAlphabet\mathsf    {T1} {\My@Math@Family}{m} {n}
-  \SetMathAlphabet\mathsf  {bold}{T1} {\My@Math@Family}{b}{n}
-  \DeclareMathAlphabet\mathit    {T1} {\My@Math@Family}{m} {it}
-  \SetMathAlphabet\mathit  {bold}{T1} {\My@Math@Family}{b}{it}
+  \DeclareSymbolFont{operators}  {T1} {\My@Math@Family}{\My@myriad@regular} {n}
+  \DeclareSymbolFont{letters}    {OML}{MyriadPro-TOsF} {\My@myriad@regular} {\My@Math@LetterShape}
+  \SetSymbolFont{operators}{bold}{T1} {\My@Math@Family}{\My@myriad@bold}{n}
+  \SetSymbolFont{letters}  {bold}{OML}{MyriadPro-TOsF} {\My@myriad@bold}{\My@Math@LetterShape}
+  \DeclareMathAlphabet\mathbf    {T1} {\My@Math@Family}{\My@myriad@bold}{n}
+  \DeclareMathAlphabet\mathsf    {T1} {\My@Math@Family}{\My@myriad@regular} {n}
+  \SetMathAlphabet\mathsf  {bold}{T1} {\My@Math@Family}{\My@myriad@bold}{n}
+  \DeclareMathAlphabet\mathit    {T1} {\My@Math@Family}{\My@myriad@regular} {it}
+  \SetMathAlphabet\mathit  {bold}{T1} {\My@Math@Family}{\My@myriad@bold}{it}
 %    \end{macrocode}
 % Extra math versions |tabular| and |boldtabular|, which use tabular figures
 % instead of proportional ones. These math versions can be useful in tables
 % (cf.\ section~\ref{sec:Interferences}).
 %    \begin{macrocode}
-  \SetSymbolFont{operators}{tabular}    {T1} {\My@Math@TFamily}{m}{n}
-  \SetSymbolFont{letters}  {tabular}    {OML}{MyriadPro-TOsF}  {m}{\My@Math@LetterShape}
-  \SetMathAlphabet\mathit  {tabular}    {T1} {\My@Math@TFamily}{m}{it}
+  \SetSymbolFont{operators}{tabular}    {T1} {\My@Math@TFamily}{\My@myriad@regular}{n}
+  \SetSymbolFont{letters}  {tabular}    {OML}{MyriadPro-TOsF}  {\My@myriad@regular}{\My@Math@LetterShape}
+  \SetMathAlphabet\mathit  {tabular}    {T1} {\My@Math@TFamily}{\My@myriad@regular}{it}
 
-  \SetSymbolFont{operators}{boldtabular}{T1} {\My@Math@TFamily}{b}{n}
-  \SetSymbolFont{letters}  {boldtabular}{OML}{MyriadPro-TOsF}  {b}{\My@Math@LetterShape}
-  \SetMathAlphabet\mathit  {boldtabular}{T1} {\My@Math@TFamily}{b}{it}
+  \SetSymbolFont{operators}{boldtabular}{T1} {\My@Math@TFamily}{\My@myriad@bold}{n}
+  \SetSymbolFont{letters}  {boldtabular}{OML}{MyriadPro-TOsF}  {\My@myriad@bold}{\My@Math@LetterShape}
+  \SetMathAlphabet\mathit  {boldtabular}{T1} {\My@Math@TFamily}{\My@myriad@bold}{it}
 %    \end{macrocode}
 % Execute the hooks set up above to load the various math alphabets.
 %    \begin{macrocode}
@@ -1078,37 +1088,37 @@
 
   \newcommand\IfSymbolFont[3]{\@ifundefined{sym#1}{#3}{#2}}
 
-  \DeclareMathAlphabet\mathsf             {T1}{\My@Math@Family} {m}{n}
-  \SetMathAlphabet\mathsf{bold}           {T1}{\My@Math@Family} {b}{n}
-  \SetMathAlphabet\mathsf{sansbold}       {T1}{\My@Math@Family} {b}{n}
-  \SetMathAlphabet\mathsf{sanstabular}    {T1}{\My@Math@TFamily}{m}{n}
-  \SetMathAlphabet\mathsf{sansboldtabular}{T1}{\My@Math@TFamily}{b}{n}
+  \DeclareMathAlphabet\mathsf             {T1}{\My@Math@Family} {\My@myriad@regular}{n}
+  \SetMathAlphabet\mathsf{bold}           {T1}{\My@Math@Family} {\My@myriad@bold}{n}
+  \SetMathAlphabet\mathsf{sansbold}       {T1}{\My@Math@Family} {\My@myriad@bold}{n}
+  \SetMathAlphabet\mathsf{sanstabular}    {T1}{\My@Math@TFamily}{\My@myriad@regular}{n}
+  \SetMathAlphabet\mathsf{sansboldtabular}{T1}{\My@Math@TFamily}{\My@myriad@bold}{n}
 
-  \SetMathAlphabet\mathit{sans}           {T1}{\My@Math@Family} {m}{it}
-  \SetMathAlphabet\mathit{sansbold}       {T1}{\My@Math@Family} {b}{it}
-  \SetMathAlphabet\mathit{sanstabular}    {T1}{\My@Math@TFamily}{m}{it}
-  \SetMathAlphabet\mathit{sansboldtabular}{T1}{\My@Math@TFamily}{b}{it}
+  \SetMathAlphabet\mathit{sans}           {T1}{\My@Math@Family} {\My@myriad@regular}{it}
+  \SetMathAlphabet\mathit{sansbold}       {T1}{\My@Math@Family} {\My@myriad@bold}{it}
+  \SetMathAlphabet\mathit{sanstabular}    {T1}{\My@Math@TFamily}{\My@myriad@regular}{it}
+  \SetMathAlphabet\mathit{sansboldtabular}{T1}{\My@Math@TFamily}{\My@myriad@bold}{it}
 
-  \SetMathAlphabet\mathbf{sans}       {T1}{\My@Math@Family} {b}{n}
-  \SetMathAlphabet\mathbf{sanstabular}{T1}{\My@Math@TFamily}{b}{n}
+  \SetMathAlphabet\mathbf{sans}       {T1}{\My@Math@Family} {\My@myriad@bold}{n}
+  \SetMathAlphabet\mathbf{sanstabular}{T1}{\My@Math@TFamily}{\My@myriad@bold}{n}
 
   \IfSymbolFont{operators}{%
-    \SetSymbolFont{operators}{sans}{T1}{\My@Math@Family}{m}{n}
+    \SetSymbolFont{operators}{sans}{T1}{\My@Math@Family}{\My@myriad@regular}{n}
   }{%
-    \DeclareSymbolFont{operators}  {T1}{\My@Math@Family}{m}{n}
+    \DeclareSymbolFont{operators}  {T1}{\My@Math@Family}{\My@myriad@regular}{n}
   }
-  \SetSymbolFont{operators}{sansbold}       {T1}{\My@Math@Family} {b}{n}
-  \SetSymbolFont{operators}{sanstabular}    {T1}{\My@Math@TFamily}{m}{n}%
-  \SetSymbolFont{operators}{sansboldtabular}{T1}{\My@Math@TFamily}{b}{n}%
+  \SetSymbolFont{operators}{sansbold}       {T1}{\My@Math@Family} {\My@myriad@bold}{n}
+  \SetSymbolFont{operators}{sanstabular}    {T1}{\My@Math@TFamily}{\My@myriad@regular}{n}%
+  \SetSymbolFont{operators}{sansboldtabular}{T1}{\My@Math@TFamily}{\My@myriad@bold}{n}%
 
   \IfSymbolFont{letters}{%
-    \SetSymbolFont{letters}{sans}{OML}{MyriadPro-OsF}{m}{\My@Math@LetterShape}
+    \SetSymbolFont{letters}{sans}{OML}{MyriadPro-OsF}{\My@myriad@regular}{\My@Math@LetterShape}
   }{%
-    \DeclareSymbolFont{letters}  {OML}{MyriadPro-OsF}{m}{\My@Math@LetterShape}
+    \DeclareSymbolFont{letters}  {OML}{MyriadPro-OsF}{\My@myriad@regular}{\My@Math@LetterShape}
   }
-  \SetSymbolFont{letters}{sansbold}       {OML}{MyriadPro-OsF} {b}{\My@Math@LetterShape}
-  \SetSymbolFont{letters}{sanstabular}    {OML}{MyriadPro-TOsF}{m}{\My@Math@LetterShape}
-  \SetSymbolFont{letters}{sansboldtabular}{OML}{MyriadPro-TOsF}{b}{\My@Math@LetterShape}
+  \SetSymbolFont{letters}{sansbold}       {OML}{MyriadPro-OsF} {\My@myriad@bold}{\My@Math@LetterShape}
+  \SetSymbolFont{letters}{sanstabular}    {OML}{MyriadPro-TOsF}{\My@myriad@regular}{\My@Math@LetterShape}
+  \SetSymbolFont{letters}{sansboldtabular}{OML}{MyriadPro-TOsF}{\My@myriad@bold}{\My@Math@LetterShape}
 
   \My@load@cal@both
   \My@load@sans@cal
@@ -1555,7 +1565,7 @@
 % Replace |MdSymbolF| by |MySymbolFI|.
 %    \begin{macrocode}
     \DeclareFontFamily{U}{MySymbolFI}{}
-    \DeclareFontShape{U}{MySymbolFI}{m}{it}{
+    \DeclareFontShape{U}{MySymbolFI}{\My@myriad@regular}{it}{
         <-6>  MySymbolFI\My@myriadint@opticals5
        <6-7>  MySymbolFI\My@myriadint@opticals6
        <7-8>  MySymbolFI\My@myriadint@opticals7
@@ -1564,7 +1574,7 @@
       <10-12> MySymbolFI\My@myriadint@opticals10
       <12->   MySymbolFI\My@myriadint@opticals12
     }{}
-    \DeclareFontShape{U}{MySymbolFI}{b}{it}{
+    \DeclareFontShape{U}{MySymbolFI}{\My@myriad@bold}{it}{
         <-6>  MySymbolFI\My@myriadint@bold\My@myriadint@opticals5
        <6-7>  MySymbolFI\My@myriadint@bold\My@myriadint@opticals6
        <7-8>  MySymbolFI\My@myriadint@bold\My@myriadint@opticals7
@@ -1576,8 +1586,8 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-    \DeclareSymbolFont{symbols}  {U}{MySymbolFI}{m}{it}
-    \SetSymbolFont{symbols}{bold}{U}{MySymbolFI}{b}{it}
+    \DeclareSymbolFont{symbols}  {U}{MySymbolFI}{\My@myriad@regular}{it}
+    \SetSymbolFont{symbols}{bold}{U}{MySymbolFI}{\My@myriad@bold}{it}
 %    \end{macrocode}
 % Make the original integral symbols available as |\var|\dots.
 %    \begin{macrocode}
