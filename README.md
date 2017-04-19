@@ -24,6 +24,8 @@ installation, are necessary:
 * MnSymbol for MinionPro, MdSymbol for MyriadPro
 * fltpoint package
 * tabfigures package (optional)
+* fontware package (usually, but not always, comes with your Tex
+  distribution)
 
 
 Supported font styles
