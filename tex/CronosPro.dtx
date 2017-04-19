@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{CronosPro.dtx}        [2015/01/10 v0.2a CronosPro support for LaTeX]
+           \ProvidesFile{CronosPro.dtx}        [2017/04/11 v0.2b CronosPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{CronosPro}         [2012/08/03 v0.2 CronosPro support for LaTeX]
+%<style>   \ProvidesPackage{CronosPro}         [2017/04/11 v0.2b CronosPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-CronosPro.cfg}     [2015/01/10 v0.2 microtype config file for CronosPro]
 %<fontdef> \ProvidesFile{CronosPro-FontDef.sty}[2011/12/19 v0.1 font definition macros]
 %<Uextra>  \ProvidesFile{UCronosPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/CronosPro-Extra.]
@@ -150,15 +150,6 @@
 %
 % The CronosPro package includes support files for the \pkg{microtype} package
 % (version~1.8 or higher), consult the package's documentation for further details.
-%
-% There is also a slight incompatibility with the \pkg{dcolumn} package
-% which expects all figures to have the same width. If you want to use this
-% package you either have to specify the \option{mathtabular} option (this is
-% the brute force solution, not recommended), or you can use the
-% |\figureversion{tabular}| command to switch to tabular figures in front of
-% every table (much better, but also more work). In addition, \pkg{dcolumn}
-% sets figures in math mode, hence the choice of math figures
-% (see Section~\ref{sec:Options}) determines if text or lining figures are used.
 %
 % \section{Options}\label{sec:Options}
 %
@@ -353,8 +344,8 @@
 %
 % Version 0.1: First version\\
 % Version 0.2: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes\\
-% Version 0.2a: remove\footnote{based on \url{http://tex.stackexchange.com/a/222471/11605}} \pkg{microtype} warning concerning |\j|
-% 
+% Version 0.2a: Remove\footnote{based on \url{http://tex.stackexchange.com/a/222471/11605}} \pkg{microtype} warning concerning |\j|\\
+% Version 0.2b: Remove some unused math options and references
 % \StopEventually{}
 %
 % \section{The main style file}
@@ -408,21 +399,23 @@
 %
 %    \begin{macrocode}
 \newcommand\Cr@Text@Fig{OsF}
-\newcommand\Cr@Math@Fig{OsF}
+%\newcommand\Cr@Math@Fig{OsF}
 \newcommand\Cr@Text@Family{CronosPro-\Cr@Text@Fig}
-\newcommand\Cr@Math@Family{CronosPro-\Cr@Math@Fig}
-\newcommand\Cr@Math@TFamily{CronosPro-T\Cr@Math@Fig}
-\newcommand\Cr@Math@LetterShape{it}
+%\newcommand\Cr@Math@Family{CronosPro-\Cr@Math@Fig}
+%\newcommand\Cr@Math@TFamily{CronosPro-T\Cr@Math@Fig}
+%\newcommand\Cr@Math@LetterShape{it}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
 \DeclareVoidOption{textosf}{\def\Cr@Text@Fig{OsF}}
 \DeclareVoidOption{textlf}{\def\Cr@Text@Fig{LF}}
-\DeclareVoidOption{mathosf}{\def\Cr@Math@Fig{OsF}}
-\DeclareVoidOption{mathlf}{\def\Cr@Math@Fig{LF}}
-\DeclareVoidOption{osf}{\setkeys{Cr}{textosf,mathosf}}
-\DeclareVoidOption{lf}{\setkeys{Cr}{textlf,mathlf}}
-\DeclareVoidOption{mathtabular}{\let\Cr@Math@Family\Cr@Math@TFamily}
+%\DeclareVoidOption{mathosf}{\def\Cr@Math@Fig{OsF}}
+%\DeclareVoidOption{mathlf}{\def\Cr@Math@Fig{LF}}
+\DeclareVoidOption{osf}{\setkeys{Cr}{textosf}}
+\DeclareVoidOption{lf}{\setkeys{Cr}{textlf}}
+%\DeclareVoidOption{osf}{\setkeys{Cr}{textosf,mathosf}}
+%\DeclareVoidOption{lf}{\setkeys{Cr}{textlf,mathlf}}
+%\DeclareVoidOption{mathtabular}{\let\Cr@Math@Family\Cr@Math@TFamily}
 %    \end{macrocode}
 %
 % \subsubsection{Miscellaneous options}

@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MyriadPro.dtx}        [2015/01/10 v0.5a MyriadPro support for LaTeX]
+           \ProvidesFile{MyriadPro.dtx}        [2017/04/19 v0.5b MyriadPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MyriadPro}         [2013/04/20 v0.5 MyriadPro support for LaTeX]
+%<style>   \ProvidesPackage{MyriadPro}         [2017/04/19 v0.5b MyriadPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MyriadPro.cfg}     [2015/01/10 v0.2 microtype config file for MyriadPro]
 %<fontdef> \ProvidesFile{MyriadPro-FontDef.sty}[2012/02/17 v0.3 font definition macros]
 %<Uextra>  \ProvidesFile{UMyriadPro-Extra.fd}  [2011/12/19 v0.1 font definitions for U/MyriadPro-Extra.]
@@ -194,6 +194,11 @@
 % The MyriadPro package includes support files for the \pkg{microtype} package
 % (version~1.8 or higher), consult the package's documentation for further details.
 %
+% If you use the \option{crswash} option of this package and the
+% CronosPro package for the main text, load CronosPro first and
+% MyriadPro with the \option{onlymath} option. Ensure
+% that the same scale value is used in both packages.
+%
 % There is also a slight incompatibility with the \pkg{dcolumn} package
 % which expects all figures to have the same width. If you want to use this
 % package you either have to specify the \option{mathtabular} option (this is
@@ -269,7 +274,9 @@
 %                       \emph{noptmed} or \emph{optmed} using (no)
 %                       optical weights, small or medium family
 %                       configuration (see CronosPro
-%                       documentation). First one is default.
+%                       documentation). First one is default.  See
+%                       section~\ref{sec:Interferences} if used
+%                       together with the CronosPro package.
 % \end{options}
 %
 % \subsubsection*{Blackboard bold letters}
@@ -606,7 +613,10 @@
 % Version 0.4: Fix\footnote{based on \url{http://tex.stackexchange.com/a/54954/11605}} \option{footnotefigures} option with \acro{KOMA} classes\\
 % Version 0.5: Modify by default only the sans serif text font, use
 % the \option{math} option to also adjust the main math font\\
-% Version 0.5a: remove\footnote{based on \url{http://tex.stackexchange.com/a/222471/11605}} \pkg{microtype} warning concerning |\j|
+% Version 0.5a: Remove\footnote{based on \url{http://tex.stackexchange.com/a/222471/11605}} \pkg{microtype} warning concerning |\j|
+% \StopEventually{}\\
+% Version 0.5b: Add comment about \option{crswash} option and
+% CronosPro package
 % \StopEventually{}
 %
 % \section{The main style file}
