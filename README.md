@@ -98,7 +98,7 @@ type tools in Cygwin from source or install the
 
 3. Run the main script `makeall`:
 
-        $ ./scripts/makeall $FONT
+        $ ./scripts/makeall $FONT [options]
 
    Currently, `$FONT` can be MinionPro, MyriadPro or CronosPro.
 
