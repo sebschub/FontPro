@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ed -s "$1" <<EOF
 /\[/a

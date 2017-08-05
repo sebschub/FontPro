@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check utilities.
 
@@ -727,7 +727,7 @@ make_base_encodings
 
 # We first create a shell script with the actual otftotfm calls.
 
-echo "#!/bin/bash" >maketfm.tmp
+echo "#!/usr/bin/env bash" >maketfm.tmp
 
 for weight in Light "" Medium Semibold Bold Black
 do
