@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Remove generated files from the source tree
 
 # quick sanity check: Are we in the top-level directory?

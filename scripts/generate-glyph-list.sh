@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cat dvips/a_*.enc |
 sed -e 's/^.*\[//' -e 's/^%.*$//' |
