@@ -273,10 +273,11 @@ make_base_fonts() {
 
         echo "$font-$name-Base-$i$exp_suffix $enc" >>"$font_list"
 
-        otftotfm $common_flags $exp_flags --literal-encoding="$enc" "otf/$font-$name.otf" "$font-$name-Base-$i$exp_suffix"
+        otftotfm $common_flags $exp_flags --literal-encoding="$enc" "otf/$font-$name.otf" "$font-$name-Base-$i$exp_suffix" &
       done
 
     done
+    wait
   fi
 }
 
@@ -335,8 +336,9 @@ make_tfm() {
       progress -n " $spec$exp_suffix,"
     fi
 
-    echo "otftotfm $common_flags $base_encoding_flags $exp_flags $* $enc_flags 'otf/$font-$name.otf' '$tex_name'" >>maketfm.tmp
+    echo "otftotfm $common_flags $base_encoding_flags $exp_flags $* $enc_flags 'otf/$font-$name.otf' '$tex_name' &" >>maketfm.tmp
   done
+  echo "wait" >>maketfm.tmp
 }
 
 make_ligkern_options() {
