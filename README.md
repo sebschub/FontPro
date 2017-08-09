@@ -161,10 +161,11 @@ the font:
 
 2. Add `$FONT.map` to the default font map files by
 
-        $ updmap --enable Map=$FONT.map
+        $ updmap-sys --enable Map=$FONT.map
 
-   For a system-wide installation, use `updmap-sys` instead of
-   `updmap`.
+   for a system-wide installation. Use `updmap` or, on a recent
+   TeXLive distribution, `updmap-user` instead of `updmap-sys` for a
+   user-based installation.
 
 Under Windows with MikTeX, do the following: 
 
