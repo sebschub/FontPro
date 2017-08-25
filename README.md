@@ -150,10 +150,17 @@ Installing
 Under Linux-like environments, use the following commands to install
 the font:
 
-1. Run the `install` script. You can specify the directory where the
-   files should be put. The default is `$TEXMFLOCAL`.
+1. Run the `install` script. The default folder is `TEXMFLOCAL`,
+   which can be queried by `kpsewhich -expand-var='$TEXMFLOCAL'`.
 
-        $ ./scripts/install /usr/local/share/texmf
+        $ ./scripts/install 
+
+   root permissions are usually required in `TEXMFLOCAL`.
+   Alternatively, you can specify the directory where the files should
+   be put, for example in `TEXMFHOME`. Depending on your system, this
+   could look like
+   
+        $ ./scripts/install $HOME/texmf
 
    (If you use a TeX distribution older than 2005 which does not
    follow TDS v1.1, uncomment the "old directory folders" in the
